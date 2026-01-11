@@ -1,0 +1,287 @@
+<mxfile host="app.diagrams.net" modified="2025-11-03T00:00:00.000Z" agent="Claude" version="21.0.0" type="device">
+  <diagram name="Epic 7 - Story 1: Create Content Versions" id="epic7_story1">
+    <mxGraphModel dx="2500" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- ============================================= -->
+        <!-- TITLE AND EPIC OVERVIEW -->
+        <!-- ============================================= -->
+        
+        <mxCell id="title" value="EPIC 7 - USER STORY 1: CREATE CONTENT VERSIONS&#xa;&#xa;Automatic version creation when content is updated, preserving complete revision history" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A237E;strokeColor=#0D47A1;fontColor=#FFFFFF;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="3520" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- SWIM LANES -->
+        <!-- ============================================= -->
+        
+        <!-- User/Streamlit Lane -->
+        <mxCell id="lane_user" value="USER&#xa;(Streamlit Frontend)" style="swimlane;startSize=40;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="3520" height="400" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI Backend Lane -->
+        <mxCell id="lane_backend" value="FASTAPI BACKEND" style="swimlane;startSize=40;fillColor=#FFF3E0;strokeColor=#F57C00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="580" width="3520" height="500" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Database Lane -->
+        <mxCell id="lane_database" value="SUPABASE DATABASE" style="swimlane;startSize=40;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1080" width="3520" height="400" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Realtime Lane -->
+        <mxCell id="lane_realtime" value="SUPABASE REALTIME" style="swimlane;startSize=40;fillColor=#E8F5E9;strokeColor=#388E3C;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1480" width="3520" height="300" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- TRIGGER SCENARIO 1: SUB-CHAPTER CREATION (from Epic 6) -->
+        <!-- ============================================= -->
+        
+        <mxCell id="scenario1_title" value="🔹 SCENARIO 1: Version Created During Initial Sub-Chapter Generation (Epic 6 Integration)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=12;fontStyle=1;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="220" width="600" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_user_creates" value="User creates new sub-chapter&#xa;in Epic 6 Story 1 flow&#xa;&#xa;(See: epic6_page1_create_subchapter_userflow.xml)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="280" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_generation_complete" value="Content generation completes&#xa;(Mistral 7B generates content)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="400" y="300" width="280" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s1_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s1_user_creates" target="s1_generation_complete">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_backend_save" value="POST /api/sub-chapters/{id}/save-content&#xa;&#xa;Request Body:&#xa;{&#xa;  &quot;content&quot;: &quot;[Generated text]&quot;,&#xa;  &quot;word_count&quot;: 2000,&#xa;  &quot;generation_metadata&quot;: {&#xa;    &quot;character_context_ids&quot;: [...],&#xa;    &quot;world_rule_ids&quot;: [...],&#xa;    &quot;similarity_scores&quot;: {...}&#xa;  }&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="400" y="620" width="400" height="200" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s1_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s1_generation_complete" target="s1_backend_save">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_backend_logic" value="Version Creation Logic:&#xa;&#xa;1. Check if sub-chapter exists&#xa;2. Query current max(version_number):&#xa;   SELECT MAX(version_number)&#xa;   FROM sub_chapter_versions&#xa;   WHERE sub_chapter_id = $1&#xa;3. Calculate new_version = (max + 1) OR 1&#xa;4. Prepare version data&#xa;5. Begin transaction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="840" y="620" width="380" height="200" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s1_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s1_backend_save" target="s1_backend_logic">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_db_insert_version" value="INSERT INTO sub_chapter_versions&#xa;&#xa;Fields:&#xa;• id: UUID (generated)&#xa;• sub_chapter_id: [from request]&#xa;• version_number: 1 (first version)&#xa;• content: [generated text]&#xa;• word_count: 2000&#xa;• snapshot_metadata: {&#xa;    character_id,&#xa;    applied_world_rule_ids,&#xa;    generation_parameters&#xa;  }&#xa;• created_at: NOW()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1120" width="380" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s1_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s1_backend_logic" target="s1_db_insert_version">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_db_update_subchapter" value="UPDATE sub_chapters&#xa;SET&#xa;  content = [new content],&#xa;  word_count = 2000,&#xa;  current_version_id = [new version id],&#xa;  status = 'completed',&#xa;  updated_at = NOW()&#xa;WHERE id = [sub_chapter_id]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1120" width="380" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s1_5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s1_db_insert_version" target="s1_db_update_subchapter">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_db_commit" value="✅ COMMIT TRANSACTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1380" width="380" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s1_6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="s1_db_update_subchapter" target="s1_db_commit">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_realtime_broadcast" value="📡 Broadcast Change Event&#xa;&#xa;Channel: sub_chapter_versions&#xa;Event: INSERT&#xa;Payload: {&#xa;  sub_chapter_id,&#xa;  version_number: 1,&#xa;  word_count: 2000,&#xa;  created_at&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1520" width="380" height="180" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s1_7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="s1_db_commit" target="s1_realtime_broadcast">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s1_user_notification" value="✅ User sees success message:&#xa;&quot;Sub-chapter created!&#xa;Version 1 saved.&quot;&#xa;&#xa;Version badge appears: &quot;v1&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="300" width="280" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s1_8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="s1_realtime_broadcast" target="s1_user_notification">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- TRIGGER SCENARIO 2: SUB-CHAPTER REGENERATION (from Epic 6) -->
+        <!-- ============================================= -->
+        
+        <mxCell id="scenario2_title" value="🔹 SCENARIO 2: Version Created During Sub-Chapter Regeneration (Epic 6 Integration)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=12;fontStyle=1;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="220" width="600" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s2_user_regenerate" value="User clicks 'Regenerate Content'&#xa;on existing sub-chapter&#xa;&#xa;(See: epic6_page5_regenerate_subchapter_userflow.xml)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="300" width="280" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s2_confirmation" value="User confirms regeneration&#xa;in modal:&#xa;&#xa;&quot;Old content will be saved&#xa;as previous version&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="300" width="280" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s2_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s2_user_regenerate" target="s2_confirmation">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s2_backend_regenerate" value="POST /api/sub-chapters/{id}/regenerate&#xa;&#xa;Request Body:&#xa;{&#xa;  &quot;updated_plot_points&quot;: &quot;[if changed]&quot;,&#xa;  &quot;character_change&quot;: false&#xa;}&#xa;&#xa;Logic:&#xa;1. Query current max(version_number)&#xa;2. new_version = max + 1&#xa;3. Trigger generation job&#xa;4. Wait for completion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="620" width="400" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s2_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s2_confirmation" target="s2_backend_regenerate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s2_db_insert_new_version" value="INSERT INTO sub_chapter_versions&#xa;&#xa;Fields:&#xa;• id: UUID (generated)&#xa;• sub_chapter_id: [from request]&#xa;• version_number: N+1 (incremented)&#xa;• content: [newly generated text]&#xa;• word_count: [calculated]&#xa;• snapshot_metadata: {&#xa;    character_id,&#xa;    applied_world_rule_ids,&#xa;    regeneration_reason,&#xa;    previous_version_id&#xa;  }&#xa;• created_at: NOW()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="1120" width="400" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s2_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s2_backend_regenerate" target="s2_db_insert_new_version">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s2_db_update_pointer" value="UPDATE sub_chapters&#xa;SET&#xa;  content = [new content],&#xa;  word_count = [new count],&#xa;  current_version_id = [new version id],&#xa;  updated_at = NOW()&#xa;WHERE id = [sub_chapter_id]&#xa;&#xa;⚠️ OLD VERSION PRESERVED&#xa;   (still in sub_chapter_versions)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2800" y="1120" width="380" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s2_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="s2_db_insert_new_version" target="s2_db_update_pointer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s2_realtime_broadcast" value="📡 Broadcast Change Event&#xa;&#xa;Channel: sub_chapter_versions&#xa;Event: INSERT&#xa;Payload: {&#xa;  sub_chapter_id,&#xa;  version_number: N+1,&#xa;  word_count,&#xa;  created_at&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2800" y="1520" width="380" height="180" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s2_5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="s2_db_update_pointer" target="s2_realtime_broadcast">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="s2_user_notification" value="✅ User sees success message:&#xa;&quot;Regeneration complete!&#xa;Version [N+1] saved.&quot;&#xa;&#xa;Version badge updates: &quot;v[N+1]&quot;&#xa;&#xa;UI shows: &quot;View Version History&quot;&#xa;button becomes clickable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2680" y="280" width="300" height="160" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_s2_6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="s2_realtime_broadcast" target="s2_user_notification">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- ERROR HANDLING -->
+        <!-- ============================================= -->
+        
+        <mxCell id="error_title" value="❌ ERROR HANDLING SCENARIOS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1840" width="3480" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error1" value="ERROR 1: Database Insert Failure&#xa;&#xa;Cause: Constraint violation, connection issue&#xa;&#xa;Response:&#xa;• Rollback transaction&#xa;• Return 500 error&#xa;• Log: &quot;Failed to create version&quot;&#xa;&#xa;User sees:&#xa;&quot;❌ Failed to save version.&#xa;Please try again.&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1920" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error2" value="ERROR 2: Version Number Conflict&#xa;&#xa;Cause: Concurrent regeneration&#xa;&#xa;Response:&#xa;• Retry with new version number&#xa;• Use SELECT ... FOR UPDATE&#xa;• Ensure atomicity&#xa;&#xa;User sees:&#xa;&quot;⚠️ Version conflict detected.&#xa;Retrying...&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="640" y="1920" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error3" value="ERROR 3: Content Too Large&#xa;&#xa;Cause: Generated content exceeds limits&#xa;&#xa;Response:&#xa;• Truncate content warning&#xa;• Still save version&#xa;• Flag for review&#xa;&#xa;User sees:&#xa;&quot;⚠️ Content exceeds recommended&#xa;length. Version saved with warning.&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="1920" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error4" value="ERROR 4: Realtime Broadcast Failure&#xa;&#xa;Cause: WebSocket disconnected&#xa;&#xa;Response:&#xa;• Version still saved successfully&#xa;• Frontend polls as fallback&#xa;• Log warning&#xa;&#xa;User experience:&#xa;Slight delay in UI update&#xa;(3-5 seconds instead of instant)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="1920" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- METADATA TRACKING -->
+        <!-- ============================================= -->
+        
+        <mxCell id="metadata_title" value="📊 VERSION METADATA TRACKING (Automatic)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="1840" width="1240" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="metadata_captured" value="AUTOMATICALLY CAPTURED METADATA:&#xa;&#xa;✅ Version Number (sequential)&#xa;✅ Content (full text)&#xa;✅ Word Count (calculated)&#xa;✅ Timestamp (created_at)&#xa;✅ Character ID (from sub_chapter at time of creation)&#xa;✅ Applied World Rule IDs (from generation metadata)&#xa;✅ Generation Context:&#xa;   • Character context chunks used&#xa;   • Similarity scores&#xa;   • Plot points at time of generation&#xa;   • Writing prompt used&#xa;✅ Previous Version ID (for regenerations)&#xa;✅ Regeneration Reason (if applicable):&#xa;   • 'plot_points_changed'&#xa;   • 'character_changed'&#xa;   • 'manual_regeneration'&#xa;   • 'world_rule_updated'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="1920" width="580" height="400" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="metadata_benefits" value="BENEFITS OF AUTOMATIC TRACKING:&#xa;&#xa;✅ Complete Audit Trail&#xa;   • Know exactly how content was generated&#xa;   • Understand why regeneration occurred&#xa;&#xa;✅ Version Comparison Context&#xa;   • Compare not just text, but generation context&#xa;   • See what changed between versions&#xa;&#xa;✅ Analytics &amp; Learning&#xa;   • Track which world rules are most effective&#xa;   • Identify patterns in regenerations&#xa;&#xa;✅ Debugging Support&#xa;   • Reproduce generation conditions&#xa;   • Investigate quality issues&#xa;&#xa;✅ User Transparency&#xa;   • Show users what influenced content&#xa;   • Build trust in AI generation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2940" y="1920" width="620" height="400" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- KEY PATTERNS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="patterns_title" value="✅ KEY PATTERNS &amp; BEST PRACTICES" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2200" width="3480" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern1" value="✅ PATTERN 1: Automatic Versioning&#xa;&#xa;• Versions created automatically&#xa;• No user action required&#xa;• Happens during content save/regenerate&#xa;• User never worries about losing content&#xa;&#xa;Benefits:&#xa;• Reduces cognitive load&#xa;• Prevents accidental data loss&#xa;• Enables fearless iteration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2280" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern2" value="✅ PATTERN 2: Non-Destructive Updates&#xa;&#xa;• Old versions NEVER deleted&#xa;• current_version_id is just a pointer&#xa;• All history preserved permanently&#xa;• Can always roll back&#xa;&#xa;Benefits:&#xa;• Complete revision history&#xa;• Safe experimentation&#xa;• Audit compliance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="640" y="2280" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern3" value="✅ PATTERN 3: Sequential Version Numbers&#xa;&#xa;• Always incremental (1, 2, 3...)&#xa;• No gaps in sequence&#xa;• Easy to understand chronology&#xa;• Query max(version_number) + 1&#xa;&#xa;Benefits:&#xa;• Clear version timeline&#xa;• Simple to display in UI&#xa;• Predictable ordering" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="2280" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern4" value="✅ PATTERN 4: Transactional Integrity&#xa;&#xa;• Version insert + sub_chapter update&#xa;  wrapped in transaction&#xa;• Both succeed or both fail&#xa;• No partial states&#xa;&#xa;Benefits:&#xa;• Data consistency&#xa;• No orphaned versions&#xa;• Reliable rollback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2280" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern5" value="✅ PATTERN 5: Real-Time Updates&#xa;&#xa;• Supabase Realtime broadcasts changes&#xa;• Frontend updates instantly&#xa;• No polling required&#xa;• Sub-100ms latency&#xa;&#xa;Benefits:&#xa;• Responsive UI&#xa;• Reduced server load&#xa;• Better UX" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="2280" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern6" value="✅ PATTERN 6: Rich Metadata Capture&#xa;&#xa;• Store generation context&#xa;• Track what influenced content&#xa;• Enable analytics and debugging&#xa;• Support version comparison&#xa;&#xa;Benefits:&#xa;• Transparency&#xa;• Learning insights&#xa;• Quality improvement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2280" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- INTEGRATION POINTS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="integration_title" value="🔗 INTEGRATION POINTS WITH OTHER EPICS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2560" width="3480" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="integration1" value="🔗 EPIC 6 INTEGRATION: Sub-Chapter Creation&#xa;&#xa;Trigger Point:&#xa;• epic6_page1_create_subchapter_userflow.xml&#xa;• Step: Save generated content&#xa;&#xa;Handoff:&#xa;• Epic 6 provides: sub_chapter_id, content, metadata&#xa;• Epic 7 creates: Version 1&#xa;• Epic 6 updates: current_version_id pointer&#xa;&#xa;Result:&#xa;✅ First version automatically created&#xa;✅ User sees version badge &quot;v1&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2640" width="680" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="integration2" value="🔗 EPIC 6 INTEGRATION: Sub-Chapter Regeneration&#xa;&#xa;Trigger Point:&#xa;• epic6_page5_regenerate_subchapter_userflow.xml&#xa;• Step: Save regenerated content&#xa;&#xa;Handoff:&#xa;• Epic 6 provides: sub_chapter_id, new_content, metadata&#xa;• Epic 7 creates: Version N+1&#xa;• Epic 6 updates: current_version_id pointer&#xa;&#xa;Result:&#xa;✅ New version created (old preserved)&#xa;✅ User sees updated version badge &quot;v[N+1]&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="800" y="2640" width="680" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="integration3" value="🔗 EPIC 5A/5B INTEGRATION: Content Generation&#xa;&#xa;Metadata Captured:&#xa;• Character context IDs used (Epic 5A)&#xa;• World rule IDs applied (Epic 5B)&#xa;• Similarity scores&#xa;• Generation parameters&#xa;&#xa;Stored In:&#xa;sub_chapter_versions.snapshot_metadata&#xa;&#xa;Usage:&#xa;• Version comparison&#xa;• Analytics dashboard&#xa;• Debugging generation issues" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="2640" width="680" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="integration4" value="🔗 EPIC 7 STORY 2 INTEGRATION: Version Restore&#xa;&#xa;Data Flow:&#xa;• Story 1 creates all versions&#xa;• Story 2 reads version history&#xa;• Story 2 restores by updating current_version_id&#xa;&#xa;Relationship:&#xa;• Story 1 = Write operation&#xa;• Story 2 = Read + Update operation&#xa;&#xa;See:&#xa;epic7_page2_restore_versions_userflow.xml" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2240" y="2640" width="680" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="integration5" value="🔗 FUTURE: EPIC 7 STORY 3 INTEGRATION&#xa;&#xa;Version Descriptions (Story 3):&#xa;• Users can add descriptions to versions&#xa;• Stored in sub_chapter_versions.description&#xa;• Optional field (can be NULL)&#xa;&#xa;Version Comparison (Story 4):&#xa;• Display metadata differences&#xa;• Show what changed between versions&#xa;• Highlight generation context changes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2960" y="2640" width="600" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- FOOTER -->
+        <!-- ============================================= -->
+        
+        <mxCell id="footer" value="EPIC 7 - STORY 1 SUMMARY: Versions are automatically created whenever sub-chapter content is saved or regenerated (from Epic 6). The system captures rich metadata, maintains sequential version numbers, ensures transactional integrity, and provides real-time updates. All versions are preserved permanently in a non-destructive manner, enabling complete audit trails and fearless content iteration." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#263238;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=2;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2960" width="3480" height="100" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

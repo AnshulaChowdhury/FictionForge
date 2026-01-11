@@ -1,0 +1,846 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.8" pages="3">
+  <diagram id="page1-create-chapter" name="1. Create Chapter Outlines">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Swim Lanes -->
+        <mxCell id="lane-user" value="User" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1080" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-frontend" value="Streamlit Frontend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="1080" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-backend" value="FastAPI Backend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="1080" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-database" value="Supabase Database" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="1080" height="200" as="geometry" />
+        </mxCell>
+        <!-- User Actions -->
+        <mxCell id="user-start" value="Navigate to&#xa;Chapters Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane-user">
+          <mxGeometry x="40" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="user-select-book" value="Select Book&#xa;from Dropdown" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane-user">
+          <mxGeometry x="200" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="user-action-choice" value="Choose Action" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane-user">
+          <mxGeometry x="380" y="50" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="user-create-new" value="Click&#xa;&#39;Add Chapter&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane-user">
+          <mxGeometry x="540" y="20" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="user-edit" value="Click &#39;Edit&#39;&#xa;on Chapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane-user">
+          <mxGeometry x="540" y="80" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="user-duplicate" value="Click&#xa;&#39;Duplicate&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane-user">
+          <mxGeometry x="670" y="20" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="user-delete" value="Click&#xa;&#39;Delete&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane-user">
+          <mxGeometry x="670" y="80" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="user-fill-form" value="Fill Chapter Form:&#xa;• Title (required)&#xa;• Theme&#xa;• Description&#xa;• Target Word Count" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="810" y="30" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="user-submit" value="Click&#xa;&#39;Save Chapter&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane-user">
+          <mxGeometry x="990" y="60" width="80" height="50" as="geometry" />
+        </mxCell>
+        <!-- Frontend Actions -->
+        <mxCell id="fe-load-books" value="GET /api/trilogy/&#xa;{trilogy_id}/books" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="40" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-display-books" value="Display Book&#xa;Dropdown Menu" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="40" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-load-chapters" value="GET /api/books/&#xa;{book_id}/chapters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="200" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-display-chapters" value="Display Chapter List&#xa;with Action Buttons:&#xa;• Edit&#xa;• Duplicate&#xa;• Delete" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="200" y="130" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-show-form-new" value="Display Empty&#xa;Chapter Form" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="540" y="30" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-show-form-edit" value="Display Form&#xa;Pre-filled with&#xa;Chapter Data" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="540" y="110" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-confirm-duplicate" value="Show Confirmation:&#xa;&#39;Duplicate chapter&#xa;[Title]?&#39;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="670" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-confirm-delete" value="Show Confirmation:&#xa;&#39;Delete chapter&#xa;[Title]?&#xa;This will delete all&#xa;sub-chapters.&#39;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="670" y="110" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-validate" value="Validate Form" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="830" y="40" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-show-error" value="Display Error:&#xa;• Title required&#xa;• Word count must&#xa;be positive integer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="820" y="150" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-submit-create" value="POST /api/chapters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="970" y="30" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-submit-update" value="PUT /api/chapters/&#xa;{chapter_id}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="970" y="80" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-success" value="Show Success:&#xa;&#39;Chapter saved!&#39;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="970" y="150" width="90" height="60" as="geometry" />
+        </mxCell>
+        <!-- Backend Actions -->
+        <mxCell id="be-get-books" value="trilogy_manager.&#xa;get_trilogy_books(&#xa;trilogy_id)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-backend">
+          <mxGeometry x="40" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="be-get-chapters" value="chapter_manager.&#xa;get_book_chapters(&#xa;book_id)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-backend">
+          <mxGeometry x="200" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="be-get-chapter" value="chapter_manager.&#xa;get_chapter(&#xa;chapter_id)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-backend">
+          <mxGeometry x="540" y="120" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="be-validate-chapter" value="Validate Chapter:&#xa;• title not empty&#xa;• word_count &gt; 0&#xa;• chapter_number&#xa;unique in book" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane-backend">
+          <mxGeometry x="810" y="30" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="be-return-error" value="Return 400:&#xa;Validation errors" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane-backend">
+          <mxGeometry x="820" y="160" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="be-create-chapter" value="chapter_manager.&#xa;create_chapter(&#xa;chapter_data)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-backend">
+          <mxGeometry x="970" y="30" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="be-update-chapter" value="chapter_manager.&#xa;update_chapter(&#xa;chapter_id,&#xa;chapter_data)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-backend">
+          <mxGeometry x="970" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="be-duplicate-chapter" value="chapter_manager.&#xa;duplicate_chapter(&#xa;chapter_id)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-backend">
+          <mxGeometry x="670" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="be-delete-chapter" value="chapter_manager.&#xa;delete_chapter(&#xa;chapter_id)&#xa;CASCADE delete&#xa;sub_chapters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane-backend">
+          <mxGeometry x="670" y="130" width="120" height="90" as="geometry" />
+        </mxCell>
+        <!-- Database Actions -->
+        <mxCell id="db-query-books" value="SELECT * FROM books&#xa;WHERE trilogy_id = ?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane-database">
+          <mxGeometry x="40" y="60" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db-query-chapters" value="SELECT * FROM chapters&#xa;WHERE book_id = ?&#xa;ORDER BY&#xa;chapter_number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane-database">
+          <mxGeometry x="200" y="60" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="db-insert-chapter" value="INSERT INTO chapters&#xa;(book_id, title, theme,&#xa;description,&#xa;target_word_count,&#xa;chapter_number)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane-database">
+          <mxGeometry x="970" y="40" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="db-update-chapter" value="UPDATE chapters&#xa;SET title = ?, theme = ?,&#xa;description = ?,&#xa;target_word_count = ?,&#xa;updated_at = NOW()&#xa;WHERE id = ?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane-database">
+          <mxGeometry x="820" y="40" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="db-get-chapter" value="SELECT * FROM&#xa;chapters&#xa;WHERE id = ?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane-database">
+          <mxGeometry x="540" y="60" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db-duplicate" value="INSERT INTO chapters&#xa;SELECT ... FROM&#xa;chapters&#xa;WHERE id = ?&#xa;(new chapter_number)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane-database">
+          <mxGeometry x="670" y="50" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="db-delete" value="DELETE FROM chapters&#xa;WHERE id = ?&#xa;CASCADE to&#xa;sub_chapters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane-database">
+          <mxGeometry x="360" y="60" width="140" height="70" as="geometry" />
+        </mxCell>
+        <!-- Connections -->
+        <mxCell id="conn1" edge="1" parent="1" source="user-start" target="fe-load-books">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn2" edge="1" parent="1" source="fe-load-books" target="be-get-books">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn3" edge="1" parent="1" source="be-get-books" target="db-query-books">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn4" edge="1" parent="1" source="db-query-books" target="fe-display-books">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn5" edge="1" parent="1" source="user-select-book" target="fe-load-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn6" edge="1" parent="1" source="fe-load-chapters" target="be-get-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn7" edge="1" parent="1" source="be-get-chapters" target="db-query-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn8" edge="1" parent="1" source="db-query-chapters" target="fe-display-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn9" edge="1" parent="1" source="fe-display-chapters" target="user-action-choice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn10" edge="1" parent="1" source="user-action-choice" target="user-create-new">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="510" y="70" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label10" value="Create New" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn10">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn11" edge="1" parent="1" source="user-action-choice" target="user-edit">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="510" y="105" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label11" value="Edit" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn11">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn12" edge="1" parent="1" source="user-action-choice" target="user-duplicate">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="430" y="45" />
+              <mxPoint x="650" y="45" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label12" value="Duplicate" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn12">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn13" edge="1" parent="1" source="user-action-choice" target="user-delete">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="430" y="135" />
+              <mxPoint x="650" y="135" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label13" value="Delete" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn13">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn14" edge="1" parent="1" source="user-create-new" target="fe-show-form-new">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn15" edge="1" parent="1" source="user-edit" target="fe-show-form-edit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn16" edge="1" parent="1" source="fe-show-form-edit" target="be-get-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn17" edge="1" parent="1" source="be-get-chapter" target="db-get-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn18" edge="1" parent="1" source="db-get-chapter" target="user-fill-form">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="595" y="820" />
+              <mxPoint x="730" y="820" />
+              <mxPoint x="880" y="820" />
+              <mxPoint x="880" y="180" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn19" edge="1" parent="1" source="fe-show-form-new" target="user-fill-form">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="590" y="180" />
+              <mxPoint x="880" y="180" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn20" edge="1" parent="1" source="user-fill-form" target="user-submit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn21" edge="1" parent="1" source="user-submit" target="fe-validate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn22" edge="1" parent="1" source="fe-validate" target="be-validate-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn23" edge="1" parent="1" source="be-validate-chapter" target="be-return-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label23" value="Invalid" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" connectable="0" parent="conn23">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn24" edge="1" parent="1" source="be-return-error" target="fe-show-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn25" edge="1" parent="1" source="fe-show-error" target="user-fill-form">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="780" y="470" />
+              <mxPoint x="780" y="200" />
+              <mxPoint x="850" y="200" />
+              <mxPoint x="850" y="120" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label25" value="Fix errors" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn25">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn26" edge="1" parent="1" source="be-validate-chapter" target="be-create-chapter">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="930" y="65" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label26" value="Valid (Create)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#d4edda;strokeColor=#28a745;" vertex="1" connectable="0" parent="conn26">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn27" edge="1" parent="1" source="be-validate-chapter" target="be-update-chapter">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="930" y="110" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label27" value="Valid (Update)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#d4edda;strokeColor=#28a745;" vertex="1" connectable="0" parent="conn27">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn28" edge="1" parent="1" source="be-create-chapter" target="db-insert-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn29" edge="1" parent="1" source="be-update-chapter" target="db-update-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn30" edge="1" parent="1" source="db-insert-chapter" target="fe-success">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="1040" y="840" />
+              <mxPoint x="1095" y="840" />
+              <mxPoint x="1095" y="470" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn31" edge="1" parent="1" source="db-update-chapter" target="fe-success">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="890" y="840" />
+              <mxPoint x="1095" y="840" />
+              <mxPoint x="1095" y="470" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn32" edge="1" parent="1" source="user-duplicate" target="fe-confirm-duplicate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn33" edge="1" parent="1" source="fe-confirm-duplicate" target="be-duplicate-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label33" value="Confirmed" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn33">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn34" edge="1" parent="1" source="be-duplicate-chapter" target="db-duplicate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn35" edge="1" parent="1" source="user-delete" target="fe-confirm-delete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn36" edge="1" parent="1" source="fe-confirm-delete" target="be-delete-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label36" value="Confirmed" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn36">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn37" edge="1" parent="1" source="be-delete-chapter" target="db-delete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn38" edge="1" parent="1" source="db-delete" target="fe-load-chapters">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="430" y="840" />
+              <mxPoint x="180" y="840" />
+              <mxPoint x="180" y="220" />
+              <mxPoint x="240" y="220" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label38" value="Refresh list" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn38">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="conn39" edge="1" parent="1" source="db-duplicate" target="fe-load-chapters">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="735" y="840" />
+              <mxPoint x="180" y="840" />
+              <mxPoint x="180" y="220" />
+              <mxPoint x="240" y="220" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label39" value="Refresh list" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="conn39">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page2-reorder-chapters" name="2. Organize Chapter Sequences">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Swim Lanes -->
+        <mxCell id="lane2-user" value="User" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1080" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="lane2-frontend" value="Streamlit Frontend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="1080" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="lane2-backend" value="FastAPI Backend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="1080" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="lane2-database" value="Supabase Database" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="1080" height="200" as="geometry" />
+        </mxCell>
+        <!-- User Actions -->
+        <mxCell id="u2-view-chapters" value="View Chapter List&#xa;with Up/Down&#xa;Arrow Buttons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane2-user">
+          <mxGeometry x="60" y="60" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="u2-click-reorder" value="Click Up/Down&#xa;Arrow for Chapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane2-user">
+          <mxGeometry x="240" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="u2-view-confirmation" value="See Confirmation&#xa;Modal:&#xa;&#39;Move [Title] from&#xa;position X to Y?&#39;&#xa;☐ Don&#39;t show again" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" vertex="1" parent="lane2-user">
+          <mxGeometry x="420" y="40" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="u2-decision" value="User Confirms?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane2-user">
+          <mxGeometry x="620" y="50" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="u2-cancel" value="Click Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane2-user">
+          <mxGeometry x="620" y="150" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="u2-confirm" value="Click Confirm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;" vertex="1" parent="lane2-user">
+          <mxGeometry x="780" y="60" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u2-check-preference" value="Check&#xa;&#39;Don&#39;t show again&#39;&#xa;(Optional)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane2-user">
+          <mxGeometry x="950" y="60" width="110" height="60" as="geometry" />
+        </mxCell>
+        <!-- Frontend Actions -->
+        <mxCell id="f2-load-chapters" value="GET /api/books/&#xa;{book_id}/chapters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="60" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-display-arrows" value="Display Chapter List&#xa;with Reorder Controls:&#xa;• ↑ Move Up&#xa;• ↓ Move Down&#xa;• Disable ↑ for first&#xa;• Disable ↓ for last" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="60" y="130" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-check-preference-storage" value="Check User&#xa;Preference:&#xa;skip_reorder_&#xa;confirmation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="240" y="40" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-skip-check" value="Skip&#xa;Confirmation?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="245" y="150" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-show-modal" value="Show Confirmation&#xa;Modal with:&#xa;• Current position&#xa;• New position&#xa;• Checkbox option" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="410" y="40" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-save-preference" value="Save User&#xa;Preference to&#xa;Local Storage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="950" y="40" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-submit-reorder" value="PUT /api/chapters/&#xa;{chapter_id}/reorder" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="780" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-success" value="Show Success:&#xa;&#39;Chapter reordered!&#39;&#xa;Refresh list with&#xa;new order" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;align=left;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="770" y="160" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="f2-error" value="Show Error:&#xa;&#39;Failed to reorder.&#xa;Please try again.&#39;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane2-frontend">
+          <mxGeometry x="600" y="160" width="120" height="70" as="geometry" />
+        </mxCell>
+        <!-- Backend Actions -->
+        <mxCell id="b2-get-chapters" value="chapter_manager.&#xa;get_book_chapters(&#xa;book_id)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2-backend">
+          <mxGeometry x="60" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="b2-validate-reorder" value="Validate Reorder:&#xa;• chapter exists&#xa;• new position valid&#xa;• within book bounds" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane2-backend">
+          <mxGeometry x="780" y="40" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="b2-valid-check" value="Valid?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2-backend">
+          <mxGeometry x="800" y="150" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="b2-error-response" value="Return 400:&#xa;Invalid reorder&#xa;request" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane2-backend">
+          <mxGeometry x="690" y="160" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b2-calculate-updates" value="Calculate All&#xa;Affected Chapters:&#xa;• Get chapters&#xa;between old and&#xa;new positions&#xa;• Determine new&#xa;chapter_numbers" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane2-backend">
+          <mxGeometry x="940" y="40" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="b2-begin-transaction" value="BEGIN&#xa;TRANSACTION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2-backend">
+          <mxGeometry x="960" y="180" width="100" height="50" as="geometry" />
+        </mxCell>
+        <!-- Database Actions -->
+        <mxCell id="d2-query-chapters" value="SELECT * FROM&#xa;chapters&#xa;WHERE book_id = ?&#xa;ORDER BY&#xa;chapter_number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane2-database">
+          <mxGeometry x="60" y="50" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="d2-update-loop" value="Loop: UPDATE&#xa;chapters&#xa;SET chapter_number&#xa;= new_value,&#xa;updated_at = NOW()&#xa;WHERE id = ?&#xa;(for each affected)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane2-database">
+          <mxGeometry x="240" y="40" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="d2-commit" value="COMMIT&#xa;TRANSACTION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;" vertex="1" parent="lane2-database">
+          <mxGeometry x="420" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d2-rollback" value="ROLLBACK&#xa;TRANSACTION&#xa;(on error)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane2-database">
+          <mxGeometry x="560" y="60" width="110" height="60" as="geometry" />
+        </mxCell>
+        <!-- Connections -->
+        <mxCell id="c2-1" edge="1" parent="1" source="u2-view-chapters" target="f2-load-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-2" edge="1" parent="1" source="f2-load-chapters" target="b2-get-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-3" edge="1" parent="1" source="b2-get-chapters" target="d2-query-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-4" edge="1" parent="1" source="d2-query-chapters" target="f2-display-arrows">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-5" edge="1" parent="1" source="f2-display-arrows" target="u2-view-chapters">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="50" y="430" />
+              <mxPoint x="50" y="150" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-6" edge="1" parent="1" source="u2-click-reorder" target="f2-check-preference-storage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-7" edge="1" parent="1" source="f2-check-preference-storage" target="f2-skip-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-8" edge="1" parent="1" source="f2-skip-check" target="f2-show-modal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-8" value="No (show modal)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="c2-8">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-9" edge="1" parent="1" source="f2-skip-check" target="f2-submit-reorder">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="295" y="240" />
+              <mxPoint x="840" y="240" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2-9" value="Yes (skip)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#d4edda;strokeColor=#28a745;" vertex="1" connectable="0" parent="c2-9">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-10" edge="1" parent="1" source="f2-show-modal" target="u2-view-confirmation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-11" edge="1" parent="1" source="u2-view-confirmation" target="u2-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-12" edge="1" parent="1" source="u2-decision" target="u2-cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-12" value="Cancel" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" connectable="0" parent="c2-12">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-13" edge="1" parent="1" source="u2-cancel" target="f2-display-arrows">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="670" y="210" />
+              <mxPoint x="30" y="210" />
+              <mxPoint x="30" y="400" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2-13" value="Return to list" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="c2-13">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-14" edge="1" parent="1" source="u2-decision" target="u2-confirm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-14" value="Confirm" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#d4edda;strokeColor=#28a745;" vertex="1" connectable="0" parent="c2-14">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-15" edge="1" parent="1" source="u2-confirm" target="f2-submit-reorder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-16" edge="1" parent="1" source="u2-check-preference" target="f2-save-preference">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-17" edge="1" parent="1" source="f2-submit-reorder" target="b2-validate-reorder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-18" edge="1" parent="1" source="b2-validate-reorder" target="b2-valid-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-19" edge="1" parent="1" source="b2-valid-check" target="b2-error-response">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-19" value="Invalid" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" connectable="0" parent="c2-19">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-20" edge="1" parent="1" source="b2-error-response" target="f2-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-21" edge="1" parent="1" source="b2-valid-check" target="b2-calculate-updates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-21" value="Valid" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#d4edda;strokeColor=#28a745;" vertex="1" connectable="0" parent="c2-21">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-22" edge="1" parent="1" source="b2-calculate-updates" target="b2-begin-transaction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2-23" edge="1" parent="1" source="b2-begin-transaction" target="d2-update-loop">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="1010" y="850" />
+              <mxPoint x="310" y="850" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-24" edge="1" parent="1" source="d2-update-loop" target="d2-commit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l2-24" value="Success" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#d4edda;strokeColor=#28a745;" vertex="1" connectable="0" parent="c2-24">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-25" edge="1" parent="1" source="d2-update-loop" target="d2-rollback">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="310" y="180" />
+              <mxPoint x="615" y="180" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2-25" value="Error" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" connectable="0" parent="c2-25">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-26" edge="1" parent="1" source="d2-commit" target="f2-success">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="470" y="960" />
+              <mxPoint x="835" y="960" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-27" edge="1" parent="1" source="d2-rollback" target="f2-error">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="615" y="960" />
+              <mxPoint x="660" y="960" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2-28" edge="1" parent="1" source="f2-success" target="f2-load-chapters">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="835" y="510" />
+              <mxPoint x="20" y="510" />
+              <mxPoint x="20" y="310" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2-28" value="Refresh list" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="c2-28">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page4-track-progress" name="4. Track Progress Against Targets">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lane4-user" value="User" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1080" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="u4-view-chapter" value="View Chapter&#xa;or Chapter List" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane4-user">
+          <mxGeometry x="60" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="u4-see-progress" value="See Progress Bar:&#xa;• Target: 8000 words&#xa;• Actual: 5234 words&#xa;• 65% complete&#xa;• Status indicator&#xa;(green if &gt;90%,&#xa;yellow if 50-90%,&#xa;red if &lt;50%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" vertex="1" parent="lane4-user">
+          <mxGeometry x="600" y="30" width="170" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="u4-click-details" value="Click &#39;View&#xa;Progress Details&#39;&#xa;(Optional)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane4-user">
+          <mxGeometry x="830" y="60" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="u4-see-breakdown" value="See Sub-Chapter&#xa;Breakdown:&#xa;• Sub-chapter 1:&#xa;2000/2000 ✓&#xa;• Sub-chapter 2:&#xa;1800/2000&#xa;• Sub-chapter 3:&#xa;1434/2000&#xa;• Sub-chapter 4:&#xa;0/2000 (pending)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" vertex="1" parent="lane4-user">
+          <mxGeometry x="980" y="20" width="140" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="lane4-frontend" value="Streamlit Frontend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="1080" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-load-chapter" value="GET /api/chapters/&#xa;{chapter_id}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane4-frontend">
+          <mxGeometry x="60" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-request-progress" value="GET /api/chapters/&#xa;{chapter_id}/&#xa;progress" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane4-frontend">
+          <mxGeometry x="220" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-calculate-display" value="Calculate Display:&#xa;• Percentage complete&#xa;• Color coding&#xa;• Progress bar width&#xa;• Status text" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane4-frontend">
+          <mxGeometry x="550" y="40" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-render-progress" value="Render Progress UI:&#xa;• Visual progress bar&#xa;• Word count text&#xa;• Percentage&#xa;• Color indicator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane4-frontend">
+          <mxGeometry x="550" y="160" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-request-breakdown" value="GET /api/chapters/&#xa;{chapter_id}/&#xa;sub_chapters/&#xa;progress" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane4-frontend">
+          <mxGeometry x="830" y="50" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-render-breakdown" value="Render Breakdown:&#xa;• List sub-chapters&#xa;• Individual word&#xa;counts&#xa;• Individual progress&#xa;bars&#xa;• Completion status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane4-frontend">
+          <mxGeometry x="980" y="50" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="f4-realtime-update" value="Set Auto-Refresh:&#xa;• Poll every 5s if&#xa;generation active&#xa;• WebSocket updates&#xa;from Supabase&#xa;(realtime)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane4-frontend">
+          <mxGeometry x="720" y="160" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lane4-backend" value="FastAPI Backend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="1080" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="b4-get-chapter" value="chapter_manager.&#xa;get_chapter(&#xa;chapter_id)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane4-backend">
+          <mxGeometry x="60" y="40" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="b4-calc-progress" value="content_manager.&#xa;calculate_chapter_&#xa;progress(chapter_id):&#xa;• Get all sub-chapters&#xa;• Sum word_count&#xa;• Compare to target&#xa;• Calculate %" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane4-backend">
+          <mxGeometry x="220" y="30" width="150" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="b4-return-progress" value="Return JSON:&#xa;{&#xa;target_word_count,&#xa;actual_word_count,&#xa;percentage,&#xa;status&#xa;}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane4-backend">
+          <mxGeometry x="400" y="50" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="b4-get-sub-chapters" value="content_manager.&#xa;get_sub_chapters_&#xa;with_progress(&#xa;chapter_id):&#xa;• Get all sub-chapters&#xa;• Include word_count&#xa;• Include status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane4-backend">
+          <mxGeometry x="830" y="40" width="150" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="b4-return-breakdown" value="Return JSON Array:&#xa;[{&#xa;sub_chapter_id,&#xa;title,&#xa;word_count,&#xa;target_word_count,&#xa;percentage,&#xa;status&#xa;}, ...]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane4-backend">
+          <mxGeometry x="1000" y="40" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="lane4-database" value="Supabase Database" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="1080" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="d4-get-chapter" value="SELECT * FROM&#xa;chapters&#xa;WHERE id = ?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane4-database">
+          <mxGeometry x="60" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d4-get-sub-chapters" value="SELECT&#xa;sub_chapter_id,&#xa;title, word_count,&#xa;is_current_version&#xa;FROM sub_chapters&#xa;WHERE chapter_id = ?&#xa;AND is_current_&#xa;version = true" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane4-database">
+          <mxGeometry x="220" y="40" width="150" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="d4-aggregate" value="SELECT&#xa;SUM(word_count)&#xa;as total_words&#xa;FROM sub_chapters&#xa;WHERE chapter_id = ?&#xa;AND is_current_&#xa;version = true" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane4-database">
+          <mxGeometry x="400" y="50" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="d4-detailed-query" value="SELECT&#xa;id, title, word_count,&#xa;target_word_count,&#xa;sequence_number,&#xa;updated_at&#xa;FROM sub_chapters&#xa;WHERE chapter_id = ?&#xa;AND is_current_&#xa;version = true&#xa;ORDER BY&#xa;sequence_number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane4-database">
+          <mxGeometry x="830" y="30" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-1" edge="1" parent="1" source="u4-view-chapter" target="f4-load-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-2" edge="1" parent="1" source="f4-load-chapter" target="b4-get-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-3" edge="1" parent="1" source="b4-get-chapter" target="d4-get-chapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-4" edge="1" parent="1" source="f4-load-chapter" target="f4-request-progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-5" edge="1" parent="1" source="f4-request-progress" target="b4-calc-progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-6" edge="1" parent="1" source="b4-calc-progress" target="d4-get-sub-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-7" edge="1" parent="1" source="d4-get-sub-chapters" target="d4-aggregate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-8" edge="1" parent="1" source="d4-aggregate" target="b4-return-progress">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="470" y="860" />
+              <mxPoint x="470" y="680" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c4-9" edge="1" parent="1" source="b4-return-progress" target="f4-calculate-display">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-10" edge="1" parent="1" source="f4-calculate-display" target="f4-render-progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-11" edge="1" parent="1" source="f4-render-progress" target="u4-see-progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-12" edge="1" parent="1" source="u4-click-details" target="f4-request-breakdown">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-13" edge="1" parent="1" source="f4-request-breakdown" target="b4-get-sub-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-14" edge="1" parent="1" source="b4-get-sub-chapters" target="d4-detailed-query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-15" edge="1" parent="1" source="d4-detailed-query" target="b4-return-breakdown">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="905" y="850" />
+              <mxPoint x="1070" y="850" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c4-16" edge="1" parent="1" source="b4-return-breakdown" target="f4-render-breakdown">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-17" edge="1" parent="1" source="f4-render-breakdown" target="u4-see-breakdown">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-18" edge="1" parent="1" source="f4-calculate-display" target="f4-realtime-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4-19" edge="1" parent="1" source="f4-realtime-update" target="f4-request-progress">
+          <mxGeometry relative="1" as="geometry">
+            <mxArray as="points">
+              <mxPoint x="790" y="500" />
+              <mxPoint x="200" y="500" />
+              <mxPoint x="200" y="320" />
+            </mxArray>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l4-19" value="Auto-refresh" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="c4-19">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-title" value="Real-time Progress Tracking Features:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="1020" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-1" value="• Progress bar with color coding (green &gt;90%, yellow 50-90%, red &lt;50%)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1050" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-2" value="• Real-time calculation from sub_chapters word_count SUM" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1070" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-3" value="• Auto-refresh every 5 seconds during active generation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1090" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-4" value="• Detailed breakdown showing individual sub-chapter progress" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1110" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-5" value="• Supabase Realtime subscriptions for instant updates" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1130" width="500" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

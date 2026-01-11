@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-03T00:00:00.000Z" agent="draw.io" version="21.0.0">
+  <diagram name="Page-2: Define/Edit Plot Points" id="epic6-page2">
+    <mxGraphModel dx="2400" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4200" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- HEADER -->
+        <mxCell id="header" value="EPIC 6 - SUB-CHAPTER MANAGEMENT SYSTEM&#xa;Page 2: Define/Edit Plot Points (update existing sub-chapters)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="4100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- SWIM LANES -->
+        <!-- Lane 1: User -->
+        <mxCell id="lane-user" value="User (Author)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="4100" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- Lane 2: Streamlit Frontend -->
+        <mxCell id="lane-streamlit" value="Streamlit Frontend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="4100" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- Lane 3: FastAPI Backend -->
+        <mxCell id="lane-fastapi" value="FastAPI Backend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="580" width="4100" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- Lane 4: Supabase Database -->
+        <mxCell id="lane-supabase" value="Supabase Database" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="900" width="4100" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- USER ACTIONS -->
+        <!-- =================================================================== -->
+        
+        <!-- Step 1: Navigate -->
+        <mxCell id="user-1" value="Navigate to&#xa;Sub-Chapter&#xa;Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="170" y="50" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Select Chapter -->
+        <mxCell id="user-2" value="Select Chapter&#xa;from List" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="570" y="50" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: View Sub-Chapters -->
+        <mxCell id="user-3" value="View List of&#xa;Existing&#xa;Sub-Chapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="970" y="50" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Click Edit -->
+        <mxCell id="user-4" value="Click 'Edit'&#xa;on Sub-Chapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="1370" y="50" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Edit Form -->
+        <mxCell id="user-5" value="Edit:&#xa;• Title&#xa;• Plot Points&#xa;(view current content)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="1770" y="40" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: Submit -->
+        <mxCell id="user-6" value="Click&#xa;'Save Changes'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="2170" y="50" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 7: View Success -->
+        <mxCell id="user-7" value="View Success:&#xa;'Plot points updated'&#xa;+ Warning if flagged&#xa;for review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="3770" y="40" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- STREAMLIT FRONTEND -->
+        <!-- =================================================================== -->
+        
+        <!-- Step 1: Load Page -->
+        <mxCell id="fe-1" value="Load Sub-Chapter&#xa;Management Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="170" y="40" width="120" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Fetch Chapters -->
+        <mxCell id="fe-2" value="GET /api/chapters&#xa;?book_id={book_id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="330" y="40" width="150" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Display Dropdown -->
+        <mxCell id="fe-3" value="Display Chapter&#xa;Dropdown" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="570" y="120" width="120" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Fetch Sub-Chapters -->
+        <mxCell id="fe-4" value="GET /api/sub-chapters&#xa;?chapter_id={chapter_id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="730" y="40" width="170" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Display List -->
+        <mxCell id="fe-5" value="Display Sub-Chapter List:&#xa;• Title&#xa;• Plot points preview&#xa;• Word count&#xa;• Status&#xa;• Edit/Delete buttons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="970" y="120" width="160" height="110" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: Load for Edit -->
+        <mxCell id="fe-6" value="GET /api/sub-chapters/&#xa;{sub_chapter_id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1370" y="120" width="150" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 7: Display Edit Form -->
+        <mxCell id="fe-7" value="Display Edit Form:&#xa;• Title (editable)&#xa;• Plot Points (editable)&#xa;• Current content (read-only)&#xa;• Word count (display)&#xa;• Status (display)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1570" y="40" width="160" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 8: Validate -->
+        <mxCell id="fe-8" value="Validate:&#xa;Title not empty?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1770" y="150" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 9: Validation Error -->
+        <mxCell id="fe-9" value="Show Error:&#xa;'Title required'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1960" y="160" width="110" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 10: Send Update -->
+        <mxCell id="fe-10" value="PUT /api/sub-chapters/&#xa;{sub_chapter_id}&#xa;{&#xa;  title,&#xa;  plot_points&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2170" y="130" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 11: Show Loading -->
+        <mxCell id="fe-11" value="Show:&#xa;'Updating...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2370" y="40" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 12: Receive Response -->
+        <mxCell id="fe-12" value="Receive Response:&#xa;{&#xa;  success: true,&#xa;  flagged_for_review,&#xa;  message&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3570" y="40" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 13: Display Success -->
+        <mxCell id="fe-13" value="Display:&#xa;• Success message&#xa;• Warning if flagged&#xa;• Updated sub-chapter&#xa;in list" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3770" y="140" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- FASTAPI BACKEND -->
+        <!-- =================================================================== -->
+        
+        <!-- Step 1: Get Chapters -->
+        <mxCell id="be-1" value="Receive GET&#xa;/api/chapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="330" y="140" width="150" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Query Chapters -->
+        <mxCell id="be-2" value="Query Chapters&#xa;from Supabase" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="330" y="220" width="130" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Return Chapters -->
+        <mxCell id="be-3" value="Return Chapter List" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="510" y="140" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Get Sub-Chapters -->
+        <mxCell id="be-4" value="Receive GET&#xa;/api/sub-chapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="730" y="140" width="170" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Query Sub-Chapters -->
+        <mxCell id="be-5" value="Query Sub-Chapters&#xa;WHERE chapter_id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="730" y="220" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: Return Sub-Chapters -->
+        <mxCell id="be-6" value="Return Sub-Chapter&#xa;List with metadata" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="920" y="140" width="140" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 7: Get Single Sub-Chapter -->
+        <mxCell id="be-7" value="Receive GET&#xa;/api/sub-chapters/{id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1370" y="220" width="150" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 8: Query Single -->
+        <mxCell id="be-8" value="Query Sub-Chapter:&#xa;SELECT * FROM&#xa;sub_chapters&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1550" y="220" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 9: Return Single -->
+        <mxCell id="be-9" value="Return Sub-Chapter&#xa;with all fields" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1550" y="140" width="130" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 10: Receive Update -->
+        <mxCell id="be-10" value="Receive PUT&#xa;/api/sub-chapters/{id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2170" y="230" width="150" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 11: Validate Request -->
+        <mxCell id="be-11" value="Validate:&#xa;• Title not empty?&#xa;• Sub-chapter exists?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2370" y="210" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 12: Validation Error -->
+        <mxCell id="be-12" value="Return 400 Error:&#xa;{&#xa;  'error': 'validation_failed'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=9;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2560" y="220" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 13: Get Current Data -->
+        <mxCell id="be-13" value="Query Current:&#xa;SELECT plot_points&#xa;FROM sub_chapters&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2560" y="40" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 14: Compare Plot Points -->
+        <mxCell id="be-14" value="Compare:&#xa;Plot points&#xa;changed?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2750" y="50" width="130" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 15: Update Sub-Chapter -->
+        <mxCell id="be-15" value="UPDATE sub_chapters&#xa;SET&#xa;  title = ?,&#xa;  plot_points = ?,&#xa;  updated_at = NOW()&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2930" y="40" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 16: Create Review Flag -->
+        <mxCell id="be-16" value="INSERT INTO&#xa;content_review_flags&#xa;(sub_chapter_id,&#xa;flag_type: 'user_marked',&#xa;reason: 'plot_points_changed')&#xa;VALUES (...)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2930" y="160" width="170" height="110" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 17: Return Success -->
+        <mxCell id="be-17" value="Return 200 Response:&#xa;{&#xa;  success: true,&#xa;  flagged_for_review: bool,&#xa;  message: 'Updated. Content&#xa;  may need regeneration.'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3150" y="40" width="180" height="110" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 18: Return Response -->
+        <mxCell id="be-18" value="Return Response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3370" y="40" width="130" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- SUPABASE DATABASE -->
+        <!-- =================================================================== -->
+        
+        <!-- DB Operations -->
+        <mxCell id="db-1" value="Query:&#xa;SELECT * FROM chapters&#xa;WHERE book_id = ?&#xa;ORDER BY chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="330" y="50" width="180" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-2" value="Return: Chapter list" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="330" y="150" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-3" value="Query:&#xa;SELECT * FROM sub_chapters&#xa;WHERE chapter_id = ?&#xa;ORDER BY sub_chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="730" y="50" width="190" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-4" value="Return: Sub-chapter list" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="730" y="150" width="150" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-5" value="Query:&#xa;SELECT * FROM sub_chapters&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="1370" y="50" width="170" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-6" value="Return: Sub-chapter data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="1370" y="140" width="150" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-7" value="Query:&#xa;SELECT plot_points&#xa;FROM sub_chapters&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2560" y="50" width="140" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-8" value="Return: Current plot_points" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2560" y="140" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-9" value="UPDATE:&#xa;sub_chapters&#xa;SET title, plot_points,&#xa;updated_at&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2930" y="50" width="150" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-10" value="INSERT:&#xa;content_review_flags&#xa;(flag_type:&#xa;'user_marked')" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2930" y="160" width="150" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-11" value="Return: Success" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3110" y="50" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- EDGES / CONNECTIONS -->
+        <!-- =================================================================== -->
+        
+        <!-- User to Frontend -->
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-1" target="fe-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Flow -->
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-1" target="fe-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-2" target="be-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend to Database -->
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-1" target="be-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-2" target="db-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-1" target="db-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-2" target="be-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-3" target="fe-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Select Chapter -->
+        <mxCell id="edge9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-3" target="user-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Fetch Sub-Chapters -->
+        <mxCell id="edge10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-2" target="fe-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-4" target="be-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-4" target="be-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-5" target="db-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-3" target="db-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-4" target="be-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-6" target="fe-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- User View List -->
+        <mxCell id="edge17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-5" target="user-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Click Edit -->
+        <mxCell id="edge18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-3" target="user-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Load Edit Form -->
+        <mxCell id="edge19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-4" target="fe-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-6" target="be-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-7" target="be-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-8" target="db-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-5" target="db-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-6" target="be-9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-9" target="fe-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Edit -->
+        <mxCell id="edge26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-7" target="user-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Submit -->
+        <mxCell id="edge27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-5" target="user-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Validate -->
+        <mxCell id="edge28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-6" target="fe-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Validation Error -->
+        <mxCell id="edge29" value="Invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;fontSize=11;fontColor=#C62828;" edge="1" parent="1" source="fe-8" target="fe-9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Validation Success -->
+        <mxCell id="edge30" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;fontSize=11;fontColor=#388E3C;" edge="1" parent="1" source="fe-8" target="fe-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Error Loop -->
+        <mxCell id="edge31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;dashed=1;" edge="1" parent="1" source="fe-9" target="fe-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Send Update -->
+        <mxCell id="edge32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-10" target="fe-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-10" target="be-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Validation -->
+        <mxCell id="edge34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-10" target="be-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Validation Error -->
+        <mxCell id="edge35" value="Invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;fontSize=11;fontColor=#C62828;" edge="1" parent="1" source="be-11" target="be-12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Validation Success -->
+        <mxCell id="edge36" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;fontSize=11;fontColor=#388E3C;" edge="1" parent="1" source="be-11" target="be-13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Get Current Plot Points -->
+        <mxCell id="edge37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-13" target="db-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-7" target="db-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Compare -->
+        <mxCell id="edge39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-8" target="be-14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Update Sub-Chapter -->
+        <mxCell id="edge40" value="Yes/No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="be-14" target="be-15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-15" target="db-9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Create Review Flag (conditional) -->
+        <mxCell id="edge42" value="Yes (Changed)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#F9A825;fontSize=10;fontColor=#F9A825;" edge="1" parent="1" source="be-14" target="be-16">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-16" target="db-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Return Success -->
+        <mxCell id="edge44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-9" target="db-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-10" target="db-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-11" target="be-17">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-17" target="be-18">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-18" target="fe-12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-12" target="fe-13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="fe-13" target="user-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- FOOTER / LEGEND -->
+        <!-- =================================================================== -->
+        
+        <mxCell id="footer-legend" value="LEGEND:&#xa;• Solid Lines = Synchronous flow&#xa;• Green = Success path&#xa;• Red = Error path&#xa;• Yellow/Orange = Review flag creation (conditional)&#xa;• Blue = User interaction" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1160" width="500" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-notes" value="KEY TECHNICAL DETAILS:&#xa;• User can edit title and plot points for existing sub-chapters&#xa;• Current content is displayed as read-only (regeneration needed for changes)&#xa;• Backend compares old vs new plot points to detect changes&#xa;• If plot points changed significantly, create content_review_flag&#xa;• Flag type: 'user_marked', reason: 'plot_points_changed'&#xa;• This signals to the user that existing content may not align with new plot points&#xa;• User should consider regenerating content after plot point updates&#xa;• No version created - only metadata update (title, plot_points, updated_at)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="580" y="1160" width="900" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-tables" value="DATABASE TABLES INVOLVED:&#xa;• chapters (for dropdown list)&#xa;• sub_chapters (list view + single record query + update)&#xa;• content_review_flags (conditional insert when plot points change)&#xa;&#xa;FIELDS UPDATED:&#xa;• sub_chapters.title&#xa;• sub_chapters.plot_points&#xa;• sub_chapters.updated_at" style="text;html=1;strokeColor=#7B1FA2;fillColor=#E1BEE7;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="1160" width="500" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-api" value="API ENDPOINTS:&#xa;• GET /api/chapters?book_id={id}&#xa;• GET /api/sub-chapters?chapter_id={id} (list all in chapter)&#xa;• GET /api/sub-chapters/{id} (single record for editing)&#xa;• PUT /api/sub-chapters/{id} (update title + plot points)&#xa;&#xa;RESPONSE:&#xa;• success: boolean&#xa;• flagged_for_review: boolean&#xa;• message: string" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2060" y="1160" width="500" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-review-flag" value="CONTENT REVIEW FLAG LOGIC:&#xa;• Only created if plot_points field changed&#xa;• flag_type: 'user_marked'&#xa;• reason: 'plot_points_changed'&#xa;• Purpose: Alert user that existing content may not match new plot points&#xa;• User should review content and consider regeneration&#xa;• Flag can be resolved later when content is regenerated or reviewed" style="text;html=1;strokeColor=#F9A825;fillColor=#FFF9C4;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2600" y="1160" width="550" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-timing" value="PERFORMANCE TARGETS:&#xa;• Page load: &lt; 500ms&#xa;• Chapter list fetch: &lt; 300ms&#xa;• Sub-chapter list: &lt; 500ms&#xa;• Single sub-chapter load: &lt; 200ms&#xa;• Update operation: &lt; 300ms&#xa;• Total update time: &lt; 1s" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3190" y="1160" width="400" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-epic" value="EPIC 6 - SUB-CHAPTER MANAGEMENT SYSTEM | Page 2 of 5 | User Story: Define/Edit Plot Points (update existing sub-chapters)" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3630" y="1160" width="510" height="50" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

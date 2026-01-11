@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-03T00:00:00.000Z" agent="draw.io" version="21.0.0">
+  <diagram name="Page-3: Reorder Sub-Chapters" id="epic6-page3">
+    <mxGraphModel dx="2400" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4800" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- HEADER -->
+        <mxCell id="header" value="EPIC 6 - SUB-CHAPTER MANAGEMENT SYSTEM&#xa;Page 3: Reorder Sub-Chapter Sequences (drag-drop + up/down buttons)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="4700" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- SWIM LANES -->
+        <!-- Lane 1: User -->
+        <mxCell id="lane-user" value="User (Author)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="4700" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- Lane 2: Streamlit Frontend -->
+        <mxCell id="lane-streamlit" value="Streamlit Frontend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="4700" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- Lane 3: FastAPI Backend -->
+        <mxCell id="lane-fastapi" value="FastAPI Backend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="620" width="4700" height="400" as="geometry"/>
+        </mxCell>
+        
+        <!-- Lane 4: Supabase Database -->
+        <mxCell id="lane-supabase" value="Supabase Database" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1020" width="4700" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- USER ACTIONS -->
+        <!-- =================================================================== -->
+        
+        <!-- Step 1: Navigate -->
+        <mxCell id="user-1" value="Navigate to&#xa;Sub-Chapter&#xa;Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="170" y="50" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Select Chapter -->
+        <mxCell id="user-2" value="Select Chapter&#xa;from Dropdown" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="570" y="50" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: View Sub-Chapters -->
+        <mxCell id="user-3" value="View Sub-Chapters&#xa;in Current Order&#xa;(with drag handles)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="970" y="40" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Drag OR Click -->
+        <mxCell id="user-4" value="EITHER:&#xa;• Drag sub-chapter&#xa;  to new position&#xa;OR&#xa;• Click ↑/↓ button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;align=left;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="1370" y="40" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Confirm (optional) -->
+        <mxCell id="user-5" value="(Optional)&#xa;Confirm Reorder&#xa;in Modal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="1770" y="50" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: View Success -->
+        <mxCell id="user-6" value="View Updated List&#xa;in New Order&#xa;+ Success Message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="4370" y="40" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- STREAMLIT FRONTEND -->
+        <!-- =================================================================== -->
+        
+        <!-- Step 1: Load Page -->
+        <mxCell id="fe-1" value="Load Sub-Chapter&#xa;Management Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="170" y="40" width="120" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Fetch Chapters -->
+        <mxCell id="fe-2" value="GET /api/chapters&#xa;?book_id={book_id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="330" y="40" width="150" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Display Dropdown -->
+        <mxCell id="fe-3" value="Display Chapter&#xa;Dropdown" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="570" y="130" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Fetch Sub-Chapters -->
+        <mxCell id="fe-4" value="GET /api/sub-chapters&#xa;?chapter_id={id}&#xa;ORDER BY&#xa;sub_chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="730" y="40" width="160" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Display List -->
+        <mxCell id="fe-5" value="Display Draggable List:&#xa;• Drag handle icon&#xa;• Sub-chapter title&#xa;• Position number&#xa;• ↑ Move Up button&#xa;• ↓ Move Down button&#xa;• Word count" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="950" y="130" width="160" height="130" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: Capture Event -->
+        <mxCell id="fe-6" value="Capture Event:&#xa;• Drag-drop end&#xa;  OR&#xa;• Button click" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1370" y="140" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 7: Determine New Position -->
+        <mxCell id="fe-7" value="Calculate:&#xa;• sub_chapter_id&#xa;• old_position&#xa;• new_position" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1530" y="40" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 8: Confirmation Modal (optional) -->
+        <mxCell id="fe-8" value="Check User Preference:&#xa;Show confirmation?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1700" y="50" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 9: Show Modal -->
+        <mxCell id="fe-9" value="Show Modal:&#xa;'Move from position&#xa;[old] to [new]?'&#xa;[ ] Don't ask again&#xa;[Cancel] [Confirm]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1700" y="160" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 10: User Cancels -->
+        <mxCell id="fe-10" value="Cancel:&#xa;No changes made" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1880" y="180" width="110" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 11: Save Preference -->
+        <mxCell id="fe-11" value="If checked:&#xa;Save 'skip_confirm'&#xa;to localStorage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2030" y="40" width="120" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 12: Send Request -->
+        <mxCell id="fe-12" value="PUT /api/sub-chapters/&#xa;{id}/reorder&#xa;{&#xa;  new_position: int&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2190" y="40" width="150" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 13: Show Loading -->
+        <mxCell id="fe-13" value="Show Loading:&#xa;'Reordering...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2380" y="40" width="110" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 14: Receive Response -->
+        <mxCell id="fe-14" value="Receive Response:&#xa;{&#xa;  success: true,&#xa;  updated_count: int,&#xa;  sub_chapters: [...]&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4170" y="40" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 15: Update UI -->
+        <mxCell id="fe-15" value="Update UI:&#xa;• Re-render list&#xa;  in new order&#xa;• Show success toast&#xa;• Enable interactions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4370" y="150" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 16: Error Handling -->
+        <mxCell id="fe-16" value="On Error:&#xa;Show error message&#xa;Revert to original&#xa;order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4170" y="160" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- FASTAPI BACKEND -->
+        <!-- =================================================================== -->
+        
+        <!-- Step 1: Get Chapters -->
+        <mxCell id="be-1" value="Receive GET&#xa;/api/chapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="330" y="140" width="150" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Query Chapters -->
+        <mxCell id="be-2" value="Query &amp; Return&#xa;Chapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="330" y="220" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Get Sub-Chapters -->
+        <mxCell id="be-3" value="Receive GET&#xa;/api/sub-chapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="730" y="140" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Query Sub-Chapters -->
+        <mxCell id="be-4" value="Query Sub-Chapters:&#xa;SELECT * FROM&#xa;sub_chapters&#xa;WHERE chapter_id = ?&#xa;ORDER BY&#xa;sub_chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="730" y="220" width="150" height="110" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Return List -->
+        <mxCell id="be-5" value="Return Ordered&#xa;Sub-Chapter List" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="920" y="140" width="130" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: Receive Reorder -->
+        <mxCell id="be-6" value="Receive PUT&#xa;/api/sub-chapters/&#xa;{id}/reorder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2190" y="140" width="150" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 7: Validate Request -->
+        <mxCell id="be-7" value="Validate:&#xa;• sub_chapter exists?&#xa;• new_position valid?&#xa;  (1 to N)&#xa;• belongs to chapter?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2380" y="130" width="160" height="110" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 8: Validation Error -->
+        <mxCell id="be-8" value="Return 400 Error:&#xa;{&#xa;  'error': 'invalid_position'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=9;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2380" y="260" width="140" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 9: Get Current Position -->
+        <mxCell id="be-9" value="Query Current:&#xa;SELECT&#xa;sub_chapter_number&#xa;FROM sub_chapters&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2580" y="40" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 10: Check if Same -->
+        <mxCell id="be-10" value="old_position&#xa;==&#xa;new_position?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2760" y="50" width="130" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 11: No Change Needed -->
+        <mxCell id="be-11" value="Return Success:&#xa;No changes needed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2760" y="160" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 12: Get All Sub-Chapters -->
+        <mxCell id="be-12" value="Query All Sub-Chapters&#xa;in Chapter:&#xa;SELECT * FROM&#xa;sub_chapters&#xa;WHERE chapter_id = ?&#xa;ORDER BY&#xa;sub_chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2930" y="40" width="160" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 13: Calculate Updates -->
+        <mxCell id="be-13" value="Calculate Affected:&#xa;&#xa;IF moving down&#xa;  (old &lt; new):&#xa;  • shift [old+1..new]&#xa;    numbers UP by 1&#xa;ELSE moving up:&#xa;  • shift [new..old-1]&#xa;    numbers DOWN by 1&#xa;&#xa;• Set target to new" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3130" y="40" width="160" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 14: Begin Transaction -->
+        <mxCell id="be-14" value="BEGIN&#xa;TRANSACTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;fontStyle=1;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3330" y="40" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 15: Execute Updates -->
+        <mxCell id="be-15" value="Execute UPDATE Loop:&#xa;FOR EACH affected&#xa;  sub_chapter:&#xa;  UPDATE sub_chapters&#xa;  SET&#xa;    sub_chapter_number&#xa;      = new_number,&#xa;    updated_at = NOW()&#xa;  WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3330" y="120" width="170" height="150" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 16: Commit Transaction -->
+        <mxCell id="be-16" value="COMMIT&#xa;TRANSACTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;fontStyle=1;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3540" y="40" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 17: Handle Error -->
+        <mxCell id="be-17" value="On Error:&#xa;ROLLBACK&#xa;TRANSACTION&#xa;&#xa;Return 500 Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3540" y="120" width="120" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 18: Fetch Updated List -->
+        <mxCell id="be-18" value="Query Updated List:&#xa;SELECT * FROM&#xa;sub_chapters&#xa;WHERE chapter_id = ?&#xa;ORDER BY&#xa;sub_chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3700" y="40" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 19: Return Success -->
+        <mxCell id="be-19" value="Return 200 Response:&#xa;{&#xa;  success: true,&#xa;  updated_count: int,&#xa;  sub_chapters: [...]&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3890" y="40" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 20: Return to Frontend -->
+        <mxCell id="be-20" value="Send Response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4080" y="40" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- SUPABASE DATABASE -->
+        <!-- =================================================================== -->
+        
+        <!-- DB Operations -->
+        <mxCell id="db-1" value="Query:&#xa;SELECT * FROM chapters&#xa;WHERE book_id = ?&#xa;ORDER BY chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="330" y="50" width="170" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-2" value="Query:&#xa;SELECT * FROM&#xa;sub_chapters&#xa;WHERE chapter_id = ?&#xa;ORDER BY&#xa;sub_chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="730" y="50" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-3" value="Return: Sub-chapter list" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="730" y="170" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-4" value="Query:&#xa;SELECT sub_chapter_number&#xa;FROM sub_chapters&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2580" y="50" width="170" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-5" value="Query:&#xa;SELECT * FROM&#xa;sub_chapters&#xa;WHERE chapter_id = ?&#xa;ORDER BY&#xa;sub_chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2930" y="50" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-6" value="BEGIN TRANSACTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3330" y="50" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-7" value="Loop: UPDATE&#xa;sub_chapters&#xa;SET sub_chapter_number&#xa;  = new_value,&#xa;updated_at = NOW()&#xa;WHERE id = ?&#xa;&#xa;(Execute for each&#xa;affected sub-chapter)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3330" y="120" width="150" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-8" value="COMMIT&#xa;TRANSACTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3520" y="50" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-9" value="Query:&#xa;SELECT * FROM&#xa;sub_chapters&#xa;WHERE chapter_id = ?&#xa;ORDER BY&#xa;sub_chapter_number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3700" y="50" width="150" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-10" value="Return: Updated list" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3700" y="170" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- EDGES / CONNECTIONS -->
+        <!-- =================================================================== -->
+        
+        <!-- User to Frontend -->
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-1" target="fe-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-1" target="fe-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-2" target="be-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-1" target="be-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-2" target="db-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-1" target="be-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-2" target="fe-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-3" target="user-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-2" target="fe-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-4" target="be-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-3" target="be-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-4" target="db-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-2" target="db-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-3" target="be-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-5" target="fe-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-5" target="user-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-3" target="user-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-4" target="fe-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-6" target="fe-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-7" target="fe-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Confirmation Modal Path -->
+        <mxCell id="edge21" value="Show Modal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="fe-8" target="fe-9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-9" target="user-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Cancel Path -->
+        <mxCell id="edge23" value="Cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="user-5" target="fe-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Skip Modal Path -->
+        <mxCell id="edge24" value="Skip" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;dashed=1;" edge="1" parent="1" source="fe-8" target="fe-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Confirm Path -->
+        <mxCell id="edge25" value="Confirm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;fontSize=10;fontColor=#388E3C;" edge="1" parent="1" source="user-5" target="fe-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-11" target="fe-12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-12" target="fe-13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-12" target="be-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Validation -->
+        <mxCell id="edge29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-6" target="be-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge30" value="Invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="be-7" target="be-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge31" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;fontSize=10;fontColor=#388E3C;" edge="1" parent="1" source="be-7" target="be-9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-9" target="db-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-4" target="be-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Same Position Check -->
+        <mxCell id="edge34" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="be-10" target="be-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge35" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="be-10" target="be-12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Get All & Calculate -->
+        <mxCell id="edge36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-12" target="db-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-5" target="be-13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Transaction -->
+        <mxCell id="edge38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-13" target="be-14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-14" target="db-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-6" target="be-15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-15" target="db-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Commit -->
+        <mxCell id="edge42" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;fontSize=10;fontColor=#388E3C;" edge="1" parent="1" source="db-7" target="be-16">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-16" target="db-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Error Path -->
+        <mxCell id="edge44" value="Error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="db-7" target="be-17">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;" edge="1" parent="1" source="be-17" target="fe-16">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Fetch Updated -->
+        <mxCell id="edge46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-8" target="be-18">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-18" target="db-9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-9" target="db-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-10" target="be-19">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-19" target="be-20">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-20" target="fe-14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-14" target="fe-15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="fe-15" target="user-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- =================================================================== -->
+        <!-- FOOTER / LEGEND -->
+        <!-- =================================================================== -->
+        
+        <mxCell id="footer-legend" value="LEGEND:&#xa;• Solid Lines = Synchronous flow&#xa;• Green = Success path&#xa;• Red = Error/Cancel path&#xa;• Yellow/Orange = Calculation logic&#xa;• Blue = User interaction&#xa;• Dashed = Conditional/Optional" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1320" width="550" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-notes" value="KEY TECHNICAL DETAILS:&#xa;• Two interaction methods: Drag-drop OR Up/Down buttons&#xa;• Optional confirmation modal (user preference stored in localStorage)&#xa;• Backend calculates which sub-chapters affected by the move&#xa;• Moving DOWN: shift intermediate sub-chapters UP by 1&#xa;• Moving UP: shift intermediate sub-chapters DOWN by 1&#xa;• All updates executed in atomic transaction (BEGIN/COMMIT)&#xa;• UNIQUE constraint on (chapter_id, sub_chapter_number) maintained&#xa;• Sequential integrity preserved (no gaps: 1, 2, 3, ...)&#xa;• If old_position == new_position, skip updates entirely&#xa;• On error, ROLLBACK transaction and return 500&#xa;• After success, fetch and return updated list in correct order" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="630" y="1320" width="950" height="180" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-algorithm" value="REORDERING ALGORITHM:&#xa;&#xa;IF old_position &lt; new_position (moving DOWN):&#xa;  FOR each sub_chapter WHERE:&#xa;    sub_chapter_number &gt; old_position AND&#xa;    sub_chapter_number &lt;= new_position:&#xa;      SET sub_chapter_number = sub_chapter_number - 1&#xa;  SET target.sub_chapter_number = new_position&#xa;&#xa;ELSE (moving UP):&#xa;  FOR each sub_chapter WHERE:&#xa;    sub_chapter_number &gt;= new_position AND&#xa;    sub_chapter_number &lt; old_position:&#xa;      SET sub_chapter_number = sub_chapter_number + 1&#xa;  SET target.sub_chapter_number = new_position" style="text;html=1;strokeColor=#F9A825;fillColor=#FFF9C4;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="1320" width="600" height="220" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-tables" value="DATABASE TABLES INVOLVED:&#xa;• chapters (for dropdown list)&#xa;• sub_chapters (list, position query, atomic updates)&#xa;&#xa;FIELDS UPDATED:&#xa;• sub_chapters.sub_chapter_number (for all affected)&#xa;• sub_chapters.updated_at (timestamp)&#xa;&#xa;CONSTRAINTS:&#xa;• UNIQUE(chapter_id, sub_chapter_number)&#xa;  - Ensures no duplicates&#xa;  - Transaction required for atomic update" style="text;html=1;strokeColor=#7B1FA2;fillColor=#E1BEE7;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2260" y="1320" width="450" height="180" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-api" value="API ENDPOINTS:&#xa;• GET /api/chapters?book_id={id}&#xa;• GET /api/sub-chapters?chapter_id={id}&#xa;• PUT /api/sub-chapters/{id}/reorder&#xa;  Body: { new_position: int }&#xa;&#xa;RESPONSE:&#xa;• success: boolean&#xa;• updated_count: int&#xa;• sub_chapters: array (in new order)" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2750" y="1320" width="450" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-ui" value="UI/UX FEATURES:&#xa;• Drag handles (⋮⋮) on each sub-chapter&#xa;• Up/Down arrow buttons as alternative&#xa;• Visual feedback during drag (highlight drop zone)&#xa;• Loading spinner during reorder operation&#xa;• Success toast: 'Sub-chapters reordered!'&#xa;• Error message: 'Failed to reorder. Please try again.'&#xa;• List re-renders with new order automatically&#xa;• Confirmation modal with 'Don't ask again' checkbox&#xa;• User preference persisted in localStorage" style="text;html=1;strokeColor=#F57C00;fillColor=#FFE0B2;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3240" y="1320" width="500" height="160" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-timing" value="PERFORMANCE TARGETS:&#xa;• Page load: &lt; 500ms&#xa;• Chapter list: &lt; 300ms&#xa;• Sub-chapter list: &lt; 500ms&#xa;• Reorder operation: &lt; 1s&#xa;• Transaction commit: &lt; 500ms&#xa;• UI re-render: &lt; 100ms&#xa;• Total user wait: &lt; 1.5s" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3780" y="1320" width="400" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-epic" value="EPIC 6 - SUB-CHAPTER MANAGEMENT SYSTEM | Page 3 of 5 | User Story: Reorder Sub-Chapter Sequences (drag-drop + up/down buttons)" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="4220" y="1320" width="520" height="50" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

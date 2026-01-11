@@ -1,0 +1,351 @@
+<mxfile host="app.diagrams.net" modified="2025-10-11T00:00:00.000Z" agent="Claude" version="21.0.0" type="device">
+  <diagram name="Epic 1: Project Foundation" id="epic1-flow">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="3000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Swim Lanes -->
+        <mxCell id="lane-user" value="User" style="swimlane;startSize=40;fillColor=#E3F2FD;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="380" height="2900" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-frontend" value="Streamlit Frontend" style="swimlane;startSize=40;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="40" width="380" height="2900" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-backend" value="FastAPI Backend" style="swimlane;startSize=40;fillColor=#E8F5E9;" parent="1" vertex="1">
+          <mxGeometry x="800" y="40" width="380" height="2900" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-database" value="Supabase Database" style="swimlane;startSize=40;fillColor=#F3E5F5;" parent="1" vertex="1">
+          <mxGeometry x="1180" y="40" width="380" height="2900" as="geometry"/>
+        </mxCell>
+        
+        <!-- Start Node -->
+        <mxCell id="start" value="User Logged In" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="lane-user" vertex="1">
+          <mxGeometry x="90" y="80" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="navigate" value="Navigate to&#xa;&quot;Create New Project&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="lane-user" vertex="1">
+          <mxGeometry x="90" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fill-form" value="Fill in Project&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="lane-user" vertex="1">
+          <mxGeometry x="90" y="480" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="submit" value="Click &quot;Create&#xa;Project&quot; Button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="lane-user" vertex="1">
+          <mxGeometry x="90" y="580" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-choice" value="User Selects&#xa;Next Action" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="lane-user" vertex="1">
+          <mxGeometry x="90" y="2700" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- End Node -->
+        <mxCell id="end" value="Project Foundation&#xa;Complete" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="lane-user" vertex="1">
+          <mxGeometry x="90" y="2800" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Actions -->
+        <mxCell id="load-form" value="Load Project&#xa;Creation Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="90" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="display-form" value="Display Form Fields:&#xa;- Title (required)&#xa;- Description&#xa;- Author (required)&#xa;- Consciousness Focus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="70" y="280" width="160" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="validate-frontend" value="Validate&#xa;Required Fields?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="85" y="680" width="130" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="validation-error" value="Display Validation&#xa;Error: &quot;Fill all&#xa;required fields&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="260" y="700" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="send-api" value="Send POST to&#xa;/api/trilogy/create" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="90" y="840" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="display-backend-error" value="Display Error&#xa;Message to User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="260" y="1060" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="display-db-error" value="Display Error:&#xa;&quot;Failed to create&#xa;project. Try again.&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="260" y="1340" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="receive-success" value="Receive Success&#xa;Response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="90" y="2380" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="display-success" value="Display Success:&#xa;&quot;Project created!&quot;&#xa;Show 3 books" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="90" y="2480" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="next-options" value="Display Options:&#xa;1. Setup Characters&#xa;2. Define World Rules&#xa;3. Start Writing&#xa;4. View Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" parent="lane-frontend" vertex="1">
+          <mxGeometry x="70" y="2600" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Actions -->
+        <mxCell id="backend-receive" value="Receive Project&#xa;Creation Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="lane-backend" vertex="1">
+          <mxGeometry x="90" y="840" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="backend-validate" value="Validate Data&#xa;Model?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="lane-backend" vertex="1">
+          <mxGeometry x="85" y="940" width="130" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="return-error" value="Return Error&#xa;Response (400)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="lane-backend" vertex="1">
+          <mxGeometry x="260" y="960" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="create-project" value="Call TrilogyManager&#xa;.create_project()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="lane-backend" vertex="1">
+          <mxGeometry x="90" y="1100" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="handle-db-error" value="Log Error &amp;&#xa;Return 500" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="lane-backend" vertex="1">
+          <mxGeometry x="260" y="1240" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="init-loop" value="Initialize:&#xa;book_number = 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="lane-backend" vertex="1">
+          <mxGeometry x="90" y="1480" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="loop-check" value="book_number&#xa;&lt;= 3?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="lane-backend" vertex="1">
+          <mxGeometry x="85" y="1580" width="130" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="create-book" value="Create Book Object:&#xa;- trilogy_id&#xa;- book_number&#xa;- title&#xa;- description&#xa;- word_count: 80000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;" parent="lane-backend" vertex="1">
+          <mxGeometry x="70" y="1740" width="160" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="increment" value="book_number =&#xa;book_number + 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="lane-backend" vertex="1">
+          <mxGeometry x="90" y="2060" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="rollback" value="Rollback:&#xa;Delete project &amp;&#xa;all books" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="lane-backend" vertex="1">
+          <mxGeometry x="260" y="1940" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="all-complete" value="All 3 Books&#xa;Created Successfully" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="lane-backend" vertex="1">
+          <mxGeometry x="90" y="2200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="return-complete" value="Return Response:&#xa;- Project data&#xa;- 3 book objects&#xa;- Success message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" parent="lane-backend" vertex="1">
+          <mxGeometry x="70" y="2300" width="160" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database Actions -->
+        <mxCell id="db-insert-project" value="INSERT INTO&#xa;trilogy_projects&#xa;- Generate UUID&#xa;- Set timestamps&#xa;- Store data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;" parent="lane-database" vertex="1">
+          <mxGeometry x="70" y="1100" width="140" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-check-project" value="Insert&#xa;Successful?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="lane-database" vertex="1">
+          <mxGeometry x="85" y="1260" width="110" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-error" value="Return Database&#xa;Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="lane-database" vertex="1">
+          <mxGeometry x="240" y="1270" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="return-project-id" value="Return Project ID&#xa;&amp; Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="lane-database" vertex="1">
+          <mxGeometry x="80" y="1400" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-insert-book" value="INSERT INTO books&#xa;- Generate UUID&#xa;- Link trilogy_id&#xa;- Store book data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;" parent="lane-database" vertex="1">
+          <mxGeometry x="70" y="1740" width="140" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-check-book" value="Book Insert&#xa;Successful?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="lane-database" vertex="1">
+          <mxGeometry x="85" y="1900" width="110" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="book-error" value="Return Book&#xa;Creation Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="lane-database" vertex="1">
+          <mxGeometry x="240" y="1910" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges/Connections -->
+        <mxCell id="e1" edge="1" parent="1" source="start" target="navigate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e2" edge="1" parent="1" source="navigate" target="load-form">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e3" edge="1" parent="1" source="load-form" target="display-form">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e4" edge="1" parent="1" source="display-form" target="fill-form">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e5" edge="1" parent="1" source="fill-form" target="submit">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e6" edge="1" parent="1" source="submit" target="validate-frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e7" value="Invalid" edge="1" parent="1" source="validate-frontend" target="validation-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e8" edge="1" parent="1" source="validation-error" target="display-form">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="730"/>
+              <mxPoint x="700" y="340"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e9" value="Valid" edge="1" parent="1" source="validate-frontend" target="send-api">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e10" edge="1" parent="1" source="send-api" target="backend-receive">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e11" edge="1" parent="1" source="backend-receive" target="backend-validate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e12" value="Invalid" edge="1" parent="1" source="backend-validate" target="return-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e13" edge="1" parent="1" source="return-error" target="display-backend-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e14" edge="1" parent="1" source="display-backend-error" target="display-form">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="1090"/>
+              <mxPoint x="740" y="340"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e15" value="Valid" edge="1" parent="1" source="backend-validate" target="create-project">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e16" edge="1" parent="1" source="create-project" target="db-insert-project">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e17" edge="1" parent="1" source="db-insert-project" target="db-check-project">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e18" value="Failed" edge="1" parent="1" source="db-check-project" target="db-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e19" edge="1" parent="1" source="db-error" target="handle-db-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e20" edge="1" parent="1" source="handle-db-error" target="display-db-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e21" edge="1" parent="1" source="display-db-error" target="display-form">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="780" y="1380"/>
+              <mxPoint x="780" y="340"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e22" value="Success" edge="1" parent="1" source="db-check-project" target="return-project-id">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e23" edge="1" parent="1" source="return-project-id" target="init-loop">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e24" edge="1" parent="1" source="init-loop" target="loop-check">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e25" value="Yes" edge="1" parent="1" source="loop-check" target="create-book">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e26" edge="1" parent="1" source="create-book" target="db-insert-book">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e27" edge="1" parent="1" source="db-insert-book" target="db-check-book">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e28" value="Failed" edge="1" parent="1" source="db-check-book" target="book-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e29" edge="1" parent="1" source="book-error" target="rollback">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e30" edge="1" parent="1" source="rollback" target="display-db-error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e31" value="Success" edge="1" parent="1" source="db-check-book" target="increment">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e32" edge="1" parent="1" source="increment" target="loop-check">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="2090"/>
+              <mxPoint x="1020" y="1630"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="e33" value="No (Loop Complete)" edge="1" parent="1" source="loop-check" target="all-complete">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e34" edge="1" parent="1" source="all-complete" target="return-complete">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e35" edge="1" parent="1" source="return-complete" target="receive-success">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e36" edge="1" parent="1" source="receive-success" target="display-success">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e37" edge="1" parent="1" source="display-success" target="next-options">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e38" edge="1" parent="1" source="next-options" target="user-choice">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="e39" edge="1" parent="1" source="user-choice" target="end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,720 @@
+<mxfile host="app.diagrams.net" modified="2025-10-24T00:00:00.000Z" agent="Claude" version="21.0.0" type="device" pages="5">
+  
+  <!-- PAGE 1: User Registration (Email/Password) -->
+  <diagram name="US1 User Registration" id="us1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Swim Lanes -->
+        <mxCell id="lane1" value="User" style="swimlane;startSize=40;fillColor=#E3F2FD;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="360" height="1100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane2" value="Streamlit Frontend" style="swimlane;startSize=40;fillColor=#FFF3E0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="360" height="1100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane3" value="FastAPI Backend" style="swimlane;startSize=40;fillColor=#E8F5E9;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="360" height="1100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane4" value="Supabase" style="swimlane;startSize=40;fillColor=#F3E5F5;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="40" width="360" height="1100" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="n1" value="Start: Not Logged In" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="80" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n2" value="Navigate to Registration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n3" value="Fill Form Fields" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="360" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n4" value="Click Register" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="460" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n5" value="Check Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="960" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n6" value="End: Registration Complete" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="1040" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Actions -->
+        <mxCell id="n7" value="Load Registration Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n8" value="Display Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="280" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n9" value="Validate Fields?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="115" y="560" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n10" value="Show Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="lane2">
+          <mxGeometry x="280" y="570" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n11" value="POST to /auth/register" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="100" y="680" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n12" value="Display Success Message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2">
+          <mxGeometry x="100" y="880" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Actions -->
+        <mxCell id="n13" value="Receive Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="120" y="680" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n14" value="Validate Data?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="115" y="760" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n15" value="Return 400 Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane3">
+          <mxGeometry x="280" y="770" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n16" value="Call Supabase Auth" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="120" y="860" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Actions -->
+        <mxCell id="n17" value="Create User in auth.users" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="840" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n18" value="Send Verification Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="920" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n19" value="Create user_profiles Row" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="1000" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges -->
+        <mxCell id="e1" edge="1" source="n1" target="n2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" edge="1" source="n2" target="n7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" edge="1" source="n7" target="n8" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" edge="1" source="n8" target="n3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" edge="1" source="n3" target="n4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" edge="1" source="n4" target="n9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="Invalid" edge="1" source="n9" target="n10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" edge="1" source="n10" target="n8" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="600"/>
+              <mxPoint x="700" y="310"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="Valid" edge="1" source="n9" target="n11" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" edge="1" source="n11" target="n13" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" edge="1" source="n13" target="n14" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" value="Invalid" edge="1" source="n14" target="n15" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" value="Valid" edge="1" source="n14" target="n16" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" edge="1" source="n16" target="n17" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e15" edge="1" source="n17" target="n18" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e16" edge="1" source="n18" target="n19" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e17" edge="1" source="n19" target="n12" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e18" edge="1" source="n12" target="n5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e19" edge="1" source="n5" target="n6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <!-- PAGE 2: Email Verification -->
+  <diagram name="US2 Email Verification" id="us2">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="800">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Swim Lanes -->
+        <mxCell id="lane1" value="User" style="swimlane;startSize=40;fillColor=#E3F2FD;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="360" height="700" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane2" value="Email Client" style="swimlane;startSize=40;fillColor=#FFF3E0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="360" height="700" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane3" value="Supabase Auth" style="swimlane;startSize=40;fillColor=#E8F5E9;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="360" height="700" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane4" value="Supabase Database" style="swimlane;startSize=40;fillColor=#F3E5F5;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="40" width="360" height="700" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="n1" value="Start: User Registered" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="80" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n2" value="Open Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n3" value="Click Verification Link" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="340" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n4" value="See Success Message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="540" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n5" value="End: Email Verified" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="620" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Email Client Actions -->
+        <mxCell id="n6" value="Display Verification Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="260" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n7" value="Open Link in Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="340" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Auth Actions -->
+        <mxCell id="n8" value="Receive Token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="120" y="340" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n9" value="Validate Token?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="115" y="420" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n10" value="Return Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane3">
+          <mxGeometry x="280" y="430" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database Actions -->
+        <mxCell id="n11" value="UPDATE auth.users SET email_confirmed true" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="520" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges -->
+        <mxCell id="e1" edge="1" source="n1" target="n2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" edge="1" source="n2" target="n6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" edge="1" source="n6" target="n3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" edge="1" source="n3" target="n7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" edge="1" source="n7" target="n8" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" edge="1" source="n8" target="n9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="Invalid" edge="1" source="n9" target="n10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="Valid" edge="1" source="n9" target="n11" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" edge="1" source="n11" target="n4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" edge="1" source="n4" target="n5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <!-- PAGE 3: User Login Email/Password -->
+  <diagram name="US3 Login Email Password" id="us3">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Swim Lanes -->
+        <mxCell id="lane1" value="User" style="swimlane;startSize=40;fillColor=#E3F2FD;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="360" height="900" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane2" value="Streamlit Frontend" style="swimlane;startSize=40;fillColor=#FFF3E0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="360" height="900" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane3" value="FastAPI Backend" style="swimlane;startSize=40;fillColor=#E8F5E9;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="360" height="900" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane4" value="Supabase Auth" style="swimlane;startSize=40;fillColor=#F3E5F5;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="40" width="360" height="900" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="n1" value="Start: At Login Page" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="80" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n2" value="Enter Credentials" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="240" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n3" value="Click Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="340" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n4" value="Redirected to Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="760" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n5" value="End: User Logged In" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="840" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Actions -->
+        <mxCell id="n6" value="Display Login Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="160" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n7" value="Validate Form?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="115" y="420" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n8" value="Show Validation Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="lane2">
+          <mxGeometry x="280" y="430" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n9" value="POST to /auth/login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="110" y="540" width="140" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n10" value="Store Tokens in Session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2">
+          <mxGeometry x="100" y="700" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Actions -->
+        <mxCell id="n11" value="Receive Login Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="120" y="540" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n12" value="Call auth_service.login_user" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="100" y="620" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Actions -->
+        <mxCell id="n13" value="Verify Credentials" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="120" y="600" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n14" value="Email Verified?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="115" y="680" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n15" value="Return Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane4">
+          <mxGeometry x="280" y="690" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n16" value="Generate JWT and Refresh Tokens" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="780" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges -->
+        <mxCell id="e1" edge="1" source="n1" target="n6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" edge="1" source="n6" target="n2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" edge="1" source="n2" target="n3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" edge="1" source="n3" target="n7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="Invalid" edge="1" source="n7" target="n8" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" edge="1" source="n8" target="n6" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="460"/>
+              <mxPoint x="700" y="190"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="Valid" edge="1" source="n7" target="n9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" edge="1" source="n9" target="n11" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" edge="1" source="n11" target="n12" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" edge="1" source="n12" target="n13" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" edge="1" source="n13" target="n14" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" value="No" edge="1" source="n14" target="n15" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" value="Yes" edge="1" source="n14" target="n16" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" edge="1" source="n16" target="n10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e15" edge="1" source="n10" target="n4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e16" edge="1" source="n4" target="n5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <!-- PAGE 4: User Login Google OAuth -->
+  <diagram name="US4 Login Google OAuth" id="us4">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Swim Lanes -->
+        <mxCell id="lane1" value="User" style="swimlane;startSize=40;fillColor=#E3F2FD;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="320" height="800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane2" value="Streamlit" style="swimlane;startSize=40;fillColor=#FFF3E0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="320" height="800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane3" value="FastAPI" style="swimlane;startSize=40;fillColor=#E8F5E9;" vertex="1" parent="1">
+          <mxGeometry x="680" y="40" width="320" height="800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane4" value="Supabase" style="swimlane;startSize=40;fillColor=#F3E5F5;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="40" width="320" height="800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane5" value="Google OAuth" style="swimlane;startSize=40;fillColor=#FCE4EC;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="40" width="320" height="800" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="n1" value="Start: At Login Page" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane1">
+          <mxGeometry x="100" y="80" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n2" value="Click Sign in with Google" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="100" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n3" value="Complete Google Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="100" y="420" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n4" value="Redirected to Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="100" y="660" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n5" value="End: User Logged In" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane1">
+          <mxGeometry x="100" y="740" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Streamlit Actions -->
+        <mxCell id="n6" value="Display Google Login Button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="100" y="140" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n7" value="GET /auth/google" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="100" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n8" value="Store Tokens" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2">
+          <mxGeometry x="100" y="600" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI Actions -->
+        <mxCell id="n9" value="Receive OAuth Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="100" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n10" value="Initiate OAuth Flow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="100" y="280" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n11" value="Receive Callback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="100" y="520" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Actions -->
+        <mxCell id="n12" value="Generate OAuth URL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="280" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n13" value="Exchange Code for Token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="520" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n14" value="Create User if New" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="600" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Google Actions -->
+        <mxCell id="n15" value="Redirect to Google" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="lane5">
+          <mxGeometry x="100" y="280" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n16" value="Authenticate User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="lane5">
+          <mxGeometry x="100" y="420" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n17" value="Return Auth Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="lane5">
+          <mxGeometry x="100" y="520" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges -->
+        <mxCell id="e1" edge="1" source="n1" target="n6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" edge="1" source="n6" target="n2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" edge="1" source="n2" target="n7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" edge="1" source="n7" target="n9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" edge="1" source="n9" target="n10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" edge="1" source="n10" target="n12" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" edge="1" source="n12" target="n15" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" edge="1" source="n15" target="n3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" edge="1" source="n3" target="n16" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" edge="1" source="n16" target="n17" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" edge="1" source="n17" target="n11" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" edge="1" source="n11" target="n13" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" edge="1" source="n13" target="n14" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" edge="1" source="n14" target="n8" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e15" edge="1" source="n8" target="n4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e16" edge="1" source="n4" target="n5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <!-- PAGE 5: User Profile Management -->
+  <diagram name="US5 Profile Management" id="us5">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Swim Lanes -->
+        <mxCell id="lane1" value="User" style="swimlane;startSize=40;fillColor=#E3F2FD;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="360" height="800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane2" value="Streamlit Frontend" style="swimlane;startSize=40;fillColor=#FFF3E0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="360" height="800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane3" value="FastAPI Backend" style="swimlane;startSize=40;fillColor=#E8F5E9;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="360" height="800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane4" value="Supabase Database" style="swimlane;startSize=40;fillColor=#F3E5F5;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="40" width="360" height="800" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="n1" value="Start: User Logged In" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="80" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n2" value="Navigate to Profile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n3" value="View Profile Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="360" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n4" value="Edit Fields" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="460" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n5" value="Click Save Changes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="560" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n6" value="See Success Message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="660" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n7" value="End: Profile Updated" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane1">
+          <mxGeometry x="120" y="740" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Actions -->
+        <mxCell id="n8" value="GET /auth/profile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n9" value="Display Profile Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="280" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n10" value="PATCH /auth/profile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="560" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n11" value="Show Success" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane2">
+          <mxGeometry x="120" y="660" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Actions -->
+        <mxCell id="n12" value="Verify JWT Token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="120" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n13" value="Verify JWT Token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane3">
+          <mxGeometry x="120" y="560" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database Actions -->
+        <mxCell id="n14" value="SELECT FROM user_profiles WHERE id = user_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="260" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="n15" value="UPDATE user_profiles SET name, bio, avatar_url" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane4">
+          <mxGeometry x="100" y="640" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges -->
+        <mxCell id="e1" edge="1" source="n1" target="n2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" edge="1" source="n2" target="n8" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" edge="1" source="n8" target="n12" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" edge="1" source="n12" target="n14" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" edge="1" source="n14" target="n9" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" edge="1" source="n9" target="n3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" edge="1" source="n3" target="n4" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" edge="1" source="n4" target="n5" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" edge="1" source="n5" target="n10" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" edge="1" source="n10" target="n13" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" edge="1" source="n13" target="n15" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" edge="1" source="n15" target="n11" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" edge="1" source="n11" target="n6" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" edge="1" source="n6" target="n7" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+</mxfile>

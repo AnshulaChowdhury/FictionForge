@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-03T00:00:00.000Z" agent="Claude" version="21.0.0" type="device">
+  <diagram id="epic10-page2" name="Epic 10 - Story 2: Show Progress Indicators">
+    <mxGraphModel dx="2400" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="4000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- TITLE -->
+        <mxCell id="title" value="EPIC 10 - STORY 2: SHOW PROGRESS INDICATORS&#xa;Live updates on generation progress with estimated completion times for better UX" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="0" width="1760" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- SWIM LANES -->
+        <mxCell id="lane-user" value="USER" style="swimlane;startSize=50;fontSize=14;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="200" height="3800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-react" value="REACT FRONTEND" style="swimlane;startSize=50;fontSize=14;fontStyle=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="240" y="60" width="300" height="3800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-fastapi" value="FASTAPI BACKEND" style="swimlane;startSize=50;fontSize=14;fontStyle=1;fillColor=#FFF3E0;strokeColor=#F57C00;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="540" y="60" width="300" height="3800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-pgboss" value="JOB QUEUE (pg-boss)" style="swimlane;startSize=50;fontSize=14;fontStyle=1;fillColor=#E8F5E9;strokeColor=#388E3C;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="840" y="60" width="260" height="3800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-websocket" value="WEBSOCKET MANAGER" style="swimlane;startSize=50;fontSize=14;fontStyle=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="60" width="260" height="3800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-supabase" value="SUPABASE DATABASE" style="swimlane;startSize=50;fontSize=14;fontStyle=1;fillColor=#E0F2F1;strokeColor=#00796B;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="60" width="240" height="3800" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="lane-redis" value="REDIS CACHE" style="swimlane;startSize=50;fontSize=14;fontStyle=1;fillColor=#FFEBEE;strokeColor=#C62828;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="60" width="200" height="3800" as="geometry"/>
+        </mxCell>
+        
+        <!-- PHASE 1: JOB SUBMISSION -->
+        <mxCell id="phase1" value="PHASE 1: USER SUBMITS GENERATION JOB" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="1760" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- User: Trigger Generation -->
+        <mxCell id="u2-trigger" value="Click 'Generate&#xa;Content' Button&#xa;&#xa;For sub-chapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontFamily=Arial;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="160" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- React: Submit Generation Request -->
+        <mxCell id="r2-submit" value="Submit Generation Request&#xa;&#xa;POST /api/generation-jobs&#xa;{&#xa;  sub_chapter_id: 'uuid',&#xa;  trilogy_id: 'uuid',&#xa;  character_id: 'uuid',&#xa;  plot_points: 'string',&#xa;  target_word_count: 2000&#xa;}&#xa;&#xa;Headers:&#xa;  Authorization: Bearer {token}&#xa;&#xa;• Show loading spinner&#xa;• Disable submit button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontFamily=Courier New;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="200" width="260" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI: Receive Generation Request -->
+        <mxCell id="f2-receive" value="Receive Generation Request&#xa;&#xa;@app.post('/api/generation-jobs')&#xa;async def create_generation_job(&#xa;  request: GenerationRequest,&#xa;  current_user: User =&#xa;    Depends(get_current_user)&#xa;):&#xa;  # Validate request&#xa;  if not request.sub_chapter_id:&#xa;    raise HTTPException(400)&#xa;  &#xa;  # Check if job already exists&#xa;  existing = await&#xa;    db.get_active_job(&#xa;      request.sub_chapter_id&#xa;    )&#xa;  &#xa;  if existing:&#xa;    raise HTTPException(&#xa;      409, 'Job already running'&#xa;    )" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="260" height="290" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI: Create Job Record -->
+        <mxCell id="f2-create-job" value="Create Job Record&#xa;&#xa;job = GenerationJob(&#xa;  id=uuid4(),&#xa;  user_id=current_user.id,&#xa;  sub_chapter_id=request.sub_chapter_id,&#xa;  trilogy_id=request.trilogy_id,&#xa;  character_id=request.character_id,&#xa;  status='queued',&#xa;  stage='Initializing',&#xa;  progress_percentage=0,&#xa;  estimated_completion=&#xa;    now() + timedelta(minutes=3),&#xa;  created_at=now()&#xa;)&#xa;&#xa;await db.insert(job)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="540" width="260" height="260" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase: Insert Job -->
+        <mxCell id="s2-insert" value="INSERT INTO generation_jobs&#xa;&#xa;(&#xa;  id,&#xa;  user_id,&#xa;  trilogy_id,&#xa;  sub_chapter_id,&#xa;  character_id,&#xa;  status,&#xa;  stage,&#xa;  progress_percentage,&#xa;  estimated_completion,&#xa;  created_at&#xa;)&#xa;VALUES ($1, ..., $10)&#xa;RETURNING *;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00796B;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="540" width="200" height="220" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI: Submit to pg-boss -->
+        <mxCell id="f2-submit-pgboss" value="Submit Job to pg-boss Queue&#xa;&#xa;await pgboss.send(&#xa;  'content-generation',&#xa;  {&#xa;    'job_id': job.id,&#xa;    'sub_chapter_id': &#xa;      request.sub_chapter_id,&#xa;    'character_id': &#xa;      request.character_id,&#xa;    'plot_points': &#xa;      request.plot_points,&#xa;    'target_word_count': &#xa;      request.target_word_count&#xa;  },&#xa;  {&#xa;    'priority': 10,&#xa;    'retryLimit': 3,&#xa;    'retryDelay': 60,&#xa;    'expireInHours': 2&#xa;  }&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="850" width="260" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- pg-boss: Queue Job -->
+        <mxCell id="pg2-queue" value="Queue Job&#xa;&#xa;INSERT INTO pgboss.job&#xa;(&#xa;  name,&#xa;  data,&#xa;  priority,&#xa;  retryLimit,&#xa;  state&#xa;)&#xa;VALUES (&#xa;  'content-generation',&#xa;  $data,&#xa;  10,&#xa;  3,&#xa;  'created'&#xa;)&#xa;&#xa;Job State: 'created'&#xa;Position in queue: 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="860" y="850" width="220" height="250" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI: Return 202 Accepted -->
+        <mxCell id="f2-return-202" value="Return 202 Accepted&#xa;&#xa;{&#xa;  'status': 'accepted',&#xa;  'job_id': 'uuid',&#xa;  'message': &#xa;    'Generation job queued',&#xa;  'estimated_completion': &#xa;    '2025-11-03T12:35:00Z',&#xa;  'poll_url': &#xa;    '/api/generation-jobs/&#xa;     {job_id}/status',&#xa;  'poll_interval_seconds': 5,&#xa;  'websocket_url': &#xa;    'ws://localhost:8000/&#xa;     ws/jobs/{user_id}'&#xa;}&#xa;&#xa;HTTP Status: 202 Accepted" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1180" width="260" height="290" as="geometry"/>
+        </mxCell>
+        
+        <!-- React: Handle 202 Response -->
+        <mxCell id="r2-handle-202" value="Handle 202 Response&#xa;&#xa;if (response.status === 202) {&#xa;  // Add job to tracking list&#xa;  setJobs(prev =&gt; [&#xa;    ...prev,&#xa;    {&#xa;      id: response.job_id,&#xa;      status: 'queued',&#xa;      stage: 'Initializing',&#xa;      progress: 0,&#xa;      estimated_completion:&#xa;        response.estimated_completion&#xa;    }&#xa;  ]);&#xa;  &#xa;  // Start progress tracking&#xa;  trackJobProgress(response.job_id);&#xa;  &#xa;  // Show success toast&#xa;  toast.success(&#xa;    'Generation started!'&#xa;  );&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="1180" width="260" height="310" as="geometry"/>
+        </mxCell>
+        
+        <!-- User: See Job Added -->
+        <mxCell id="u2-job-added" value="See New Job&#xa;in Dashboard&#xa;&#xa;• 'Queued' status&#xa;• 0% progress bar&#xa;• Est. 3 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontFamily=Arial;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1220" width="160" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- PHASE 2: DUAL UPDATE MECHANISM -->
+        <mxCell id="phase2" value="PHASE 2: DUAL UPDATE MECHANISM (WebSocket + Polling)" style="text;html=1;strokeColor=#F9A825;fillColor=#FFF9C4;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1560" width="1760" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- React: Dual Tracking Strategy -->
+        <mxCell id="r2-tracking" value="Dual Progress Tracking Strategy&#xa;&#xa;function trackJobProgress(jobId) {&#xa;  // PRIMARY: WebSocket updates&#xa;  // (for real-time &lt;120s phases)&#xa;  &#xa;  if (wsConnected) {&#xa;    // WebSocket will push updates&#xa;    // No action needed&#xa;  } else {&#xa;    // FALLBACK: HTTP Polling&#xa;    startPolling(jobId);&#xa;  }&#xa;  &#xa;  // SECONDARY: HTTP Polling&#xa;  // (for long-running &gt;120s phases)&#xa;  &#xa;  // Always poll for jobs&#xa;  // in 'processing' state&#xa;  const pollInterval = &#xa;    setInterval(async () =&gt; {&#xa;      const status = await&#xa;        fetchJobStatus(jobId);&#xa;      &#xa;      updateJobInState(status);&#xa;      &#xa;      if (status.status === &#xa;          'completed' ||&#xa;          status.status === 'failed') {&#xa;        clearInterval(pollInterval);&#xa;      }&#xa;    }, 5000); // Poll every 5s&#xa;  &#xa;  return pollInterval;&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontFamily=Courier New;fontSize=7;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="1620" width="260" height="480" as="geometry"/>
+        </mxCell>
+        
+        <!-- PHASE 3: CONTENT GENERATION STARTS -->
+        <mxCell id="phase3" value="PHASE 3: CONTENT GENERATION PROCESS" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2160" width="1760" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- pg-boss: Worker Picks Up Job -->
+        <mxCell id="pg2-pickup" value="Worker Picks Up Job&#xa;&#xa;pgboss.work(&#xa;  'content-generation',&#xa;  async (job) =&gt; {&#xa;    await&#xa;      processGeneration(job.data);&#xa;  }&#xa;)&#xa;&#xa;UPDATE pgboss.job&#xa;SET state = 'active',&#xa;    startedon = NOW()&#xa;WHERE id = $1&#xa;&#xa;Job State: 'active'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="860" y="2220" width="220" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI: Update Job Status -->
+        <mxCell id="f2-update-status" value="Update Job Status to Processing&#xa;&#xa;await db.update_job(&#xa;  job_id,&#xa;  {&#xa;    'status': 'processing',&#xa;    'stage': &#xa;      'Retrieving character context',&#xa;    'progress_percentage': 5,&#xa;    'updated_at': now()&#xa;  }&#xa;)&#xa;&#xa;# Invalidate cache&#xa;await redis.delete(&#xa;  f'jobs:{user_id}:active'&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="2220" width="260" height="220" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase: Update Job -->
+        <mxCell id="s2-update1" value="UPDATE generation_jobs&#xa;SET&#xa;  status = 'processing',&#xa;  stage = $stage,&#xa;  progress_percentage = $pct,&#xa;  updated_at = NOW()&#xa;WHERE id = $job_id&#xa;RETURNING *;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00796B;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="2240" width="200" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- WebSocket: Broadcast Update -->
+        <mxCell id="ws2-broadcast1" value="Broadcast Update via WebSocket&#xa;&#xa;for ws in&#xa;    active_connections[user_id]:&#xa;  await ws.send_json({&#xa;    'type': 'job_update',&#xa;    'job_id': job_id,&#xa;    'status': 'processing',&#xa;    'stage': &#xa;      'Retrieving character context',&#xa;    'progress_percentage': 5,&#xa;    'timestamp': &#xa;      datetime.now().isoformat()&#xa;  })" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontFamily=Courier New;fontSize=7;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="2240" width="220" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- React: Receive WebSocket Update -->
+        <mxCell id="r2-ws-update1" value="Receive WebSocket Update&#xa;&#xa;ws.onmessage = (event) =&gt; {&#xa;  const data = JSON.parse(&#xa;    event.data&#xa;  );&#xa;  &#xa;  if (data.type === 'job_update') {&#xa;    setJobs(prev =&gt;&#xa;      prev.map(job =&gt;&#xa;        job.id === data.job_id&#xa;          ? {&#xa;              ...job,&#xa;              status: data.status,&#xa;              stage: data.stage,&#xa;              progress:&#xa;                data.progress_percentage&#xa;            }&#xa;          : job&#xa;      )&#xa;    );&#xa;  }&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontFamily=Courier New;fontSize=7;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="2240" width="260" height="260" as="geometry"/>
+        </mxCell>
+        
+        <!-- User: See Progress Update -->
+        <mxCell id="u2-progress1" value="See Progress Update&#xa;&#xa;• Status: Processing&#xa;• Stage: Retrieving&#xa;  character context&#xa;• Progress: 5%&#xa;• Est. 2 min 50s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontFamily=Arial;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="2280" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- MULTIPLE PROGRESS UPDATES -->
+        <mxCell id="progress-loop" value="LOOP: Multiple Progress Updates (Every 10-30 seconds)&#xa;Stages: Retrieving context (5%) → Building prompt (15%) → Generating content (20-90%) → Saving results (95%)" style="text;html=1;strokeColor=#F57C00;fillColor=#FFE0B2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="260" y="2540" width="1080" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI: Generate Content Stage (LONG RUNNING) -->
+        <mxCell id="f2-generate" value="GENERATE CONTENT STAGE&#xa;(120-180 seconds)&#xa;&#xa;# This exceeds Lambda timeout!&#xa;# So we use 202 + polling&#xa;&#xa;async def generate_content(job_id):&#xa;  # Update to 20%&#xa;  await update_progress(&#xa;    job_id, 20,&#xa;    'Generating content - 0/2000 words'&#xa;  )&#xa;  &#xa;  # Long-running LLM call&#xa;  content = await llm.generate(&#xa;    prompt=enhanced_prompt,&#xa;    max_tokens=4000,&#xa;    temperature=0.7,&#xa;    stream_callback=lambda chunk: {&#xa;      # Update every 250 words&#xa;      update_progress_streaming(&#xa;        job_id, chunk&#xa;      )&#xa;    }&#xa;  )&#xa;  &#xa;  # This may take 120-180 seconds&#xa;  # WebSocket keeps connection alive&#xa;  # Frontend polls for status&#xa;  &#xa;  return content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontFamily=Courier New;fontSize=7;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="2640" width="260" height="380" as="geometry"/>
+        </mxCell>
+        
+        <!-- React: Poll for Status During Long Task -->
+        <mxCell id="r2-poll" value="HTTP Polling (During Long Task)&#xa;&#xa;// Poll every 5 seconds&#xa;const pollStatus = async () =&gt; {&#xa;  const response = await fetch(&#xa;    `/api/generation-jobs/${jobId}/status`&#xa;  );&#xa;  &#xa;  if (response.status === 202) {&#xa;    // Still processing&#xa;    const data = await response.json();&#xa;    &#xa;    updateJobInState({&#xa;      id: jobId,&#xa;      status: data.status,&#xa;      stage: data.stage,&#xa;      progress: data.progress_percentage,&#xa;      estimated_completion:&#xa;        data.estimated_completion&#xa;    });&#xa;    &#xa;    // Continue polling&#xa;    setTimeout(pollStatus, 5000);&#xa;  } else if (response.status === 200) {&#xa;    // Job completed!&#xa;    const data = await response.json();&#xa;    handleJobCompletion(data);&#xa;  }&#xa;};" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontFamily=Courier New;fontSize=7;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="2660" width="260" height="360" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI: Status Endpoint (Returns 202 While Processing) -->
+        <mxCell id="f2-status-endpoint" value="Status Endpoint&#xa;&#xa;@app.get(&#xa;  '/api/generation-jobs/{job_id}/status'&#xa;)&#xa;async def get_job_status(job_id: str):&#xa;  job = await db.get_job(job_id)&#xa;  &#xa;  if job.status in [&#xa;      'queued', 'processing'&#xa;  ]:&#xa;    # Still running - return 202&#xa;    return JSONResponse(&#xa;      status_code=202,&#xa;      content={&#xa;        'status': job.status,&#xa;        'stage': job.stage,&#xa;        'progress_percentage':&#xa;          job.progress_percentage,&#xa;        'estimated_completion':&#xa;          job.estimated_completion,&#xa;        'message': &#xa;          'Generation in progress',&#xa;        'poll_after_seconds': 5&#xa;      }&#xa;    )&#xa;  &#xa;  elif job.status == 'completed':&#xa;    # Done - return 200&#xa;    return JSONResponse(&#xa;      status_code=200,&#xa;      content={&#xa;        'status': 'completed',&#xa;        'sub_chapter_id': job.sub_chapter_id,&#xa;        'word_count': job.word_count,&#xa;        'completed_at': job.completed_at&#xa;      }&#xa;    )&#xa;  &#xa;  elif job.status == 'failed':&#xa;    # Failed - return 500&#xa;    raise HTTPException(500, job.error_message)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontFamily=Courier New;fontSize=6;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="3080" width="260" height="500" as="geometry"/>
+        </mxCell>
+        
+        <!-- User: See Live Progress -->
+        <mxCell id="u2-live-progress" value="See Live Progress&#xa;&#xa;• Animated progress bar&#xa;• Current stage text&#xa;• Est. time updates&#xa;&#xa;Example:&#xa;'Generating content&#xa; 1,245 / 2,000 words&#xa; 45% complete&#xa; ~1 min remaining'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontFamily=Arial;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="2720" width="160" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- PHASE 4: COMPLETION -->
+        <mxCell id="phase4" value="PHASE 4: JOB COMPLETION" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="3640" width="1760" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI: Mark Job Complete -->
+        <mxCell id="f2-complete" value="Mark Job Complete&#xa;&#xa;await db.update_job(&#xa;  job_id,&#xa;  {&#xa;    'status': 'completed',&#xa;    'stage': 'Complete',&#xa;    'progress_percentage': 100,&#xa;    'completed_at': now(),&#xa;    'updated_at': now()&#xa;  }&#xa;)&#xa;&#xa;# Invalidate cache&#xa;await redis.delete(&#xa;  f'jobs:{user_id}:active'&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="3700" width="260" height="220" as="geometry"/>
+        </mxCell>
+        
+        <!-- WebSocket: Broadcast Completion -->
+        <mxCell id="ws2-complete" value="Broadcast Completion&#xa;&#xa;await ws.send_json({&#xa;  'type': 'job_completed',&#xa;  'job_id': job_id,&#xa;  'status': 'completed',&#xa;  'progress_percentage': 100,&#xa;  'sub_chapter_id': sub_chapter_id,&#xa;  'word_count': 1987,&#xa;  'timestamp': datetime.now()&#xa;})" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="3720" width="220" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- React: Handle Completion -->
+        <mxCell id="r2-handle-complete" value="Handle Completion&#xa;&#xa;// Remove from active jobs&#xa;setJobs(prev =&gt;&#xa;  prev.filter(j =&gt; j.id !== jobId)&#xa;);&#xa;&#xa;// Show success notification&#xa;toast.success(&#xa;  'Content generated! 1,987 words',&#xa;  { duration: 5000 }&#xa;);&#xa;&#xa;// Navigate to sub-chapter&#xa;router.push(&#xa;  `/sub-chapters/${subChapterId}`&#xa;);" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontFamily=Courier New;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="3720" width="260" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- User: See Completion -->
+        <mxCell id="u2-complete" value="See Success&#xa;Notification&#xa;&#xa;• Toast message&#xa;• Job removed from&#xa;  active list&#xa;• Can view content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontFamily=Arial;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="3740" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- CONNECTIONS -->
+        <mxCell id="c1" edge="1" parent="1" source="u2-trigger" target="r2-submit">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c2" edge="1" parent="1" source="r2-submit" target="f2-receive">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c3" edge="1" parent="1" source="f2-receive" target="f2-create-job">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c4" edge="1" parent="1" source="f2-create-job" target="s2-insert">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c5" edge="1" parent="1" source="f2-create-job" target="f2-submit-pgboss">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c6" edge="1" parent="1" source="f2-submit-pgboss" target="pg2-queue">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c7" edge="1" parent="1" source="f2-submit-pgboss" target="f2-return-202">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c8" edge="1" parent="1" source="f2-return-202" target="r2-handle-202">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c9" edge="1" parent="1" source="r2-handle-202" target="u2-job-added">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c10" edge="1" parent="1" source="r2-handle-202" target="r2-tracking">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c11" edge="1" parent="1" source="pg2-queue" target="pg2-pickup">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="970" y="1140"/>
+              <mxPoint x="970" y="2340"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l11" value="Worker picks up&#xa;from queue" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontFamily=Arial;fontStyle=2;" vertex="1" connectable="0" parent="c11">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint x="25" y="200" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="c12" edge="1" parent="1" source="pg2-pickup" target="f2-update-status">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c13" edge="1" parent="1" source="f2-update-status" target="s2-update1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c14" edge="1" parent="1" source="f2-update-status" target="ws2-broadcast1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c15" edge="1" parent="1" source="ws2-broadcast1" target="r2-ws-update1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c16" edge="1" parent="1" source="r2-ws-update1" target="u2-progress1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c17" edge="1" parent="1" source="f2-update-status" target="f2-generate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c18" edge="1" parent="1" source="r2-tracking" target="r2-poll">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c19" edge="1" parent="1" source="r2-poll" target="f2-status-endpoint">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="l19" value="Poll every 5s" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontFamily=Arial;fontStyle=2;" vertex="1" connectable="0" parent="c19">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="c20" edge="1" parent="1" source="f2-status-endpoint" target="r2-poll">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="3330"/>
+              <mxPoint x="540" y="2900"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l20" value="202 Response&#xa;(Still processing)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontFamily=Arial;fontStyle=2;fillColor=#FFE0B2;strokeColor=#F57C00;" vertex="1" connectable="0" parent="c20">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint x="-25" y="-50" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="c21" edge="1" parent="1" source="r2-poll" target="u2-live-progress">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c22" edge="1" parent="1" source="f2-generate" target="f2-complete">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="3050"/>
+              <mxPoint x="690" y="3810"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l22" value="After 120-180s" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontFamily=Arial;fontStyle=1;" vertex="1" connectable="0" parent="c22">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint x="15" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="c23" edge="1" parent="1" source="f2-complete" target="ws2-complete">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c24" edge="1" parent="1" source="ws2-complete" target="r2-handle-complete">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="c25" edge="1" parent="1" source="r2-handle-complete" target="u2-complete">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

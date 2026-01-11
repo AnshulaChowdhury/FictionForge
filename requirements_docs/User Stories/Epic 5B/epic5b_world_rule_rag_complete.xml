@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-02T00:00:00.000Z" agent="Claude" version="24.0.0" type="device">
+  <diagram id="Epic5B-WorldRuleRAG" name="Epic 5B: World Rule RAG Content Generation">
+    <mxGraphModel dx="3600" dy="2200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5500" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- SWIM LANES -->
+        <mxCell id="lane-user" value="User (Author)" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#E3F2FD;strokeColor=#1976D2;swimlaneFillColor=#E3F2FD;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="5420" height="180" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-streamlit" value="Streamlit Frontend" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#FFF3E0;strokeColor=#F57C00;swimlaneFillColor=#FFF3E0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="5420" height="340" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-fastapi" value="FastAPI Backend" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#E8F5E9;strokeColor=#388E3C;swimlaneFillColor=#E8F5E9;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="560" width="5420" height="460" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-jobqueue" value="Job Queue (pg-boss)" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#FFF9C4;strokeColor=#F9A825;swimlaneFillColor=#FFF9C4;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1020" width="5420" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-redis" value="Redis Cache" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#FCE4EC;strokeColor=#C2185B;swimlaneFillColor=#FCE4EC;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1300" width="5420" height="240" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-chromadb" value="ChromaDB" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#E0F2F1;strokeColor=#00897B;swimlaneFillColor=#E0F2F1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1540" width="5420" height="320" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-supabase" value="Supabase Database" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#F3E5F5;strokeColor=#7B1FA2;swimlaneFillColor=#F3E5F5;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1860" width="5420" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-llm" value="LLM (Mistral 7B Local)" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#EFEBE9;strokeColor=#5D4037;swimlaneFillColor=#EFEBE9;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="2140" width="5420" height="220" as="geometry" />
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- PART 1: WORLD RULE CREATION/UPDATE & EMBEDDING -->
+        <!-- ============================================ -->
+        
+        <!-- Title -->
+        <mxCell id="title-part1" value="PART 1: WORLD RULE CREATION &amp; EMBEDDING" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="0" width="500" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Start -->
+        <mxCell id="start" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="lane-user">
+          <mxGeometry x="80" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- User creates/edits rule -->
+        <mxCell id="user-create-rule" value="Create/Edit&#xa;World Rule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="240" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="start" target="user-create-rule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Frontend: Load rule form -->
+        <mxCell id="fe-load-rule-form" value="Load Rule&#xa;Creation/Edit Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="240" y="30" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-create-rule" target="fe-load-rule-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-rule-form" value="Display Form Fields:&#xa;• Title (required)&#xa;• Description (required)&#xa;• Category (autocomplete)&#xa;• Book selections:&#xa;  ☐ Book 1&#xa;  ☐ Book 2&#xa;  ☐ Book 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="215" y="110" width="150" height="130" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-load-rule-form" target="fe-rule-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User fills form -->
+        <mxCell id="user-fill-rule" value="Fill Rule&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="400" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-rule-form" target="user-fill-rule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Category autocomplete helper -->
+        <mxCell id="fe-category-autocomplete" value="Load Existing&#xa;Categories&#xa;for Autocomplete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;dashed=1;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="400" y="30" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="fe-rule-form" target="fe-category-autocomplete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="be-get-categories" value="GET /api/world_rules/&#xa;categories&#xa;?trilogy_id={id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="395" y="35" width="110" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="fe-category-autocomplete" target="be-get-categories">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="db-get-categories" value="SELECT DISTINCT&#xa;category&#xa;FROM world_rules&#xa;WHERE trilogy_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="395" y="60" width="110" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="be-get-categories" target="db-get-categories">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User submits -->
+        <mxCell id="user-submit-rule" value="Submit&#xa;Rule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="560" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-fill-rule" target="user-submit-rule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Frontend submit -->
+        <mxCell id="fe-submit-rule" value="POST /api/&#xa;world_rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="560" y="180" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-submit-rule" target="fe-submit-rule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Backend: Create rule -->
+        <mxCell id="be-create-rule" value="Create World Rule&#xa;Endpoint&#xa;&#xa;Validates:&#xa;• Title not empty&#xa;• At least 1 book&#xa;• Category valid" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="540" y="25" width="140" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-submit-rule" target="be-create-rule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Save to DB -->
+        <mxCell id="db-insert-rule" value="INSERT INTO world_rules&#xa;(title, description,&#xa; category, trilogy_id)&#xa;VALUES (...)&#xa;RETURNING id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="540" y="60" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-create-rule" target="db-insert-rule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Save book associations -->
+        <mxCell id="db-insert-books" value="INSERT INTO&#xa;world_rule_books&#xa;(world_rule_id,&#xa; book_id)&#xa;VALUES (...)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="710" y="70" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-insert-rule" target="db-insert-books">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Queue embedding job -->
+        <mxCell id="be-queue-embedding" value="Queue Embedding Job&#xa;&#xa;job_type:&#xa;'embed_world_rule'&#xa;&#xa;payload:&#xa;{ rule_id: uuid }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="720" y="35" width="130" height="95" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-insert-books" target="be-queue-embedding">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Job queue -->
+        <mxCell id="jq-embedding-queued" value="Job Queued:&#xa;embed_world_rule&#xa;&#xa;Status: 'pending'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="730" y="60" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-queue-embedding" target="jq-embedding-queued">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Record embedding status -->
+        <mxCell id="db-embedding-status" value="INSERT INTO&#xa;world_rule_embeddings&#xa;(world_rule_id,&#xa; status: 'pending',&#xa; queued_at)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="885" y="70" width="130" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-embedding-queued" target="db-embedding-status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Return success to user -->
+        <mxCell id="fe-rule-created" value="Show Success:&#xa;'Rule created!&#xa;Embedding in&#xa;progress...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="870" y="180" width="110" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-queue-embedding" target="fe-rule-created">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-see-success" value="See Success&#xa;Confirmation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="875" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-rule-created" target="user-see-success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== ASYNC EMBEDDING PROCESS ===== -->
+        
+        <mxCell id="divider1" value="────────── ASYNC EMBEDDING ──────────" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#F9A825;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="90" width="300" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Worker picks up job -->
+        <mxCell id="jq-worker-pickup" value="Worker Picks Up&#xa;Embedding Job" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="1080" y="65" width="120" height="55" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge18" value="Async" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="jq-embedding-queued" target="jq-worker-pickup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Fetch rule details -->
+        <mxCell id="db-fetch-rule" value="SELECT *&#xa;FROM world_rules&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="1080" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-worker-pickup" target="db-fetch-rule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Generate embedding -->
+        <mxCell id="chroma-embed" value="Generate Embedding&#xa;&#xa;collection:&#xa;'{trilogy_id}_&#xa;world_rules'&#xa;&#xa;text: title +&#xa;description +&#xa;category" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="1060" y="60" width="140" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-fetch-rule" target="chroma-embed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Store in ChromaDB -->
+        <mxCell id="chroma-store" value="Add to Collection&#xa;&#xa;id: rule_id&#xa;embedding: [...]&#xa;metadata:&#xa;{ trilogy_id,&#xa;  category,&#xa;  book_ids: [...] }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="1060" y="200" width="140" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-embed" target="chroma-store">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Update status -->
+        <mxCell id="db-embedding-complete" value="UPDATE&#xa;world_rule_embeddings&#xa;SET&#xa;status='completed',&#xa;completed_at=NOW(),&#xa;vector_id=..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="1240" y="75" width="140" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-store" target="db-embedding-complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Mark job complete -->
+        <mxCell id="jq-complete" value="Mark Job&#xa;Complete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="1260" y="75" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-embedding-complete" target="jq-complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Note about ready for use -->
+        <mxCell id="note-ready" value="✓ Rule now searchable&#xa;in ChromaDB&#xa;✓ Available for RAG&#xa;retrieval during&#xa;content generation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontStyle=1" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="1240" y="210" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="jq-complete" target="note-ready">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- PART 2: CONTENT GENERATION WITH WORLD RULE RAG -->
+        <!-- ============================================ -->
+        
+        <mxCell id="title-part2" value="────── PART 2: CONTENT GENERATION WITH WORLD RULE RAG ──────" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#388E3C;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="0" width="700" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- User starts generation -->
+        <mxCell id="user-start-gen" value="Navigate to&#xa;Sub-Chapter&#xa;Generation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="1520" y="65" width="110" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge25" value="Later..." style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="user-see-success" target="user-start-gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Load generation form -->
+        <mxCell id="fe-gen-form" value="Load Generation Form:&#xa;• Character POV&#xa;• Writing prompt&#xa;• Plot points&#xa;• Target length&#xa;&#xa;[Preview Rules] button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1505" y="170" width="140" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-start-gen" target="fe-gen-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User fills generation form -->
+        <mxCell id="user-fill-gen" value="Fill Generation&#xa;Parameters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="1680" y="65" width="110" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-gen-form" target="user-fill-gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Optional: Preview rules -->
+        <mxCell id="user-preview-rules" value="[Optional]&#xa;Preview Rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=10;dashed=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="1680" y="5" width="100" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge28" value="Optional" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;fontSize=8;" edge="1" parent="1" source="user-fill-gen" target="user-preview-rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-preview-rules" value="GET /api/world_rules/&#xa;preview&#xa;&#xa;Show which rules&#xa;will be used" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;dashed=1;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1820" y="5" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="user-preview-rules" target="fe-preview-rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Preview retrieves rules (same as generation) -->
+        <mxCell id="be-preview-rules" value="WorldRuleRAGProvider&#xa;.get_rules_for_generation()&#xa;&#xa;(same logic as actual&#xa; generation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=8;dashed=1;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1820" y="40" width="120" height="75" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="fe-preview-rules" target="be-preview-rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User triggers generation -->
+        <mxCell id="user-generate" value="Click&#xa;'Generate&#xa;Content'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="1840" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-fill-gen" target="user-generate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Frontend submits generation -->
+        <mxCell id="fe-submit-gen" value="POST /api/&#xa;sub_chapters/&#xa;generate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1840" y="195" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-generate" target="fe-submit-gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Backend orchestrator -->
+        <mxCell id="be-gen-orchestrator" value="Generation Orchestrator&#xa;&#xa;1. Validate inputs&#xa;2. Create sub_chapter&#xa;   record&#xa;3. Queue generation job" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1820" y="135" width="140" height="95" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-submit-gen" target="be-gen-orchestrator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Create sub-chapter record -->
+        <mxCell id="db-create-subchapter" value="INSERT INTO&#xa;sub_chapters&#xa;(character_id,&#xa; prompt,&#xa; plot_points,&#xa; status: 'generating')" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="1820" y="75" width="140" height="85" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-gen-orchestrator" target="db-create-subchapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Queue generation job -->
+        <mxCell id="be-queue-gen" value="Queue Job:&#xa;'generate_content'&#xa;&#xa;payload: {&#xa;  sub_chapter_id,&#xa;  character_id,&#xa;  prompt,&#xa;  plot_points&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2000" y="140" width="130" height="105" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-create-subchapter" target="be-queue-gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Job queued -->
+        <mxCell id="jq-gen-queued" value="Job Queued:&#xa;generate_content&#xa;&#xa;Status: 'pending'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="2010" y="70" width="120" height="65" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-queue-gen" target="jq-gen-queued">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Return job ID to user -->
+        <mxCell id="fe-job-queued" value="Show:&#xa;'Generation started&#xa;Job ID: {id}'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2010" y="200" width="120" height="55" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-queue-gen" target="fe-job-queued">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-wait" value="Wait for&#xa;Generation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="2020" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-job-queued" target="user-wait">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ===== ASYNC GENERATION WORKER ===== -->
+        
+        <mxCell id="divider2" value="────────── ASYNC CONTENT GENERATION (PARALLEL RETRIEVAL) ──────────" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#388E3C;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="90" width="600" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Worker picks up -->
+        <mxCell id="jq-gen-worker" value="Worker Picks Up&#xa;Generation Job" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="2220" y="70" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge39" value="Async" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="jq-gen-queued" target="jq-gen-worker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Parallel retrieval note -->
+        <mxCell id="note-parallel" value="PARALLEL OPERATIONS:&#xa;&#xa;1. Character Context (Epic 5)&#xa;2. World Rule Context (Epic 5B)&#xa;3. Previous content context&#xa;&#xa;All happen simultaneously" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontStyle=1" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2210" y="40" width="180" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="jq-gen-worker" target="note-parallel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- === Character Context Branch === -->
+        
+        <mxCell id="be-char-context" value="CharacterRAGGenerator&#xa;.get_character_context()&#xa;&#xa;[Epic 5 logic]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2420" y="40" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge41" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontStyle=1" edge="1" parent="1" source="note-parallel" target="be-char-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="chroma-char-search" value="Query Character&#xa;Vector Store&#xa;&#xa;collection:&#xa;{trilogy_id}_char_{id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="2420" y="60" width="140" height="75" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="be-char-context" target="chroma-char-search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- === World Rule Context Branch === -->
+        
+        <mxCell id="be-rule-context" value="WorldRuleRAGProvider&#xa;.get_rules_for_generation()&#xa;&#xa;KEY STEP:&#xa;Semantic search for&#xa;relevant world rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontStyle=1" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2590" y="30" width="160" height="95" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge43" value="2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#388E3C;" edge="1" parent="1" source="note-parallel" target="be-rule-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check cache first -->
+        <mxCell id="redis-check-cache" value="Check Cache:&#xa;&#xa;cache_key =&#xa;'rules:{book_id}:&#xa;{hash(prompt+plot)}'&#xa;&#xa;TTL: 15 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8BBD0;strokeColor=#C2185B;fontSize=9;align=left;" vertex="1" parent="lane-redis">
+          <mxGeometry x="2590" y="50" width="160" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-rule-context" target="redis-check-cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cache miss path -->
+        <mxCell id="cache-decision" value="Cache&#xa;Hit?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-redis">
+          <mxGeometry x="2630" y="160" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="redis-check-cache" target="cache-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cache hit - return cached rules -->
+        <mxCell id="redis-cache-hit" value="Return Cached&#xa;Rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8BBD0;strokeColor=#C2185B;fontSize=10;" vertex="1" parent="lane-redis">
+          <mxGeometry x="2520" y="165" width="90" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge46" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;" edge="1" parent="1" source="cache-decision" target="redis-cache-hit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cache miss - query ChromaDB -->
+        <mxCell id="chroma-rule-search" value="Semantic Search:&#xa;&#xa;collection:&#xa;'{trilogy_id}_world_rules'&#xa;&#xa;query_text:&#xa;prompt + plot_points&#xa;&#xa;n_results: max_rules * 2&#xa;(get extra for filtering)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;align=left;fontStyle=1" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="2790" y="55" width="170" height="135" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge47" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;" edge="1" parent="1" source="cache-decision" target="chroma-rule-search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ChromaDB returns similar rules -->
+        <mxCell id="chroma-results" value="Returns:&#xa;[&#xa;  { id, similarity: 0.89 },&#xa;  { id, similarity: 0.82 },&#xa;  { id, similarity: 0.76 },&#xa;  ...&#xa;]&#xa;&#xa;Filtered by&#xa;similarity >= 0.65" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=8;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="2790" y="210" width="170" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-rule-search" target="chroma-results">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Filter by book association -->
+        <mxCell id="db-filter-rules" value="Filter to Rules for Book:&#xa;&#xa;SELECT wr.*,&#xa;  wre.status&#xa;FROM world_rules wr&#xa;JOIN world_rule_books wrb&#xa;  ON wr.id = wrb.world_rule_id&#xa;LEFT JOIN&#xa;  world_rule_embeddings wre&#xa;  ON wr.id = wre.world_rule_id&#xa;WHERE wrb.book_id = $1&#xa;  AND wr.id = ANY($2)&#xa;  AND wre.status = 'completed'&#xa;ORDER BY accuracy_rate DESC&#xa;LIMIT $3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=8;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2990" y="60" width="200" height="185" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-results" target="db-filter-rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Enhance with scoring -->
+        <mxCell id="be-enhance-rules" value="Enhance Rules:&#xa;&#xa;• Add similarity scores&#xa;• Weight down low&#xa;  accuracy rules:&#xa;  if accuracy < 0.5:&#xa;    similarity *= 0.7&#xa;• Add relevance&#xa;  explanation&#xa;• Sort by adjusted&#xa;  similarity&#xa;• Take top N (default 10)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3010" y="140" width="160" height="155" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-filter-rules" target="be-enhance-rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cache the results -->
+        <mxCell id="redis-cache-store" value="Store in Cache:&#xa;&#xa;SET cache_key&#xa;  enhanced_rules&#xa;  TTL=900s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8BBD0;strokeColor=#C2185B;fontSize=9;align=left;" vertex="1" parent="lane-redis">
+          <mxGeometry x="3210" y="155" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-enhance-rules" target="redis-cache-store">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- === Previous Context Branch === -->
+        
+        <mxCell id="be-prev-context" value="Get Previous&#xa;Sub-Chapters&#xa;&#xa;[For continuity]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2780" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge52" value="3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontStyle=1" edge="1" parent="1" source="note-parallel" target="be-prev-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- === Combine all context === -->
+        
+        <mxCell id="be-combine-context" value="Combine All Context:&#xa;&#xa;1. Character voice&#xa;   (from ChromaDB)&#xa;2. World rules&#xa;   (from ChromaDB + cache)&#xa;3. Previous content&#xa;4. User prompt&#xa;5. Plot points" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontStyle=1" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3380" y="135" width="170" height="125" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="redis-cache-store" target="be-combine-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="redis-cache-hit" target="be-combine-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="be-char-context" target="be-combine-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="be-prev-context" target="be-combine-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Build comprehensive prompt -->
+        <mxCell id="be-build-prompt" value="Build LLM Prompt:&#xa;&#xa;CHARACTER VOICE:&#xa;{character_context}&#xa;&#xa;WORLD RULES TO RESPECT:&#xa;1. [Physics] Mars Gravity&#xa;   Affects movement...&#xa;2. [Society] Colony Hierarchy&#xa;   Leadership structure...&#xa;3. [Tech] AI Limitations&#xa;   Cannot do X because...&#xa;...&#xa;&#xa;WRITING PROMPT:&#xa;{user_prompt}&#xa;&#xa;PLOT POINTS:&#xa;{plot_points}&#xa;&#xa;PREVIOUS CONTENT:&#xa;{prev_context}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=8;align=left;fontStyle=1" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3380" y="280" width="170" height="220" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-combine-context" target="be-build-prompt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Send to LLM -->
+        <mxCell id="llm-generate" value="Generate Content:&#xa;&#xa;model: Mistral 7B&#xa;temperature: 0.7&#xa;max_tokens: 2000&#xa;&#xa;Prompt includes:&#xa;• Character voice&#xa;• World rules&#xa;• Scene context&#xa;&#xa;Output: 8-page draft" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D7CCC8;strokeColor=#5D4037;fontSize=9;align=left;" vertex="1" parent="lane-llm">
+          <mxGeometry x="3390" y="30" width="150" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-build-prompt" target="llm-generate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Store generated content -->
+        <mxCell id="db-store-content" value="UPDATE sub_chapters&#xa;SET&#xa;  content = $1,&#xa;  status = 'completed',&#xa;  completed_at = NOW()&#xa;WHERE id = $2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3580" y="65" width="150" height="95" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="llm-generate" target="db-store-content">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Store generation metadata -->
+        <mxCell id="db-store-metadata" value="INSERT INTO&#xa;sub_chapter_generation_&#xa;metadata&#xa;(sub_chapter_id,&#xa; world_rules_used: [ids],&#xa; character_chunks_used,&#xa; similarity_scores,&#xa; prompt_tokens,&#xa; completion_tokens)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=8;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3760" y="60" width="160" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-store-content" target="db-store-metadata">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note-metadata" value="METADATA ENABLES:&#xa;&#xa;✓ Track which rules&#xa;  influenced content&#xa;✓ Analyze rule usage&#xa;✓ Correlate violations&#xa;✓ Improve selection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=8;align=left;fontStyle=1" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3950" y="70" width="140" height="95" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;" edge="1" parent="1" source="db-store-metadata" target="note-metadata">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Queue consistency check -->
+        <mxCell id="jq-consistency-check" value="Queue Job:&#xa;'check_consistency'&#xa;&#xa;(Epic 3 functionality)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=9;dashed=1;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="3765" y="75" width="140" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge62" value="Queue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;dashed=1;fontSize=8;" edge="1" parent="1" source="db-store-metadata" target="jq-consistency-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Mark job complete -->
+        <mxCell id="jq-complete-generation" value="Mark Generation&#xa;Job Complete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="3590" y="80" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-store-content" target="jq-complete-generation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Notify frontend -->
+        <mxCell id="fe-content-ready" value="WebSocket/SSE:&#xa;'Content ready&#xa;for sub_chapter_id'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3595" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge64" value="Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="jq-complete-generation" target="fe-content-ready">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-display-content" value="Display Generated&#xa;Content in Editor&#xa;&#xa;Show used rules&#xa;in sidebar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3595" y="260" width="120" height="75" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge65" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-content-ready" target="fe-display-content">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User sees content -->
+        <mxCell id="user-review-content" value="Review &amp; Edit&#xa;Generated Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="3605" y="65" width="110" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-display-content" target="user-review-content">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- PART 3: ANALYTICS & LEARNING LOOP -->
+        <!-- ============================================ -->
+        
+        <mxCell id="title-part3" value="────── PART 3: ANALYTICS &amp; LEARNING LOOP ──────" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#7B1FA2;" vertex="1" parent="1">
+          <mxGeometry x="3800" y="0" width="500" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Post-generation: Consistency checker runs -->
+        <mxCell id="note-consistency" value="Consistency Checker&#xa;(Epic 3) validates&#xa;generated content&#xa;against used rules&#xa;&#xa;Compares:&#xa;• Which rules in prompt&#xa;• Which rules violated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=9;align=left;dashed=1;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="3800" y="70" width="150" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge67" value="Later" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="jq-consistency-check" target="note-consistency">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User reviews violations -->
+        <mxCell id="fe-show-violations" value="Display Violation&#xa;Alerts (if any)&#xa;&#xa;Show:&#xa;• Which rule violated&#xa;• Snippet of content&#xa;• Was rule in prompt?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;dashed=1;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3795" y="200" width="160" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="note-consistency" target="fe-show-violations">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-dismiss-or-fix" value="Dismiss or Fix&#xa;Violations&#xa;&#xa;Options:&#xa;• Intentional break&#xa;• Fix content&#xa;• Update rule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=10;align=left;dashed=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="3805" y="50" width="140" height="85" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="fe-show-violations" target="user-dismiss-or-fix">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Update rule metrics -->
+        <mxCell id="db-update-rule-metrics" value="UPDATE world_rules&#xa;SET&#xa;  times_flagged = times_flagged + 1,&#xa;  times_violated_in_prompt =&#xa;    CASE WHEN in_prompt&#xa;      THEN times_violated_in_prompt + 1&#xa;      ELSE times_violated_in_prompt&#xa;    END,&#xa;  times_intentional_break =&#xa;    CASE WHEN dismissed_as_intentional&#xa;      THEN times_intentional_break + 1&#xa;      ELSE times_intentional_break&#xa;    END&#xa;&#xa;accuracy_rate recalculated:&#xa;= (times_used - times_violated) /&#xa;  times_used" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=8;align=left;dashed=1;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3990" y="60" width="200" height="190" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="user-dismiss-or-fix" target="db-update-rule-metrics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Learning loop -->
+        <mxCell id="note-learning" value="LEARNING LOOP:&#xa;&#xa;Insights gained:&#xa;• Did including rule in&#xa;  prompt prevent violation?&#xa;• Which rules most often&#xa;  violated despite prompt?&#xa;• Which rules frequently&#xa;  'intentionally broken'?&#xa;&#xa;Actions:&#xa;• Adjust similarity weights&#xa;• Update rule descriptions&#xa;• Suggest rule changes&#xa;• Improve selection algo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;fontStyle=1" vertex="1" parent="lane-supabase">
+          <mxGeometry x="4220" y="60" width="180" height="195" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="db-update-rule-metrics" target="note-learning">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Analytics dashboard -->
+        <mxCell id="fe-analytics" value="Analytics Dashboard&#xa;&#xa;Top Sections:&#xa;• Most used rules&#xa;• Rule accuracy rates&#xa;• Violation patterns&#xa;• Rules in prompt that&#xa;  prevented violations&#xa;• Rules needing clarification&#xa;• Suggested rule updates&#xa;&#xa;Filters:&#xa;• By book&#xa;• By category&#xa;• By character" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;dashed=1;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4225" y="185" width="170" height="160" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="note-learning" target="fe-analytics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-view-analytics" value="View Analytics&#xa;&amp; Insights&#xa;&#xa;Make Data-Driven&#xa;Rule Improvements" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=10;dashed=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="4240" y="60" width="140" height="75" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="fe-analytics" target="user-view-analytics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Feedback to rule creation -->
+        <mxCell id="note-feedback-loop" value="FEEDBACK TO PART 1:&#xa;&#xa;Analytics inform:&#xa;• Which rules to update&#xa;• New rules to create&#xa;• Rules to deprecate&#xa;• Category improvements&#xa;&#xa;Closes the loop!" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=9;align=left;fontStyle=1" vertex="1" parent="lane-user">
+          <mxGeometry x="4430" y="45" width="160" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge74" value="Informs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="user-view-analytics" target="note-feedback-loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- END -->
+        <mxCell id="end" value="END&#xa;Content Generated&#xa;with World Rules&#xa;+&#xa;Learning Loop Active" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=11;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="lane-user">
+          <mxGeometry x="4640" y="40" width="160" height="95" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-review-content" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Key Metrics Box -->
+        <mxCell id="metrics-box" value="KEY PERFORMANCE METRICS:&#xa;&#xa;✓ Rule retrieval: &lt;500ms (95th percentile)&#xa;✓ Cache hit rate: &gt;60% during writing&#xa;✓ Top 5-10 rules selected per generation&#xa;✓ Weighted by: similarity + accuracy + book&#xa;✓ Filtered by book association&#xa;✓ Full metadata audit trail&#xa;✓ Graceful degradation on failures&#xa;&#xa;EFFECTIVENESS METRICS:&#xa;&#xa;✓ 50% fewer violations for rules in prompt&#xa;✓ 80%+ of included rules rated helpful&#xa;✓ &lt;10% manual rule overrides needed" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="4880" y="40" width="280" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Technical Notes Box -->
+        <mxCell id="tech-notes-box" value="TECHNICAL IMPLEMENTATION NOTES:&#xa;&#xa;ChromaDB Collection Structure:&#xa;• collection: '{trilogy_id}_world_rules'&#xa;• Each rule embedded as: title + description + category&#xa;• Metadata includes: book_ids, category, accuracy_rate&#xa;&#xa;Caching Strategy:&#xa;• Key: 'rules:{book_id}:{hash(prompt+plot)}'&#xa;• TTL: 15 minutes (900 seconds)&#xa;• Invalidate on: rule updates, book changes&#xa;&#xa;Similarity Scoring:&#xa;• Base threshold: 0.65&#xa;• Adjusted for low accuracy: similarity *= 0.7 if accuracy &lt; 0.5&#xa;• Get 2x results from ChromaDB, filter to max N&#xa;&#xa;Error Handling:&#xa;• ChromaDB unavailable → empty rules list, log warning&#xa;• Cache miss → proceed with ChromaDB query&#xa;• Always proceed with generation (graceful degradation)" style="text;html=1;strokeColor=#00897B;fillColor=#E0F2F1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="4880" y="260" width="360" height="220" as="geometry" />
+        </mxCell>
+        
+        <!-- Integration Notes Box -->
+        <mxCell id="integration-box" value="EPIC INTEGRATION DEPENDENCIES:&#xa;&#xa;Epic 3 (World Rules Engine):&#xa;• Provides world_rules table&#xa;• Provides world_rule_books junction table&#xa;• Provides world_rule_embeddings tracking table&#xa;• Provides ChromaDB collection structure&#xa;&#xa;Epic 5 (Character RAG):&#xa;• Runs in parallel with world rule RAG&#xa;• CharacterRAGGenerator service&#xa;• Character-specific vector stores&#xa;&#xa;Epic 6 (Sub-Chapter Management):&#xa;• sub_chapters table for content storage&#xa;• sub_chapter_generation_metadata for tracking&#xa;&#xa;Epic 7 (Consistency Checking):&#xa;• Post-generation validation&#xa;• Compares rules in prompt vs violations&#xa;• Feeds learning loop metrics" style="text;html=1;strokeColor=#7B1FA2;fillColor=#F3E5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="5260" y="40" width="200" height="300" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

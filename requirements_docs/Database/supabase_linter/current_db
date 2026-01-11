@@ -1,0 +1,306 @@
+-- WARNING: This schema is for context only and is not meant to be run.
+-- Table order and constraints may not be valid for execution.
+
+CREATE TABLE public.book_shares (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  book_id uuid NOT NULL,
+  shared_by_user_id uuid NOT NULL,
+  shared_with_email character varying NOT NULL,
+  permission_level character varying CHECK (permission_level::text = ANY (ARRAY['read_only'::character varying, 'comment'::character varying]::text[])),
+  access_token character varying UNIQUE,
+  expires_at timestamp without time zone,
+  created_at timestamp without time zone DEFAULT now(),
+  last_accessed_at timestamp without time zone,
+  CONSTRAINT book_shares_pkey PRIMARY KEY (id),
+  CONSTRAINT book_shares_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.books(id),
+  CONSTRAINT book_shares_shared_by_user_id_fkey FOREIGN KEY (shared_by_user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.books (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  trilogy_id uuid NOT NULL,
+  book_number integer NOT NULL CHECK (book_number >= 1 AND book_number <= 3),
+  title character varying NOT NULL,
+  description text,
+  target_word_count integer DEFAULT 80000,
+  current_word_count integer DEFAULT 0,
+  created_at timestamp without time zone DEFAULT now(),
+  updated_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT books_pkey PRIMARY KEY (id),
+  CONSTRAINT books_trilogy_id_fkey FOREIGN KEY (trilogy_id) REFERENCES public.trilogy_projects(id)
+);
+CREATE TABLE public.chapter_share_versions (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  chapter_share_id uuid NOT NULL,
+  sub_chapter_id uuid NOT NULL,
+  version_id uuid NOT NULL,
+  created_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT chapter_share_versions_pkey PRIMARY KEY (id),
+  CONSTRAINT chapter_share_versions_chapter_share_id_fkey FOREIGN KEY (chapter_share_id) REFERENCES public.chapter_shares(id),
+  CONSTRAINT chapter_share_versions_sub_chapter_id_fkey FOREIGN KEY (sub_chapter_id) REFERENCES public.sub_chapters(id),
+  CONSTRAINT chapter_share_versions_version_id_fkey FOREIGN KEY (version_id) REFERENCES public.sub_chapter_versions(id)
+);
+CREATE TABLE public.chapter_shares (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  chapter_id uuid NOT NULL,
+  shared_by_user_id uuid NOT NULL,
+  shared_with_email character varying NOT NULL,
+  permission_level character varying CHECK (permission_level::text = ANY (ARRAY['read_only'::character varying, 'comment'::character varying]::text[])),
+  access_token character varying UNIQUE,
+  expires_at timestamp without time zone,
+  created_at timestamp without time zone DEFAULT now(),
+  last_accessed_at timestamp without time zone,
+  CONSTRAINT chapter_shares_pkey PRIMARY KEY (id),
+  CONSTRAINT chapter_shares_chapter_id_fkey FOREIGN KEY (chapter_id) REFERENCES public.chapters(id),
+  CONSTRAINT chapter_shares_shared_by_user_id_fkey FOREIGN KEY (shared_by_user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.chapters (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  book_id uuid NOT NULL,
+  character_id uuid NOT NULL,
+  title character varying NOT NULL,
+  chapter_number integer NOT NULL,
+  chapter_plot text,
+  target_word_count integer,
+  current_word_count integer DEFAULT 0,
+  created_at timestamp without time zone DEFAULT now(),
+  updated_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT chapters_pkey PRIMARY KEY (id),
+  CONSTRAINT chapters_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.books(id),
+  CONSTRAINT chapters_character_id_fkey FOREIGN KEY (character_id) REFERENCES public.characters(id)
+);
+CREATE TABLE public.character_book_assignments (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  character_id uuid NOT NULL,
+  book_id uuid NOT NULL,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT character_book_assignments_pkey PRIMARY KEY (id),
+  CONSTRAINT character_book_assignments_character_id_fkey FOREIGN KEY (character_id) REFERENCES public.characters(id),
+  CONSTRAINT character_book_assignments_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.books(id)
+);
+CREATE TABLE public.character_change_log (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  character_id uuid NOT NULL,
+  changed_at timestamp without time zone DEFAULT now(),
+  changed_by_user_id uuid,
+  field_changed character varying,
+  old_value jsonb,
+  new_value jsonb,
+  user_note text,
+  CONSTRAINT character_change_log_pkey PRIMARY KEY (id),
+  CONSTRAINT character_change_log_character_id_fkey FOREIGN KEY (character_id) REFERENCES public.characters(id),
+  CONSTRAINT character_change_log_changed_by_user_id_fkey FOREIGN KEY (changed_by_user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.characters (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  trilogy_id uuid NOT NULL,
+  name character varying NOT NULL,
+  description text,
+  traits jsonb,
+  consciousness_themes ARRAY,
+  character_arc text,
+  created_at timestamp without time zone DEFAULT now(),
+  updated_at timestamp without time zone DEFAULT now(),
+  vector_store_collection character varying,
+  vector_store_initialized_at timestamp without time zone,
+  vector_store_initialization_failed_at timestamp without time zone,
+  gender USER-DEFINED,
+  CONSTRAINT characters_pkey PRIMARY KEY (id),
+  CONSTRAINT characters_trilogy_id_fkey FOREIGN KEY (trilogy_id) REFERENCES public.trilogy_projects(id)
+);
+CREATE TABLE public.consistency_alerts (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  sub_chapter_id uuid NOT NULL,
+  world_rule_id uuid NOT NULL,
+  alert_type character varying CHECK (alert_type::text = ANY (ARRAY['potential_violation'::character varying, 'rule_clarification_needed'::character varying]::text[])),
+  alert_text text,
+  dismissed boolean DEFAULT false,
+  dismissal_reason character varying CHECK (dismissal_reason::text = ANY (ARRAY['true_violation'::character varying, 'false_positive'::character varying, 'intentional_break'::character varying, 'checker_error'::character varying]::text[])),
+  dismissal_note text,
+  created_at timestamp without time zone DEFAULT now(),
+  resolved_at timestamp without time zone,
+  CONSTRAINT consistency_alerts_pkey PRIMARY KEY (id),
+  CONSTRAINT consistency_alerts_sub_chapter_id_fkey FOREIGN KEY (sub_chapter_id) REFERENCES public.sub_chapters(id),
+  CONSTRAINT consistency_alerts_world_rule_id_fkey FOREIGN KEY (world_rule_id) REFERENCES public.world_rules(id)
+);
+CREATE TABLE public.content_review_flags (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  sub_chapter_id uuid NOT NULL,
+  flag_type character varying CHECK (flag_type::text = ANY (ARRAY['character_changed'::character varying, 'rule_changed'::character varying, 'user_marked'::character varying, 'consistency_alert'::character varying]::text[])),
+  reason text,
+  flagged_at timestamp without time zone DEFAULT now(),
+  resolved_at timestamp without time zone,
+  resolved_by_user_id uuid,
+  created_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT content_review_flags_pkey PRIMARY KEY (id),
+  CONSTRAINT content_review_flags_sub_chapter_id_fkey FOREIGN KEY (sub_chapter_id) REFERENCES public.sub_chapters(id),
+  CONSTRAINT content_review_flags_resolved_by_user_id_fkey FOREIGN KEY (resolved_by_user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.generation_jobs (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  trilogy_id uuid NOT NULL,
+  sub_chapter_id uuid,
+  status character varying NOT NULL CHECK (status::text = ANY (ARRAY['queued'::character varying, 'pending'::character varying, 'in_progress'::character varying, 'completed'::character varying, 'failed'::character varying, 'cancelled'::character varying]::text[])),
+  job_type character varying,
+  priority integer DEFAULT 0,
+  prompt text,
+  target_word_count integer,
+  model_used character varying,
+  error_message text,
+  result_metadata jsonb,
+  created_at timestamp without time zone DEFAULT now(),
+  started_at timestamp without time zone,
+  completed_at timestamp without time zone,
+  created_by_user_id uuid,
+  user_id uuid NOT NULL,
+  arq_job_id character varying,
+  stage character varying,
+  progress_percentage integer DEFAULT 0 CHECK (progress_percentage >= 0 AND progress_percentage <= 100),
+  estimated_completion timestamp without time zone,
+  updated_at timestamp without time zone DEFAULT now(),
+  retry_count integer DEFAULT 0,
+  word_count integer,
+  version_id uuid,
+  version_number integer,
+  generation_params jsonb,
+  CONSTRAINT generation_jobs_pkey PRIMARY KEY (id),
+  CONSTRAINT generation_jobs_version_id_fkey FOREIGN KEY (version_id) REFERENCES public.sub_chapter_versions(id),
+  CONSTRAINT generation_jobs_trilogy_id_fkey FOREIGN KEY (trilogy_id) REFERENCES public.trilogy_projects(id),
+  CONSTRAINT generation_jobs_sub_chapter_id_fkey FOREIGN KEY (sub_chapter_id) REFERENCES public.sub_chapters(id),
+  CONSTRAINT generation_jobs_created_by_user_id_fkey FOREIGN KEY (created_by_user_id) REFERENCES auth.users(id),
+  CONSTRAINT generation_jobs_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.sub_chapter_versions (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  sub_chapter_id uuid NOT NULL,
+  version_number integer NOT NULL,
+  content text NOT NULL,
+  word_count integer NOT NULL,
+  snapshot_metadata jsonb,
+  generated_by_model character varying,
+  generation_job_id uuid,
+  is_ai_generated boolean DEFAULT false,
+  change_description text,
+  created_at timestamp without time zone DEFAULT now(),
+  created_by_user_id uuid,
+  is_current boolean DEFAULT false,
+  CONSTRAINT sub_chapter_versions_pkey PRIMARY KEY (id),
+  CONSTRAINT sub_chapter_versions_sub_chapter_id_fkey FOREIGN KEY (sub_chapter_id) REFERENCES public.sub_chapters(id),
+  CONSTRAINT sub_chapter_versions_created_by_user_id_fkey FOREIGN KEY (created_by_user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.sub_chapters (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  chapter_id uuid NOT NULL,
+  character_id uuid NOT NULL,
+  sub_chapter_number integer NOT NULL,
+  title character varying,
+  plot_points text,
+  content text,
+  word_count integer DEFAULT 0,
+  status character varying DEFAULT 'draft'::character varying CHECK (status::text = ANY (ARRAY['draft'::character varying, 'in_progress'::character varying, 'completed'::character varying, 'needs_review'::character varying]::text[])),
+  created_at timestamp without time zone DEFAULT now(),
+  updated_at timestamp without time zone DEFAULT now(),
+  current_version_id uuid,
+  CONSTRAINT sub_chapters_pkey PRIMARY KEY (id),
+  CONSTRAINT sub_chapters_chapter_id_fkey FOREIGN KEY (chapter_id) REFERENCES public.chapters(id),
+  CONSTRAINT sub_chapters_character_id_fkey FOREIGN KEY (character_id) REFERENCES public.characters(id),
+  CONSTRAINT sub_chapters_current_version_id_fkey FOREIGN KEY (current_version_id) REFERENCES public.sub_chapter_versions(id)
+);
+CREATE TABLE public.trilogy_projects (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  user_id uuid NOT NULL,
+  title character varying NOT NULL,
+  description text,
+  author character varying,
+  narrative_overview text,
+  created_at timestamp without time zone DEFAULT now(),
+  updated_at timestamp without time zone DEFAULT now(),
+  is_primary boolean DEFAULT false,
+  CONSTRAINT trilogy_projects_pkey PRIMARY KEY (id),
+  CONSTRAINT trilogy_projects_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.trilogy_shares (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  trilogy_id uuid NOT NULL,
+  shared_by_user_id uuid NOT NULL,
+  shared_with_email character varying NOT NULL,
+  permission_level character varying CHECK (permission_level::text = ANY (ARRAY['read_only'::character varying, 'comment'::character varying]::text[])),
+  access_token character varying UNIQUE,
+  expires_at timestamp without time zone,
+  created_at timestamp without time zone DEFAULT now(),
+  last_accessed_at timestamp without time zone,
+  CONSTRAINT trilogy_shares_pkey PRIMARY KEY (id),
+  CONSTRAINT trilogy_shares_trilogy_id_fkey FOREIGN KEY (trilogy_id) REFERENCES public.trilogy_projects(id),
+  CONSTRAINT trilogy_shares_shared_by_user_id_fkey FOREIGN KEY (shared_by_user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.user_notification_preferences (
+  user_id uuid NOT NULL,
+  email_notifications_enabled boolean DEFAULT true,
+  toast_notifications_enabled boolean DEFAULT true,
+  notification_email character varying,
+  notify_on_success boolean DEFAULT true,
+  notify_on_failure boolean DEFAULT true,
+  notify_on_long_tasks boolean DEFAULT true,
+  created_at timestamp without time zone DEFAULT now(),
+  updated_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT user_notification_preferences_pkey PRIMARY KEY (user_id),
+  CONSTRAINT user_notification_preferences_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.user_profiles (
+  id uuid NOT NULL,
+  name character varying NOT NULL,
+  bio text,
+  avatar_url text,
+  created_at timestamp without time zone DEFAULT now(),
+  updated_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT user_profiles_pkey PRIMARY KEY (id),
+  CONSTRAINT user_profiles_id_fkey FOREIGN KEY (id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.world_rule_books (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  world_rule_id uuid NOT NULL,
+  book_id uuid NOT NULL,
+  created_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT world_rule_books_pkey PRIMARY KEY (id),
+  CONSTRAINT world_rule_books_world_rule_id_fkey FOREIGN KEY (world_rule_id) REFERENCES public.world_rules(id),
+  CONSTRAINT world_rule_books_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.books(id)
+);
+CREATE TABLE public.world_rule_change_log (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  world_rule_id uuid NOT NULL,
+  changed_at timestamp without time zone DEFAULT now(),
+  changed_by_user_id uuid,
+  field_changed character varying,
+  old_value jsonb,
+  new_value jsonb,
+  old_title character varying,
+  new_title character varying,
+  old_description text,
+  new_description text,
+  old_category character varying,
+  new_category character varying,
+  reason text,
+  CONSTRAINT world_rule_change_log_pkey PRIMARY KEY (id),
+  CONSTRAINT world_rule_change_log_world_rule_id_fkey FOREIGN KEY (world_rule_id) REFERENCES public.world_rules(id),
+  CONSTRAINT world_rule_change_log_changed_by_user_id_fkey FOREIGN KEY (changed_by_user_id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.world_rules (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  trilogy_id uuid NOT NULL,
+  title character varying NOT NULL,
+  description text NOT NULL,
+  category character varying NOT NULL,
+  times_flagged integer DEFAULT 0,
+  times_true_violation integer DEFAULT 0,
+  times_false_positive integer DEFAULT 0,
+  times_intentional_break integer DEFAULT 0,
+  times_checker_error integer DEFAULT 0,
+  accuracy_rate double precision DEFAULT 
+CASE
+    WHEN (times_flagged = 0) THEN (1.0)::double precision
+    ELSE (((times_true_violation + times_intentional_break))::double precision / (times_flagged)::double precision)
+END,
+  created_at timestamp without time zone DEFAULT now(),
+  updated_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT world_rules_pkey PRIMARY KEY (id),
+  CONSTRAINT world_rules_trilogy_id_fkey FOREIGN KEY (trilogy_id) REFERENCES public.trilogy_projects(id)
+);

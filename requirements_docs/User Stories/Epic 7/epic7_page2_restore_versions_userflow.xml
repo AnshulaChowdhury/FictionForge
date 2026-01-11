@@ -1,0 +1,355 @@
+<mxfile host="app.diagrams.net" modified="2025-11-03T00:00:00.000Z" agent="Claude" version="21.0.0" type="device">
+  <diagram name="Epic 7 - Story 2: Restore Previous Versions" id="epic7_story2">
+    <mxGraphModel dx="2500" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="2800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- ============================================= -->
+        <!-- TITLE AND EPIC OVERVIEW -->
+        <!-- ============================================= -->
+        
+        <mxCell id="title" value="EPIC 7 - USER STORY 2: RESTORE PREVIOUS VERSIONS&#xa;&#xa;Users can revert to earlier versions of content if they prefer previous iterations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A237E;strokeColor=#0D47A1;fontColor=#FFFFFF;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="3920" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- SWIM LANES -->
+        <!-- ============================================= -->
+        
+        <!-- User/Streamlit Lane -->
+        <mxCell id="lane_user" value="USER&#xa;(Streamlit Frontend)" style="swimlane;startSize=40;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="3920" height="600" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI Backend Lane -->
+        <mxCell id="lane_backend" value="FASTAPI BACKEND" style="swimlane;startSize=40;fillColor=#FFF3E0;strokeColor=#F57C00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="780" width="3920" height="500" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Database Lane -->
+        <mxCell id="lane_database" value="SUPABASE DATABASE" style="swimlane;startSize=40;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1280" width="3920" height="500" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Realtime Lane -->
+        <mxCell id="lane_realtime" value="SUPABASE REALTIME" style="swimlane;startSize=40;fillColor=#E8F5E9;strokeColor=#388E3C;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1780" width="3920" height="300" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- MAIN FLOW: VIEW VERSION HISTORY -->
+        <!-- ============================================= -->
+        
+        <mxCell id="flow_title" value="📋 MAIN FLOW: VIEW VERSION HISTORY &amp; RESTORE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="220" width="3840" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 1: User navigates to version history -->
+        <mxCell id="step1_user_navigate" value="USER ACTION:&#xa;Click 'View Version History' button&#xa;&#xa;Location:&#xa;• Sub-chapter detail page&#xa;• Next to current version badge&#xa;&#xa;Button shows:&#xa;&quot;📜 Version History (v[N])&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="320" height="160" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="step2_open_modal" value="UI CHANGE:&#xa;Open Version History Modal&#xa;&#xa;Modal shows loading state:&#xa;&quot;Loading version history...&quot;&#xa;&#xa;Spinner displayed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="440" y="300" width="320" height="160" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step1_user_navigate" target="step2_open_modal">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: API call to fetch versions -->
+        <mxCell id="step3_api_fetch" value="GET /api/sub-chapters/{sub_chapter_id}/versions&#xa;&#xa;Headers:&#xa;• Authorization: Bearer [token]&#xa;&#xa;Query Parameters:&#xa;• include_metadata: true&#xa;• order_by: version_number DESC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="440" y="820" width="420" height="160" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step2_open_modal" target="step3_api_fetch">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Database query -->
+        <mxCell id="step4_db_query" value="SELECT QUERY:&#xa;&#xa;SELECT&#xa;  id,&#xa;  version_number,&#xa;  content,&#xa;  word_count,&#xa;  snapshot_metadata,&#xa;  created_at&#xa;FROM sub_chapter_versions&#xa;WHERE sub_chapter_id = $1&#xa;ORDER BY version_number DESC;&#xa;&#xa;ALSO FETCH:&#xa;SELECT current_version_id&#xa;FROM sub_chapters&#xa;WHERE id = $1;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="440" y="1320" width="420" height="300" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step3_api_fetch" target="step4_db_query">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Backend formats response -->
+        <mxCell id="step5_format_response" value="BACKEND LOGIC:&#xa;Format version history response&#xa;&#xa;Response Body:&#xa;{&#xa;  &quot;current_version_id&quot;: &quot;[uuid]&quot;,&#xa;  &quot;versions&quot;: [&#xa;    {&#xa;      &quot;id&quot;: &quot;[uuid]&quot;,&#xa;      &quot;version_number&quot;: 3,&#xa;      &quot;word_count&quot;: 2150,&#xa;      &quot;created_at&quot;: &quot;2025-11-03T10:30:00Z&quot;,&#xa;      &quot;is_current&quot;: true,&#xa;      &quot;metadata&quot;: {&#xa;        &quot;character_id&quot;: &quot;[uuid]&quot;,&#xa;        &quot;world_rule_count&quot;: 5&#xa;      },&#xa;      &quot;content_preview&quot;: &quot;First 200 chars...&quot;&#xa;    },&#xa;    {&#xa;      &quot;id&quot;: &quot;[uuid]&quot;,&#xa;      &quot;version_number&quot;: 2,&#xa;      &quot;word_count&quot;: 1980,&#xa;      &quot;created_at&quot;: &quot;2025-11-02T15:20:00Z&quot;,&#xa;      &quot;is_current&quot;: false,&#xa;      &quot;content_preview&quot;: &quot;First 200 chars...&quot;&#xa;    }&#xa;  ]&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="900" y="820" width="520" height="420" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step4_db_query" target="step5_format_response">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Display version history -->
+        <mxCell id="step6_display_versions" value="UI DISPLAY:&#xa;Version History Modal&#xa;&#xa;Modal Title: &quot;Version History&quot;&#xa;Close button: ✕&#xa;&#xa;LIST OF VERSIONS (scrollable):&#xa;┌────────────────────────────────┐&#xa;│ 📌 Version 3 (Current)         │&#xa;│ Created: Nov 3, 2025 10:30 AM  │&#xa;│ Word Count: 2,150              │&#xa;│ Preview: &quot;First 200 chars...&quot;  │&#xa;│ [View Full] [Compare]          │&#xa;├────────────────────────────────┤&#xa;│ Version 2                      │&#xa;│ Created: Nov 2, 2025 3:20 PM   │&#xa;│ Word Count: 1,980              │&#xa;│ Preview: &quot;First 200 chars...&quot;  │&#xa;│ [View Full] [Restore] [Compare]│&#xa;├────────────────────────────────┤&#xa;│ Version 1                      │&#xa;│ Created: Nov 1, 2025 9:00 AM   │&#xa;│ Word Count: 2,000              │&#xa;│ Preview: &quot;First 200 chars...&quot;  │&#xa;│ [View Full] [Restore] [Compare]│&#xa;└────────────────────────────────┘&#xa;&#xa;Current version highlighted in blue&#xa;Old versions have [Restore] button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;align=left;verticalAlign=top;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="800" y="300" width="440" height="460" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step5_format_response" target="step6_display_versions">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- RESTORE FLOW -->
+        <!-- ============================================= -->
+        
+        <mxCell id="restore_title" value="🔄 RESTORE FLOW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="220" width="2640" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: User clicks Restore -->
+        <mxCell id="step7_click_restore" value="USER ACTION:&#xa;Click [Restore] button on Version 2&#xa;&#xa;Button highlights on hover:&#xa;&quot;🔄 Restore this version&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="300" width="360" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 7: Confirmation Modal -->
+        <mxCell id="step8_confirmation_modal" value="UI DISPLAY:&#xa;Confirmation Modal&#xa;&#xa;┌─────────────────────────────────┐&#xa;│ ⚠️ Restore Previous Version?    │&#xa;├─────────────────────────────────┤&#xa;│                                 │&#xa;│ You are about to restore:       │&#xa;│ • Version 2                     │&#xa;│ • Created: Nov 2, 2025 3:20 PM  │&#xa;│ • Word Count: 1,980             │&#xa;│                                 │&#xa;│ Current content will become:    │&#xa;│ • Version 4 (preserved)         │&#xa;│                                 │&#xa;│ ⚠️ This will NOT delete Version │&#xa;│    3. All versions are kept.    │&#xa;│                                 │&#xa;│ [Cancel] [Confirm Restore] ✅   │&#xa;└─────────────────────────────────┘&#xa;&#xa;Cancel button: gray&#xa;Confirm button: green, primary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="300" width="420" height="420" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step7_click_restore" target="step8_confirmation_modal">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Decision: User confirms? -->
+        <mxCell id="decision_confirm" value="User&#xa;confirms?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2140" y="340" width="140" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step8_confirmation_modal" target="decision_confirm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Cancel path -->
+        <mxCell id="cancel_action" value="❌ CANCEL:&#xa;Close confirmation modal&#xa;Return to version history&#xa;&#xa;No changes made" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;" vertex="1" parent="1">
+          <mxGeometry x="2140" y="520" width="280" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;" edge="1" parent="1" source="decision_confirm" target="cancel_action">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label_cancel" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2140" y="480" width="40" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Confirm path -->
+        <mxCell id="step9_loading_state" value="UI CHANGE:&#xa;Show loading state&#xa;&#xa;&quot;⏳ Restoring version 2...&quot;&#xa;&#xa;Buttons disabled&#xa;Spinner displayed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2340" y="340" width="280" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_confirm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="decision_confirm" target="step9_loading_state">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label_confirm" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2280" y="380" width="40" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 10: API call to restore -->
+        <mxCell id="step10_api_restore" value="POST /api/sub-chapters/{sub_chapter_id}/restore-version&#xa;&#xa;Headers:&#xa;• Authorization: Bearer [token]&#xa;&#xa;Request Body:&#xa;{&#xa;  &quot;version_id&quot;: &quot;[uuid of version 2]&quot;,&#xa;  &quot;restore_reason&quot;: &quot;user_requested&quot;&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2340" y="820" width="460" height="180" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step9_loading_state" target="step10_api_restore">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 11: Backend validation -->
+        <mxCell id="step11_backend_validate" value="BACKEND VALIDATION:&#xa;&#xa;1. Verify version exists:&#xa;   SELECT * FROM sub_chapter_versions&#xa;   WHERE id = $1 AND sub_chapter_id = $2&#xa;&#xa;2. Check permissions (user owns trilogy)&#xa;&#xa;3. Verify version is not already current:&#xa;   SELECT current_version_id&#xa;   FROM sub_chapters&#xa;   WHERE id = $1&#xa;&#xa;4. If valid, proceed with restore" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2340" y="1040" width="460" height="220" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step10_api_restore" target="step11_backend_validate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Decision: Valid restore? -->
+        <mxCell id="decision_valid" value="Valid&#xa;restore?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2840" y="1080" width="140" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step11_backend_validate" target="decision_valid">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Error path -->
+        <mxCell id="error_invalid" value="❌ VALIDATION ERROR&#xa;&#xa;Return 400 Bad Request:&#xa;{&#xa;  &quot;error&quot;: &quot;Invalid version&quot;,&#xa;  &quot;message&quot;: &quot;Version not found&#xa;             or already current&quot;&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="3020" y="1040" width="320" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;" edge="1" parent="1" source="decision_valid" target="error_invalid">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label_invalid" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2980" y="1120" width="40" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error_user_message" value="❌ User sees error:&#xa;&#xa;&quot;Failed to restore version.&#xa;Please try again.&quot;&#xa;&#xa;Modal remains open" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;" vertex="1" parent="1">
+          <mxGeometry x="3020" y="580" width="320" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_error_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;" edge="1" parent="1" source="error_invalid" target="error_user_message">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Valid path: Database update -->
+        <mxCell id="step12_db_update" value="UPDATE OPERATION (Synchronous):&#xa;&#xa;BEGIN TRANSACTION;&#xa;&#xa;-- Fetch content from selected version&#xa;SELECT content, word_count&#xa;FROM sub_chapter_versions&#xa;WHERE id = $1; -- version 2 id&#xa;&#xa;-- Update sub_chapters table&#xa;UPDATE sub_chapters&#xa;SET&#xa;  content = [version 2 content],&#xa;  word_count = [version 2 word_count],&#xa;  current_version_id = [version 2 id],&#xa;  updated_at = NOW()&#xa;WHERE id = [sub_chapter_id];&#xa;&#xa;COMMIT;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2840" y="1320" width="480" height="340" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="decision_valid" target="step12_db_update">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label_valid" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2910" y="1240" width="40" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Important note -->
+        <mxCell id="note_no_new_version" value="⚠️ IMPORTANT:&#xa;&#xa;Restore does NOT create a new version.&#xa;&#xa;It simply updates the current_version_id&#xa;pointer to reference an existing version.&#xa;&#xa;All versions remain in sub_chapter_versions&#xa;table unchanged." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="3360" y="1360" width="360" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 13: Database trigger updates chapter word count -->
+        <mxCell id="step13_trigger" value="DATABASE TRIGGER (Automatic):&#xa;&#xa;trigger_update_chapter_word_count&#xa;&#xa;Updates chapter.current_word_count&#xa;based on restored sub-chapter word_count&#xa;&#xa;(See: Epic 6 for trigger details)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2840" y="1680" width="480" height="160" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="step12_db_update" target="step13_trigger">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 14: Realtime broadcast -->
+        <mxCell id="step14_realtime" value="📡 BROADCAST UPDATE EVENT&#xa;&#xa;Channel: sub_chapters&#xa;Event: UPDATE&#xa;Payload: {&#xa;  sub_chapter_id,&#xa;  current_version_id: [version 2 id],&#xa;  version_number: 2,&#xa;  word_count: 1980,&#xa;  updated_at&#xa;}&#xa;&#xa;Frontend listeners receive update &lt; 100ms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2840" y="1820" width="480" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="step13_trigger" target="step14_realtime">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 15: Success response -->
+        <mxCell id="step15_success_response" value="BACKEND RESPONSE:&#xa;&#xa;200 OK&#xa;{&#xa;  &quot;success&quot;: true,&#xa;  &quot;message&quot;: &quot;Version restored&quot;,&#xa;  &quot;restored_version&quot;: {&#xa;    &quot;id&quot;: &quot;[uuid]&quot;,&#xa;    &quot;version_number&quot;: 2,&#xa;    &quot;word_count&quot;: 1980&#xa;  }&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="3360" y="820" width="380" height="220" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="step14_realtime" target="step15_success_response">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 16: UI updates -->
+        <mxCell id="step16_ui_update" value="✅ UI UPDATES (Real-time):&#xa;&#xa;1. Close confirmation modal&#xa;&#xa;2. Show success toast:&#xa;   &quot;✅ Version 2 restored successfully!&quot;&#xa;&#xa;3. Update version history list:&#xa;   • Version 2 now marked as (Current)&#xa;   • Remove [Restore] button from v2&#xa;   • Add [Restore] button to v3&#xa;&#xa;4. Update sub-chapter detail page:&#xa;   • Content changes to version 2 text&#xa;   • Version badge updates: &quot;v2&quot;&#xa;   • Word count updates: 1,980&#xa;&#xa;5. Update chapter progress (if visible):&#xa;   • Recalculate based on new word count&#xa;&#xa;All updates happen instantly via&#xa;Supabase Realtime subscription" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="3360" y="300" width="520" height="460" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="step15_success_response" target="step16_ui_update">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- VIEW FULL CONTENT FLOW -->
+        <!-- ============================================= -->
+        
+        <mxCell id="viewfull_title" value="👁️ VIEW FULL CONTENT FLOW (Optional Action)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="820" width="720" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="viewfull_step1" value="USER ACTION:&#xa;Click [View Full] button&#xa;&#xa;Available on any version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="900" width="280" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="viewfull_step2" value="UI DISPLAY:&#xa;Expand version to show full content&#xa;&#xa;┌──────────────────────────┐&#xa;│ Version 2                │&#xa;│ [Collapse]               │&#xa;├──────────────────────────┤&#xa;│ Full Content:            │&#xa;│                          │&#xa;│ [Full text displayed in  │&#xa;│  scrollable text area]   │&#xa;│                          │&#xa;│ Word Count: 1,980        │&#xa;│ Created: Nov 2, 3:20 PM  │&#xa;│                          │&#xa;│ [Restore] [Compare]      │&#xa;└──────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;align=left;verticalAlign=top;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="400" y="900" width="400" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow_viewfull" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="viewfull_step1" target="viewfull_step2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="viewfull_note" value="NOTE:&#xa;Content is already loaded from&#xa;initial API call, so no additional&#xa;request needed for [View Full].&#xa;&#xa;Just expand UI element." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;align=left;verticalAlign=top;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1040" width="280" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- ERROR SCENARIOS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="error_title" value="❌ ERROR HANDLING SCENARIOS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2140" width="3880" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error1" value="ERROR 1: No Versions Found&#xa;&#xa;Cause:&#xa;• Sub-chapter has no versions in database&#xa;• Corrupt data state&#xa;&#xa;Response:&#xa;• Display message in modal:&#xa;  &quot;No version history available&quot;&#xa;• Show [Close] button only&#xa;&#xa;Prevention:&#xa;• All sub-chapters should have ≥ 1 version&#xa;• Epic 6 ensures version 1 created" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2220" width="580" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error2" value="ERROR 2: Version Already Current&#xa;&#xa;Cause:&#xa;• User tries to restore currently active version&#xa;&#xa;Response:&#xa;• Validation fails in backend&#xa;• Return 400 Bad Request&#xa;• Message: &quot;This version is already current&quot;&#xa;&#xa;User sees:&#xa;• Toast notification: &quot;Already using this version&quot;&#xa;• Modal stays open&#xa;&#xa;Prevention:&#xa;• Disable [Restore] button on current version&#xa;  (should never reach API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="700" y="2220" width="580" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error3" value="ERROR 3: Permission Denied&#xa;&#xa;Cause:&#xa;• User doesn't own trilogy&#xa;• Invalid authentication token&#xa;&#xa;Response:&#xa;• Return 403 Forbidden&#xa;• Message: &quot;You don't have permission to restore this version&quot;&#xa;&#xa;User sees:&#xa;• Error toast&#xa;• Redirect to login if auth failed&#xa;&#xa;Security:&#xa;• Check user_id via RLS policy&#xa;• Verify trilogy ownership" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="2220" width="580" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error4" value="ERROR 4: Database Transaction Failure&#xa;&#xa;Cause:&#xa;• Connection lost during UPDATE&#xa;• Constraint violation&#xa;• Deadlock&#xa;&#xa;Response:&#xa;• ROLLBACK transaction&#xa;• Return 500 Internal Server Error&#xa;• Log error for debugging&#xa;&#xa;User sees:&#xa;• &quot;Failed to restore version. Please try again.&quot;&#xa;• Modal stays open&#xa;• Can retry restore&#xa;&#xa;Recovery:&#xa;• No data corruption (transaction rolled back)&#xa;• User can retry immediately" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1940" y="2220" width="580" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error5" value="ERROR 5: Realtime Broadcast Failure&#xa;&#xa;Cause:&#xa;• WebSocket disconnected&#xa;• Network issue&#xa;&#xa;Impact:&#xa;• Restore succeeds in database&#xa;• UI update delayed (not instant)&#xa;&#xa;Fallback:&#xa;• Frontend polls for updates every 3 seconds&#xa;• Eventually consistent (5-10 second delay)&#xa;&#xa;User experience:&#xa;• Success message still shows&#xa;• Content updates with slight delay&#xa;• Not critical - restore completed successfully" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="2560" y="2220" width="580" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error6" value="ERROR 6: API Timeout&#xa;&#xa;Cause:&#xa;• Database slow to respond&#xa;• Network latency&#xa;&#xa;Response:&#xa;• Request times out after 30 seconds&#xa;• Return 504 Gateway Timeout&#xa;&#xa;User sees:&#xa;• &quot;Request timed out. Please try again.&quot;&#xa;• Loading state stops&#xa;• Can retry restore&#xa;&#xa;Note:&#xa;• Restore operation is very fast (synchronous)&#xa;• Timeout should be rare&#xa;• Usually completes in &lt; 500ms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="3180" y="2220" width="580" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- KEY PATTERNS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="patterns_title" value="✅ KEY PATTERNS &amp; BEST PRACTICES" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2540" width="3880" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern1" value="✅ PATTERN 1: Synchronous Restore&#xa;&#xa;• Restore happens instantly (no async job)&#xa;• Simple UPDATE operation (~100-500ms)&#xa;• User gets immediate feedback&#xa;• No polling or waiting required&#xa;&#xa;Benefits:&#xa;• Better UX (fast response)&#xa;• Simpler code (no job queue)&#xa;• Predictable behavior" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2620" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern2" value="✅ PATTERN 2: Pointer Update (Not Copy)&#xa;&#xa;• Restore updates current_version_id only&#xa;• Does NOT create new version&#xa;• Does NOT duplicate content&#xa;• All versions remain unchanged&#xa;&#xa;Benefits:&#xa;• Efficient (no data duplication)&#xa;• Preserves complete history&#xa;• Can restore back and forth freely" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="640" y="2620" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern3" value="✅ PATTERN 3: Confirmation Required&#xa;&#xa;• Always show confirmation modal&#xa;• Explain what will happen&#xa;• Clarify non-destructive nature&#xa;• Clear [Cancel] and [Confirm] options&#xa;&#xa;Benefits:&#xa;• Prevents accidental restores&#xa;• Educates user about versioning&#xa;• Builds confidence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="2620" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern4" value="✅ PATTERN 4: Real-Time UI Updates&#xa;&#xa;• Supabase Realtime broadcasts changes&#xa;• All open tabs/windows update instantly&#xa;• No page refresh needed&#xa;• Sub-100ms update latency&#xa;&#xa;Benefits:&#xa;• Responsive UI&#xa;• Multi-tab consistency&#xa;• Modern UX" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2620" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern5" value="✅ PATTERN 5: Graceful Error Handling&#xa;&#xa;• Validate before attempting restore&#xa;• Wrap in transaction (atomic operation)&#xa;• Clear error messages to user&#xa;• Allow retry without data loss&#xa;• Log errors for debugging&#xa;&#xa;Benefits:&#xa;• Data integrity maintained&#xa;• User always knows what happened&#xa;• Easy troubleshooting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="2620" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern6" value="✅ PATTERN 6: Preview Before Restore&#xa;&#xa;• Show content preview in version list&#xa;• [View Full] to see complete text&#xa;• Display metadata (word count, date)&#xa;• User makes informed decision&#xa;&#xa;Benefits:&#xa;• Reduces restore mistakes&#xa;• User confidence&#xa;• Better UX" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2620" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="pattern7" value="✅ PATTERN 7: Automatic Progress Update&#xa;&#xa;• Database trigger updates chapter word count&#xa;• Restored version's word count propagates&#xa;• Chapter progress recalculated automatically&#xa;• Real-time broadcast to frontend&#xa;&#xa;Benefits:&#xa;• Always accurate progress&#xa;• No manual recalculation needed&#xa;• Consistent with Epic 6 patterns" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="3440" y="2620" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- FOOTER -->
+        <!-- ============================================= -->
+        
+        <mxCell id="footer" value="EPIC 7 - STORY 2 SUMMARY: Users can restore any previous version through an intuitive version history modal. Restore operations are synchronous (fast), non-destructive (all versions preserved), and update the current_version_id pointer. Real-time updates ensure instant UI refresh across all views. Comprehensive error handling and confirmation modals prevent mistakes while maintaining user confidence." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#263238;strokeColor=#000000;fontColor=#FFFFFF;fontSize=12;fontStyle=2;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2900" width="3880" height="100" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

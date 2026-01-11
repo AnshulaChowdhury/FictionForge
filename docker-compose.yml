@@ -1,0 +1,144 @@
+# Docker Compose for Consciousness Trilogy App
+# Full stack: FastAPI Backend + Redis
+# ChromaDB runs in embedded mode (no separate container needed)
+# Frontend (React) runs separately via Vite for development
+
+version: '3.8'
+
+services:
+  # ==========================================================================
+  # FastAPI Backend
+  # ==========================================================================
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: consciousness-trilogy-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./api/.env
+    environment:
+      # API Configuration
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - DEBUG=True
+      - ENVIRONMENT=development
+      - FRONTEND_URL=http://localhost:5173
+
+      # Supabase Configuration
+      # Loaded from ./api/.env via env_file directive above
+
+      # ChromaDB Configuration (Embedded Mode)
+      # Using embedded DuckDB+Parquet backend - no HTTP server needed
+      - CHROMADB_PERSIST_DIR=/app/chromadb_data
+
+      # Redis Configuration
+      - REDIS_URL=redis://redis:6379
+      - REDIS_TTL_SECONDS=900
+
+      # AWS Bedrock Configuration
+      # AWS_API_GATEWAY_URL loaded from ./api/.env via env_file directive
+      - AWS_BEDROCK_TIMEOUT=120
+      - AWS_REGION=ca-central-1
+
+      # Embeddings Configuration
+      - EMBEDDING_MODEL=all-MiniLM-L6-v2
+      - EMBEDDING_CACHE_DIR=/root/.cache/torch/sentence_transformers
+
+      # Security
+      # SECRET_KEY loaded from ./api/.env via env_file directive
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=60
+
+    volumes:
+      # Mount code for hot reload in development
+      - ./api:/app/api
+      # Persist ChromaDB data
+      - chromadb-data:/app/chromadb_data
+      # Persist embedding model cache
+      - embedding-cache:/root/.cache/torch/sentence_transformers
+      # Mount external SSD if available (comment out if not available)
+      # - /Volumes/T7/NovelApp/chromadb_data:/app/chromadb_data
+
+    depends_on:
+      - redis
+
+    networks:
+      - consciousness-trilogy-network
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ==========================================================================
+  # Redis - Caching Layer
+  # ==========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: consciousness-trilogy-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    networks:
+      - consciousness-trilogy-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================================================
+  # ChromaDB - Vector Database
+  # ==========================================================================
+  # NOTE: ChromaDB now runs in EMBEDDED mode inside the FastAPI container
+  # No separate ChromaDB container needed - data persists via Docker volume
+  #
+  # If you need ChromaDB as a separate service (for scaling), uncomment below:
+  #
+  # chromadb:
+  #   image: chromadb/chroma:latest
+  #   container_name: consciousness-trilogy-chromadb
+  #   ports:
+  #     - "8001:8000"
+  #   volumes:
+  #     - chromadb-data:/chroma/chroma
+  #   environment:
+  #     - CHROMA_SERVER_HOST=0.0.0.0
+  #     - CHROMA_SERVER_HTTP_PORT=8000
+  #     - ANONYMIZED_TELEMETRY=False
+  #   networks:
+  #     - consciousness-trilogy-network
+  #   restart: unless-stopped
+
+# =============================================================================
+# Networks
+# =============================================================================
+networks:
+  consciousness-trilogy-network:
+    driver: bridge
+    name: consciousness-trilogy-network
+
+# =============================================================================
+# Volumes - Persistent Data Storage
+# =============================================================================
+volumes:
+  redis-data:
+    driver: local
+    name: consciousness-trilogy-redis-data
+
+  chromadb-data:
+    driver: local
+    name: consciousness-trilogy-chromadb-data
+
+  embedding-cache:
+    driver: local
+    name: consciousness-trilogy-embedding-cache

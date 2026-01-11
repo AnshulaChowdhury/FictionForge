@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-03T13:00:00.000Z" agent="Claude" version="21.0.0">
+  <diagram name="Page-6: Epic 6 Summary Flow" id="epic6-summary">
+    <mxGraphModel dx="3200" dy="2000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5500" pageHeight="3000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- HEADER -->
+        <mxCell id="header" value="EPIC 6 - SUB-CHAPTER MANAGEMENT SYSTEM: COMPREHENSIVE SUMMARY FLOW&#xa;Complete Lifecycle Showing How All 5 User Stories Interconnect" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="5420" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- PHASE LABELS -->
+        <mxCell id="phase1-label" value="PHASE 1: CREATION" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="1000" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="phase2-label" value="PHASE 2: REFINEMENT" style="text;html=1;strokeColor=#F57C00;fillColor=#FFE0B2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1080" y="120" width="1200" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="phase3-label" value="PHASE 3: MONITORING" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2320" y="120" width="1000" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="phase4-label" value="PHASE 4: ITERATION" style="text;html=1;strokeColor=#7B1FA2;fillColor=#E1BEE7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="3360" y="120" width="1000" height="40" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="phase5-label" value="CYCLE COMPLETE" style="text;html=1;strokeColor=#C62828;fillColor=#FFCDD2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="4400" y="120" width="600" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- PHASE 1: CREATION (Story 1) -->
+        <!-- ============================================= -->
+        
+        <!-- Story 1 Box -->
+        <mxCell id="story1" value="📄 STORY 1: CREATE SUB-CHAPTER SEGMENTS&#xa;(Page 1)&#xa;&#xa;User Actions:&#xa;• Select chapter&#xa;• Click 'Create New Sub-Chapter'&#xa;• Fill form: title, plot points, writing prompt, target word count&#xa;• Click 'Generate Content'&#xa;&#xa;System Actions:&#xa;• Create sub-chapter stub (status: 'pending')&#xa;• Character ID auto-inherited from chapter&#xa;• Queue async generation job (pg-boss)&#xa;• Retrieve character context from ChromaDB&#xa;• Retrieve world rules from ChromaDB (Epic 5B)&#xa;• Query recent sub-chapters for voice consistency&#xa;• Generate content with LLM (Mistral 7B / AWS Bedrock)&#xa;• Save as Version 1 in sub_chapter_versions&#xa;• Update sub_chapters.content and status = 'completed'&#xa;• Add generated content to character's ChromaDB&#xa;&#xa;Output:&#xa;✓ New sub-chapter created with initial content&#xa;✓ Version 1 saved&#xa;✓ Sub-chapter number auto-assigned sequentially" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="420" height="460" as="geometry"/>
+        </mxCell>
+        
+        <!-- Creation Time -->
+        <mxCell id="time1" value="⏱ Time: 2-3 minutes&#xa;(async generation)" style="text;html=1;strokeColor=#388E3C;fillColor=#E8F5E9;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="120" y="680" width="340" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Real-time Updates Indicator -->
+        <mxCell id="realtime1" value="📡 Real-time WebSocket Updates:&#xa;Starting → Context → Rules → Generating → Saving → Complete" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="120" y="735" width="340" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- TRANSITION 1→2 -->
+        <!-- ============================================= -->
+        
+        <mxCell id="transition1-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#388E3C;endArrow=classic;endFill=1;" edge="1" parent="1" source="story1" target="story2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="430"/>
+              <mxPoint x="760" y="430"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label1-2" value="After content generated,&#xa;user may want to refine" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#388E3C;fontStyle=1" vertex="1" connectable="0" parent="transition1-2">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="10" y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- PHASE 2: REFINEMENT (Story 2 & 3) -->
+        <!-- ============================================= -->
+        
+        <!-- Story 2 Box -->
+        <mxCell id="story2" value="✏️ STORY 2: EDIT PLOT POINTS&#xa;(Page 2)&#xa;&#xa;User Actions:&#xa;• View list of existing sub-chapters&#xa;• Click 'Edit' on sub-chapter&#xa;• Modify: title, plot points&#xa;• View current content (read-only)&#xa;• Click 'Save Changes'&#xa;&#xa;System Actions:&#xa;• Validate inputs&#xa;• Compare old vs new plot points&#xa;• Update sub_chapters.title, plot_points, updated_at&#xa;• IF plot points changed significantly:&#xa;  - Create content_review_flag&#xa;  - Type: 'user_marked'&#xa;  - Reason: 'plot_points_changed'&#xa;  - Alert user: 'Content may not align, consider regenerating'&#xa;&#xa;Output:&#xa;✓ Plot points updated&#xa;⚠️ Review flag created (if changed)&#xa;❌ Content NOT regenerated automatically&#xa;&#xa;Next Steps:&#xa;→ User can regenerate (Story 5)&#xa;→ Or continue with current content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="360" height="460" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="time2" value="⏱ Time: &lt; 1 second&#xa;(synchronous update)" style="text;html=1;strokeColor=#F57C00;fillColor=#FFF3E0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="590" y="680" width="300" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Story 3 Box -->
+        <mxCell id="story3" value="🔄 STORY 3: REORDER SUB-CHAPTERS&#xa;(Page 3)&#xa;&#xa;User Actions:&#xa;• View sub-chapter list with current order&#xa;• Drag-and-drop to new position OR&#xa;• Use up/down arrow buttons&#xa;• Optional: Confirm reordering in modal&#xa;• System applies changes&#xa;&#xa;System Actions:&#xa;• Calculate which sub-chapters need position updates&#xa;• IF moving DOWN (e.g., 2→5):&#xa;  - Shift positions 3,4,5 UP by 1&#xa;• IF moving UP (e.g., 5→2):&#xa;  - Shift positions 2,3,4 DOWN by 1&#xa;• Execute all updates in single transaction&#xa;• BEGIN TRANSACTION&#xa;• Loop through affected sub-chapters&#xa;• UPDATE sub_chapter_number for each&#xa;• COMMIT (or ROLLBACK on error)&#xa;• Maintain UNIQUE(chapter_id, sub_chapter_number)&#xa;&#xa;Output:&#xa;✓ Sub-chapters reordered with no gaps (1,2,3,...)&#xa;✓ Sequential integrity maintained&#xa;⚡ Atomic transaction ensures consistency" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="960" y="200" width="400" height="460" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="time3" value="⏱ Time: &lt; 1 second&#xa;(atomic transaction)" style="text;html=1;strokeColor=#F57C00;fillColor=#FFF3E0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="995" y="680" width="330" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- TRANSITION 2→3 -->
+        <!-- ============================================= -->
+        
+        <mxCell id="transition2-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#F57C00;endArrow=classic;endFill=1;" edge="1" parent="1" source="story2" target="story3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="label2-3" value="After editing,&#xa;may want to reorder" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#F57C00;fontStyle=1" vertex="1" connectable="0" parent="transition2-3">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- TRANSITION 3→4 -->
+        <!-- ============================================= -->
+        
+        <mxCell id="transition3-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#F57C00;endArrow=classic;endFill=1;" edge="1" parent="1" source="story3" target="story4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="430"/>
+              <mxPoint x="1680" y="430"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label3-4" value="After organizing,&#xa;monitor progress" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#F57C00;fontStyle=1" vertex="1" connectable="0" parent="transition3-4">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="10" y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- PHASE 3: MONITORING (Story 4) -->
+        <!-- ============================================= -->
+        
+        <!-- Story 4 Box -->
+        <mxCell id="story4" value="📊 STORY 4: TRACK PROGRESS&#xa;(Page 4)&#xa;&#xa;User Actions:&#xa;• Navigate to chapter progress view&#xa;• View progress dashboard:&#xa;  - Chapter cards with progress bars&#xa;  - Color indicators (green/yellow/red)&#xa;  - Word count: actual / target&#xa;  - Completion percentage&#xa;• Click chapter to view sub-chapter breakdown&#xa;• Monitor active generation jobs&#xa;• See real-time updates as content generates&#xa;&#xa;System Actions:&#xa;• Calculate chapter progress:&#xa;  - SUM(sub_chapters.word_count)&#xa;  - Compare to chapters.target_word_count&#xa;  - Calculate percentage&#xa;  - Determine status (not started, in progress, complete, over target)&#xa;• Initialize WebSocket connection per chapter&#xa;• Subscribe to Supabase Realtime:&#xa;  - Listen for sub_chapters INSERT/UPDATE/DELETE&#xa;  - Broadcast changes to connected clients&#xa;• Monitor generation_jobs table&#xa;• Send progress updates via WebSocket&#xa;• Database trigger auto-updates chapter.current_word_count&#xa;&#xa;Output:&#xa;✓ Real-time visibility into progress&#xa;✓ Dual update mechanisms (WebSocket + Supabase Realtime)&#xa;✓ Latency &lt; 100ms for updates&#xa;✓ No manual refresh needed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="200" width="460" height="460" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="time4" value="⏱ Time: Real-time&#xa;(continuous monitoring)" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="1445" y="680" width="370" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Real-time Mechanisms -->
+        <mxCell id="realtime4" value="📡 Dual Real-time:&#xa;1. WebSocket (generation progress)&#xa;2. Supabase Realtime (DB changes)" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="1445" y="735" width="370" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- DECISION POINT -->
+        <!-- ============================================= -->
+        
+        <mxCell id="decision" value="DECISION:&#xa;Content Quality OK?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1900" y="370" width="180" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="transition4-decision" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#1976D2;endArrow=classic;endFill=1;" edge="1" parent="1" source="story4" target="decision">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="label4-decision" value="Review&#xa;content" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#1976D2;fontStyle=1" vertex="1" connectable="0" parent="transition4-decision">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint y="-15" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Decision YES → Complete -->
+        <mxCell id="decision-yes" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#388E3C;endArrow=classic;endFill=1;" edge="1" parent="1" source="decision" target="complete">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1990" y="530"/>
+              <mxPoint x="2120" y="530"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-yes" value="YES&#xa;✓ Content approved" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#388E3C;fontStyle=1" vertex="1" connectable="0" parent="decision-yes">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Decision NO → Story 5 -->
+        <mxCell id="decision-no" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;strokeColor=#C62828;endArrow=classic;endFill=1;" edge="1" parent="1" source="decision" target="story5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2120" y="430"/>
+              <mxPoint x="2640" y="430"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-no" value="NO&#xa;❌ Need to regenerate" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#C62828;fontStyle=1" vertex="1" connectable="0" parent="decision-no">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="20" y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- PHASE 4: ITERATION (Story 5) -->
+        <!-- ============================================= -->
+        
+        <!-- Story 5 Box -->
+        <mxCell id="story5" value="🔄 STORY 5: REGENERATE CONTENT&#xa;(Page 5)&#xa;&#xa;TWO ENTRY POINTS:&#xa;&#xa;A. Single Sub-Chapter Regeneration:&#xa;• Entry: Sub-chapter detail page&#xa;• No character change (uses inherited character)&#xa;• Click 'Regenerate Content'&#xa;&#xa;B. Bulk Chapter Regeneration with POV Change:&#xa;• Entry: Chapter management page&#xa;• OPTIONAL: Change character at chapter level&#xa;• Database trigger updates ALL sub-chapters.character_id&#xa;• Button changes: 'Regenerate' → 'Regenerate with different POV'&#xa;&#xa;Shared Flow:&#xa;• Confirmation modal shown:&#xa;  - Warning: 'Old content saved as previous version'&#xa;  - If POV changed: Show old → new character&#xa;• User confirms regeneration&#xa;• Query max(version_number) for sub-chapter&#xa;• Create generation job (is_regeneration: true)&#xa;• Async processing (same as Story 1):&#xa;  - Retrieve NEW character context (if changed)&#xa;  - Retrieve world rules&#xa;  - Generate content with LLM&#xa;• Save as Version N+1 in sub_chapter_versions&#xa;• Update sub_chapters.content and current_version_id&#xa;• Old version preserved for rollback&#xa;&#xa;Output:&#xa;✓ New version (N+1) created&#xa;✓ All previous versions preserved&#xa;✓ If POV changed: New character voice&#xa;✓ Can view version history&#xa;✓ Can restore previous versions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2120" y="200" width="480" height="460" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="time5" value="⏱ Time: 2-3 minutes&#xa;(async regeneration)" style="text;html=1;strokeColor=#7B1FA2;fillColor=#F3E5F5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2170" y="680" width="380" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Version Management -->
+        <mxCell id="version5" value="💾 Version Management:&#xa;Old → Version N | New → Version N+1 | History preserved" style="text;html=1;strokeColor=#7B1FA2;fillColor=#F3E5F5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2170" y="735" width="380" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- CYCLE BACK -->
+        <!-- ============================================= -->
+        
+        <!-- Story 5 loops back to Story 2 -->
+        <mxCell id="cycle5-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#7B1FA2;endArrow=classic;endFill=1;dashed=1;" edge="1" parent="1" source="story5" target="story2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2360" y="140"/>
+              <mxPoint x="740" y="140"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-cycle5-2" value="CYCLE: After regeneration,&#xa;may edit plot points again" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#7B1FA2;fontStyle=1" vertex="1" connectable="0" parent="cycle5-2">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="200" y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Story 5 loops back to Story 4 -->
+        <mxCell id="cycle5-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#7B1FA2;endArrow=classic;endFill=1;" edge="1" parent="1" source="story5" target="story4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2640" y="430"/>
+              <mxPoint x="1630" y="430"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="label-cycle5-4" value="After regeneration,&#xa;track progress again" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontColor=#7B1FA2;fontStyle=1" vertex="1" connectable="0" parent="cycle5-4">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="100" y="-20" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- COMPLETION -->
+        <!-- ============================================= -->
+        
+        <mxCell id="complete" value="✅ CHAPTER COMPLETE&#xa;&#xa;All Sub-Chapters:&#xa;✓ Created&#xa;✓ Refined (plot points)&#xa;✓ Properly ordered&#xa;✓ Progress tracked&#xa;✓ Content approved&#xa;&#xa;Ready for:&#xa;→ Epic 7: Version Control&#xa;→ Epic 11: Editor Sharing&#xa;→ Epic 12: Export" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=12;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="800" width="240" height="220" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- ARCHITECTURE OVERVIEW -->
+        <!-- ============================================= -->
+        
+        <mxCell id="arch-title" value="SYSTEM ARCHITECTURE OVERVIEW" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1080" width="5420" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Architecture Layers -->
+        <mxCell id="layer-frontend" value="FRONTEND LAYER (Streamlit)&#xa;&#xa;• Page routing and navigation&#xa;• Form handling and validation&#xa;• WebSocket client for real-time updates&#xa;• Supabase Realtime subscriptions&#xa;• UI state management&#xa;• Progress visualization (bars, indicators)&#xa;• Drag-and-drop for reordering&#xa;• Modal dialogs (confirmation, editing)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1160" width="600" height="200" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="layer-backend" value="BACKEND LAYER (FastAPI)&#xa;&#xa;• RESTful API endpoints (CRUD operations)&#xa;• Request validation (Pydantic models)&#xa;• Business logic orchestration&#xa;• WebSocket server for progress broadcast&#xa;• Job queue management (pg-boss)&#xa;• Character context retrieval coordination&#xa;• World rule retrieval coordination&#xa;• Transaction management (reordering)&#xa;• Version management logic&#xa;• Content review flag creation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1160" width="600" height="200" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="layer-jobqueue" value="JOB QUEUE (pg-boss)&#xa;&#xa;• Async generation job processing&#xa;• Worker pool management&#xa;• Job status tracking&#xa;• Progress updates publishing&#xa;• Retry logic (max 3 attempts)&#xa;• Job completion callbacks&#xa;• Integration with WebSocket server" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="1160" width="600" height="200" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="layer-database" value="DATABASE LAYER (Supabase)&#xa;&#xa;Tables:&#xa;• chapters (character_id, with trigger)&#xa;• sub_chapters (character_id inherited, current_version_id, status)&#xa;• sub_chapter_versions (all versions preserved)&#xa;• generation_jobs (job tracking, is_regeneration flag)&#xa;• content_review_flags (plot point change alerts)&#xa;&#xa;Features:&#xa;• Row Level Security (RLS)&#xa;• Database triggers (character consistency, word count auto-update)&#xa;• Realtime subscriptions (WebSocket broadcasts)&#xa;• UNIQUE constraints (chapter_id, sub_chapter_number)&#xa;• Foreign key cascades" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="1160" width="600" height="200" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="layer-chroma" value="VECTOR STORE (ChromaDB)&#xa;&#xa;Collections:&#xa;• {trilogy_id}_character_{character_id} (character contexts)&#xa;• {trilogy_id}_world_rules (world building rules)&#xa;&#xa;Operations:&#xa;• Semantic search for character context (top 5 chunks)&#xa;• Semantic search for relevant rules&#xa;• Add generated content to character collection&#xa;• Metadata tracking (sub_chapter_id, version_number)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#E64A19;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2640" y="1160" width="600" height="200" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="layer-llm" value="LLM LAYER&#xa;&#xa;Primary:&#xa;• Mistral 7B (locally hosted)&#xa;&#xa;Fallback:&#xa;• AWS Bedrock (cloud-based)&#xa;&#xa;Context:&#xa;• Character voice and traits&#xa;• World building rules&#xa;• Recent sub-chapters&#xa;• Plot points&#xa;• Writing prompt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3280" y="1160" width="600" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- DATA FLOW DIAGRAM -->
+        <!-- ============================================= -->
+        
+        <mxCell id="dataflow-title" value="DATA FLOW ACROSS STORIES" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1400" width="5420" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Data Flow Table -->
+        <mxCell id="dataflow-table" value="&#xa;STORY | INPUT | PROCESSING | OUTPUT | AFFECTS&#xa;─────────────────────────────────────────────────────────────────────────────────────────────────────────────&#xa;1. Create | • Chapter ID&#xa; • Form data&#xa; • Character (inherited) | • Create stub&#xa; • Queue job&#xa; • Retrieve contexts&#xa; • Generate LLM content&#xa; • Save Version 1 | • New sub-chapter&#xa; • sub_chapter_versions (v1)&#xa; • ChromaDB updated | Story 2, 3, 4&#xa;─────────────────────────────────────────────────────────────────────────────────────────────────────────────&#xa;2. Edit | • Sub-chapter ID&#xa; • New title&#xa; • New plot points | • Validate input&#xa; • Compare old vs new&#xa; • Update metadata&#xa; • Create review flag (if changed) | • Updated title, plot_points&#xa; • content_review_flags (optional)&#xa; • Warning to user | Story 5 (may trigger)&#xa;─────────────────────────────────────────────────────────────────────────────────────────────────────────────&#xa;3. Reorder | • Sub-chapter ID&#xa; • Old position&#xa; • New position | • Calculate shift direction&#xa; • BEGIN TRANSACTION&#xa; • Update all affected positions&#xa; • COMMIT | • All sub_chapter_numbers updated&#xa; • Sequential integrity maintained&#xa; • No gaps (1,2,3,...) | Story 4 (progress view)&#xa;─────────────────────────────────────────────────────────────────────────────────────────────────────────────&#xa;4. Track | • Chapter ID&#xa; • WebSocket connection | • SUM(word_count)&#xa; • Calculate percentage&#xa; • Determine status&#xa; • Subscribe to Realtime&#xa; • Broadcast updates | • Real-time progress data&#xa; • Visual indicators&#xa; • Completion status | User decision point&#xa;─────────────────────────────────────────────────────────────────────────────────────────────────────────────&#xa;5. Regenerate | • Sub-chapter ID&#xa; • Optional: new character_id | • Query max(version_number)&#xa; • Create job (N+1)&#xa; • Retrieve NEW contexts&#xa; • Generate content&#xa; • Save Version N+1 | • New version created&#xa; • sub_chapters.content updated&#xa; • current_version_id updated&#xa; • Old versions preserved | Story 2, 4 (cycle back)&#xa;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Courier New;strokeColor=#666666;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1480" width="3800" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- KEY INTEGRATION POINTS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="integration-title" value="KEY INTEGRATION POINTS BETWEEN STORIES" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1840" width="5420" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Integration Point 1 -->
+        <mxCell id="integration1" value="🔗 INTEGRATION 1: Character Inheritance&#xa;&#xa;Flow: Epic 2 (Characters) → Story 1 (Create) → Story 5 (Regenerate)&#xa;&#xa;Mechanism:&#xa;• chapters.character_id set when chapter created&#xa;• Database trigger enforces consistency:&#xa;  CREATE TRIGGER enforce_character_consistency&#xa;  AFTER UPDATE ON chapters&#xa;  FOR EACH ROW&#xa;  WHEN (OLD.character_id IS DISTINCT FROM NEW.character_id)&#xa;  EXECUTE FUNCTION update_sub_chapter_characters();&#xa;• Function updates ALL sub_chapters.character_id WHERE chapter_id = NEW.id&#xa;• Story 1: New sub-chapters inherit character_id from chapter&#xa;• Story 5: POV change at chapter level cascades to all sub-chapters&#xa;&#xa;Result:&#xa;✓ Character consistency enforced at database level&#xa;✓ No orphaned sub-chapters with wrong character&#xa;✓ POV changes apply atomically to entire chapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1920" width="800" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- Integration Point 2 -->
+        <mxCell id="integration2" value="🔗 INTEGRATION 2: Version Management&#xa;&#xa;Flow: Story 1 (Create) → Story 5 (Regenerate) → Epic 7 (Version Control)&#xa;&#xa;Mechanism:&#xa;• Story 1: Creates Version 1 in sub_chapter_versions&#xa;• sub_chapters.current_version_id points to latest&#xa;• Story 5: Queries max(version_number), creates N+1&#xa;• All versions preserved permanently&#xa;• User can view version history&#xa;• User can restore previous versions&#xa;&#xa;Tables:&#xa;• sub_chapter_versions:&#xa;  - id (uuid)&#xa;  - sub_chapter_id (FK)&#xa;  - version_number (int, incremental)&#xa;  - content (text)&#xa;  - word_count (int)&#xa;  - created_at (timestamp)&#xa;• sub_chapters.current_version_id → sub_chapter_versions.id&#xa;&#xa;Result:&#xa;✓ Complete revision history&#xa;✓ Non-destructive regeneration&#xa;✓ Rollback capability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1920" width="800" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- Integration Point 3 -->
+        <mxCell id="integration3" value="🔗 INTEGRATION 3: Progress Calculation&#xa;&#xa;Flow: Story 1/5 (Content) → Story 4 (Track) → Epic 4 (Chapter Planning)&#xa;&#xa;Mechanism:&#xa;• Database trigger auto-updates chapter word count:&#xa;  CREATE TRIGGER trigger_update_chapter_word_count&#xa;  AFTER INSERT OR UPDATE OR DELETE ON sub_chapters&#xa;  FOR EACH ROW&#xa;  EXECUTE FUNCTION update_chapter_word_count();&#xa;• Function calculates:&#xa;  UPDATE chapters&#xa;  SET current_word_count = (&#xa;    SELECT COALESCE(SUM(word_count), 0)&#xa;    FROM sub_chapters&#xa;    WHERE chapter_id = NEW.chapter_id&#xa;  )&#xa;  WHERE id = NEW.chapter_id;&#xa;• Story 4 displays:&#xa;  - actual_word_count (from sum)&#xa;  - target_word_count (from chapter)&#xa;  - percentage = (actual / target) * 100&#xa;  - status based on percentage&#xa;&#xa;Real-time Updates:&#xa;• Supabase Realtime broadcasts sub_chapters changes&#xa;• Frontend subscribed to chapter_id&#xa;• Progress bar updates &lt; 100ms&#xa;&#xa;Result:&#xa;✓ Always accurate progress&#xa;✓ No manual recalculation&#xa;✓ Real-time visibility" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="1920" width="800" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- Integration Point 4 -->
+        <mxCell id="integration4" value="🔗 INTEGRATION 4: Content Review Flags&#xa;&#xa;Flow: Story 2 (Edit) → Story 5 (Regenerate) → Story 4 (Track)&#xa;&#xa;Mechanism:&#xa;• Story 2: Compare old vs new plot points&#xa;• IF changed significantly:&#xa;  - INSERT INTO content_review_flags (&#xa;      sub_chapter_id,&#xa;      flag_type: 'user_marked',&#xa;      reason: 'plot_points_changed',&#xa;      flagged_at: NOW(),&#xa;      resolved_at: NULL&#xa;    )&#xa;  - Display warning to user:&#xa;    ⚠️ 'Plot points changed - existing content may not align'&#xa;    'Consider regenerating content'&#xa;• Story 4: Show flag indicator on sub-chapter&#xa;• Story 5: Regeneration resolves flag:&#xa;  - UPDATE content_review_flags&#xa;    SET resolved_at = NOW()&#xa;    WHERE sub_chapter_id = $1 AND resolved_at IS NULL&#xa;&#xa;Flag Types:&#xa;• user_marked (Story 2)&#xa;• ai_flagged (Epic 3 - rule violations)&#xa;• editor_comment (Epic 11)&#xa;&#xa;Result:&#xa;✓ User alerted to content/plot misalignment&#xa;✓ Encourages regeneration when needed&#xa;✓ Tracks flag resolution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2600" y="1920" width="800" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- Integration Point 5 -->
+        <mxCell id="integration5" value="🔗 INTEGRATION 5: Context Retrieval&#xa;&#xa;Flow: Epic 2/3 → Epic 5A/5B → Story 1/5 (Generation)&#xa;&#xa;Mechanism:&#xa;• Character Context (Epic 5A):&#xa;  - ChromaDB collection: {trilogy_id}_character_{character_id}&#xa;  - Semantic search using plot_points + writing_prompt&#xa;  - Returns top 5 relevant chunks&#xa;  - Includes: traits, past dialogue, voice patterns&#xa;&#xa;• World Rules (Epic 5B):&#xa;  - ChromaDB collection: {trilogy_id}_world_rules&#xa;  - Semantic search using plot_points + writing_prompt&#xa;  - Book-specific filtering via world_rule_books junction table&#xa;  - Accuracy-weighted scoring (low accuracy *= 0.7)&#xa;  - Redis cache (15 min TTL)&#xa;  - Returns top N rules (default: 10)&#xa;&#xa;• Recent Sub-Chapters:&#xa;  - Query last N by same character for voice consistency&#xa;&#xa;• Prompt Building:&#xa;  [Character Voice Section]&#xa;  [World Rules Section]&#xa;  [Writing Prompt]&#xa;  [Plot Points]&#xa;  [Previous Content]&#xa;&#xa;• LLM Generation:&#xa;  - Mistral 7B (local) or AWS Bedrock (fallback)&#xa;  - Target: 2000 words, 2-3 minutes&#xa;&#xa;Result:&#xa;✓ Character voice consistency&#xa;✓ World building compliance&#xa;✓ Contextually relevant content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#E64A19;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3440" y="1920" width="800" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- BEST PRACTICES & PATTERNS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="practices-title" value="BEST PRACTICES &amp; DESIGN PATTERNS" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="2280" width="5420" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="practice1" value="✅ PATTERN 1: Async Job Processing&#xa;&#xa;• User receives immediate response (stub created, job queued)&#xa;• Long-running operations in background (2-3 min generation)&#xa;• Real-time feedback via WebSocket&#xa;• User can continue working on other tasks&#xa;• No blocking UI operations&#xa;&#xa;Benefits:&#xa;• Better UX (no 3-minute wait)&#xa;• Scalable (worker pool)&#xa;• Resilient (retry logic)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2360" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="practice2" value="✅ PATTERN 2: Version Immutability&#xa;&#xa;• Never overwrite existing versions&#xa;• Always create new version (N+1)&#xa;• Preserve complete revision history&#xa;• Point to active version via FK&#xa;• Enable rollback at any time&#xa;&#xa;Benefits:&#xa;• Non-destructive changes&#xa;• Audit trail&#xa;• Experimentation safety&#xa;• Easy comparison" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="640" y="2360" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="practice3" value="✅ PATTERN 3: Database Triggers&#xa;&#xa;• Auto-enforce character consistency&#xa;• Auto-calculate word counts&#xa;• Cascade updates atomically&#xa;• No application-level loops&#xa;• Database guarantees consistency&#xa;&#xa;Benefits:&#xa;• Data integrity&#xa;• Performance (single query)&#xa;• No race conditions&#xa;• Simplified application code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="2360" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="practice4" value="✅ PATTERN 4: Dual Real-time Updates&#xa;&#xa;• WebSocket: Generation progress&#xa;  - Controlled by backend&#xa;  - Job-specific updates&#xa;  - Stage indicators&#xa;&#xa;• Supabase Realtime: DB changes&#xa;  - Automatic broadcast&#xa;  - All CRUD operations&#xa;  - Multiple client sync&#xa;&#xa;Benefits:&#xa;• Best of both worlds&#xa;• Comprehensive coverage&#xa;• Low latency (&lt; 100ms)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2360" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="practice5" value="✅ PATTERN 5: Atomic Transactions&#xa;&#xa;• BEGIN TRANSACTION&#xa;• Multiple UPDATE statements&#xa;• COMMIT (or ROLLBACK on error)&#xa;• All-or-nothing guarantee&#xa;• UNIQUE constraints enforced&#xa;&#xa;Use Cases:&#xa;• Reordering (Story 3)&#xa;• Character cascade (Story 5)&#xa;• Batch operations&#xa;&#xa;Benefits:&#xa;• Data consistency&#xa;• No partial updates&#xa;• Rollback safety" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="2360" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="practice6" value="✅ PATTERN 6: Content Review Flags&#xa;&#xa;• Alert users to potential issues&#xa;• Track resolution status&#xa;• Multiple flag sources:&#xa;  - User edits (Story 2)&#xa;  - AI detection (Epic 3)&#xa;  - Editor comments (Epic 11)&#xa;• Resolved when addressed&#xa;• Non-blocking (warnings, not errors)&#xa;&#xa;Benefits:&#xa;• Quality awareness&#xa;• Encourages review/regeneration&#xa;• Audit trail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2880" y="2360" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="practice7" value="✅ PATTERN 7: Character-Specific RAG&#xa;&#xa;• Separate ChromaDB collection per character&#xa;• Semantic search for relevant context&#xa;• Voice consistency via recent sub-chapters&#xa;• Generated content added back to collection&#xa;• Continuous learning loop&#xa;&#xa;Collections:&#xa;• {trilogy_id}_character_{character_id}&#xa;&#xa;Benefits:&#xa;• Isolated contexts (no character bleed)&#xa;• Scalable (add unlimited characters)&#xa;• Voice consistency&#xa;• Self-improving" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3440" y="2360" width="520" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- FOOTER -->
+        <!-- ============================================= -->
+        
+        <mxCell id="footer" value="EPIC 6 SUMMARY: The Sub-Chapter Management System provides a complete lifecycle for creating, refining, organizing, monitoring, and iterating on sub-chapter content with sophisticated version control, real-time progress tracking, and intelligent content generation powered by character-specific and world-building RAG. The system is designed for iterative authoring with non-destructive operations, automatic consistency enforcement, and seamless integration with other epics." style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2640" width="5420" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="epic-ref" value="EPIC 6 - SUB-CHAPTER MANAGEMENT SYSTEM | Page 6 of 6 | Summary Flow: Complete Lifecycle Integration" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2750" width="5420" height="50" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-03T12:00:00.000Z" agent="Claude" version="21.0.0">
+  <diagram name="Epic 6 - Page 4: Track Sub-Chapter Progress (Real-time)" id="epic6-page4">
+    <mxGraphModel dx="2500" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Header -->
+        <mxCell id="header" value="EPIC 6 - PAGE 4: TRACK SUB-CHAPTER PROGRESS (REAL-TIME WEBSOCKET UPDATES)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1520" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Swim Lane: User -->
+        <mxCell id="lane-user" value="USER (AUTHOR)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1520" height="220" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u1" value="Navigate to&#xa;Chapter Progress&#xa;View" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane-user">
+          <mxGeometry x="20" y="40" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u2" value="View Progress&#xa;Dashboard:&#xa;• Chapter list&#xa;• Word counts&#xa;• Progress bars&#xa;• Status indicators" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="400" y="30" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u3" value="Click on Chapter&#xa;to View Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane-user">
+          <mxGeometry x="620" y="40" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u4" value="View Real-Time&#xa;Updates:&#xa;• Word count&#xa;changes&#xa;• Status changes&#xa;• Progress %&#xa;• Live generation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="980" y="25" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u5" value="See Sub-Chapter&#xa;Breakdown:&#xa;• Individual status&#xa;• Individual counts&#xa;• Completion icons&#xa;• Generation stage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="1200" y="25" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="u6" value="Monitor Active&#xa;Generation Jobs:&#xa;• Stage indicator&#xa;• Progress %&#xa;• Time estimate&#xa;• WebSocket status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="1370" y="25" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Swim Lane: React Frontend -->
+        <mxCell id="lane-frontend" value="REACT FRONTEND" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="1520" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f1" value="GET /api/chapters/&#xa;{book_id}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="160" y="50" width="130" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f2" value="Render Progress&#xa;Dashboard UI:&#xa;• Chapter cards&#xa;• Progress bars&#xa;• Color indicators&#xa;• Word count text" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="310" y="40" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f3" value="GET /api/chapters/&#xa;{chapter_id}/&#xa;sub-chapters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="760" y="50" width="130" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f4" value="Initialize&#xa;WebSocket&#xa;Connection:&#xa;ws://.../ws/&#xa;{chapter_id}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="910" y="40" width="120" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f5" value="Subscribe to&#xa;Supabase&#xa;Realtime:&#xa;• sub_chapters&#xa;table changes&#xa;• Filter by&#xa;chapter_id" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="910" y="150" width="120" height="110" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f6" value="Receive WS&#xa;Message:&#xa;• stage&#xa;• message&#xa;• percentage&#xa;• timestamp" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="1050" y="40" width="110" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f7" value="Update UI&#xa;Components:&#xa;• Progress bar&#xa;• Status badge&#xa;• Word count&#xa;• % complete" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="1180" y="40" width="110" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f8" value="Render&#xa;Sub-Chapter&#xa;Details:&#xa;• List view&#xa;• Status icons&#xa;• Progress bars&#xa;• Actions" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="1310" y="40" width="110" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f9" value="Show Active&#xa;Generation:&#xa;• Spinner&#xa;• Stage text&#xa;• Progress %&#xa;• Estimated time" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="1180" y="150" width="110" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f10" value="Handle WS&#xa;Events:&#xa;• onOpen()&#xa;• onMessage()&#xa;• onError()&#xa;• onClose()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="1050" y="150" width="110" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="f11" value="Reconnect&#xa;Logic if&#xa;Disconnected" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane-frontend">
+          <mxGeometry x="1310" y="170" width="110" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Swim Lane: FastAPI Backend -->
+        <mxCell id="lane-backend" value="FASTAPI BACKEND" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="620" width="1520" height="380" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b1" value="chapter_manager.&#xa;get_chapters(&#xa;book_id)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-backend">
+          <mxGeometry x="160" y="50" width="130" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b2" value="Calculate&#xa;Progress for&#xa;Each Chapter:&#xa;• Query&#xa;sub_chapters&#xa;• SUM(word_count)&#xa;• Calculate %" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane-backend">
+          <mxGeometry x="160" y="140" width="130" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b3" value="Return:&#xa;{&#xa;  chapters: [...],&#xa;  progress: {&#xa;    chapter_id: {&#xa;      actual: 2500,&#xa;      target: 3000,&#xa;      percentage: 83,&#xa;      status: 'in_progress'&#xa;    }&#xa;  }&#xa;}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontFamily=Courier New;fontSize=9;" vertex="1" parent="lane-backend">
+          <mxGeometry x="310" y="50" width="180" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b4" value="chapter_manager.&#xa;get_sub_chapters(&#xa;chapter_id)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="lane-backend">
+          <mxGeometry x="760" y="50" width="130" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b5" value="Accept WebSocket&#xa;Connection:&#xa;/ws/{chapter_id}&#xa;&#xa;• Validate chapter&#xa;• Store connection&#xa;• Start heartbeat" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane-backend">
+          <mxGeometry x="910" y="40" width="140" height="110" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b6" value="Monitor Active&#xa;Generation Jobs:&#xa;• Query jobs table&#xa;• Filter by chapter&#xa;• Check status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane-backend">
+          <mxGeometry x="910" y="170" width="140" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b7" value="Send Progress&#xa;Updates via WS:&#xa;{&#xa;  'type': 'progress',&#xa;  'stage': 'generating',&#xa;  'message': '...',&#xa;  'percentage': 60,&#xa;  'timestamp': '...'&#xa;}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontFamily=Courier New;fontSize=9;" vertex="1" parent="lane-backend">
+          <mxGeometry x="1070" y="40" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b8" value="Handle WS&#xa;Disconnection:&#xa;• Remove from&#xa;connection pool&#xa;• Clean up&#xa;resources" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;" vertex="1" parent="lane-backend">
+          <mxGeometry x="1070" y="200" width="120" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b9" value="Return&#xa;Sub-Chapter List:&#xa;{&#xa;  sub_chapters: [&#xa;    {&#xa;      id, title,&#xa;      word_count,&#xa;      status,&#xa;      plot_points&#xa;    }&#xa;  ]&#xa;}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;fontFamily=Courier New;fontSize=9;" vertex="1" parent="lane-backend">
+          <mxGeometry x="760" y="140" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b10" value="Broadcast&#xa;Updates to All&#xa;Connected&#xa;Clients for&#xa;Chapter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;" vertex="1" parent="lane-backend">
+          <mxGeometry x="1250" y="60" width="120" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="b11" value="Handle&#xa;Reconnection:&#xa;• Validate token&#xa;• Resume updates&#xa;• Send current&#xa;state" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-backend">
+          <mxGeometry x="1250" y="170" width="120" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Swim Lane: Supabase Database -->
+        <mxCell id="lane-database" value="SUPABASE DATABASE" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1000" width="1520" height="280" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="d1" value="SELECT&#xa;chapters.*,&#xa;(SELECT&#xa;  COALESCE(&#xa;    SUM(word_count),&#xa;    0)&#xa;  FROM&#xa;    sub_chapters&#xa;  WHERE chapter_id&#xa;    = chapters.id)&#xa;  AS actual_count&#xa;FROM chapters&#xa;WHERE book_id =&#xa;  $1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;fontFamily=Courier New;fontSize=9;" vertex="1" parent="lane-database">
+          <mxGeometry x="160" y="40" width="160" height="200" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="d2" value="SELECT *&#xa;FROM&#xa;  sub_chapters&#xa;WHERE&#xa;  chapter_id = $1&#xa;ORDER BY&#xa;  sub_chapter_number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;fontFamily=Courier New;fontSize=9;" vertex="1" parent="lane-database">
+          <mxGeometry x="760" y="50" width="160" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="d3" value="Supabase Realtime:&#xa;• Listens to INSERT,&#xa;  UPDATE, DELETE on&#xa;  sub_chapters table&#xa;• Broadcasts changes&#xa;  via WebSocket&#xa;• Filters by chapter_id&#xa;• Pushes updates to&#xa;  subscribed clients" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" vertex="1" parent="lane-database">
+          <mxGeometry x="940" y="40" width="180" height="160" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="d4" value="Database Trigger:&#xa;&#xa;update_chapter_&#xa;word_count()&#xa;&#xa;Automatically updates&#xa;chapter.current_word_count&#xa;when sub_chapters&#xa;INSERT/UPDATE/DELETE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;" vertex="1" parent="lane-database">
+          <mxGeometry x="340" y="60" width="170" height="150" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="d5" value="SELECT *&#xa;FROM&#xa;  generation_jobs&#xa;WHERE&#xa;  chapter_id = $1&#xa;  AND status IN&#xa;    ('pending',&#xa;     'processing')&#xa;ORDER BY&#xa;  created_at DESC" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;fontFamily=Courier New;fontSize=9;" vertex="1" parent="lane-database">
+          <mxGeometry x="1140" y="50" width="160" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- Swim Lane: Job Queue -->
+        <mxCell id="lane-queue" value="JOB QUEUE (PG-BOSS)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1280" width="1520" height="180" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="jq1" value="Worker Processing&#xa;Generation Job:&#xa;• Retrieve context&#xa;• Retrieve rules&#xa;• Call LLM&#xa;• Save content" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;" vertex="1" parent="lane-queue">
+          <mxGeometry x="940" y="40" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="jq2" value="Publish Progress&#xa;Updates:&#xa;• 'starting' (10%)&#xa;• 'context' (25%)&#xa;• 'rules' (40%)&#xa;• 'generating' (60%)&#xa;• 'saving' (85%)&#xa;• 'complete' (100%)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;" vertex="1" parent="lane-queue">
+          <mxGeometry x="1100" y="30" width="150" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="jq3" value="On Completion:&#xa;• Update job status&#xa;• Send final WS&#xa;  message&#xa;• Close connection&#xa;• Trigger Supabase&#xa;  Realtime update" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;" vertex="1" parent="lane-queue">
+          <mxGeometry x="1270" y="30" width="140" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Connections -->
+        
+        <!-- User to Frontend -->
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="u1" target="f1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend to Backend -->
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="f1" target="b1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend to Database -->
+        <mxCell id="edge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="b1" target="d1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database to Backend -->
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="d1" target="b2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend to Frontend -->
+        <mxCell id="edge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="b3" target="f2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend to User -->
+        <mxCell id="edge6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="f2" target="u2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- User clicks chapter -->
+        <mxCell id="edge7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="u3" target="f3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Get sub-chapters -->
+        <mxCell id="edge8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="f3" target="b4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="b4" target="d2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="d2" target="b9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Initialize WebSocket -->
+        <mxCell id="edge11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="f4" target="b5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label1" value="WS Handshake" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge11">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Subscribe to Supabase Realtime -->
+        <mxCell id="edge12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" parent="1" source="f5" target="d3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label2" value="Subscribe" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge12">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Backend monitors jobs -->
+        <mxCell id="edge13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="b6" target="d5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Job Queue sends progress -->
+        <mxCell id="edge14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="jq2" target="b7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label3" value="Progress Events" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge14">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Backend broadcasts to frontend -->
+        <mxCell id="edge15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="b10" target="f6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label4" value="WS Message" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge15">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Frontend updates UI -->
+        <mxCell id="edge16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="f6" target="f7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- User sees updates -->
+        <mxCell id="edge17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="f7" target="u4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Render sub-chapter details -->
+        <mxCell id="edge18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="b9" target="f8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="f8" target="u5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Show active generation -->
+        <mxCell id="edge20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="f9" target="u6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Realtime broadcasts -->
+        <mxCell id="edge21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" parent="1" source="d3" target="f7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="1160"/>
+              <mxPoint x="1030" y="900"/>
+              <mxPoint x="1235" y="900"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label5" value="DB Change Event" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge21">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint x="20" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Job completion triggers Realtime -->
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="jq3" target="d3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1340" y="1360"/>
+              <mxPoint x="1340" y="1120"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label6" value="INSERT/UPDATE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge22">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint x="10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Handle errors and reconnection -->
+        <mxCell id="edge23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="f10" target="f11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label7" value="onError" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge23">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;dashed=1;" edge="1" parent="1" source="f11" target="b11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="label8" value="Retry WS" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge24">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;dashed=1;" edge="1" parent="1" source="b11" target="f4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1420" y="980"/>
+              <mxPoint x="1420" y="520"/>
+              <mxPoint x="970" y="520"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label9" value="Resume" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge25">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint x="-40" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Backend to Backend flow for calculation -->
+        <mxCell id="edge26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="b2" target="b3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database trigger connection -->
+        <mxCell id="edge27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6c8ebf;dashed=1;" edge="1" parent="1" source="d4" target="b2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="900"/>
+              <mxPoint x="225" y="900"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label10" value="Auto-update" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge27">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint x="20" y="-10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Backend sends to Job Queue -->
+        <mxCell id="edge28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="b7" target="b10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Job Queue internal -->
+        <mxCell id="edge29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq1" target="jq2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq2" target="jq3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Legend & Documentation -->
+        <mxCell id="legend-title" value="LEGEND &amp; KEY FEATURES" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1480" width="1520" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="legend-colors" value="COLOR CODING:  Purple = User Actions  |  Green = React Frontend  |  Yellow = FastAPI Backend  |  Blue = Supabase Database  |  Gray = Job Queue (pg-boss)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1520" width="1520" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="legend-lines" value="LINE STYLES:  Solid Line = Synchronous Request/Response  |  Dashed Line = Asynchronous/Event-driven (WebSocket, Realtime, Job Queue)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1545" width="1520" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="websocket-protocol" value="WEBSOCKET PROTOCOL:&#xa;• Connection URL: ws://localhost:8000/ws/{chapter_id}&#xa;• Message Format: { 'type': 'progress', 'stage': 'generating', 'message': '...', 'percentage': 60, 'timestamp': '2025-11-03T...' }&#xa;• Stages: 'pending' (0%), 'starting' (10%), 'context' (25%), 'rules' (40-50%), 'generating' (60-80%), 'saving' (85-90%), 'complete' (100%), 'error' (0%)&#xa;• Events: onOpen (connection established), onMessage (progress update), onError (connection failed), onClose (connection terminated)&#xa;• Heartbeat: Backend sends ping every 30s to keep connection alive&#xa;• Reconnection: Exponential backoff (1s, 2s, 4s, 8s, max 30s), manual retry button available" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1580" width="750" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="supabase-realtime" value="SUPABASE REALTIME:&#xa;• Listens to: INSERT, UPDATE, DELETE on sub_chapters table&#xa;• Filter: chapter_id = {chapter_id}&#xa;• Broadcasts: Real-time database changes to all subscribed clients&#xa;• Use Cases:&#xa;  - Word count updates when sub-chapter content saved&#xa;  - Status changes (pending → processing → completed)&#xa;  - New sub-chapters created&#xa;  - Sub-chapters deleted or reordered&#xa;• Latency: &lt; 100ms from database change to client notification&#xa;• Subscription: Frontend subscribes on component mount, unsubscribes on unmount" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1580" width="750" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="progress-calculation" value="PROGRESS CALCULATION LOGIC:&#xa;&#xa;status = 'not_started' IF actual_count == 0&#xa;status = 'complete' IF percentage &gt;= 100&#xa;status = 'over_target' IF percentage &gt; 110&#xa;status = 'in_progress' OTHERWISE&#xa;&#xa;percentage = (actual_word_count / target_word_count) * 100&#xa;&#xa;actual_word_count = SUM(sub_chapters.word_count WHERE chapter_id = $1)&#xa;&#xa;Color Indicators:&#xa;• Green: percentage &gt;= 90%&#xa;• Yellow: 50% &lt;= percentage &lt; 90%&#xa;• Red: percentage &lt; 50%&#xa;• Gray: not_started (actual_count == 0)" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1720" width="750" height="180" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ui-features" value="UI FEATURES:&#xa;&#xa;Chapter Progress Dashboard:&#xa;• Card layout with chapter title, target count, actual count, progress bar&#xa;• Color-coded progress bars (green/yellow/red)&#xa;• Status badges: Not Started, In Progress, Complete, Over Target&#xa;• Click to expand sub-chapter breakdown&#xa;&#xa;Sub-Chapter Detail View:&#xa;• List of all sub-chapters with individual word counts&#xa;• Status icon for each sub-chapter (pending, processing, completed, failed)&#xa;• Progress bar for sub-chapters being generated (live updates)&#xa;• Action buttons: Edit, Regenerate, Delete&#xa;&#xa;Active Generation Indicator:&#xa;• Spinner with stage text ('Generating content...')&#xa;• Progress percentage (updates in real-time via WebSocket)&#xa;• Estimated time remaining (calculated from stage)&#xa;• Cancel button (aborts generation job)" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1720" width="750" height="180" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="database-tables" value="DATABASE TABLES:&#xa;&#xa;chapters:&#xa;• id (uuid PK)&#xa;• book_id (uuid FK)&#xa;• chapter_number (int)&#xa;• title (text)&#xa;• target_word_count (int, nullable)&#xa;• current_word_count (int, auto-calculated by trigger)&#xa;• character_id (uuid FK)&#xa;&#xa;sub_chapters:&#xa;• id (uuid PK)&#xa;• chapter_id (uuid FK)&#xa;• sub_chapter_number (int)&#xa;• title (text)&#xa;• plot_points (text)&#xa;• word_count (int)&#xa;• status (enum: pending, processing, completed, failed)&#xa;&#xa;generation_jobs:&#xa;• id (uuid PK)&#xa;• chapter_id (uuid FK)&#xa;• sub_chapter_id (uuid FK)&#xa;• status (enum: pending, processing, completed, failed)&#xa;• stage (enum: starting, context, rules, generating, saving, complete, error)&#xa;• progress_percentage (int)&#xa;• created_at, updated_at, completed_at (timestamps)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1920" width="750" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="api-endpoints" value="API ENDPOINTS:&#xa;&#xa;GET /api/chapters/{book_id}&#xa;• Returns: List of chapters with calculated progress&#xa;• Response: { chapters: [...], progress: { chapter_id: { actual, target, percentage, status } } }&#xa;&#xa;GET /api/chapters/{chapter_id}/sub-chapters&#xa;• Returns: List of sub-chapters for a chapter&#xa;• Response: { sub_chapters: [{ id, title, word_count, status, plot_points, ... }] }&#xa;&#xa;WS /ws/{chapter_id}&#xa;• WebSocket connection for real-time progress updates&#xa;• Sends: { type: 'progress', stage: '...', message: '...', percentage: 60, timestamp: '...' }&#xa;• Listens for: Active generation jobs for the chapter&#xa;&#xa;GET /api/generation-jobs/{chapter_id}&#xa;• Returns: Active generation jobs for a chapter&#xa;• Response: { jobs: [{ id, status, stage, progress_percentage, estimated_completion }] }&#xa;&#xa;POST /api/generation-jobs/{job_id}/cancel&#xa;• Cancels an active generation job&#xa;• Response: { success: true, message: 'Job cancelled' }" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1920" width="750" height="240" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="performance" value="PERFORMANCE TARGETS:&#xa;• Progress Calculation: &lt; 200ms (optimized with indexed queries + database trigger)&#xa;• WebSocket Latency: &lt; 100ms (real-time updates)&#xa;• Supabase Realtime Latency: &lt; 100ms (database change → client notification)&#xa;• Dashboard Load Time: &lt; 500ms (for books with 50+ chapters)&#xa;• Sub-Chapter Detail Load: &lt; 300ms (for chapters with 20+ sub-chapters)&#xa;• WebSocket Reconnection: &lt; 5s (with exponential backoff)" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2180" width="750" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="error-handling" value="ERROR HANDLING:&#xa;• WebSocket Disconnection: Display 'Connection lost' banner, auto-retry with exponential backoff, manual retry button&#xa;• Generation Failure: Show error message, mark job as failed, allow retry generation&#xa;• Database Error: Show toast notification, log error, rollback transaction&#xa;• Network Error: Display offline indicator, queue requests, retry when online&#xa;• Timeout: AWS Lambda 120s timeout, retry up to 3 times, mark as failed after 3 retries" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="2180" width="750" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer" value="Epic 6 - Page 4 provides real-time progress tracking for sub-chapter generation with dual update mechanisms: WebSocket for generation progress and Supabase Realtime for database changes. This ensures users always see the latest status without manual refresh." style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="40" y="2300" width="1520" height="40" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

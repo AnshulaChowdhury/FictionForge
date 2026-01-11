@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-03T14:05:00.000Z" agent="draw.io" version="24.0.0">
+  <diagram name="Epic 7 - Page 4: Track Version Metadata" id="epic7_page4">
+    <mxGraphModel dx="2800" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4400" pageHeight="3200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- ============================================= -->
+        <!-- TITLE AND METADATA -->
+        <!-- ============================================= -->
+        
+        <mxCell id="title" value="EPIC 7 - PAGE 4: TRACK VERSION METADATA&#xa;&#xa;User Story 4: The system records timestamps, word counts, and change descriptions for comprehensive version tracking.&#xa;&#xa;Flow: User opens version history → System displays comprehensive metadata → User can sort/filter → User can view detailed metadata → Real-time updates&#xa;&#xa;Key Features:&#xa;• Display all version metadata fields (timestamps, word counts, descriptions, AI flags, model names)&#xa;• Sort versions by multiple criteria (date, version number, word count)&#xa;• Filter versions (AI-generated, manual edits, date ranges)&#xa;• View detailed metadata modal for specific version (including snapshot_metadata JSONB)&#xa;• Real-time updates when new versions are created&#xa;• Export metadata to CSV (future feature)" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="4320" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- SWIM LANES -->
+        <!-- ============================================= -->
+        
+        <!-- User Lane -->
+        <mxCell id="lane_user" value="USER" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="4320" height="500" as="geometry"/>
+        </mxCell>
+        
+        <!-- Streamlit Frontend Lane -->
+        <mxCell id="lane_frontend" value="STREAMLIT FRONTEND" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="780" width="4320" height="600" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI Backend Lane -->
+        <mxCell id="lane_backend" value="FASTAPI BACKEND" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1380" width="4320" height="500" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Database Lane -->
+        <mxCell id="lane_database" value="SUPABASE DATABASE" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1880" width="4320" height="400" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Realtime Lane -->
+        <mxCell id="lane_realtime" value="SUPABASE REALTIME" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2280" width="4320" height="400" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- USER FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: Open version history -->
+        <mxCell id="step1_user" value="User clicks 'View Version History' button&#xa;&#xa;Context: Viewing a sub-chapter&#xa;Action: Opens version history modal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_user">
+          <mxGeometry x="180" y="80" width="260" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: View metadata -->
+        <mxCell id="step2_user" value="User views comprehensive version list&#xa;&#xa;Sees:&#xa;• Version numbers&#xa;• Timestamps&#xa;• Word counts&#xa;• Descriptions&#xa;• AI/Manual badges" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_user">
+          <mxGeometry x="800" y="80" width="280" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Apply filters -->
+        <mxCell id="step3_user" value="User applies filters (optional)&#xa;&#xa;Options:&#xa;• AI-generated only&#xa;• Manual edits only&#xa;• Date range&#xa;• Word count range" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_user">
+          <mxGeometry x="1440" y="80" width="280" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Sort versions -->
+        <mxCell id="step4_user" value="User sorts versions (optional)&#xa;&#xa;Options:&#xa;• By version # (desc/asc)&#xa;• By date (newest/oldest)&#xa;• By word count (high/low)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_user">
+          <mxGeometry x="2080" y="80" width="280" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: View detailed metadata -->
+        <mxCell id="step5_user" value="User clicks 'View Details' on specific version&#xa;&#xa;Action: Opens detailed metadata modal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_user">
+          <mxGeometry x="2720" y="80" width="280" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: View snapshot metadata -->
+        <mxCell id="step6_user" value="User views detailed snapshot metadata&#xa;&#xa;Sees:&#xa;• Character used&#xa;• World rules applied&#xa;• Generation parameters&#xa;• Model details&#xa;• Job ID" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_user">
+          <mxGeometry x="3360" y="80" width="280" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 7: Real-time notification -->
+        <mxCell id="step7_user" value="User sees real-time notification&#xa;&#xa;Toast: 'New version created (v6)'&#xa;&#xa;UI: Version list auto-refreshes with new version at top" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_user">
+          <mxGeometry x="3360" y="300" width="300" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- FRONTEND FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: Call API to fetch versions -->
+        <mxCell id="step1_frontend" value="Call API: GET /api/sub-chapters/{sub_chapter_id}/versions&#xa;&#xa;Query Parameters (default):&#xa;• sort_by=created_at&#xa;• sort_order=desc&#xa;• include_metadata=true&#xa;&#xa;Headers:&#xa;• Authorization: Bearer {token}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="180" y="60" width="320" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Display version table -->
+        <mxCell id="step2_frontend" value="Display Version History Table&#xa;&#xa;Columns:&#xa;• Version # (v1, v2, v3...)&#xa;• Created At (formatted datetime)&#xa;• Word Count (formatted: 2,045)&#xa;• Description (truncated to 50 chars)&#xa;• Type (AI 🤖 or Manual âœï¸ badge)&#xa;• Model (Mistral 7B, AWS Bedrock, etc.)&#xa;• Actions (View Details 🔍, Restore 🔄)&#xa;&#xa;Features:&#xa;• Column sorting (click headers)&#xa;• Row highlighting on hover&#xa;• Current version badge (star icon âœ¨)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="680" y="60" width="320" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Display filter controls -->
+        <mxCell id="step3_frontend" value="Display Filter Controls&#xa;&#xa;UI Components:&#xa;• Filter button with dropdown&#xa;• Checkboxes:&#xa;  ☑ AI-generated&#xa;  ☑ Manual edits&#xa;• Date range picker&#xa;• Word count range sliders&#xa;• 'Apply Filters' button&#xa;• 'Clear Filters' button&#xa;&#xa;Active filters shown as chips&#xa;with X to remove" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="1320" y="60" width="300" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Apply filters -->
+        <mxCell id="step4_frontend" value="Apply Filters & Re-fetch&#xa;&#xa;Query Parameters:&#xa;• is_ai_generated=true/false/null&#xa;• created_after=ISO_date&#xa;• created_before=ISO_date&#xa;• min_word_count=integer&#xa;• max_word_count=integer&#xa;&#xa;API Call:&#xa;GET /api/sub-chapters/{id}/versions?filters&#xa;&#xa;Result: Filtered version list" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="1320" y="380" width="300" height="220" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Handle sorting -->
+        <mxCell id="step5_frontend" value="Handle Column Sorting&#xa;&#xa;User clicks column header:&#xa;• Toggle sort order (asc ⬆ / desc ⬇)&#xa;• Update query parameters&#xa;• Re-fetch data with new sort&#xa;&#xa;Sort Options:&#xa;• version_number (default desc)&#xa;• created_at (newest first)&#xa;• word_count (high to low)&#xa;&#xa;Visual: Arrow icon in header" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="1960" y="60" width="300" height="260" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: Display detailed modal -->
+        <mxCell id="step6_frontend" value="Display Detailed Metadata Modal&#xa;&#xa;Modal Layout:&#xa;┌─────────────────────────────┐&#xa;│ Version 3 Details          │ [X]&#xa;├─────────────────────────────┤&#xa;│ Basic Info:                 │&#xa;│ • Version: v3               │&#xa;│ • Created: Nov 3, 2025      │&#xa;│ • Word Count: 2,045         │&#xa;│ • Type: AI-Generated 🤖    │&#xa;│                             │&#xa;│ Generation Details:         │&#xa;│ • Model: Mistral 7B Local   │&#xa;│ • Job ID: uuid-123...       │&#xa;│ • Character: Sarah Chen     │&#xa;│                             │&#xa;│ World Rules Applied (3):    │&#xa;│ • Mars Gravity (0.38g)      │&#xa;│ • Dome Pressure (0.6 atm)   │&#xa;│ • Communication Delay       │&#xa;│                             │&#xa;│ Description:                │&#xa;│ 'Fixed plot consistency...' │&#xa;│                             │&#xa;│ [View Content] [Restore]    │&#xa;└─────────────────────────────┘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="2600" y="60" width="320" height="460" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 7: Parse snapshot metadata -->
+        <mxCell id="step7_frontend" value="Parse snapshot_metadata JSONB&#xa;&#xa;Example JSON:&#xa;{&#xa;  'character_id': 'uuid',&#xa;  'character_name': 'Sarah Chen',&#xa;  'applied_world_rule_ids': [&#xa;    'uuid1', 'uuid2', 'uuid3'&#xa;  ],&#xa;  'generation_params': {&#xa;    'temperature': 0.7,&#xa;    'max_tokens': 2500&#xa;  },&#xa;  'prompt_length': 1542&#xa;}&#xa;&#xa;Display formatted for readability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="3240" y="60" width="340" height="300" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 8: Real-time subscription -->
+        <mxCell id="step8_frontend" value="Subscribe to Real-Time Updates&#xa;&#xa;Channel:&#xa;sub_chapter_versions:sub_chapter_id={id}&#xa;&#xa;Events to listen for:&#xa;• INSERT (new version created)&#xa;• UPDATE (description edited)&#xa;&#xa;Callback:&#xa;On INSERT:&#xa;  • Prepend new version to table&#xa;  • Show toast notification&#xa;  • Highlight new row (animate)&#xa;  • Update version count badge&#xa;&#xa;On UPDATE:&#xa;  • Update corresponding row&#xa;  • Animate change (flash effect)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="3240" y="400" width="340" height="300" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- BACKEND FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: Receive request -->
+        <mxCell id="step1_backend" value="Receive GET Request&#xa;&#xa;Endpoint:&#xa;/api/sub-chapters/{sub_chapter_id}/versions&#xa;&#xa;Query Parameters:&#xa;• sort_by (optional, default: created_at)&#xa;• sort_order (optional, default: desc)&#xa;• is_ai_generated (optional)&#xa;• created_after (optional)&#xa;• created_before (optional)&#xa;• min_word_count (optional)&#xa;• max_word_count (optional)&#xa;• include_metadata (optional, default: true)&#xa;&#xa;Extract:&#xa;• sub_chapter_id from path&#xa;• user_id from JWT token&#xa;• all query params" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="180" y="40" width="380" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Validate authorization -->
+        <mxCell id="step2_backend" value="Validate User Authorization" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_backend">
+          <mxGeometry x="700" y="120" width="180" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Authorization error -->
+        <mxCell id="auth_error" value="Return 403 Forbidden&#xa;&#xa;{&#xa;  'error': 'Unauthorized',&#xa;  'message': 'Access denied'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="680" y="340" width="220" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Build query -->
+        <mxCell id="step3_backend" value="Build Database Query&#xa;&#xa;Base Query:&#xa;SELECT * FROM sub_chapter_versions&#xa;WHERE sub_chapter_id = $1&#xa;&#xa;Add filters (if provided):&#xa;• AND is_ai_generated = $2&#xa;• AND created_at >= $3&#xa;• AND created_at <= $4&#xa;• AND word_count >= $5&#xa;• AND word_count <= $6&#xa;&#xa;Add sorting:&#xa;ORDER BY {sort_by} {sort_order}&#xa;&#xa;Parameters array built dynamically" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="1040" y="40" width="380" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Execute query -->
+        <mxCell id="step4_backend" value="Execute Query & Process Results&#xa;&#xa;1. Call database layer&#xa;2. Receive version records&#xa;3. If include_metadata=true:&#xa;   • Parse snapshot_metadata JSONB&#xa;   • Lookup character names&#xa;   • Lookup world rule titles&#xa;   • Enrich response&#xa;4. Format timestamps (ISO 8601)&#xa;5. Calculate relative times&#xa;   ('2 hours ago', '3 days ago')&#xa;6. Add computed fields:&#xa;   • is_current (current_version_id match)&#xa;   • version_label ('v1', 'v2', etc.)&#xa;7. Build response payload" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="1560" y="40" width="400" height="320" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Return response -->
+        <mxCell id="step5_backend" value="Return 200 OK with Enriched Data&#xa;&#xa;Response:&#xa;{&#xa;  'total_count': 5,&#xa;  'current_version_id': 'uuid',&#xa;  'versions': [&#xa;    {&#xa;      'id': 'uuid',&#xa;      'version_number': 5,&#xa;      'version_label': 'v5',&#xa;      'content': 'text...',&#xa;      'word_count': 2045,&#xa;      'is_ai_generated': true,&#xa;      'generated_by_model': 'Mistral 7B',&#xa;      'generation_job_id': 'uuid',&#xa;      'change_description': 'Fixed plot...',&#xa;      'created_at': '2025-11-03T14:00:00Z',&#xa;      'created_at_relative': '2 hours ago',&#xa;      'is_current': true,&#xa;      'snapshot_metadata': {&#xa;        'character_id': 'uuid',&#xa;        'character_name': 'Sarah Chen',&#xa;        'applied_world_rules': [&#xa;          {&#xa;            'id': 'uuid1',&#xa;            'title': 'Mars Gravity'&#xa;          }&#xa;        ]&#xa;      }&#xa;    },&#xa;    { ... more versions ... }&#xa;  ]&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="2100" y="40" width="480" height="420" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- DATABASE FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: Execute SELECT -->
+        <mxCell id="step1_database" value="Execute SELECT Query with Filters&#xa;&#xa;Example Query:&#xa;SELECT &#xa;  scv.*,&#xa;  sc.current_version_id,&#xa;  c.name as character_name,&#xa;  u.email as created_by_email&#xa;FROM sub_chapter_versions scv&#xa;JOIN sub_chapters sc ON scv.sub_chapter_id = sc.id&#xa;LEFT JOIN characters c ON (scv.snapshot_metadata->>'character_id')::uuid = c.id&#xa;LEFT JOIN auth.users u ON scv.created_by_user_id = u.id&#xa;WHERE scv.sub_chapter_id = $1&#xa;  AND ($2::boolean IS NULL OR scv.is_ai_generated = $2)&#xa;  AND ($3::timestamp IS NULL OR scv.created_at >= $3)&#xa;  AND ($4::timestamp IS NULL OR scv.created_at <= $4)&#xa;  AND ($5::int IS NULL OR scv.word_count >= $5)&#xa;  AND ($6::int IS NULL OR scv.word_count <= $6)&#xa;ORDER BY created_at DESC;&#xa;&#xa;RLS automatically applied (user must own trilogy)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane_database">
+          <mxGeometry x="700" y="40" width="700" height="340" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Lookup world rules -->
+        <mxCell id="step2_database" value="Lookup World Rule Details (if requested)&#xa;&#xa;For each version with applied_world_rule_ids in snapshot_metadata:&#xa;&#xa;SELECT id, title, category&#xa;FROM world_rules&#xa;WHERE id = ANY($1::uuid[]);&#xa;&#xa;Parameters:&#xa;$1: array of rule IDs from snapshot_metadata&#xa;&#xa;Result: Enriched world rule details for response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_database">
+          <mxGeometry x="1540" y="40" width="440" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Return results -->
+        <mxCell id="step3_database" value="Return Query Results&#xa;&#xa;Result Set:&#xa;• All matching version records&#xa;• Joined character names&#xa;• Creator email addresses&#xa;• snapshot_metadata as JSONB&#xa;• All metadata fields populated&#xa;&#xa;Typical response time: < 50ms&#xa;(Indexed on sub_chapter_id and created_at)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_database">
+          <mxGeometry x="2100" y="40" width="380" height="260" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- REALTIME FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: New version created -->
+        <mxCell id="step1_realtime" value="New Version Created (Epic 6 Integration)&#xa;&#xa;When sub-chapter generation completes:&#xa;1. Version saved to sub_chapter_versions&#xa;2. INSERT trigger fires&#xa;3. Realtime broadcasts to channel:&#xa;   sub_chapter_versions:sub_chapter_id={id}&#xa;&#xa;Event Payload:&#xa;{&#xa;  'event': 'version_created',&#xa;  'eventType': 'INSERT',&#xa;  'new': {&#xa;    'id': 'uuid',&#xa;    'sub_chapter_id': 'uuid',&#xa;    'version_number': 6,&#xa;    'word_count': 2100,&#xa;    'is_ai_generated': true,&#xa;    'generated_by_model': 'Mistral 7B',&#xa;    'created_at': '2025-11-03T16:30:00Z',&#xa;    'snapshot_metadata': { ... }&#xa;  }&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane_realtime">
+          <mxGeometry x="180" y="40" width="520" height="340" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Broadcast to clients -->
+        <mxCell id="step2_realtime" value="Broadcast to All Subscribed Clients&#xa;&#xa;Clients listening to this sub-chapter receive:&#xa;&#xa;1. Full new version record&#xa;2. Event type: INSERT&#xa;3. Timestamp of change&#xa;&#xa;Clients can:&#xa;• Add new row to version table&#xa;• Show notification toast&#xa;• Update version count badge&#xa;• Highlight new version (animation)&#xa;&#xa;Latency: Typically < 100ms from database insert" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=10;fontFamily=Arial;align=left;" vertex="1" parent="lane_realtime">
+          <mxGeometry x="840" y="40" width="480" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Frontend handles -->
+        <mxCell id="step3_realtime" value="Frontend Handles Real-Time Event&#xa;&#xa;if (versionHistoryModalOpen) {&#xa;  // Prepend new version to table&#xa;  versions.unshift(newVersion);&#xa;  &#xa;  // Animate new row&#xa;  animateNewRow(newVersion.id);&#xa;  &#xa;  // Show toast&#xa;  showToast('New version created (v' + &#xa;            newVersion.version_number + ')');&#xa;  &#xa;  // Update count badge&#xa;  updateVersionCount(versions.length);&#xa;  &#xa;  // Re-sort if needed&#xa;  if (currentSort !== 'created_at_desc') {&#xa;    applySorting();&#xa;  }&#xa;}&#xa;&#xa;UI Effect:&#xa;• New row appears at top (green flash)&#xa;• Toast notification (3 seconds)&#xa;• Smooth scroll to new version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane_realtime">
+          <mxGeometry x="1460" y="40" width="480" height="340" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Update broadcast -->
+        <mxCell id="step4_realtime" value="Description Update Broadcast (from Page 3)&#xa;&#xa;When user edits version description:&#xa;1. UPDATE trigger fires&#xa;2. Realtime broadcasts UPDATE event&#xa;&#xa;Event Payload:&#xa;{&#xa;  'event': 'version_updated',&#xa;  'eventType': 'UPDATE',&#xa;  'old': { ... old record ... },&#xa;  'new': {&#xa;    'id': 'uuid',&#xa;    'change_description': 'new text',&#xa;    'updated_at': '2025-11-03T16:35:00Z',&#xa;    ... rest of record ...&#xa;  }&#xa;}&#xa;&#xa;Frontend Response:&#xa;• Find matching row in table&#xa;• Update description column&#xa;• Animate change (yellow flash)&#xa;• Show toast: 'Description updated'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=9;fontFamily=Courier New;align=left;" vertex="1" parent="lane_realtime">
+          <mxGeometry x="2080" y="40" width="480" height="340" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- FLOW ARROWS -->
+        <!-- ============================================= -->
+        
+        <!-- User to Frontend -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step1_user" target="step1_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step1_frontend" target="step2_user">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step2_user" target="step3_user">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step3_user" target="step4_user">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step4_user" target="step5_user">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step5_user" target="step6_user">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend flow -->
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0277BD;" edge="1" parent="1" source="step1_frontend" target="step2_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0277BD;" edge="1" parent="1" source="step2_frontend" target="step3_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0277BD;" edge="1" parent="1" source="step3_frontend" target="step4_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0277BD;" edge="1" parent="1" source="step2_frontend" target="step5_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0277BD;" edge="1" parent="1" source="step2_frontend" target="step6_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0277BD;" edge="1" parent="1" source="step6_frontend" target="step7_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0277BD;" edge="1" parent="1" source="step2_frontend" target="step8_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend to Backend -->
+        <mxCell id="arrow14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E65100;" edge="1" parent="1" source="step1_frontend" target="step1_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend flow -->
+        <mxCell id="arrow15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E65100;" edge="1" parent="1" source="step1_backend" target="step2_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;dashed=1;" edge="1" parent="1" source="step2_backend" target="auth_error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow16_label" value="Unauthorized" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="780" y="1580" width="80" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;" edge="1" parent="1" source="step2_backend" target="step3_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow17_label" value="Authorized" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="920" y="1520" width="80" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E65100;" edge="1" parent="1" source="step3_backend" target="step4_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E65100;" edge="1" parent="1" source="step4_backend" target="step5_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend to Database -->
+        <mxCell id="arrow20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6A1B9A;" edge="1" parent="1" source="step3_backend" target="step1_database">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6A1B9A;" edge="1" parent="1" source="step1_database" target="step2_database">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6A1B9A;" edge="1" parent="1" source="step2_database" target="step3_database">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database back to Backend -->
+        <mxCell id="arrow23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6A1B9A;dashed=1;" edge="1" parent="1" source="step3_database" target="step4_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow23_label" value="Return results" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2020" y="1600" width="100" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend to Frontend (response) -->
+        <mxCell id="arrow24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E65100;dashed=1;" edge="1" parent="1" source="step5_backend" target="step2_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Realtime flow -->
+        <mxCell id="arrow25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00695C;" edge="1" parent="1" source="step1_realtime" target="step2_realtime">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00695C;" edge="1" parent="1" source="step2_realtime" target="step3_realtime">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Realtime to Frontend -->
+        <mxCell id="arrow27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00695C;dashed=1;" edge="1" parent="1" source="step3_realtime" target="step7_user">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow27_label" value="Real-time update" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2000" y="960" width="120" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- ANNOTATIONS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="annotation1" value="âœ… METADATA FIELDS TRACKED:&#xa;&#xa;Basic Fields:&#xa;• id (UUID)&#xa;• sub_chapter_id (FK)&#xa;• version_number (INT)&#xa;• content (TEXT)&#xa;• word_count (INT)&#xa;• created_at (TIMESTAMP)&#xa;• updated_at (TIMESTAMP)&#xa;&#xa;Generation Fields:&#xa;• is_ai_generated (BOOLEAN)&#xa;• generated_by_model (VARCHAR)&#xa;  - 'Mistral 7B Local'&#xa;  - 'AWS Bedrock Claude'&#xa;  - 'Manual Edit'&#xa;  - etc.&#xa;• generation_job_id (FK to generation_jobs)&#xa;&#xa;User Fields:&#xa;• change_description (TEXT, max 1000 chars)&#xa;• created_by_user_id (FK to auth.users)&#xa;&#xa;Snapshot Fields (JSONB):&#xa;• snapshot_metadata:&#xa;  - character_id&#xa;  - character_name&#xa;  - applied_world_rule_ids[]&#xa;  - generation_params&#xa;  - prompt_length&#xa;  - temperature&#xa;  - max_tokens" style="text;html=1;strokeColor=#2E7D32;fillColor=#E8F5E9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2740" width="600" height="420" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation2" value="ðŸ"Š API SPECIFICATION:&#xa;&#xa;Endpoint: GET /api/sub-chapters/{sub_chapter_id}/versions&#xa;&#xa;Query Parameters:&#xa;• sort_by: 'version_number' | 'created_at' | 'word_count'&#xa;• sort_order: 'asc' | 'desc'&#xa;• is_ai_generated: true | false (optional filter)&#xa;• created_after: ISO datetime (optional filter)&#xa;• created_before: ISO datetime (optional filter)&#xa;• min_word_count: integer (optional filter)&#xa;• max_word_count: integer (optional filter)&#xa;• include_metadata: boolean (default: true)&#xa;&#xa;Response (200 OK):&#xa;{&#xa;  'total_count': 5,&#xa;  'current_version_id': 'uuid',&#xa;  'filters_applied': {&#xa;    'is_ai_generated': true,&#xa;    'created_after': '2025-11-01T00:00:00Z'&#xa;  },&#xa;  'versions': [&#xa;    {&#xa;      'id': 'uuid',&#xa;      'version_number': 5,&#xa;      'version_label': 'v5',&#xa;      'content': 'full text...',&#xa;      'word_count': 2045,&#xa;      'is_ai_generated': true,&#xa;      'generated_by_model': 'Mistral 7B',&#xa;      'generation_job_id': 'uuid',&#xa;      'change_description': 'Fixed plot consistency',&#xa;      'created_at': '2025-11-03T14:00:00Z',&#xa;      'created_at_relative': '2 hours ago',&#xa;      'is_current': true,&#xa;      'created_by_email': 'user@example.com',&#xa;      'snapshot_metadata': { ... enriched ... }&#xa;    }&#xa;  ]&#xa;}&#xa;&#xa;Errors:&#xa;• 400: Invalid query parameters&#xa;• 403: Unauthorized&#xa;• 404: Sub-chapter not found" style="text;html=1;strokeColor=#E65100;fillColor=#FFF3E0;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="740" y="2740" width="800" height="500" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation3" value="ðŸ'¡ UI/UX FEATURES:&#xa;&#xa;Version History Table:&#xa;┌────────────────────────────────────────────────────────────────────────────┐&#xa;│ Filters: [AI Only] [Manual Only] [Date Range] [Word Count]   Sort: [▼Date] │&#xa;├──────┬──────────────┬───────┬────────────────┬──────────┬─────────────────┤&#xa;│ Ver  │ Created      │ Words │ Description    │ Type     │ Actions         │&#xa;├──────┼──────────────┼───────┼────────────────┼──────────┼─────────────────┤&#xa;│ âœ¨v5 │ 2 hours ago  │ 2,045 │ Fixed plot...  │ AI 🤖   │ ðŸ" Details ðŸ"„ │&#xa;│  v4  │ 1 day ago    │ 2,010 │ Changed POV... │ Manual âœï¸│ ðŸ" Details ðŸ"„ │&#xa;│  v3  │ 2 days ago   │ 1,998 │ Initial gen... │ AI 🤖   │ ðŸ" Details ðŸ"„ │&#xa;│  v2  │ 5 days ago   │ 1,950 │ [No descrip...│ AI 🤖   │ ðŸ" Details ðŸ"„ │&#xa;│  v1  │ 1 week ago   │ 1,920 │ First draft    │ AI 🤖   │ ðŸ" Details ðŸ"„ │&#xa;└──────┴──────────────┴───────┴────────────────┴──────────┴─────────────────┘&#xa;&#xa;Features:&#xa;• Click column headers to sort&#xa;• Current version has âœ¨ star badge&#xa;• Hover shows tooltip with full description&#xa;• Filter chips show active filters&#xa;• Real-time animation for new versions (green flash)&#xa;• Pagination for >20 versions&#xa;&#xa;Detailed Metadata Modal:&#xa;┌────────────────────────────────────────┐&#xa;│ Version 3 Details                  [X] │&#xa;├────────────────────────────────────────┤&#xa;│ Basic Information                      │&#xa;│ • Version: v3                          │&#xa;│ • Created: Nov 2, 2025 at 6:15 PM      │&#xa;│ • Word Count: 1,998 words              │&#xa;│ • Type: AI-Generated 🤖               │&#xa;│ • Is Current: No                       │&#xa;│                                        │&#xa;│ Generation Details                     │&#xa;│ • Model: Mistral 7B Local              │&#xa;│ • Job ID: 8f3a2b1c-...                 │&#xa;│ • Temperature: 0.7                     │&#xa;│ • Max Tokens: 2500                     │&#xa;│ • Prompt Length: 1,542 tokens          │&#xa;│                                        │&#xa;│ Character Context                      │&#xa;│ • Character: Sarah Chen                │&#xa;│ • Character ID: 4e5f6a7b-...           │&#xa;│                                        │&#xa;│ World Rules Applied (3)                │&#xa;│ • Mars Gravity (Physics)               │&#xa;│ • Dome Pressure (Environment)          │&#xa;│ • Communication Delay (Technology)     │&#xa;│                                        │&#xa;│ Change Description                     │&#xa;│ 'Fixed plot consistency with previous  │&#xa;│  chapter. Added more character depth.' │&#xa;│                                        │&#xa;│ [View Full Content] [Restore Version]  │&#xa;└────────────────────────────────────────┘" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="2740" width="760" height="680" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation4" value="ðŸ"„ REAL-TIME UPDATES:&#xa;&#xa;Subscription Setup (Frontend):&#xa;&#xa;const channel = supabase&#xa;  .channel('sub_chapter_versions')&#xa;  .on('postgres_changes', {&#xa;    event: 'INSERT',&#xa;    schema: 'public',&#xa;    table: 'sub_chapter_versions',&#xa;    filter: `sub_chapter_id=eq.${subChapterId}`&#xa;  }, (payload) => {&#xa;    // New version created&#xa;    handleNewVersion(payload.new);&#xa;  })&#xa;  .on('postgres_changes', {&#xa;    event: 'UPDATE',&#xa;    schema: 'public',&#xa;    table: 'sub_chapter_versions',&#xa;    filter: `sub_chapter_id=eq.${subChapterId}`&#xa;  }, (payload) => {&#xa;    // Version updated (description edited)&#xa;    handleVersionUpdate(payload.new);&#xa;  })&#xa;  .subscribe();&#xa;&#xa;Event Handlers:&#xa;&#xa;function handleNewVersion(newVersion) {&#xa;  if (!versionHistoryModalOpen) return;&#xa;  &#xa;  // Prepend to list&#xa;  versions.unshift(newVersion);&#xa;  &#xa;  // Animate (green flash)&#xa;  animateRow(newVersion.id, 'insert');&#xa;  &#xa;  // Show toast&#xa;  toast.success(&#xa;    `New version created (v${newVersion.version_number})`,&#xa;    { duration: 3000 }&#xa;  );&#xa;  &#xa;  // Update count badge&#xa;  updateVersionCount(versions.length);&#xa;}&#xa;&#xa;function handleVersionUpdate(updatedVersion) {&#xa;  if (!versionHistoryModalOpen) return;&#xa;  &#xa;  // Find and update row&#xa;  const index = versions.findIndex(&#xa;    v => v.id === updatedVersion.id&#xa;  );&#xa;  &#xa;  if (index !== -1) {&#xa;    versions[index] = updatedVersion;&#xa;    &#xa;    // Animate (yellow flash)&#xa;    animateRow(updatedVersion.id, 'update');&#xa;    &#xa;    // Show toast&#xa;    toast.info('Version description updated');&#xa;  }&#xa;}&#xa;&#xa;Benefits:&#xa;âœ" No manual refresh needed&#xa;âœ" Multiple users see changes instantly&#xa;âœ" Smooth animations enhance UX&#xa;âœ" Low latency (<100ms typically)" style="text;html=1;strokeColor=#00695C;fillColor=#E0F2F1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="2420" y="2740" width="660" height="720" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation5" value="ðŸ"Š SORTING & FILTERING:&#xa;&#xa;Sort Options:&#xa;1. Version Number&#xa;   • Descending (v5, v4, v3...) - Default&#xa;   • Ascending (v1, v2, v3...)&#xa;&#xa;2. Created At (Date/Time)&#xa;   • Newest First - Default&#xa;   • Oldest First&#xa;&#xa;3. Word Count&#xa;   • Highest to Lowest&#xa;   • Lowest to Highest&#xa;&#xa;Filter Options:&#xa;1. Generation Type&#xa;   ☑ AI-Generated (🤖)&#xa;   ☑ Manual Edits (✏️)&#xa;   (Can select both or one)&#xa;&#xa;2. Date Range&#xa;   From: [Date Picker]&#xa;   To: [Date Picker]&#xa;   Presets:&#xa;   • Today&#xa;   • Last 7 Days&#xa;   • Last 30 Days&#xa;   • All Time&#xa;&#xa;3. Word Count Range&#xa;   Min: [Slider: 0] ─────●── [3000]&#xa;   Max: [Slider: 0] ───────●─ [3000]&#xa;&#xa;4. Has Description&#xa;   ☐ Only versions with descriptions&#xa;&#xa;Active Filters Display:&#xa;[AI-Generated ✕] [Last 7 Days ✕] [> 2000 words ✕]&#xa;&#xa;Implementation:&#xa;• Filters applied on backend (efficient)&#xa;• Query params updated in URL&#xa;• State preserved on modal close/reopen&#xa;• Clear all filters button&#xa;• Filter count badge on filter button" style="text;html=1;strokeColor=#6A1B9A;fillColor=#F3E5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3140" y="2740" width="520" height="620" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation6" value="ðŸ"— INTEGRATION POINTS:&#xa;&#xa;Epic 6 Integration:&#xa;• Version creation happens in Epic 6&#xa;  (Sub-Chapter Creation & Regeneration)&#xa;• Epic 7 receives real-time broadcasts&#xa;• Shared database table: sub_chapter_versions&#xa;&#xa;Epic 5A Integration:&#xa;• Character context stored in snapshot_metadata&#xa;• Character names displayed in version list&#xa;• Detailed modal shows character used&#xa;&#xa;Epic 5B Integration:&#xa;• World rules stored in snapshot_metadata&#xa;• Rule titles fetched for display&#xa;• Detailed modal shows rules applied&#xa;&#xa;Page 3 Integration:&#xa;• Description editing updates same records&#xa;• Real-time updates shared between pages&#xa;• Same subscription channel used&#xa;&#xa;Future Integrations:&#xa;• Epic 8: Version comparison side-by-side&#xa;• Epic 12: Export metadata to CSV/JSON" style="text;html=1;strokeColor=#FF6F00;fillColor=#FFF3E0;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3720" y="2740" width="600" height="380" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

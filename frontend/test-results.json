@@ -1,0 +1,2559 @@
+{
+  "config": {
+    "configFile": "/Volumes/T7/NovelApp/frontend/playwright.config.ts",
+    "rootDir": "/Volumes/T7/NovelApp/frontend/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Volumes/T7/NovelApp/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Volumes/T7/NovelApp/frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Volumes/T7/NovelApp/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Volumes/T7/NovelApp/frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Volumes/T7/NovelApp/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Volumes/T7/NovelApp/frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Volumes/T7/NovelApp/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Volumes/T7/NovelApp/frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Volumes/T7/NovelApp/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Volumes/T7/NovelApp/frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 4,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:5173",
+      "reuseExistingServer": true,
+      "stdout": "ignore",
+      "stderr": "pipe"
+    }
+  },
+  "suites": [
+    {
+      "title": "auth.spec.ts",
+      "file": "auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication",
+          "file": "auth.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display login page on initial load",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1285,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:36.733Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-845e8a4f6f561a7eefd8",
+              "file": "auth.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 11683,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:36.717Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-74672ea8d7d6753c2f5c",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "should show error with invalid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 1436,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor 'i, [role=\"alert\"]'\n    at new RegExp (<anonymous>)\n    at createTextMatcher (<anonymous>:7912:16)\n    at Object.queryAll (<anonymous>:6816:33)\n    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\n    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\n    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor 'i, [role=\"alert\"]'\n    at new RegExp (<anonymous>)\n    at createTextMatcher (<anonymous>:7912:16)\n    at Object.queryAll (<anonymous>:6816:33)\n    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\n    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\n    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n\n    at createTextMatcher (<anonymous>:7912:16)\n    at Object.queryAll (<anonymous>:6816:33)\n    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\n    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\n    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80",
+                        "location": {
+                          "file": "<anonymous>",
+                          "column": 16,
+                          "line": 7912
+                        }
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "<anonymous>",
+                            "column": 16,
+                            "line": 7912
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor 'i, [role=\"alert\"]'\n\u001b[2m    at new RegExp (<anonymous>)\u001b[22m\n\u001b[2m    at createTextMatcher (<anonymous>:7912:16)\u001b[22m\n\u001b[2m    at Object.queryAll (<anonymous>:6816:33)\u001b[22m\n\u001b[2m    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\u001b[22m\n\u001b[2m    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\u001b[22m\n\u001b[2m    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\u001b[22m\n\u001b[2m    at UtilityScript.evaluate (<anonymous>:292:16)\u001b[22m\n\u001b[2m    at UtilityScript.<anonymous> (<anonymous>:1:44)\u001b[22m\n\n\u001b[2mCall log:\u001b[22m\n\u001b[2m\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[2m\u001b[22m\n\u001b[2m\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[2m\u001b[22m\n\n\u001b[2m    at createTextMatcher (<anonymous>:7912:16)\u001b[22m\n\u001b[2m    at Object.queryAll (<anonymous>:6816:33)\u001b[22m\n\u001b[2m    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\u001b[22m\n\u001b[2m    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\u001b[22m\n\u001b[2m    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\u001b[22m\n\u001b[2m    at UtilityScript.evaluate (<anonymous>:292:16)\u001b[22m\n\u001b[2m    at UtilityScript.<anonymous> (<anonymous>:1:44)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:36.727Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "<anonymous>",
+                        "column": 16,
+                        "line": 7912
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e046cac58ea6a3e49332",
+              "file": "auth.spec.ts",
+              "line": 30,
+              "column": 3
+            },
+            {
+              "title": "should logout successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 11697,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:36.723Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e4d5ddc7448b856855a2",
+              "file": "auth.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "should protect authenticated routes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5490,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    2 × unexpected value \"http://localhost:5173/dashboard\"\u001b[22m\n\u001b[2m    7 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    2 × unexpected value \"http://localhost:5173/dashboard\"\u001b[22m\n\u001b[2m    7 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                          "column": 24,
+                          "line": 59
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                            "column": 24,
+                            "line": 59
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    2 × unexpected value \"http://localhost:5173/dashboard\"\u001b[22m\n\u001b[2m    7 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:40.819Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                        "column": 24,
+                        "line": 59
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-3b9c920bf6fc88bcb122",
+              "file": "auth.spec.ts",
+              "line": 54,
+              "column": 3
+            },
+            {
+              "title": "should display login page on initial load",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2913,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:51.558Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-888e5b8baaa7260704e0",
+              "file": "auth.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 13653,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:51.557Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-firefox/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-firefox/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-f1f93290ee72148f8ff6",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "should show error with invalid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 3667,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\ninvalid regular expression flag ,\ncreateTextMatcher@debugger eval code:7912:16\nqueryAll@debugger eval code:6816:50\n_queryEngineAll@debugger eval code:6789:49\nquerySelectorAll@debugger eval code:6776:30\n@debugger eval code line 290 > eval:2:42\nevaluate@debugger eval code:292:16\n@debugger eval code:1:44\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\ninvalid regular expression flag ,\ncreateTextMatcher@debugger eval code:7912:16\nqueryAll@debugger eval code:6816:50\n_queryEngineAll@debugger eval code:6789:49\nquerySelectorAll@debugger eval code:6776:30\n@debugger eval code line 290 > eval:2:42\nevaluate@debugger eval code:292:16\n@debugger eval code:1:44\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n\n    at createTextMatcher@debugger eval code:7912:16\n    at queryAll@debugger eval code:6816:50\n    at _queryEngineAll@debugger eval code:6789:49\n    at querySelectorAll@debugger eval code:6776:30\n    at @debugger eval code line 290 > eval:2:42\n    at evaluate@debugger eval code:292:16\n    at @debugger eval code:1:44\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80",
+                        "location": {
+                          "file": "createTextMatcher@debugger eval code",
+                          "column": 16,
+                          "line": 7912
+                        }
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "createTextMatcher@debugger eval code",
+                            "column": 16,
+                            "line": 7912
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\ninvalid regular expression flag ,\ncreateTextMatcher@debugger eval code:7912:16\nqueryAll@debugger eval code:6816:50\n_queryEngineAll@debugger eval code:6789:49\nquerySelectorAll@debugger eval code:6776:30\n@debugger eval code line 290 > eval:2:42\nevaluate@debugger eval code:292:16\n@debugger eval code:1:44\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n\n\u001b[2m    at createTextMatcher@debugger eval code:7912:16\u001b[22m\n\u001b[2m    at queryAll@debugger eval code:6816:50\u001b[22m\n\u001b[2m    at _queryEngineAll@debugger eval code:6789:49\u001b[22m\n\u001b[2m    at querySelectorAll@debugger eval code:6776:30\u001b[22m\n\u001b[2m    at @debugger eval code line 290 > eval:2:42\u001b[22m\n\u001b[2m    at evaluate@debugger eval code:292:16\u001b[22m\n\u001b[2m    at @debugger eval code:1:44\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:53.095Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-firefox/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-firefox/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "createTextMatcher@debugger eval code",
+                        "column": 16,
+                        "line": 7912
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-a47a3be73ffc55eedc4e",
+              "file": "auth.spec.ts",
+              "line": 30,
+              "column": 3
+            },
+            {
+              "title": "should logout successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 12614,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:00.117Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-firefox/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-firefox/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-3e7518451a69732b37f5",
+              "file": "auth.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "should protect authenticated routes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 6754,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                          "column": 24,
+                          "line": 59
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                            "column": 24,
+                            "line": 59
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:58.863Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-firefox/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-firefox/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                        "column": 24,
+                        "line": 59
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-f9336f9a17e9a88c61a9",
+              "file": "auth.spec.ts",
+              "line": 54,
+              "column": 3
+            },
+            {
+              "title": "should display login page on initial load",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 2815,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:11.253Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-94a9bb05a08af7467bbc",
+              "file": "auth.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 12934,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:16.160Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-webkit/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-27139771fd55b5b0b5e9",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "should show error with invalid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 2937,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor.\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor.\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                          "column": 80,
+                          "line": 38
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m\n \u001b[90m 37 |\u001b[39m     \u001b[90m// Should show error message\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=/Invalid.*credentials/i, [role=\"alert\"]'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m     \u001b[90m// Should stay on login page\u001b[39m\n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                            "column": 80,
+                            "line": 38
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor.\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n\n\n\u001b[0m \u001b[90m 36 |\u001b[39m\n \u001b[90m 37 |\u001b[39m     \u001b[90m// Should show error message\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=/Invalid.*credentials/i, [role=\"alert\"]'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m     \u001b[90m// Should stay on login page\u001b[39m\n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\u001b[0m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:16.160Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-webkit/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                        "column": 80,
+                        "line": 38
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-3b75a1f2e450722f02e4",
+              "file": "auth.spec.ts",
+              "line": 30,
+              "column": 3
+            },
+            {
+              "title": "should logout successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 10809,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:20.634Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-webkit/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-20ef2eca5621610fcbcb",
+              "file": "auth.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "should protect authenticated routes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6056,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                          "column": 24,
+                          "line": 59
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                            "column": 24,
+                            "line": 59
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:21.599Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-webkit/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                        "column": 24,
+                        "line": 59
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e472ee8c5b9249a8b6ff",
+              "file": "auth.spec.ts",
+              "line": 54,
+              "column": 3
+            },
+            {
+              "title": "should display login page on initial load",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 702,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:31.138Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-8dd64596793ed230ecfa",
+              "file": "auth.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 19,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 10787,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:31.942Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-Mobile-Chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-Mobile-Chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-Mobile-Chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-18110a7e002c2a0f12cf",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "should show error with invalid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 514,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor 'i, [role=\"alert\"]'\n    at new RegExp (<anonymous>)\n    at createTextMatcher (<anonymous>:7912:16)\n    at Object.queryAll (<anonymous>:6816:33)\n    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\n    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\n    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor 'i, [role=\"alert\"]'\n    at new RegExp (<anonymous>)\n    at createTextMatcher (<anonymous>:7912:16)\n    at Object.queryAll (<anonymous>:6816:33)\n    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\n    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\n    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n\n    at createTextMatcher (<anonymous>:7912:16)\n    at Object.queryAll (<anonymous>:6816:33)\n    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\n    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\n    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80",
+                        "location": {
+                          "file": "<anonymous>",
+                          "column": 16,
+                          "line": 7912
+                        }
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "<anonymous>",
+                            "column": 16,
+                            "line": 7912
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor 'i, [role=\"alert\"]'\n\u001b[2m    at new RegExp (<anonymous>)\u001b[22m\n\u001b[2m    at createTextMatcher (<anonymous>:7912:16)\u001b[22m\n\u001b[2m    at Object.queryAll (<anonymous>:6816:33)\u001b[22m\n\u001b[2m    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\u001b[22m\n\u001b[2m    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\u001b[22m\n\u001b[2m    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\u001b[22m\n\u001b[2m    at UtilityScript.evaluate (<anonymous>:292:16)\u001b[22m\n\u001b[2m    at UtilityScript.<anonymous> (<anonymous>:1:44)\u001b[22m\n\n\u001b[2mCall log:\u001b[22m\n\u001b[2m\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[2m\u001b[22m\n\u001b[2m\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[2m\u001b[22m\n\n\u001b[2m    at createTextMatcher (<anonymous>:7912:16)\u001b[22m\n\u001b[2m    at Object.queryAll (<anonymous>:6816:33)\u001b[22m\n\u001b[2m    at InjectedScript._queryEngineAll (<anonymous>:6789:49)\u001b[22m\n\u001b[2m    at InjectedScript.querySelectorAll (<anonymous>:6776:30)\u001b[22m\n\u001b[2m    at eval (eval at evaluate (:290:30), <anonymous>:2:42)\u001b[22m\n\u001b[2m    at UtilityScript.evaluate (<anonymous>:292:16)\u001b[22m\n\u001b[2m    at UtilityScript.<anonymous> (<anonymous>:1:44)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:32.325Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-Mobile-Chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-Mobile-Chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-Mobile-Chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "<anonymous>",
+                        "column": 16,
+                        "line": 7912
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e24d411853832b8afadc",
+              "file": "auth.spec.ts",
+              "line": 30,
+              "column": 3
+            },
+            {
+              "title": "should logout successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 10902,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:33.228Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-Mobile-Chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-Mobile-Chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-Mobile-Chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e81aefeebba9a3c9e923",
+              "file": "auth.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "should protect authenticated routes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 21,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 5498,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    - unexpected value \"http://localhost:5173/dashboard\"\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    - unexpected value \"http://localhost:5173/dashboard\"\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                          "column": 24,
+                          "line": 59
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                            "column": 24,
+                            "line": 59
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    - unexpected value \"http://localhost:5173/dashboard\"\u001b[22m\n\u001b[2m    8 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:34.067Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-Mobile-Chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-Mobile-Chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-Mobile-Chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                        "column": 24,
+                        "line": 59
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-2d7328352cae38882ce6",
+              "file": "auth.spec.ts",
+              "line": 54,
+              "column": 3
+            },
+            {
+              "title": "should display login page on initial load",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 24,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1420,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:43.330Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-b67ab222ed9fa18bdbc8",
+              "file": "auth.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "should login with valid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 25,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 11393,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:21:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:44.856Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-Mobile-Safari/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-Mobile-Safari/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-login-with-valid-credentials-Mobile-Safari/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-9a28279612b3cec5b01d",
+              "file": "auth.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "should show error with invalid credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 24,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 1087,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor.\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor.\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                          "column": 80,
+                          "line": 38
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m\n \u001b[90m 37 |\u001b[39m     \u001b[90m// Should show error message\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=/Invalid.*credentials/i, [role=\"alert\"]'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m     \u001b[90m// Should stay on login page\u001b[39m\n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                            "column": 80,
+                            "line": 38
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\nExpected: visible\nSyntaxError: Invalid flags supplied to RegExp constructor.\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/Invalid.*credentials/i, [role=\"alert\"]')\u001b[22m\n\n\n\u001b[0m \u001b[90m 36 |\u001b[39m\n \u001b[90m 37 |\u001b[39m     \u001b[90m// Should show error message\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=/Invalid.*credentials/i, [role=\"alert\"]'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\n \u001b[90m    |\u001b[39m                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m     \u001b[90m// Should stay on login page\u001b[39m\n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\u001b[0m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:38:80\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:45.340Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-Mobile-Safari/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-Mobile-Safari/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-ef91f-or-with-invalid-credentials-Mobile-Safari/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                        "column": 80,
+                        "line": 38
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-d67e368a4ccfa5cc1244",
+              "file": "auth.spec.ts",
+              "line": 30,
+              "column": 3
+            },
+            {
+              "title": "should logout successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 26,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 10920,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:45:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:46.880Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-Mobile-Safari/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-Mobile-Safari/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-logout-successfully-Mobile-Safari/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-cf6de8f132264375dd61",
+              "file": "auth.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "should protect authenticated routes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 27,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 5692,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                          "column": 24,
+                          "line": 59
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                            "column": 24,
+                            "line": 59
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/$/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:5173/login\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 57 |\u001b[39m\n \u001b[90m 58 |\u001b[39m     \u001b[90m// Should redirect to login\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/$/\u001b[39m)\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 |\u001b[39m   })\n \u001b[90m 61 |\u001b[39m })\n \u001b[90m 62 |\u001b[39m\u001b[0m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:59:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:51.421Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-Mobile-Safari/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-Mobile-Safari/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-Authentication-should-protect-authenticated-routes-Mobile-Safari/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts",
+                        "column": 24,
+                        "line": 59
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-29dfe7e862be57e7e4a1",
+              "file": "auth.spec.ts",
+              "line": 54,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "User Profile",
+          "file": "auth.spec.ts",
+          "line": 63,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should view user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 10852,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:41.674Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-b0f8133b08d39bad7d34",
+              "file": "auth.spec.ts",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "should update user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11644,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:19:46.852Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-ccb9723c6209e5eeeb2e",
+              "file": "auth.spec.ts",
+              "line": 79,
+              "column": 3
+            },
+            {
+              "title": "should view user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 13122,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:00.438Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-firefox/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-firefox/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-c4ea2e38953b79b92423",
+              "file": "auth.spec.ts",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "should update user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 11770,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:06.788Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-firefox/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-firefox/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-ae7b3d74e50e3e8436aa",
+              "file": "auth.spec.ts",
+              "line": 79,
+              "column": 3
+            },
+            {
+              "title": "should view user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 11338,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:21.601Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-webkit/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-ad2b995fd1b1c725dbf0",
+              "file": "auth.spec.ts",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "should update user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 17,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11105,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:29.016Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-webkit/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-7873aa4bec36a2f4db4e",
+              "file": "auth.spec.ts",
+              "line": 79,
+              "column": 3
+            },
+            {
+              "title": "should view user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 22,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 10814,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:40.046Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-Mobile-Chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-Mobile-Chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-Mobile-Chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-78800ceec354b494cdf9",
+              "file": "auth.spec.ts",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "should update user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 23,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10795,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:41.004Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-Mobile-Chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-Mobile-Chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-Mobile-Chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e5785d3fcccbbca16707",
+              "file": "auth.spec.ts",
+              "line": 79,
+              "column": 3
+            },
+            {
+              "title": "should view user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 28,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10880,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:52.391Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-Mobile-Safari/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-Mobile-Safari/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-view-user-profile-Mobile-Safari/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-3bad0c85dd24517fd0dd",
+              "file": "auth.spec.ts",
+              "line": 68,
+              "column": 3
+            },
+            {
+              "title": "should update user profile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 29,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 10858,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\n    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5",
+                        "location": {
+                          "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                          "column": 14,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                            "column": 14,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard\" until \"load\"\n============================================================\n\n\u001b[90m   at \u001b[39m../utils/test-helpers.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[90m// Wait for navigation to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'**/dashboard'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m \u001b[90m/**\u001b[39m\u001b[0m\n\u001b[2m    at login (/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts:40:14)\u001b[22m\n\u001b[2m    at /Volumes/T7/NovelApp/frontend/tests/e2e/auth.spec.ts:65:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-12-02T17:20:57.077Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-Mobile-Safari/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-Mobile-Safari/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Volumes/T7/NovelApp/frontend/test-results/auth-User-Profile-should-update-user-profile-Mobile-Safari/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Volumes/T7/NovelApp/frontend/tests/utils/test-helpers.ts",
+                        "column": 14,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-824aa5d6cc8764896d3a",
+              "file": "auth.spec.ts",
+              "line": 79,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-12-02T17:19:34.571Z",
+    "duration": 93648.555,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 30,
+    "flaky": 0
+  }
+}

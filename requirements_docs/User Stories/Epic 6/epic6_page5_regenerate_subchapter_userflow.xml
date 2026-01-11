@@ -1,0 +1,497 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram name="Page-5: Regenerate Sub-Chapter Content" id="epic6-page5">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="6000" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header" value="EPIC 6 - SUB-CHAPTER MANAGEMENT SYSTEM&#xa;Page 5: Regenerate Sub-Chapter Content (new version + optional POV change)" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="5900" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-user" value="User (Author)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="5900" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="user-1a" value="ENTRY A:&#xa;View Sub-Chapter&#xa;Detail Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="130" y="70" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="user-1b" value="ENTRY B:&#xa;View Chapter&#xa;Management Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="260" y="70" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="user-2a" value="See Current&#xa;Character POV&#xa;(inherited from&#xa;chapter)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=10;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="400" y="60" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="user-3a" value="Click&#xa;&#39;Regenerate&#xa;Content&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="770" y="65" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="user-2b" value="See Chapter&#xa;Character Dropdown&#xa;(current: Character X)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=10;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="400" y="150" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="user-decision" value="Change&#xa;Character?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="560" y="155" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="user-3b" value="Select New&#xa;Character from&#xa;Dropdown&#xa;(e.g., Character Y)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=10;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="690" y="150" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="user-4b" value="Button Changes:&#xa;&#39;Regenerate&#39; →&#xa;&#39;Regenerate with&#xa;different POV&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="850" y="150" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="user-5" value="Click&#xa;&#39;Regenerate&#39; or&#xa;&#39;Regenerate with&#xa;different POV&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="1010" y="80" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="user-6" value="Review&#xa;Confirmation Modal:&#xa;• Old content →&#xa;  saved as version&#xa;• New character (if changed)&#xa;• Warning message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="1370" y="65" width="150" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="user-7" value="Click&#xa;&#39;Confirm&#xa;Regenerate&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="1680" y="75" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="user-8" value="View Real-Time&#xa;Progress Updates&#xa;via WebSocket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="3320" y="75" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="user-9" value="View Regenerated&#xa;Content &amp; Version&#xa;Number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=11;fontStyle=1;" vertex="1" parent="lane-user">
+          <mxGeometry x="5520" y="75" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="user-10" value="Optional:&#xa;View Previous&#xa;Versions for&#xa;Comparison" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;align=left;" vertex="1" parent="lane-user">
+          <mxGeometry x="5720" y="75" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-label" value="TWO ENTRY POINTS:" style="text;html=1;strokeColor=#C62828;fillColor=#FFCDD2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1" vertex="1" parent="lane-user">
+          <mxGeometry x="150" y="10" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-streamlit" value="Streamlit Frontend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="340" width="5900" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-1a" value="Load Sub-Chapter&#xa;Detail Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="170" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-2a" value="Display:&#xa;• Sub-chapter info&#xa;• Current character&#xa;• Regenerate button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="400" y="20" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-1b" value="Load Chapter&#xa;Management Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="170" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-2b" value="Display Chapter&#xa;Character Dropdown:&#xa;• Current character&#xa;• List all characters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="400" y="110" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-3b" value="PUT /api/chapters/&#xa;{chapter_id}&#xa;{ character_id:&#xa;  new_char_id }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="690" y="110" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-4b" value="Update UI:&#xa;• Change button text&#xa;• Show &#39;POV changed&#39;&#xa;  badge&#xa;• Enable regenerate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="850" y="110" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-5" value="Show Confirmation&#xa;Modal:&#xa;• Old character →&#xa;  New character&#xa;• Version warning&#xa;• Confirm/Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1200" y="50" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-6" value="Handle Confirm:&#xa;Validate &amp; prepare&#xa;regeneration request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1680" y="60" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-7" value="POST /api/sub-chapters/&#xa;{sub_chapter_id}/&#xa;regenerate&#xa;&#xa;{ regenerate: true,&#xa;  character_changed:&#xa;    bool }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1830" y="40" width="170" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-8" value="Receive Response:&#xa;{ job_id, status,&#xa;  websocket_url }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2230" y="60" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-9" value="Initialize WebSocket:&#xa;ws://.../ws/&#xa;generation-jobs/&#xa;{job_id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2400" y="60" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-10" value="Receive WebSocket&#xa;Progress Updates:&#xa;• Stage&#xa;• Percentage&#xa;• Message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3320" y="50" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-11" value="Update Progress UI:&#xa;• Progress bar&#xa;• Stage indicator&#xa;• Status message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3320" y="160" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-12" value="Receive &#39;complete&#39;&#xa;WebSocket Message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4970" y="60" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-13" value="GET /api/sub-chapters/&#xa;{sub_chapter_id}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="5130" y="60" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-14" value="Display:&#xa;• New content&#xa;• Version number&#xa;• Character name&#xa;• Success message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="5520" y="50" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-15" value="GET /api/sub-chapters/&#xa;{id}/versions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="5720" y="60" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe-16" value="Display Version&#xa;History:&#xa;• All versions&#xa;• Timestamps&#xa;• Word counts&#xa;• Restore option" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="5720" y="160" width="130" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-fastapi" value="FastAPI Backend" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="660" width="5900" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="be-1" value="chapter_manager.&#xa;update_chapter(&#xa;chapter_id,&#xa;{ character_id:&#xa;  new_id })" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="690" y="50" width="130" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="be-2" value="Return:&#xa;{ success: true,&#xa;  message:&#xa;  &#39;Character updated,&#xa;   all sub-chapters&#xa;   updated via trigger&#39; }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="690" y="170" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="be-3" value="Validate Request:&#xa;• sub_chapter_id exists&#xa;• User has permission&#xa;• Chapter character&#xa;  matches" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1830" y="50" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="be-4" value="Query:&#xa;Get max(version_number)&#xa;from sub_chapter_versions&#xa;WHERE sub_chapter_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2020" y="50" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="be-5" value="Create Regeneration Job:&#xa;• job_id&#xa;• sub_chapter_id&#xa;• character_id (current)&#xa;• status: &#39;pending&#39;&#xa;• is_regeneration: true&#xa;• new_version_number:&#xa;  current + 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2020" y="160" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="be-6" value="Return Response:&#xa;{ job_id,&#xa;  status: &#39;pending&#39;,&#xa;  websocket_url,&#xa;  new_version: N+1 }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2230" y="60" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="be-7" value="Broadcast WebSocket&#xa;Progress Updates:&#xa;• starting (10%)&#xa;• context (25%)&#xa;• rules (40-50%)&#xa;• generating (60-80%)&#xa;• saving (85-90%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3320" y="30" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="be-8" value="Broadcast:&#xa;{ type: &#39;complete&#39;,&#xa;  percentage: 100,&#xa;  message:&#xa;  &#39;Regeneration&#xa;   complete!&#39;,&#xa;  version: N+1 }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4970" y="40" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="be-9" value="sub_chapter_manager.&#xa;get_sub_chapter(&#xa;sub_chapter_id)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="5130" y="60" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="be-10" value="Return:&#xa;{ sub_chapter,&#xa;  current_version,&#xa;  version_number,&#xa;  character_name }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="5320" y="60" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="be-11" value="version_manager.&#xa;get_versions(&#xa;sub_chapter_id)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="5720" y="180" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="be-12" value="Return:&#xa;{ versions: [&#xa;  { version_number,&#xa;    content,&#xa;    created_at,&#xa;    word_count }&#xa;  ] }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="5720" y="270" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-jobqueue" value="Job Queue (pg-boss)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1040" width="5900" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="jq-1" value="Worker Picks Up Job:&#xa;• Detect is_regeneration=true&#xa;• Load sub_chapter details&#xa;• Load character_id (current)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;align=left;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="2570" y="40" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jq-2" value="[SAME AS PAGE 1]&#xa;Retrieve Character&#xa;Context from ChromaDB&#xa;(top 5 chunks)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;align=left;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="2800" y="40" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jq-3" value="[SAME AS PAGE 1]&#xa;Generate Content&#xa;using LLM with&#xa;character context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;align=left;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="3490" y="40" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jq-4" value="Save as NEW Version:&#xa;• Create version N+1&#xa;• Update sub_chapters.&#xa;  content&#xa;• Update current_version_id&#xa;• Old version preserved" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=9;align=left;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="4260" y="30" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jq-5" value="[SAME AS PAGE 1]&#xa;Add Generated Content&#xa;to Character&#39;s ChromaDB&#xa;Collection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;align=left;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="4470" y="40" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jq-6" value="Update Job:&#xa;• status: &#39;completed&#39;&#xa;• completed_at: NOW()&#xa;• Send final WS&#xa;  message" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=10;align=left;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="4970" y="40" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-supabase" value="Supabase Database" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1240" width="5900" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="db-1" value="UPDATE chapters&lt;br&gt;SET character_id =&lt;br&gt;  $new_character_id&lt;br&gt;WHERE current_version_id=$current_version_id&lt;br&gt;WHERE id = $chapter_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="690" y="40" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="db-2" value="🔄 TRIGGER FIRES:&#xa;enforce_character_&#xa;consistency()&#xa;&#xa;UPDATE sub_chapters&#xa;SET character_id =&#xa;  NEW.character_id&#xa;WHERE chapter_id =&#xa;  NEW.id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=9;align=left;fontFamily=Courier New;fontStyle=1;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="690" y="140" width="170" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="db-3" value="SELECT&#xa;  MAX(version_number)&#xa;FROM&#xa;  sub_chapter_versions&#xa;WHERE&#xa;  sub_chapter_id =&#xa;    $sub_chapter_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2020" y="50" width="170" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="db-4" value="INSERT INTO&#xa;  generation_jobs&#xa;VALUES (&#xa;  job_id,&#xa;  sub_chapter_id,&#xa;  character_id,&#xa;  &#39;pending&#39;,&#xa;  is_regeneration: true,&#xa;  new_version_number&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2020" y="190" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="db-5" value="INSERT INTO&#xa;  sub_chapter_versions&#xa;VALUES (&#xa;  version_id,&#xa;  sub_chapter_id,&#xa;  version_number: N+1,&#xa;  content,&#xa;  word_count,&#xa;  created_at: NOW()&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="4260" y="40" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="db-6" value="UPDATE sub_chapters&#xa;SET&#xa;  content = $new_content,&#xa;  word_count = $count,&#xa;  current_version_id =&#xa;    $new_version_id,&#xa;  status = &#39;completed&#39;,&#xa;  updated_at = NOW()&#xa;WHERE id =&#xa;  $sub_chapter_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=8;align=left;fontFamily=Courier New;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="4260" y="190" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="db-7" value="UPDATE&#xa;  generation_jobs&#xa;SET&#xa;  status = &#39;completed&#39;,&#xa;  completed_at = NOW()&#xa;WHERE&#xa;  id = $job_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="4970" y="50" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="db-8" value="SELECT sc.*,&#xa;  scv.content,&#xa;  scv.version_number,&#xa;  c.name as&#xa;    character_name&#xa;FROM sub_chapters sc&#xa;JOIN sub_chapter_versions scv&#xa;  ON sc.current_version_id&#xa;    = scv.id&#xa;JOIN characters c&#xa;  ON sc.character_id = c.id&#xa;WHERE sc.id =&#xa;  $sub_chapter_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=8;align=left;fontFamily=Courier New;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="5130" y="50" width="180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="db-9" value="SELECT *&#xa;FROM&#xa;  sub_chapter_versions&#xa;WHERE&#xa;  sub_chapter_id =&#xa;    $sub_chapter_id&#xa;ORDER BY&#xa;  version_number DESC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="5720" y="50" width="170" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-chromadb" value="ChromaDB Vector Store" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#E64A19;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1520" width="5900" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="chroma-1" value="[SAME AS PAGE 1]&#xa;&#xa;collection.query(&#xa;  query_texts=[&#xa;    plot_points +&#xa;    writing_prompt],&#xa;  n_results=5&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#E64A19;fontSize=9;align=left;fontFamily=Courier New;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="2800" y="50" width="180" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="chroma-2" value="Return Top 5 Chunks:&#xa;• Character traits&#xa;• Past dialogue&#xa;• Voice patterns&#xa;• Perspective style" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#E64A19;fontSize=10;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="3000" y="50" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="chroma-3" value="[SAME AS PAGE 1]&#xa;&#xa;collection.add(&#xa;  documents=[content],&#xa;  metadatas=[{&#xa;    sub_chapter_id,&#xa;    version_number: N+1,&#xa;    created_at&#xa;  }],&#xa;  ids=[uuid]&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#E64A19;fontSize=8;align=left;fontFamily=Courier New;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="4470" y="40" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1a" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-1a" target="fe-1a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2a" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-1a" target="fe-2a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3a" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-2a" target="user-2a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4a" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-2a" target="user-3a">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="180" />
+              <mxPoint x="825" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-1b" target="fe-1b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-1b" target="fe-2b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-2b" target="user-2b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-2b" target="user-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5b-yes" value="YES" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="user-decision" target="user-3b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5b-no" value="NO" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="user-decision" target="user-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="260" />
+              <mxPoint x="1080" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge6b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-3b" target="fe-3b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-3b" target="be-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-1" target="db-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9b" value="AUTO" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;dashed=1;" edge="1" parent="1" source="db-1" target="db-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-2" target="be-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge11b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-2" target="fe-4b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-4b" target="user-4b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge13b" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-4b" target="user-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="915" y="240" />
+              <mxPoint x="1080" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-3a" target="user-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="825" y="180" />
+              <mxPoint x="1080" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-5" target="fe-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-5" target="user-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-6" target="user-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-7" target="fe-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-6" target="fe-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-7" target="be-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-3" target="be-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-4" target="db-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-3" target="be-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-5" target="db-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-4" target="be-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2110" y="380" />
+              <mxPoint x="2305" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-6" target="fe-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-8" target="fe-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge28" value="ASYNC" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#F9A825;dashed=1;" edge="1" parent="1" source="db-4" target="jq-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2110" y="1180" />
+              <mxPoint x="2670" y="1180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-1" target="jq-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-2" target="chroma-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-1" target="chroma-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-2" target="jq-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3080" y="1200" />
+              <mxPoint x="3565" y="1200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge33" value="WS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;dashed=1;" edge="1" parent="1" source="jq-2" target="be-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2880" y="900" />
+              <mxPoint x="3400" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;dashed=1;" edge="1" parent="1" source="be-7" target="fe-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-10" target="fe-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-11" target="user-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-3" target="jq-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-4" target="db-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-5" target="db-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-6" target="jq-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4350" y="1200" />
+              <mxPoint x="4560" y="1200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-5" target="chroma-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-3" target="jq-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4560" y="1200" />
+              <mxPoint x="5040" y="1200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-6" target="db-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge44" value="WS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;dashed=1;" edge="1" parent="1" source="db-7" target="be-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5050" y="900" />
+              <mxPoint x="5040" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;dashed=1;" edge="1" parent="1" source="be-8" target="fe-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-12" target="fe-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-13" target="be-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-9" target="db-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-8" target="be-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-10" target="fe-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;" edge="1" parent="1" source="fe-14" target="user-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge52" value="OPTIONAL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7B1FA2;dashed=1;" edge="1" parent="1" source="user-9" target="user-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7B1FA2;dashed=1;" edge="1" parent="1" source="user-10" target="fe-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-15" target="be-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-11" target="db-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-9" target="be-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-12" target="fe-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-legend" value="LEGEND:&#xa;• Solid Lines = Synchronous flow&#xa;• Dashed Lines = Asynchronous (WebSocket) or Auto-triggered (DB Trigger)&#xa;• Green = Success path&#xa;• Red = Database trigger (auto-fires)&#xa;• Blue = User interaction&#xa;• Purple = Optional version history" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1780" width="500" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-two-paths" value="TWO ENTRY POINTS:&#xa;&#xa;PATH A: Single Sub-Chapter Regeneration&#xa;• Entry: Sub-chapter detail page&#xa;• No character change (uses current)&#xa;• Regenerate button → Confirmation → Generate&#xa;&#xa;PATH B: Bulk Chapter Regeneration with Optional POV Change&#xa;• Entry: Chapter management page&#xa;• Optional: Change character at chapter level&#xa;• Database trigger updates ALL sub-chapters.character_id&#xa;• Button text changes to &#39;Regenerate with different POV&#39;&#xa;• Confirmation modal shows old → new character&#xa;• All sub-chapters regenerated with new character context" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="580" y="1780" width="700" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-character-trigger" value="🔄 DATABASE TRIGGER - CHARACTER INHERITANCE:&#xa;&#xa;CREATE TRIGGER enforce_character_consistency&#xa;AFTER UPDATE ON chapters&#xa;FOR EACH ROW&#xa;WHEN (OLD.character_id IS DISTINCT FROM NEW.character_id)&#xa;EXECUTE FUNCTION update_sub_chapter_characters();&#xa;&#xa;Function Logic:&#xa;UPDATE sub_chapters&#xa;SET character_id = NEW.character_id,&#xa;    updated_at = NOW()&#xa;WHERE chapter_id = NEW.id;&#xa;&#xa;Effect:&#xa;• ALL sub-chapters in chapter immediately inherit new character_id&#xa;• No orphaned sub-chapters with old character&#xa;• Ensures consistency across chapter&#xa;• Fires automatically on chapters.character_id UPDATE" style="text;html=1;strokeColor=#C62828;fillColor=#FFCDD2;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="1780" width="620" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-version-management" value="VERSION MANAGEMENT:&#xa;&#xa;Tables:&#xa;• sub_chapter_versions: All versions stored permanently&#xa;  - Columns: id, sub_chapter_id, version_number, content, word_count, created_at&#xa;• sub_chapters.current_version_id: Points to active version&#xa;&#xa;Regeneration Flow:&#xa;1. Query max(version_number) for sub_chapter&#xa;2. Create new version with version_number = current + 1&#xa;3. Insert into sub_chapter_versions (new row)&#xa;4. Update sub_chapters.content = new content&#xa;5. Update sub_chapters.current_version_id = new version id&#xa;6. Old versions preserved for rollback&#xa;&#xa;Version Comparison:&#xa;• User can view all versions&#xa;• Side-by-side comparison (future feature)&#xa;• Restore previous version (updates current_version_id)" style="text;html=1;strokeColor=#7B1FA2;fillColor=#E1BEE7;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1980" y="1780" width="640" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-confirmation" value="CONFIRMATION MODAL:&#xa;&#xa;Displayed Before Regeneration Starts:&#xa;• Warning: &#39;Current content will be replaced&#39;&#xa;• Clarification: &#39;Old version saved for rollback&#39;&#xa;• If POV changed:&#xa;  - Old Character: [Name]&#xa;  - New Character: [Name]&#xa;  - Badge: &#39;POV Changed&#39;&#xa;• Buttons:&#xa;  - &#39;Cancel&#39; (abort regeneration)&#xa;  - &#39;Confirm Regenerate&#39; (proceed)&#xa;&#xa;Purpose:&#xa;• Prevent accidental overwrites&#xa;• Inform user about version history&#xa;• Confirm POV change understanding&#xa;&#xa;UX Note:&#xa;• Modal is blocking (user must respond)&#xa;• Clear messaging about non-destructive nature&#xa;  (old version preserved)" style="text;html=1;strokeColor=#F9A825;fillColor=#FFF9C4;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2660" y="1780" width="540" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-reuse" value="REUSES PAGE 1 FLOW:&#xa;&#xa;Regeneration reuses the same generation pipeline as initial creation:&#xa;&#xa;1. Character Context Retrieval (ChromaDB)&#xa;   • Query character&#39;s ChromaDB collection&#xa;   • Semantic search using plot_points + writing_prompt&#xa;   • Return top 5 relevant chunks&#xa;&#xa;2. Recent Chapters Query (Supabase)&#xa;   • Get last N sub-chapters by same character&#xa;   • Used for voice consistency&#xa;&#xa;3. Enhanced Prompt Building&#xa;   • Combine: character context + recent chapters + plot points + writing prompt&#xa;&#xa;4. LLM Generation (Mistral 7B or AWS Bedrock)&#xa;   • Generate 2000-word content&#xa;   • Target: 2-3 minute generation time&#xa;&#xa;5. Save as New Version (not Version 1)&#xa;   • Version number = max(existing) + 1&#xa;&#xa;6. Add to ChromaDB&#xa;   • Update character&#39;s collection with new content&#xa;   • Enables future RAG queries&#xa;&#xa;Only Difference: Version management (N+1 instead of 1)" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3240" y="1780" width="680" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-tables" value="DATABASE TABLES:&#xa;• chapters (character_id, with trigger)&#xa;• sub_chapters (character_id, current_version_id, content, status)&#xa;• sub_chapter_versions (version history, all versions preserved)&#xa;• generation_jobs (async job tracking, is_regeneration flag)&#xa;• ChromaDB: {trilogy_id}_character_{character_id} collections" style="text;html=1;strokeColor=#7B1FA2;fillColor=#E1BEE7;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3960" y="1780" width="700" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-api" value="API ENDPOINTS:&#xa;• PUT /api/chapters/{id} (update character_id)&#xa;• POST /api/sub-chapters/{id}/regenerate (trigger regeneration)&#xa;• GET /api/sub-chapters/{id} (fetch current version)&#xa;• GET /api/sub-chapters/{id}/versions (fetch all versions)&#xa;• WebSocket: /ws/generation-jobs/{job_id} (real-time updates)" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3960" y="1910" width="700" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-performance" value="PERFORMANCE TARGETS:&#xa;• Character update: &lt; 500ms (includes trigger execution)&#xa;• Version query: &lt; 100ms&#xa;• Job creation: &lt; 200ms&#xa;• Regeneration: 2-3 minutes (same as initial generation)&#xa;• Version history fetch: &lt; 300ms" style="text;html=1;strokeColor=#F9A825;fillColor=#FFF9C4;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="4700" y="1780" width="620" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-error" value="ERROR HANDLING:&#xa;• Confirmation cancellation: Abort flow, no changes made&#xa;• Character update failure: Rollback, show error, retry option&#xa;• Trigger failure: Rollback chapter update, alert user&#xa;• Regeneration failure: Job marked as &#39;failed&#39;, old version intact&#xa;• Version creation failure: Transaction rollback, preserve current state" style="text;html=1;strokeColor=#C62828;fillColor=#FFCDD2;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="4700" y="1900" width="620" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-epic" value="EPIC 6 - SUB-CHAPTER MANAGEMENT SYSTEM | Page 5 of 5 | User Story: Regenerate Sub-Chapter Content (new version + optional POV change)" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="5360" y="1780" width="580" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="footer-note" value="NOTE: This flow shows both entry points (single sub-chapter vs bulk chapter regeneration) with optional POV change.&#xa;Database trigger ensures ALL sub-chapters inherit new character_id when changed at chapter level.&#xa;Version management preserves all old versions for rollback while updating current content." style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="5360" y="1850" width="580" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

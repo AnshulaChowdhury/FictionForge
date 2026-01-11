@@ -1,0 +1,44 @@
+# macOS files
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Environment files (use docker-compose env vars instead)
+.env.local
+.env.*.local
+
+# ChromaDB data (use Docker volumes)
+chromadb_data/
+
+# Cache
+.cache/

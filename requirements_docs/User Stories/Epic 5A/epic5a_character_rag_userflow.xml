@@ -1,0 +1,891 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-24T12:00:00.000Z" agent="Claude" version="24.0.0" type="device">
+  <diagram id="Epic5A-CharacterRAG" name="Epic 5A: Character-Specific RAG Content Generation">
+    <mxGraphModel dx="3600" dy="2000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="3000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- SWIM LANES -->
+        <mxCell id="lane-user" value="User" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#E3F2FD;strokeColor=#1976D2;swimlaneFillColor=#E3F2FD;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="4920" height="180" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-streamlit" value="Streamlit Frontend" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#FFF3E0;strokeColor=#F57C00;swimlaneFillColor=#FFF3E0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="4920" height="320" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-fastapi" value="FastAPI Backend" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#E8F5E9;strokeColor=#388E3C;swimlaneFillColor=#E8F5E9;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="4920" height="420" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-jobqueue" value="Job Queue (pg-boss)" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#FFF9C4;strokeColor=#F9A825;swimlaneFillColor=#FFF9C4;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="960" width="4920" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-redis" value="Redis Cache" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#FCE4EC;strokeColor=#C2185B;swimlaneFillColor=#FCE4EC;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1240" width="4920" height="220" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-chromadb" value="ChromaDB" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#E0F2F1;strokeColor=#00897B;swimlaneFillColor=#E0F2F1;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1460" width="4920" height="280" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lane-supabase" value="Supabase Database" style="swimlane;html=1;startSize=40;horizontal=0;fillColor=#F3E5F5;strokeColor=#7B1FA2;swimlaneFillColor=#F3E5F5;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1740" width="4920" height="220" as="geometry" />
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- PART 1: CHARACTER CREATION/UPDATE FLOW -->
+        <!-- ============================================ -->
+        
+        <!-- Start -->
+        <mxCell id="start" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="lane-user">
+          <mxGeometry x="80" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- User creates/edits character -->
+        <mxCell id="user-create-char" value="Create/Edit&#xa;Character" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="240" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="start" target="user-create-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Frontend: Display character form -->
+        <mxCell id="fe-load-char-form" value="Load Character&#xa;Creation/Edit Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="240" y="30" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-create-char" target="fe-load-char-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-char-form" value="Display Form Fields:&#xa;• Name (required)&#xa;• Description&#xa;• Traits&#xa;• Character Arc&#xa;• Consciousness Themes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="220" y="110" width="140" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-load-char-form" target="fe-char-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User fills form -->
+        <mxCell id="user-fill-char" value="Fill Character&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="400" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-char-form" target="user-fill-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-submit-char" value="Click&#xa;'Save Character'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="560" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-fill-char" target="user-submit-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Frontend validation -->
+        <mxCell id="fe-validate-char" value="Validate&#xa;Required Fields?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="560" y="30" width="100" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-submit-char" target="fe-validate-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Validation error path -->
+        <mxCell id="fe-show-char-error" value="Show Validation&#xa;Error:&#xa;'Name is required'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="560" y="160" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge7" value="Invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="fe-validate-char" target="fe-show-char-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="fe-show-char-error" target="fe-char-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Send to API -->
+        <mxCell id="fe-send-char-api" value="POST /api/characters&#xa;{&#xa;  name,&#xa;  description,&#xa;  traits,&#xa;  character_arc,&#xa;  trilogy_id&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="720" y="40" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge9" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#2E7D32;" edge="1" parent="1" source="fe-validate-char" target="fe-send-char-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Backend: Receive character data -->
+        <mxCell id="be-receive-char" value="Receive Character&#xa;Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="720" y="30" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-send-char-api" target="be-receive-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Backend validation -->
+        <mxCell id="be-validate-char" value="Validate&#xa;Character Data?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="730" y="110" width="100" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-receive-char" target="be-validate-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Backend validation error -->
+        <mxCell id="be-char-error" value="Return 422:&#xa;Validation Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="730" y="240" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge12" value="Invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="be-validate-char" target="be-char-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-api-error" value="Display Error&#xa;Toast" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="730" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-char-error" target="fe-api-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Save to Supabase -->
+        <mxCell id="be-save-char" value="Save Character&#xa;to Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="880" y="125" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge14" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#2E7D32;" edge="1" parent="1" source="be-validate-char" target="be-save-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Supabase: INSERT character -->
+        <mxCell id="db-insert-char" value="INSERT INTO characters&#xa;(&#xa;  id,&#xa;  trilogy_id,&#xa;  name,&#xa;  description,&#xa;  traits,&#xa;  character_arc,&#xa;  consciousness_themes&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="870" y="40" width="120" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-save-char" target="db-insert-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DB error check -->
+        <mxCell id="db-char-error-check" value="Insert&#xa;Success?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="1030" y="60" width="90" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-insert-char" target="db-char-error-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DB error path -->
+        <mxCell id="db-char-error" value="Database Error&#xa;(constraint violation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="1025" y="170" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge17" value="Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="db-char-error-check" target="db-char-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="be-db-error-handle" value="Handle DB Error&#xa;&amp; Return 500" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1025" y="310" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="db-char-error" target="be-db-error-handle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Queue async job for embedding -->
+        <mxCell id="be-queue-embed" value="Queue Async Job:&#xa;'embed_character'&#xa;{&#xa;  character_id,&#xa;  trilogy_id&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1170" y="70" width="110" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge19" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#2E7D32;" edge="1" parent="1" source="db-char-error-check" target="be-queue-embed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Job Queue: Create job -->
+        <mxCell id="jq-create-embed" value="CREATE JOB:&#xa;'embed_character'&#xa;Status: PENDING" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="1165" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-queue-embed" target="jq-create-embed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Return to frontend -->
+        <mxCell id="be-return-char" value="Return 201:&#xa;{&#xa;  character_id,&#xa;  status: 'created',&#xa;  embedding_job_id&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1330" y="75" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-queue-embed" target="be-return-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-success-toast" value="Show Success Toast:&#xa;'✓ Character created!&#xa;Initializing AI context...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1A5;strokeColor=#558B2F;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1330" y="50" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-return-char" target="fe-success-toast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- WebSocket connection for real-time updates -->
+        <mxCell id="fe-websocket" value="WebSocket:&#xa;Subscribe to&#xa;embedding_job_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1330" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="fe-success-toast" target="fe-websocket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ASYNC JOB PROCESSING -->
+        <mxCell id="jq-pick-embed" value="Worker Picks Job&#xa;Status: PROCESSING" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="1330" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge24" value="Async" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=10;" edge="1" parent="1" source="jq-create-embed" target="jq-pick-embed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Backend: Process embedding job -->
+        <mxCell id="be-process-embed" value="Process Job:&#xa;embed_character" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1500" y="75" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-pick-embed" target="be-process-embed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Fetch character from DB -->
+        <mxCell id="be-fetch-char" value="Fetch Character&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1500" y="155" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-process-embed" target="be-fetch-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="db-fetch-char" value="SELECT * FROM&#xa;characters&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="1500" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-fetch-char" target="db-fetch-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check if ChromaDB collection exists -->
+        <mxCell id="be-check-collection" value="Check Collection:&#xa;{trilogy_id}_characters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1660" y="155" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-fetch-char" target="be-check-collection">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="chroma-check-collection" value="GET Collection:&#xa;{trilogy_id}_characters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=10;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="1660" y="40" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-check-collection" target="chroma-check-collection">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="chroma-collection-exists" value="Collection&#xa;Exists?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=10;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="1830" y="35" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-check-collection" target="chroma-collection-exists">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Create collection if not exists -->
+        <mxCell id="chroma-create-collection" value="CREATE Collection:&#xa;{trilogy_id}_characters&#xa;&#xa;metadata: {&#xa;  trilogy_id,&#xa;  type: 'characters'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="1965" y="30" width="130" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge31" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="chroma-collection-exists" target="chroma-create-collection">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Generate embeddings -->
+        <mxCell id="be-generate-embeddings" value="Generate Embeddings:&#xa;• Character name&#xa;• Description&#xa;• Traits&#xa;• Character arc&#xa;• Consciousness themes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1820" y="250" width="130" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge32" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="chroma-collection-exists" target="be-generate-embeddings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-create-collection" target="be-generate-embeddings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check embedding success -->
+        <mxCell id="be-embed-success-check" value="Embeddings&#xa;Generated?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1990" y="260" width="100" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-generate-embeddings" target="be-embed-success-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Embedding error path -->
+        <mxCell id="be-embed-error" value="Log Error&#xa;&amp; Retry Later" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="1990" y="370" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge35" value="Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="be-embed-success-check" target="be-embed-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="jq-embed-failed" value="Update Job:&#xa;Status: FAILED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="1990" y="190" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-embed-error" target="jq-embed-failed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-embed-error-ws" value="WebSocket Update:&#xa;'❌ Embedding failed.&#xa;Will retry.'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="1990" y="170" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge37" value="Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="jq-embed-failed" target="fe-embed-error-ws">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Store embeddings in ChromaDB -->
+        <mxCell id="chroma-add-docs" value="ADD Documents:&#xa;&#xa;documents: [&#xa;  'Character: {name}...',&#xa;  'Traits: {traits}...'&#xa;]&#xa;&#xa;metadata: {&#xa;  character_id,&#xa;  type: 'profile'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="2140" y="140" width="140" height="130" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge38" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#2E7D32;" edge="1" parent="1" source="be-embed-success-check" target="chroma-add-docs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check ChromaDB insert -->
+        <mxCell id="chroma-insert-check" value="Insert&#xa;Success?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=10;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="2320" y="165" width="90" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-add-docs" target="chroma-insert-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ChromaDB error -->
+        <mxCell id="chroma-insert-error" value="ChromaDB&#xa;Connection Error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="2315" y="45" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge40" value="Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="chroma-insert-check" target="chroma-insert-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="be-chroma-error-handle" value="Handle ChromaDB&#xa;Error &amp; Retry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2315" y="290" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-insert-error" target="be-chroma-error-handle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Update job status to completed -->
+        <mxCell id="jq-embed-complete" value="Update Job:&#xa;Status: COMPLETED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1A5;strokeColor=#558B2F;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="2460" y="175" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge42" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#2E7D32;" edge="1" parent="1" source="chroma-insert-check" target="jq-embed-complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Send WebSocket update -->
+        <mxCell id="fe-embed-complete-ws" value="WebSocket Update:&#xa;'✓ Character context&#xa;initialized!'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1A5;strokeColor=#558B2F;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2460" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge43" value="Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="jq-embed-complete" target="fe-embed-complete-ws">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-sees-ready" value="Character Ready&#xa;for Generation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1A5;strokeColor=#558B2F;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="2460" y="70" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-embed-complete-ws" target="user-sees-ready">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- PART 2: SUB-CHAPTER GENERATION FLOW -->
+        <!-- ============================================ -->
+        
+        <mxCell id="separator" value="═══════════════════════════ PART 2: SUB-CHAPTER GENERATION ═══════════════════════════" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="2640" y="100" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- User navigates to sub-chapter -->
+        <mxCell id="user-nav-subchapter" value="Navigate to&#xa;Sub-Chapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="2640" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-sees-ready" target="user-nav-subchapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Load sub-chapter form -->
+        <mxCell id="fe-load-subchapter" value="Load Sub-Chapter&#xa;Generation Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2640" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-nav-subchapter" target="fe-load-subchapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-subchapter-form" value="Display Form:&#xa;• Chapter selection&#xa;• Character POV (dropdown)&#xa;• Sub-chapter title&#xa;• Plot points&#xa;• Writing prompt&#xa;• Target word count" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2625" y="120" width="130" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-load-subchapter" target="fe-subchapter-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User fills and submits -->
+        <mxCell id="user-fill-subchapter" value="Fill Details &amp;&#xa;Click 'Generate'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="2800" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-subchapter-form" target="user-fill-subchapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Frontend validation -->
+        <mxCell id="fe-validate-subchapter" value="Validate&#xa;Required Fields?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2800" y="40" width="100" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-fill-subchapter" target="fe-validate-subchapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Validation error -->
+        <mxCell id="fe-subchapter-error" value="Show Error:&#xa;'Title &amp; prompt&#xa;required'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2800" y="145" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge50" value="Invalid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="fe-validate-subchapter" target="fe-subchapter-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Save stub to Supabase first -->
+        <mxCell id="fe-send-subchapter" value="POST /api/sub-chapters&#xa;{&#xa;  chapter_id,&#xa;  character_id,&#xa;  title,&#xa;  plot_points,&#xa;  writing_prompt,&#xa;  target_word_count&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="2950" y="35" width="130" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge51" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#2E7D32;" edge="1" parent="1" source="fe-validate-subchapter" target="fe-send-subchapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Backend receives request -->
+        <mxCell id="be-receive-subchapter" value="Receive Sub-Chapter&#xa;Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2950" y="30" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-send-subchapter" target="be-receive-subchapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Save initial sub-chapter stub -->
+        <mxCell id="be-save-stub" value="Save Sub-Chapter&#xa;Stub (empty content)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="2950" y="105" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-receive-subchapter" target="be-save-stub">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="db-insert-stub" value="INSERT INTO&#xa;sub_chapters&#xa;(&#xa;  id,&#xa;  chapter_id,&#xa;  character_id,&#xa;  title,&#xa;  plot_points,&#xa;  content: '',&#xa;  status: 'pending'&#xa;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="2950" y="50" width="130" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-save-stub" target="db-insert-stub">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Queue generation job -->
+        <mxCell id="be-queue-generation" value="Queue Async Job:&#xa;'generate_content'&#xa;{&#xa;  sub_chapter_id,&#xa;  character_id,&#xa;  writing_prompt,&#xa;  target_word_count&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3120" y="90" width="130" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-save-stub" target="be-queue-generation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="jq-create-generation" value="CREATE JOB:&#xa;'generate_content'&#xa;Status: PENDING" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="3120" y="40" width="130" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-queue-generation" target="jq-create-generation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Return to frontend -->
+        <mxCell id="be-return-generation" value="Return 202:&#xa;{&#xa;  sub_chapter_id,&#xa;  status: 'processing',&#xa;  generation_job_id&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3290" y="100" width="130" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-queue-generation" target="be-return-generation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-generation-toast" value="Show Toast:&#xa;'⏳ Generating content...&#xa;This may take a few&#xa;minutes.'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3290" y="50" width="130" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-return-generation" target="fe-generation-toast">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Subscribe to WebSocket -->
+        <mxCell id="fe-ws-subscribe" value="WebSocket:&#xa;Subscribe to&#xa;generation_job_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3290" y="145" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="fe-generation-toast" target="fe-ws-subscribe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Progress indicator -->
+        <mxCell id="fe-progress" value="Display Progress:&#xa;• Job status&#xa;• Estimated time&#xa;• Current step" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3290" y="225" width="130" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="fe-ws-subscribe" target="fe-progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User can continue working -->
+        <mxCell id="user-continue" value="User Can&#xa;Continue Working" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="3305" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="fe-generation-toast" target="user-continue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ============================================ -->
+        <!-- ASYNC GENERATION PROCESSING -->
+        <!-- ============================================ -->
+        
+        <mxCell id="jq-pick-generation" value="Worker Picks Job&#xa;Status: PROCESSING" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="3460" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge62" value="Async" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=10;" edge="1" parent="1" source="jq-create-generation" target="jq-pick-generation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Send initial status update -->
+        <mxCell id="be-ws-update-start" value="WebSocket Push:&#xa;'Starting generation...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3460" y="105" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="jq-pick-generation" target="be-ws-update-start">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-ws-receive-start" value="Update Progress:&#xa;'Starting generation...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="3460" y="235" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge64" value="Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="be-ws-update-start" target="fe-ws-receive-start">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check Redis cache for character context -->
+        <mxCell id="be-check-redis" value="Check Redis Cache:&#xa;character_{id}_context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3620" y="110" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge65" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-ws-update-start" target="be-check-redis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="redis-get-context" value="GET key:&#xa;character_{id}_context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8BBD0;strokeColor=#C2185B;fontSize=10;" vertex="1" parent="lane-redis">
+          <mxGeometry x="3620" y="50" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-check-redis" target="redis-get-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="redis-cache-check" value="Cache&#xa;Hit?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F8BBD0;strokeColor=#C2185B;fontSize=10;" vertex="1" parent="lane-redis">
+          <mxGeometry x="3790" y="60" width="80" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="redis-get-context" target="redis-cache-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cache MISS path - Fetch from ChromaDB -->
+        <mxCell id="be-fetch-chromadb" value="Fetch Character&#xa;Context from&#xa;ChromaDB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="3910" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge68" value="MISS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="redis-cache-check" target="be-fetch-chromadb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Fetch character from Supabase -->
+        <mxCell id="db-fetch-char-gen" value="SELECT * FROM&#xa;characters&#xa;WHERE id = ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="3910" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-fetch-chromadb" target="db-fetch-char-gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Query ChromaDB for character context -->
+        <mxCell id="chroma-query-char" value="Query Collection:&#xa;{trilogy_id}_characters&#xa;&#xa;WHERE character_id = ?&#xa;&#xa;Retrieve:&#xa;• Profile&#xa;• Traits&#xa;• Character arc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="3900" y="110" width="140" height="110" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-fetch-chromadb" target="chroma-query-char">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check if character has prior content -->
+        <mxCell id="chroma-check-prior" value="Prior Sub-Chapters&#xa;Exist?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=10;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="4080" y="130" width="110" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-query-char" target="chroma-check-prior">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- FIRST TIME - No prior content -->
+        <mxCell id="chroma-first-time" value="FIRST TIME:&#xa;Use only profile&#xa;data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="4075" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge72" value="No (First Time)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;fontColor=#F57F17;" edge="1" parent="1" source="chroma-check-prior" target="chroma-first-time">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- SUBSEQUENT - Has prior content -->
+        <mxCell id="chroma-similarity-search" value="Semantic Similarity&#xa;Search:&#xa;&#xa;Query: writing_prompt&#xa;&#xa;Collection:&#xa;{trilogy_id}_character_{id}&#xa;&#xa;Top K=5 most relevant&#xa;previous sub-chapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="4230" y="110" width="150" height="140" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge73" value="Yes (Has Content)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=9;fontColor=#2E7D32;" edge="1" parent="1" source="chroma-check-prior" target="chroma-similarity-search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Identify most recent sub-chapter -->
+        <mxCell id="db-fetch-recent" value="SELECT * FROM&#xa;sub_chapters&#xa;WHERE character_id = ?&#xa;ORDER BY created_at DESC&#xa;LIMIT 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="4230" y="50" width="150" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-similarity-search" target="db-fetch-recent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Cache character context in Redis -->
+        <mxCell id="redis-set-context" value="SET key:&#xa;character_{id}_context&#xa;&#xa;Value: {&#xa;  profile,&#xa;  recent_content,&#xa;  similar_content&#xa;}&#xa;&#xa;TTL: 3600s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8BBD0;strokeColor=#C2185B;fontSize=9;align=left;" vertex="1" parent="lane-redis">
+          <mxGeometry x="4070" y="190" width="130" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-fetch-chromadb" target="redis-set-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Build enhanced prompt -->
+        <mxCell id="be-build-prompt" value="Build Enhanced&#xa;Prompt with RAG:&#xa;&#xa;Character Context:&#xa;{retrieved_context}&#xa;&#xa;Current Prompt:&#xa;{writing_prompt}&#xa;&#xa;Instruction:&#xa;'Write from {character}&#xa;perspective, matching&#xa;established tone...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=8;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4430" y="165" width="150" height="160" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge76" value="HIT" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#2E7D32;" edge="1" parent="1" source="redis-cache-check" target="be-build-prompt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge77" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-first-time" target="be-build-prompt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="chroma-similarity-search" target="be-build-prompt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Send status update -->
+        <mxCell id="be-ws-update-prompt" value="WebSocket Push:&#xa;'Building context...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4450" y="350" width="110" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge79" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-build-prompt" target="be-ws-update-prompt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-ws-receive-prompt" value="Update Progress:&#xa;'Building context...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4450" y="240" width="110" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge80" value="Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="be-ws-update-prompt" target="fe-ws-receive-prompt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Call LLM (Mistral) -->
+        <mxCell id="be-call-llm" value="Call Local Mistral 7B:&#xa;&#xa;POST /generate&#xa;{&#xa;  prompt: enhanced_prompt,&#xa;  max_tokens: 2000,&#xa;  temperature: 0.7&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4620" y="175" width="140" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge81" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-build-prompt" target="be-call-llm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Send generation status -->
+        <mxCell id="be-ws-update-gen" value="WebSocket Push:&#xa;'Generating content...&#xa;(this may take 2-3 min)'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4630" y="300" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-call-llm" target="be-ws-update-gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-ws-receive-gen" value="Update Progress:&#xa;'Generating content...&#xa;⏱ ~2-3 minutes'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4630" y="235" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge83" value="Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="be-ws-update-gen" target="fe-ws-receive-gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- LLM generation check -->
+        <mxCell id="be-llm-check" value="LLM&#xa;Success?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4800" y="190" width="90" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge84" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-call-llm" target="be-llm-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- LLM error handling -->
+        <mxCell id="be-llm-error" value="LLM Error:&#xa;• Timeout&#xa;• Connection failed&#xa;• Token limit exceeded" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=9;align=left;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4800" y="290" width="90" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge85" value="Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#C62828;" edge="1" parent="1" source="be-llm-check" target="be-llm-error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="jq-generation-failed" value="Update Job:&#xa;Status: FAILED&#xa;Retry: Yes (3x)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="4795" y="145" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge86" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-llm-error" target="jq-generation-failed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fe-gen-error-ws" value="WebSocket Update:&#xa;'❌ Generation failed.&#xa;Retrying...'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4795" y="235" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge87" value="Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="jq-generation-failed" target="fe-gen-error-ws">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Save generated content as new version -->
+        <mxCell id="be-save-content" value="Save Content&#xa;as New Version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4930" y="195" width="110" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge88" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=10;fontColor=#2E7D32;" edge="1" parent="1" source="be-llm-check" target="be-save-content">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Insert into sub_chapter_versions -->
+        <mxCell id="db-insert-version" value="INSERT INTO&#xa;sub_chapter_versions&#xa;(&#xa;  sub_chapter_id,&#xa;  version_number,&#xa;  content,&#xa;  word_count,&#xa;  change_description:&#xa;    'AI generated'&#xa;)&#xa;&#xa;UPDATE sub_chapters&#xa;SET status = 'completed'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=9;align=left;" vertex="1" parent="lane-supabase">
+          <mxGeometry x="4920" y="40" width="130" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge89" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-save-content" target="db-insert-version">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Update character context in ChromaDB -->
+        <mxCell id="be-update-context" value="Update Character&#xa;Context with&#xa;New Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;fontSize=10;" vertex="1" parent="lane-fastapi">
+          <mxGeometry x="4930" y="280" width="110" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge90" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-save-content" target="be-update-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Add to ChromaDB -->
+        <mxCell id="chroma-add-content" value="ADD Document:&#xa;&#xa;Collection:&#xa;{trilogy_id}_&#xa;character_{id}&#xa;&#xa;Document:&#xa;{generated_content}&#xa;&#xa;Metadata:&#xa;{&#xa;  sub_chapter_id,&#xa;  version: 1,&#xa;  type: 'content'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=8;align=left;" vertex="1" parent="lane-chromadb">
+          <mxGeometry x="4920" y="140" width="130" height="160" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge91" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-update-context" target="chroma-add-content">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Invalidate Redis cache -->
+        <mxCell id="redis-invalidate" value="DELETE key:&#xa;character_{id}_context&#xa;&#xa;(Force fresh fetch&#xa;next time)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8BBD0;strokeColor=#C2185B;fontSize=10;align=left;" vertex="1" parent="lane-redis">
+          <mxGeometry x="4920" y="200" width="130" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge92" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-update-context" target="redis-invalidate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Complete job -->
+        <mxCell id="jq-generation-complete" value="Update Job:&#xa;Status: COMPLETED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1A5;strokeColor=#558B2F;fontSize=10;" vertex="1" parent="lane-jobqueue">
+          <mxGeometry x="4925" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge93" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-update-context" target="jq-generation-complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Send completion WebSocket -->
+        <mxCell id="fe-complete-ws" value="WebSocket Update:&#xa;'✓ Content generated!&#xa;Version 1 created.'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1A5;strokeColor=#558B2F;fontSize=10;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4925" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge94" value="Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;fontSize=9;" edge="1" parent="1" source="jq-generation-complete" target="fe-complete-ws">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Display generated content -->
+        <mxCell id="fe-display-content" value="Display:&#xa;• Generated content&#xa;• Word count&#xa;• Version number&#xa;• Actions:&#xa;  - Download&#xa;  - Edit&#xa;  - Regenerate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=9;align=left;" vertex="1" parent="lane-streamlit">
+          <mxGeometry x="4925" y="50" width="120" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge95" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-complete-ws" target="fe-display-content">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- User reviews content -->
+        <mxCell id="user-review" value="Review&#xa;Generated Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;fontSize=11;" vertex="1" parent="lane-user">
+          <mxGeometry x="4935" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge96" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-display-content" target="user-review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- END -->
+        <mxCell id="end" value="END" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EF5350;strokeColor=#C62828;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="lane-user">
+          <mxGeometry x="4840" y="60" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge97" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-review" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

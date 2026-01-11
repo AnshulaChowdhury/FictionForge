@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-03T14:00:00.000Z" agent="draw.io" version="24.0.0">
+  <diagram name="Epic 7 - Page 3: Add Version Descriptions" id="epic7_page3">
+    <mxGraphModel dx="2400" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="2800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- ============================================= -->
+        <!-- TITLE AND METADATA -->
+        <!-- ============================================= -->
+        
+        <mxCell id="title" value="EPIC 7 - PAGE 3: ADD VERSION DESCRIPTIONS&#xa;&#xa;User Story 3: Users can document the reasoning behind content changes to maintain clear revision records.&#xa;&#xa;Flow: User navigates to version history → Selects a version → Adds/edits description → System saves → Real-time update broadcast&#xa;&#xa;Key Features:&#xa;• Edit change_description field for any version&#xa;• Optional field (can be blank)&#xa;• Inline editing in version history modal&#xa;• Synchronous save operation&#xa;• Real-time broadcast to other sessions&#xa;• Success feedback to user" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="3920" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- SWIM LANES -->
+        <!-- ============================================= -->
+        
+        <!-- User Lane -->
+        <mxCell id="lane_user" value="USER" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="3920" height="400" as="geometry"/>
+        </mxCell>
+        
+        <!-- Streamlit Frontend Lane -->
+        <mxCell id="lane_frontend" value="STREAMLIT FRONTEND" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="660" width="3920" height="500" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI Backend Lane -->
+        <mxCell id="lane_backend" value="FASTAPI BACKEND" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1160" width="3920" height="500" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Database Lane -->
+        <mxCell id="lane_database" value="SUPABASE DATABASE" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1660" width="3920" height="400" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Realtime Lane -->
+        <mxCell id="lane_realtime" value="SUPABASE REALTIME" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=14;fontStyle=1;startSize=120;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2060" width="3920" height="300" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- USER FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: User views version history -->
+        <mxCell id="step1_user" value="User clicks 'View Version History' button&#xa;&#xa;Context: User is viewing a sub-chapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_user">
+          <mxGeometry x="180" y="80" width="240" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: User selects version to edit -->
+        <mxCell id="step2_user" value="User clicks 'Add Description' or 'Edit Description' icon&#xa;&#xa;UI: Pencil icon next to each version row" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_user">
+          <mxGeometry x="900" y="80" width="260" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: User enters description -->
+        <mxCell id="step3_user" value="User enters/edits description text&#xa;&#xa;UI: Inline text area expands&#xa;Max length: 1000 characters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_user">
+          <mxGeometry x="1600" y="80" width="260" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: User saves -->
+        <mxCell id="step4_user" value="User clicks 'Save' button&#xa;&#xa;UI: Save button appears when text changes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_user">
+          <mxGeometry x="2000" y="80" width="260" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Success feedback -->
+        <mxCell id="step5_user" value="User sees success message&#xa;&#xa;UI: 'Description saved successfully'&#xa;Toast notification (3 seconds)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_user">
+          <mxGeometry x="3200" y="80" width="260" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- FRONTEND FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: Display version history modal -->
+        <mxCell id="step1_frontend" value="Display Version History Modal&#xa;&#xa;UI Components:&#xa;• Modal title: 'Version History'&#xa;• Table with columns:&#xa;  - Version #&#xa;  - Created At&#xa;  - Word Count&#xa;  - Description (truncated)&#xa;  - Actions (Edit icon)&#xa;• Close button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="180" y="60" width="280" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Enable inline editing -->
+        <mxCell id="step2_frontend" value="Enable Inline Editing&#xa;&#xa;UI Changes:&#xa;• Description cell converts to text area&#xa;• Text area height: 3 rows (auto-expand)&#xa;• Character counter: X/1000&#xa;• Save button appears (green)&#xa;• Cancel button appears (gray)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="880" y="60" width="280" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Validate input -->
+        <mxCell id="step3_frontend" value="Validate Input" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="1650" y="80" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Validation error -->
+        <mxCell id="validation_error" value="Show Error Message&#xa;&#xa;Error: 'Description exceeds 1000 characters'&#xa;&#xa;UI: Red text below text area" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontFamily=Arial;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="1650" y="280" width="240" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Call API -->
+        <mxCell id="step4_frontend" value="Call API: PUT /api/sub-chapter-versions/{version_id}/description&#xa;&#xa;Request Body:&#xa;{&#xa;  'change_description': 'user input text'&#xa;}&#xa;&#xa;Headers:&#xa;• Authorization: Bearer {token}&#xa;• Content-Type: application/json" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0277BD;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="2000" y="60" width="320" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Handle response -->
+        <mxCell id="step5_frontend" value="Handle API Response" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="2580" y="80" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Error handling -->
+        <mxCell id="api_error" value="Show Error Toast&#xa;&#xa;Error: 'Failed to save description. Please try again.'&#xa;&#xa;UI: Red toast, 5 seconds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontFamily=Arial;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="2560" y="280" width="240" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 6: Success display -->
+        <mxCell id="step6_frontend" value="Update UI with Saved Description&#xa;&#xa;UI Changes:&#xa;• Text area converts back to display text&#xa;• Show full description (truncated if > 100 chars)&#xa;• Edit icon reappears&#xa;• Show success toast&#xa;• Update 'Updated At' timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_frontend">
+          <mxGeometry x="3100" y="60" width="320" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- BACKEND FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: Receive request -->
+        <mxCell id="step1_backend" value="Receive PUT Request&#xa;&#xa;Endpoint: /api/sub-chapter-versions/{version_id}/description&#xa;&#xa;Extract:&#xa;• version_id from path&#xa;• change_description from body&#xa;• user_id from JWT token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="2000" y="60" width="320" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Validate authorization -->
+        <mxCell id="step2_backend" value="Validate User Authorization" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_backend">
+          <mxGeometry x="2470" y="80" width="180" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Authorization error -->
+        <mxCell id="auth_error" value="Return 403 Forbidden&#xa;&#xa;Response:&#xa;{&#xa;  'error': 'Unauthorized',&#xa;  'message': 'You do not have permission to edit this version'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="2450" y="260" width="300" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Validate version exists -->
+        <mxCell id="step3_backend" value="Check Version Exists" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=12;fontFamily=Arial;" vertex="1" parent="lane_backend">
+          <mxGeometry x="2870" y="80" width="160" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Version not found -->
+        <mxCell id="not_found_error" value="Return 404 Not Found&#xa;&#xa;Response:&#xa;{&#xa;  'error': 'Not Found',&#xa;  'message': 'Version not found'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="2840" y="260" width="260" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 4: Update database -->
+        <mxCell id="step4_backend" value="Call Database UPDATE&#xa;&#xa;Action: Update sub_chapter_versions.change_description&#xa;&#xa;Pass to database layer:&#xa;• version_id&#xa;• new change_description&#xa;• user_id (for audit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="3200" y="60" width="320" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 5: Return success -->
+        <mxCell id="step5_backend" value="Return 200 OK&#xa;&#xa;Response:&#xa;{&#xa;  'success': true,&#xa;  'version_id': 'uuid',&#xa;  'change_description': 'updated text',&#xa;  'updated_at': '2025-11-03T14:00:00Z'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_backend">
+          <mxGeometry x="3640" y="60" width="320" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- DATABASE FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: Validate RLS -->
+        <mxCell id="step1_database" value="Row Level Security Check&#xa;&#xa;Query:&#xa;SELECT 1 FROM sub_chapter_versions scv&#xa;JOIN sub_chapters sc ON scv.sub_chapter_id = sc.id&#xa;JOIN chapters c ON sc.chapter_id = c.id&#xa;JOIN books b ON c.book_id = b.id&#xa;JOIN trilogy_projects tp ON b.trilogy_id = tp.id&#xa;WHERE scv.id = $1 AND tp.user_id = $2;&#xa;&#xa;Result: User authorized ✓" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_database">
+          <mxGeometry x="2470" y="60" width="380" height="220" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Execute UPDATE -->
+        <mxCell id="step2_database" value="Execute UPDATE Query&#xa;&#xa;SQL:&#xa;UPDATE sub_chapter_versions&#xa;SET &#xa;  change_description = $1,&#xa;  updated_at = NOW()&#xa;WHERE id = $2&#xa;RETURNING *;&#xa;&#xa;Parameters:&#xa;• $1: new description text&#xa;• $2: version_id&#xa;&#xa;Result: 1 row updated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_database">
+          <mxGeometry x="3200" y="60" width="320" height="260" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 3: Broadcast change -->
+        <mxCell id="step3_database" value="Trigger Realtime Broadcast&#xa;&#xa;Event: UPDATE on sub_chapter_versions&#xa;&#xa;Payload:&#xa;{&#xa;  'table': 'sub_chapter_versions',&#xa;  'eventType': 'UPDATE',&#xa;  'new': {updated version record},&#xa;  'old': {previous version record}&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_database">
+          <mxGeometry x="3640" y="60" width="320" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- REALTIME FLOW NODES -->
+        <!-- ============================================= -->
+        
+        <!-- Step 1: Broadcast to subscribers -->
+        <mxCell id="step1_realtime" value="Broadcast to All Subscribed Clients&#xa;&#xa;Channel: sub_chapter_versions:sub_chapter_id={sub_chapter_id}&#xa;&#xa;Message:&#xa;{&#xa;  'event': 'version_description_updated',&#xa;  'version_id': 'uuid',&#xa;  'version_number': 3,&#xa;  'change_description': 'updated text',&#xa;  'updated_at': '2025-11-03T14:00:00Z'&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_realtime">
+          <mxGeometry x="3640" y="40" width="320" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 2: Other clients update UI -->
+        <mxCell id="step2_realtime" value="Other Clients Update UI&#xa;&#xa;If version history modal is open:&#xa;• Update description column&#xa;• Show toast: 'Version description updated'&#xa;&#xa;If viewing that specific version:&#xa;• Refresh description display" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=11;fontFamily=Arial;align=left;" vertex="1" parent="lane_realtime">
+          <mxGeometry x="180" y="40" width="320" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- FLOW ARROWS -->
+        <!-- ============================================= -->
+        
+        <!-- User to Frontend -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step1_user" target="step1_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step2_user" target="step2_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step3_user" target="step3_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="step4_user" target="step4_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend validation -->
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;dashed=1;" edge="1" parent="1" source="step3_frontend" target="validation_error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow5_label" value="Invalid&#xa;(> 1000 chars)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="1720" y="890" width="100" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;" edge="1" parent="1" source="step3_frontend" target="step4_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow6_label" value="Valid" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="1860" y="810" width="60" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend to Backend -->
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E65100;" edge="1" parent="1" source="step4_frontend" target="step1_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend flow -->
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E65100;" edge="1" parent="1" source="step1_backend" target="step2_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;dashed=1;" edge="1" parent="1" source="step2_backend" target="auth_error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow9_label" value="Unauthorized" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2540" y="1350" width="80" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;" edge="1" parent="1" source="step2_backend" target="step3_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow10_label" value="Authorized" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2680" y="1280" width="80" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;dashed=1;" edge="1" parent="1" source="step3_backend" target="not_found_error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow11_label" value="Not Found" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2940" y="1350" width="80" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;" edge="1" parent="1" source="step3_backend" target="step4_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow12_label" value="Found" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="3060" y="1280" width="60" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend to Database -->
+        <mxCell id="arrow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6A1B9A;" edge="1" parent="1" source="step4_backend" target="step1_database">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6A1B9A;" edge="1" parent="1" source="step1_database" target="step2_database">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6A1B9A;" edge="1" parent="1" source="step2_database" target="step3_database">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database to Realtime -->
+        <mxCell id="arrow16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00695C;" edge="1" parent="1" source="step3_database" target="step1_realtime">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database back to Backend -->
+        <mxCell id="arrow17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6A1B9A;dashed=1;" edge="1" parent="1" source="step2_database" target="step5_backend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow17_label" value="Return updated record" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="3480" y="1380" width="140" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend to Frontend -->
+        <mxCell id="arrow18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E65100;dashed=1;" edge="1" parent="1" source="step5_backend" target="step5_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#C62828;dashed=1;" edge="1" parent="1" source="step5_frontend" target="api_error">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow19_label" value="Error" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2650" y="880" width="50" height="30" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="arrow20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;" edge="1" parent="1" source="step5_frontend" target="step6_frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow20_label" value="Success" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="2780" y="810" width="70" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend to User -->
+        <mxCell id="arrow21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2E7D32;" edge="1" parent="1" source="step6_frontend" target="step5_user">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Realtime to Frontend (other clients) -->
+        <mxCell id="arrow22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00695C;dashed=1;" edge="1" parent="1" source="step1_realtime" target="step2_realtime">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow22_label" value="Real-time broadcast" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="580" y="2180" width="140" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- ANNOTATIONS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="annotation1" value="âœ… KEY FEATURES:&#xa;&#xa;1. Inline Editing: No modal needed, edit directly in version history table&#xa;2. Real-time Updates: All other clients see description changes immediately&#xa;3. Optional Field: Users can leave descriptions blank&#xa;4. Character Limit: Max 1000 characters with counter&#xa;5. Synchronous: Instant save, no async processing needed&#xa;6. Non-blocking: Description edits don't affect version content" style="text;html=1;strokeColor=#2E7D32;fillColor=#E8F5E9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="200" y="2420" width="700" height="220" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation2" value="ðŸ"Š API SPECIFICATION:&#xa;&#xa;Endpoint: PUT /api/sub-chapter-versions/{version_id}/description&#xa;&#xa;Request:&#xa;{&#xa;  'change_description': 'string (max 1000 chars, optional)'&#xa;}&#xa;&#xa;Response (200 OK):&#xa;{&#xa;  'success': true,&#xa;  'version_id': 'uuid',&#xa;  'change_description': 'updated text',&#xa;  'updated_at': '2025-11-03T14:00:00Z'&#xa;}&#xa;&#xa;Errors:&#xa;• 400: Invalid input (> 1000 chars)&#xa;• 403: Unauthorized (not user's trilogy)&#xa;• 404: Version not found" style="text;html=1;strokeColor=#E65100;fillColor=#FFF3E0;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="960" y="2420" width="700" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation3" value="ðŸ'¾ DATABASE OPERATION:&#xa;&#xa;Table: sub_chapter_versions&#xa;&#xa;UPDATE Query:&#xa;UPDATE sub_chapter_versions&#xa;SET &#xa;  change_description = $1,&#xa;  updated_at = NOW()&#xa;WHERE id = $2&#xa;RETURNING *;&#xa;&#xa;RLS Check:&#xa;User must own the trilogy that contains this sub-chapter version&#xa;&#xa;Realtime Trigger:&#xa;Broadcasts UPDATE event to channel:&#xa;sub_chapter_versions:sub_chapter_id={sub_chapter_id}" style="text;html=1;strokeColor=#6A1B9A;fillColor=#F3E5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="2420" width="700" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation4" value="ðŸ"„ REAL-TIME UPDATES:&#xa;&#xa;When description is saved:&#xa;&#xa;1. Supabase broadcasts UPDATE event&#xa;2. All clients subscribed to this sub-chapter receive notification&#xa;3. Clients check if version history modal is open&#xa;4. If open: Update description column in table&#xa;5. Show toast notification: 'Version description updated'&#xa;&#xa;Subscription Channel:&#xa;sub_chapter_versions:sub_chapter_id={sub_chapter_id}&#xa;&#xa;Event Payload:&#xa;{&#xa;  'event': 'version_description_updated',&#xa;  'version_id': 'uuid',&#xa;  'version_number': 3,&#xa;  'change_description': 'new description',&#xa;  'updated_at': '2025-11-03T14:00:00Z'&#xa;}" style="text;html=1;strokeColor=#00695C;fillColor=#E0F2F1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=11;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2480" y="2420" width="700" height="340" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="annotation5" value="ðŸ'¡ UI/UX NOTES:&#xa;&#xa;Version History Table Layout:&#xa;┌─────────────────────────────────────────────────────────┐&#xa;│ Version # │ Created At  │ Words │ Description    │ Actions │&#xa;├─────────────────────────────────────────────────────────┤&#xa;│ v5        │ Nov 3, 14:00│ 2,045 │ Fixed plot... âœï¸  │         │&#xa;│ v4        │ Nov 3, 12:30│ 2,010 │ [No descr...] âœï¸  │         │&#xa;│ v3        │ Nov 2, 18:15│ 1,998 │ Changed POV...âœï¸  │         │&#xa;└─────────────────────────────────────────────────────────┘&#xa;&#xa;When Editing (inline):&#xa;┌─────────────────────────────────────────────────────────┐&#xa;│ v5 │ Nov 3, 14:00 │ 2,045 │ ┌────────────────┐        │&#xa;│    │              │       │ │ Fixed plot     │ âœ… â�Œ   │&#xa;│    │              │       │ │ consistency... │        │&#xa;│    │              │       │ └────────────────┘        │&#xa;│    │              │       │ 45/1000 chars             │&#xa;└─────────────────────────────────────────────────────────┘" style="text;html=1;strokeColor=#1976D2;fillColor=#E3F2FD;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="3240" y="2420" width="700" height="340" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

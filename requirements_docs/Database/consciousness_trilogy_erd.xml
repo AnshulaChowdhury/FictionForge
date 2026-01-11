@@ -1,0 +1,399 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram name="Consciousness Trilogy ERD" id="erd-consciousness-trilogy">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="3000" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="legend-title" value="LEGEND" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-user" value="User Data (RLS)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-content" value="Content Data (RLS)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-metadata" value="Metadata/Logs (No RLS)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-sharing" value="Sharing/Collaboration" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-system" value="System/Jobs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-notes-title" value="ARCHITECTURE NOTES" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-notes" value="• Option A: pg-boss + Redis + Supabase + ChromaDB&#xa;• ChromaDB: One collection per character&#xa;  Format: {trilogy_id}_character_{character_id}&#xa;• character_vector_stores: Tracks ChromaDB metadata&#xa;• Redis: Character context caching&#xa;• pg-boss: Async job processing&#xa;• Docker: Manage all dependencies&#xa;• Word counts: Calculated on-the-fly (no storage)" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="330" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-users" value="auth.users&#xa;(Supabase Auth)&#xa;═══════════════&#xa;id: UUID PK&#xa;email: VARCHAR&#xa;encrypted_password&#xa;created_at: TIMESTAMP&#xa;updated_at: TIMESTAMP&#xa;&#xa;[Managed by Supabase]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;fontColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="user-profiles" value="user_profiles&#xa;═══════════════&#xa;id: UUID PK → auth.users(id) ON DELETE CASCADE&#xa;name: VARCHAR NOT NULL&#xa;bio: TEXT&#xa;avatar_url: TEXT&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;updated_at: TIMESTAMP DEFAULT NOW()&#xa;&#xa;🔒 RLS: Users can view/update own profile&#xa;📌 INDEX: id (PK)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="700" y="40" width="350" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="trilogy-projects" value="trilogy_projects&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;user_id: UUID NOT NULL → auth.users(id) ON DELETE CASCADE&#xa;title: VARCHAR NOT NULL&#xa;description: TEXT&#xa;author: VARCHAR&#xa;narrative_overview: TEXT&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;updated_at: TIMESTAMP DEFAULT NOW()&#xa;&#xa;🔒 RLS: Users can only access their own projects&#xa;📌 INDEX: user_id&#xa;💭 Word count calculated on-the-fly from books" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="280" width="400" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="books" value="books&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;trilogy_id: UUID NOT NULL → trilogy_projects(id) ON DELETE CASCADE&#xa;book_number: INT NOT NULL (1, 2, or 3)&#xa;title: VARCHAR NOT NULL&#xa;description: TEXT&#xa;target_word_count: INT DEFAULT 80000&#xa;current_word_count: INT DEFAULT 0&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;updated_at: TIMESTAMP DEFAULT NOW()&#xa;&#xa;🔒 RLS: Cascade from trilogy_projects.user_id&#xa;📌 INDEX: trilogy_id&#xa;⚠️ UNIQUE: (trilogy_id, book_number)&#xa;🔄 TRIGGER: Update current_word_count from chapters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="280" width="420" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="characters" value="characters&lt;br&gt;═══════════════&lt;br&gt;id: UUID PK DEFAULT gen_random_uuid()&lt;br&gt;trilogy_id: UUID NOT NULL → trilogy_projects(id) ON DELETE CASCADE&lt;br&gt;name: VARCHAR NOT NULL&lt;br&gt;description: TEXT&lt;br&gt;traits: JSONB (personality, abilities, etc.)&lt;br&gt;character_arc: VARCHAR&lt;br&gt;created_at: TIMESTAMP DEFAULT NOW()&lt;br&gt;updated_at: TIMESTAMP DEFAULT NOW()&lt;div&gt;vector_store_collection VARCHAR&lt;br&gt;vector_store_initialized at TIMESTAMP&lt;br&gt;vector_store_initialization_failed_at TIMESTAMP&lt;br&gt;&lt;br&gt;🔒 RLS: Cascade from trilogy_projects.user_id&lt;br&gt;📌 INDEX: trilogy_id&lt;br&gt;🗄️ ChromaDB: {trilogy_id}_character_{character_id}&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="600" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="character-vector-stores" value="character_vector_stores&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;character_id: UUID NOT NULL → characters(id) ON DELETE CASCADE&#xa;vector_store_id: VARCHAR NOT NULL&#xa;last_updated: TIMESTAMP DEFAULT NOW()&#xa;document_count: INT DEFAULT 0&#xa;&#xa;🔓 NO RLS: System metadata table&#xa;📌 INDEX: character_id&#xa;⚠️ UNIQUE: character_id (one vector store per character)&#xa;🗄️ Tracks ChromaDB collection metadata&#xa;💡 vector_store_id = ChromaDB collection name" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="950" width="400" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="world-rules" value="world_rules&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;trilogy_id: UUID NOT NULL → trilogy_projects(id) ON DELETE CASCADE&#xa;title: VARCHAR NOT NULL&#xa;description: TEXT NOT NULL&#xa;category: VARCHAR NOT NULL (user-defined)&#xa;times_flagged: INT DEFAULT 0&#xa;times_true_violation: INT DEFAULT 0&#xa;times_false_positive: INT DEFAULT 0&#xa;times_intentional_break: INT DEFAULT 0&#xa;times_checker_error: INT DEFAULT 0&#xa;accuracy_rate: FLOAT GENERATED ALWAYS AS (&#xa;  CASE WHEN times_flagged = 0 THEN 1.0&#xa;  ELSE (times_true_violation + times_intentional_break)::FLOAT / times_flagged::FLOAT&#xa;  END) STORED&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;updated_at: TIMESTAMP DEFAULT NOW()&#xa;&#xa;🔒 RLS: Cascade from trilogy_projects.user_id&#xa;📌 INDEX: trilogy_id, category, accuracy_rate (WHERE times_flagged &gt;= 10)&#xa;⚡ COMPUTED: accuracy_rate (stored, auto-updated)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="600" width="500" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="world-rule-books" value="world_rule_books&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;world_rule_id: UUID NOT NULL → world_rules(id) ON DELETE CASCADE&#xa;book_id: UUID NOT NULL → books(id) ON DELETE CASCADE&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;&#xa;⚠️ UNIQUE: (world_rule_id, book_id)&#xa;📌 INDEX: world_rule_id, book_id" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1450" y="700" width="380" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="chapters" value="chapters&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;book_id: UUID NOT NULL → books(id) ON DELETE CASCADE&#xa;character_id: UUID NOT NULL → characters(id) ON DELETE RESTRICT&#xa;title: VARCHAR NOT NULL (defaults to character.name)&#xa;chapter_number: INT NOT NULL&#xa;chapter_plot: TEXT (author reference only)&#xa;target_word_count: INT&#xa;current_word_count: INT DEFAULT 0&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;updated_at: TIMESTAMP DEFAULT NOW()&#xa;&#xa;🔒 RLS: Cascade from books → trilogy_projects.user_id&#xa;📌 INDEX: book_id, character_id&#xa;⚠️ UNIQUE: (book_id, chapter_number)&#xa;🔄 TRIGGER: Update current_word_count from sub_chapters&#xa;⚠️ ON DELETE RESTRICT: Prevents character deletion if chapters exist" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1400" y="280" width="480" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-chapters" value="sub_chapters&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;chapter_id: UUID NOT NULL → chapters(id) ON DELETE CASCADE&#xa;character_id: UUID NOT NULL → characters(id) ON DELETE RESTRICT&#xa;sub_chapter_number: INT NOT NULL&#xa;title: VARCHAR&#xa;plot_points: TEXT (single text field for AI generation)&#xa;content: TEXT (the actual written content)&#xa;word_count: INT DEFAULT 0&#xa;status: VARCHAR (draft, in_progress, completed, needs_review)&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;updated_at: TIMESTAMP DEFAULT NOW()&#xa;&#xa;🔒 RLS: Cascade from chapters → books → trilogy_projects.user_id&#xa;📌 INDEX: chapter_id, character_id, updated_at&#xa;⚠️ UNIQUE: (chapter_id, sub_chapter_number)&#xa;🔄 TRIGGER: Auto-populate character_id from chapter on INSERT&#xa;🔄 TRIGGER: Enforce character_id must match chapter.character_id&#xa;🔄 TRIGGER: Update chapter.current_word_count when word_count changes&#xa;⚠️ ON DELETE RESTRICT: Prevents character deletion if sub-chapters exist" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1950" y="280" width="520" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="sub-chapter-versions" value="sub_chapter_versions&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;sub_chapter_id: UUID NOT NULL → sub_chapters(id) ON DELETE CASCADE&#xa;version_number: INT NOT NULL&#xa;content: TEXT NOT NULL&#xa;word_count: INT NOT NULL&#xa;snapshot_metadata: JSONB&#xa;  {&#xa;    &quot;character_id&quot;: &quot;uuid&quot;,&#xa;    &quot;applied_world_rule_ids&quot;: [&quot;uuid1&quot;, &quot;uuid2&quot;],&#xa;    &quot;generation_params&quot;: {&#xa;      &quot;model&quot;: &quot;mistral-7b&quot;,&#xa;      &quot;temperature&quot;: 0.7,&#xa;      &quot;prompt&quot;: &quot;...&quot;,&#xa;      &quot;word_count_target&quot;: 2000&#xa;    }&#xa;  }&#xa;generated_by_model: VARCHAR (mistral-7b, claude-sonnet, manual)&#xa;generation_job_id: UUID → generation_jobs(id)&#xa;is_ai_generated: BOOLEAN DEFAULT FALSE&#xa;change_description: TEXT&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;created_by_user_id: UUID → auth.users(id)&#xa;&#xa;🔒 RLS: Cascade from sub_chapters → chapters → books → trilogy_projects&#xa;📌 INDEX: sub_chapter_id, (sub_chapter_id, version_number DESC)&#xa;⚠️ UNIQUE: (sub_chapter_id, version_number)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2550" y="280" width="440" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="character-change-log" value="character_change_log&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;character_id: UUID NOT NULL → characters(id) ON DELETE CASCADE&#xa;changed_at: TIMESTAMP DEFAULT NOW()&#xa;changed_by_user_id: UUID → auth.users(id)&#xa;field_changed: VARCHAR (description, traits, name, etc.)&#xa;old_value: JSONB&#xa;new_value: JSONB&#xa;user_note: TEXT&#xa;&#xa;🔓 NO RLS: Change logs are system audit trail&#xa;📌 INDEX: character_id, changed_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="1260" width="400" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="world-rule-change-log" value="world_rule_change_log&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;world_rule_id: UUID NOT NULL → world_rules(id) ON DELETE CASCADE&#xa;changed_at: TIMESTAMP DEFAULT NOW()&#xa;changed_by_user_id: UUID → auth.users(id)&#xa;old_title: VARCHAR&#xa;new_title: VARCHAR&#xa;old_description: TEXT&#xa;new_description: TEXT&#xa;old_category: VARCHAR&#xa;new_category: VARCHAR&#xa;reason: TEXT&#xa;&#xa;🔓 NO RLS: Change logs are system audit trail&#xa;📌 INDEX: world_rule_id, changed_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="1050" width="400" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="content-review-flags" value="content_review_flags&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;sub_chapter_id: UUID NOT NULL → sub_chapters(id) ON DELETE CASCADE&#xa;world_rule_id: UUID → world_rules(id) ON DELETE SET NULL&#xa;flag_type: VARCHAR (consistency, rule_violation, quality)&#xa;flagged_text: TEXT&#xa;suggestion: TEXT&#xa;severity: VARCHAR (low, medium, high)&#xa;flagged_at: TIMESTAMP DEFAULT NOW()&#xa;resolved_at: TIMESTAMP&#xa;resolution: VARCHAR (accepted, rejected, intentional, error)&#xa;resolved_by_user_id: UUID → auth.users(id)&#xa;&#xa;🔒 RLS: Cascade from sub_chapters → ... → trilogy_projects&#xa;📌 INDEX: sub_chapter_id, world_rule_id, resolved_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1950" y="720" width="400" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="generation-jobs" value="generation_jobs&lt;br&gt;═══════════════&lt;br&gt;id: UUID PK DEFAULT gen_random_uuid()&lt;br&gt;trilogy_id UUID &lt;span class=&quot;token&quot; style=&quot;color: rgb(97, 175, 239);&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(209, 154, 102);&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;REFERENCES&lt;/span&gt; trilogy_projects&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;(&lt;/span&gt;id&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;CASCADE&lt;/span&gt;&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;,&lt;/span&gt;&lt;br&gt;sub_chapter_id: UUID NOT NULL → sub_chapters(id) ON DELETE CASCADE&lt;br&gt;status: VARCHAR (queued, cancelled, pending, in_progress, completed, failed)&lt;br&gt;model_used: VARCHAR (mistral-7b, claude-sonnet, aws-bedrock)&lt;br&gt;generation_params: JSONB&lt;br&gt;error_message: TEXT&lt;br&gt;started_at: TIMESTAMP&lt;br&gt;completed_at: TIMESTAMP&lt;br&gt;created_at: TIMESTAMP DEFAULT NOW()&lt;br&gt;created_by_user_id: UUID → auth.users(id)&lt;br&gt;&lt;br&gt;🔒 RLS: Cascade from sub_chapters → ... → trilogy_projects&lt;br&gt;📌 INDEX: sub_chapter_id, status, created_at&lt;br&gt;⚡ pg-boss: Job queue management" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2550" y="860" width="440" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="trilogy-shares" value="trilogy_shares&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;trilogy_id: UUID NOT NULL → trilogy_projects(id) ON DELETE CASCADE&#xa;shared_with_email: VARCHAR NOT NULL&#xa;access_level: VARCHAR (read, comment, edit)&#xa;access_token: VARCHAR UNIQUE&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;expires_at: TIMESTAMP&#xa;&#xa;🔒 RLS: Owners can share own projects&#xa;📌 INDEX: trilogy_id, access_token" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="1400" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="book-shares" value="book_shares&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;book_id: UUID NOT NULL → books(id) ON DELETE CASCADE&#xa;shared_with_email: VARCHAR NOT NULL&#xa;access_level: VARCHAR (read, comment, edit)&#xa;access_token: VARCHAR UNIQUE&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;expires_at: TIMESTAMP&#xa;&#xa;🔒 RLS: Owners can share own books&#xa;📌 INDEX: book_id, access_token" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1360" y="1400" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="chapter-shares" value="chapter_shares&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;chapter_id: UUID NOT NULL → chapters(id) ON DELETE CASCADE&#xa;shared_with_email: VARCHAR NOT NULL&#xa;access_level: VARCHAR (read, comment, edit)&#xa;access_token: VARCHAR UNIQUE&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;expires_at: TIMESTAMP&#xa;&#xa;🔒 RLS: Owners can share own chapters&#xa;📌 INDEX: chapter_id, access_token" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="1660" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="chapter-share-versions" value="chapter_share_versions&#xa;═══════════════&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;chapter_share_id: UUID NOT NULL → chapter_shares(id) ON DELETE CASCADE&#xa;sub_chapter_id: UUID NOT NULL → sub_chapters(id) ON DELETE CASCADE&#xa;version_id: UUID → sub_chapter_versions(id) ON DELETE CASCADE&#xa;&#xa;🔒 RLS: Cascade from chapter_shares&#xa;📌 INDEX: chapter_share_id, sub_chapter_id&#xa;💡 Specifies which sub-chapter versions are included in share" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1360" y="1660" width="480" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-auth-profiles" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERone;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="auth-users" target="user-profiles">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-auth-profiles-label" value="1:1&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-auth-profiles">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-auth-trilogy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="auth-users" target="trilogy-projects">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-auth-trilogy-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-auth-trilogy">
+          <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-trilogy-books" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="trilogy-projects" target="books">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-trilogy-books-label" value="1:3&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-trilogy-books">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-trilogy-characters" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="trilogy-projects" target="characters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-trilogy-characters-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-trilogy-characters">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-trilogy-rules" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="trilogy-projects" target="world-rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-trilogy-rules-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-trilogy-rules">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-characters-vectorstores" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERone;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="characters" target="character-vector-stores">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-characters-vectorstores-label" value="1:1&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-characters-vectorstores">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-characters-changelog" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;dashed=1;" edge="1" parent="1" source="characters" target="character-change-log">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="900" />
+              <mxPoint x="600" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-characters-changelog-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-characters-changelog">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-rules-junction" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="world-rules" target="world-rule-books">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-rules-junction-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-rules-junction">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-books-junction" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="books" target="world-rule-books">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1640" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-books-junction-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-books-junction">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-rules-changelog" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;dashed=1;" edge="1" parent="1" source="world-rules" target="world-rule-change-log">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-rules-changelog-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-rules-changelog">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-books-chapters" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="books" target="chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-books-chapters-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-books-chapters">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-characters-chapters" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="characters" target="chapters">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1350" y="670" />
+              <mxPoint x="1350" y="505" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-characters-chapters-label" value="1:N&#xa;RESTRICT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-characters-chapters">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-chapters-subchapters" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="chapters" target="sub-chapters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-chapters-subchapters-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-chapters-subchapters">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-characters-subchapters" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;dashed=1;" edge="1" parent="1" source="characters" target="sub-chapters">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1900" y="740" />
+              <mxPoint x="1900" y="565" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-characters-subchapters-label" value="1:N&#xa;RESTRICT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-characters-subchapters">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-subchapters-versions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="sub-chapters" target="sub-chapter-versions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-subchapters-versions-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-subchapters-versions">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-subchapters-flags" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="sub-chapters" target="content-review-flags">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-subchapters-flags-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-subchapters-flags">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-subchapters-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="sub-chapters" target="generation-jobs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2500" y="565" />
+              <mxPoint x="2500" y="1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-subchapters-jobs-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-subchapters-jobs">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-rules-flags" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.004;exitY=0.117;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;exitPerimeter=0;" edge="1" parent="1" source="world-rules" target="content-review-flags">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-rules-flags-label" value="0..1:N&#xa;SET NULL" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-rules-flags">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-jobs-versions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERone;endFill=0;startArrow=ERzeroToOne;startFill=0;dashed=1;" edge="1" parent="1" source="generation-jobs" target="sub-chapter-versions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-jobs-versions-label" value="0..1:1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-jobs-versions">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-trilogy-trilogyshares" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="trilogy-projects" target="trilogy-shares">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="540" />
+              <mxPoint x="850" y="540" />
+              <mxPoint x="850" y="1500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-trilogy-trilogyshares-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-trilogy-trilogyshares">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-books-bookshares" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="books" target="book-shares">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1215" y="580" />
+              <mxPoint x="1350" y="580" />
+              <mxPoint x="1350" y="1380" />
+              <mxPoint x="1560" y="1380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-books-bookshares-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-books-bookshares">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-chapters-chaptershares" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="chapters" target="chapter-shares">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1110" y="505" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-chapters-chaptershares-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-chapters-chaptershares">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-chaptershares-shareversions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="chapter-shares" target="chapter-share-versions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-chaptershares-shareversions-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-chaptershares-shareversions">
+          <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-subchapters-shareversions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;dashed=1;" edge="1" parent="1" source="sub-chapters" target="chapter-share-versions">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2080" y="1720" />
+              <mxPoint x="1590" y="1720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-subchapters-shareversions-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-subchapters-shareversions">
+          <mxGeometry x="0.1" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-versions-shareversions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERmany;endFill=0;startArrow=ERone;startFill=0;dashed=1;" edge="1" parent="1" source="sub-chapter-versions" target="chapter-share-versions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-versions-shareversions-label" value="1:N&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="rel-versions-shareversions">
+          <mxGeometry x="0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notes-title" value="KEY TRIGGERS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="500" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="triggers-notes" value="🔄 Trigger 1: Auto-populate sub_chapters.character_id&#xa;   - On INSERT to sub_chapters&#xa;   - Copies character_id from parent chapter&#xa;&#xa;🔄 Trigger 2: Enforce character_id consistency&#xa;   - On UPDATE to chapters.character_id&#xa;   - Updates all child sub_chapters.character_id&#xa;&#xa;🔄 Trigger 3: Word count rollup&#xa;   - On UPDATE to sub_chapters.word_count&#xa;   - Updates chapters.current_word_count&#xa;   - Updates books.current_word_count" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="530" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="chromadb-title" value="CHROMADB COLLECTIONS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="740" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="chromadb-notes" value="🗄️ Collection per character:&#xa;   Format: {trilogy_id}_character_{character_id}&#xa;   Example: abc123_character_kira-uuid&#xa;&#xa;   Contains:&#xa;   - Character traits and description&#xa;   - Previous sub-chapter content&#xa;   - Character voice patterns&#xa;   - Consciousness themes&#xa;&#xa;   Used for:&#xa;   - RAG context retrieval&#xa;   - Maintaining voice consistency&#xa;   - Character-specific generation&#xa;&#xa;   Tracked by:&#xa;   - character_vector_stores table&#xa;   - Stores collection metadata&#xa;   - Manual cleanup on character delete" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="770" width="300" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Qxd2w42FQxKlcWbrKr4D-1" value="world_rule_violations&#xa;───────────────────&#xa;id: UUID PK DEFAULT gen_random_uuid()&#xa;world_rule_id: UUID NOT NULL → world_rules(id) ON DELETE CASCADE&#xa;sub_chapter_id: UUID NOT NULL → sub_chapters(id) ON DELETE CASCADE&#xa;&#xa;-- LLM Detection Details&#xa;detected_at: TIMESTAMP DEFAULT NOW()&#xa;llm_confidence: VARCHAR NOT NULL (&#39;low&#39;, &#39;medium&#39;, &#39;high&#39;)&#xa;llm_explanation: TEXT NOT NULL&#xa;content_snippet: TEXT&#xa;&#xa;-- User Response&#xa;user_reviewed_at: TIMESTAMP&#xa;user_response: VARCHAR (&#39;true_violation&#39;, &#39;false_positive&#39;,&#xa;                        &#39;intentional_break&#39;, &#39;will_fix_later&#39;,&#xa;                        &#39;context_specific&#39;)&#xa;user_notes: TEXT&#xa;&#xa;-- Status&#xa;status: VARCHAR DEFAULT &#39;pending&#39; (&#39;pending&#39;, &#39;dismissed&#39;, &#39;resolved&#39;)&#xa;resolved_at: TIMESTAMP&#xa;&#xa;-- Metadata&#xa;created_at: TIMESTAMP DEFAULT NOW()&#xa;updated_at: TIMESTAMP DEFAULT NOW()&#xa;&#xa;🔒 RLS: Cascade from trilogy_projects.user_id via world_rules&#xa;📌 INDEX: world_rule_id, sub_chapter_id, status&#xa;📌 INDEX: (world_rule_id, status) WHERE status = &#39;pending&#39;&#xa;📊 CONSTRAINT: CHECK (llm_confidence IN (&#39;low&#39;, &#39;medium&#39;, &#39;high&#39;))&#xa;📊 CONSTRAINT: CHECK (status IN (&#39;pending&#39;, &#39;dismissed&#39;, &#39;resolved&#39;))" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;fontStyle=1;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="2420" y="1240" width="500" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="Qxd2w42FQxKlcWbrKr4D-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.15;exitDx=0;exitDy=0;strokeWidth=2;endArrow=ERone;endFill=0;startArrow=ERmany;startFill=0;" edge="1" parent="1" source="Qxd2w42FQxKlcWbrKr4D-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1400" y="870" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qxd2w42FQxKlcWbrKr4D-5" value="N:1&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" connectable="0" vertex="1" parent="Qxd2w42FQxKlcWbrKr4D-4">
+          <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qxd2w42FQxKlcWbrKr4D-8" value="NOTES&#xa;═════&#xa;• One violation record per detected issue&#xa;• Tracks full lifecycle: detection → review → resolution&#xa;• LLM provides initial assessment with confidence&#xa;• User provides feedback for learning system&#xa;• Status tracks progress through workflow&#xa;• Enables full audit trail and analytics&#xa;• CASCADE delete when rule or sub-chapter deleted&#xa;&#xa;INDEXES&#xa;════════&#xa;idx_violations_rule_id: (world_rule_id)&#xa;idx_violations_subchapter: (sub_chapter_id)&#xa;idx_violations_status: (status)&#xa;idx_violations_pending: (world_rule_id, status) WHERE status = &#39;pending&#39;&#xa;&#xa;COMPUTED METRICS&#xa;═══════════════&#xa;world_rules metrics (times_flagged, times_true_violation, etc.)&#xa;are computed from aggregating world_rule_violations records.&#xa;See world_rule_analytics view in main schema." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;fontColor=#333333;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="2420" y="1840" width="800" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="Qxd2w42FQxKlcWbrKr4D-9" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1160" y="790" as="sourcePoint" />
+            <mxPoint x="1260" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qxd2w42FQxKlcWbrKr4D-10" value="Label" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="Qxd2w42FQxKlcWbrKr4D-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Qxd2w42FQxKlcWbrKr4D-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.002;entryY=0.097;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="world-rules" target="Qxd2w42FQxKlcWbrKr4D-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gi-ji1Lw8um76RbfXjHY-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;endArrow=ERone;endFill=0;startArrow=ERone;startFill=0;" edge="1" parent="1" source="gi-ji1Lw8um76RbfXjHY-1" target="auth-users">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1610" y="140" />
+              <mxPoint x="1610" y="20" />
+              <mxPoint x="380" y="20" />
+              <mxPoint x="380" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gi-ji1Lw8um76RbfXjHY-1" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;user_notification_preferences&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(97, 175, 239), rgb(255, 255, 255));&quot;&gt;═══════════════&lt;/font&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(97, 175, 239), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(97, 175, 239), rgb(255, 255, 255));&quot;&gt;user_id UUID &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;REFERENCES&lt;/span&gt; auth&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;.&lt;/span&gt;users&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;(&lt;/span&gt;id&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;&quot;&gt;&lt;font&gt;CASCADE&lt;/font&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;email_notifications_enabled &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;BOOLEAN&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(209, 154, 102);&quot;&gt;TRUE&lt;/span&gt;&amp;nbsp;&lt;br&gt;toast_notifications_enabled &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;BOOLEAN&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;&quot;&gt;&lt;font&gt;TRUE&lt;/font&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;notification_email &lt;span class=&quot;token&quot; style=&quot;&quot;&gt;&lt;font&gt;VARCHAR&lt;/font&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;notify_on_success &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;BOOLEAN&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;&quot;&gt;&lt;font&gt;TRUE&lt;/font&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;notify_on_failure &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;BOOLEAN&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;&quot;&gt;&lt;font&gt;TRUE&lt;/font&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;notify_on_long_tasks &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;BOOLEAN&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;&quot;&gt;&lt;font&gt;TRUE&lt;/font&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;created_at &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;TIMESTAMP&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(97, 175, 239);&quot;&gt;NOW&lt;/span&gt;&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;)&lt;/span&gt;&amp;nbsp;&lt;br&gt;updated_at &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;TIMESTAMP&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(198, 120, 221);&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;token&quot; style=&quot;color: rgb(97, 175, 239);&quot;&gt;NOW&lt;/span&gt;&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token&quot; style=&quot;color: rgb(171, 178, 191);&quot;&gt;)&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="40" width="440" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="gi-ji1Lw8um76RbfXjHY-4" value="REDIS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gi-ji1Lw8um76RbfXjHY-5" value="&lt;font style=&quot;color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;# While initializing or updating (temporary state)&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;character:vector_status:{character_id} = {&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;status&quot;: &quot;initializing&quot;,&amp;nbsp; # initializing, ready, failed, updating&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;progress&quot;: 60,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;# 0-100&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;embedding_count&quot;: 3,&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;# Current count during initialization&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;error_message&quot;: None,&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;updated_at&quot;: &quot;2025-11-03T10:30:00Z&quot;&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;}&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;TTL: 1 hour&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;# After initialization complete, delete from Redis&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 12px;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;# Status becomes implicit: if collection exists in ChromaDB → &quot;ready&quot;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1100" width="300" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="gi-ji1Lw8um76RbfXjHY-6" value="1:1&#xa;CASCADE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="1060" y="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

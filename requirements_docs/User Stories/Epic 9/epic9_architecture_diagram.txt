@@ -1,0 +1,339 @@
+# Architecture Diagram: Consciousness Trilogy App with RAG
+## Complete System Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           USER INTERACTION LAYER                             │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                         Streamlit Frontend                           │   │
+│  │  • Project management UI                                            │   │
+│  │  • Character creation forms                                         │   │
+│  │  • World rule management                                            │   │
+│  │  • Content generation interface                                     │   │
+│  │  • Progress tracking & WebSocket updates                            │   │
+│  └────────────────────────────┬────────────────────────────────────────┘   │
+│                                │                                             │
+└────────────────────────────────┼─────────────────────────────────────────────┘
+                                 │ HTTP/WebSocket
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        ORCHESTRATION LAYER                                   │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    FastAPI Backend Server                            │   │
+│  │                                                                      │   │
+│  │  ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │  │            CHARACTER RAG GENERATOR (EPIC 5A)                  │ │   │
+│  │  │  • CharacterEmbeddingService                                  │ │   │
+│  │  │  • Query character-specific context                           │ │   │
+│  │  │  • Build character voice prompts                              │ │   │
+│  │  └───────────────────────────────────────────────────────────────┘ │   │
+│  │                                                                      │   │
+│  │  ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │  │            WORLD RULE RAG PROVIDER (EPIC 5B)                  │ │   │
+│  │  │  • WorldRuleEmbeddingService                                  │ │   │
+│  │  │  • Query relevant rules by book                               │ │   │
+│  │  │  • Apply accuracy weighting                                   │ │   │
+│  │  └───────────────────────────────────────────────────────────────┘ │   │
+│  │                                                                      │   │
+│  │  ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │  │                COMBINED RAG GENERATOR                         │ │   │
+│  │  │  • Parallel context retrieval                                 │ │   │
+│  │  │  • Prompt enhancement                                         │ │   │
+│  │  │  • LLM orchestration                                          │ │   │
+│  │  └───────────────────────────────────────────────────────────────┘ │   │
+│  │                                                                      │   │
+│  │  ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │  │                  EMBEDDING SERVICE                            │ │   │
+│  │  │  Model: all-MiniLM-L6-v2                                      │ │   │
+│  │  │  • Size: ~80MB, Dimension: 384                                │ │   │
+│  │  │  • Memory: ~500MB                                             │ │   │
+│  │  │  • Singleton pattern (loads once)                             │ │   │
+│  │  └───────────────────────────────────────────────────────────────┘ │   │
+│  └────────┬─────────────┬─────────────────┬──────────────┬───────────┘   │
+│           │             │                 │              │                 │
+└───────────┼─────────────┼─────────────────┼──────────────┼─────────────────┘
+            │             │                 │              │
+            │             │                 │              │
+┌───────────▼─────────────▼─────────────────▼──────────────▼─────────────────┐
+│                          STORAGE LAYER                                       │
+│                                                                              │
+│  ┌──────────────────────┐  ┌──────────────────────┐  ┌──────────────────┐ │
+│  │    ChromaDB          │  │     Supabase         │  │   Redis Cache    │ │
+│  │  (Vector Storage)    │  │  (Structured Data)   │  │  (Performance)   │ │
+│  ├──────────────────────┤  ├──────────────────────┤  ├──────────────────┤ │
+│  │ COLLECTIONS:         │  │ TABLES:              │  │ KEYS:            │ │
+│  │                      │  │                      │  │                  │ │
+│  │ Character Stores:    │  │ • trilogy_projects   │  │ • rules:{book}:  │ │
+│  │ {trilogy_id}_        │  │ • characters         │  │   {hash}         │ │
+│  │   character_{id}     │  │ • world_rules        │  │   (TTL: 15 min)  │ │
+│  │                      │  │ • world_rule_books   │  │                  │ │
+│  │ Documents per char:  │  │ • chapters           │  │ • char_context:  │ │
+│  │ • Profile            │  │ • sub_chapters       │  │   {char_id}      │ │
+│  │ • Traits             │  │ • generation_jobs    │  │   (TTL: 1 hour)  │ │
+│  │ • Arc                │  │ • world_rule_        │  │                  │ │
+│  │ • Themes             │  │   embeddings         │  └──────────────────┘ │
+│  │ • Generated content  │  │ • sub_chapter_       │                       │
+│  │                      │  │   versions           │                       │
+│  │ World Rules:         │  └──────────────────────┘                       │
+│  │ {trilogy_id}_        │                                                  │
+│  │   world_rules        │                                                  │
+│  │                      │                                                  │
+│  │ Documents:           │                                                  │
+│  │ • Rule title         │                                                  │
+│  │ • Rule description   │                                                  │
+│  │ • Category           │                                                  │
+│  │                      │                                                  │
+│  │ Metadata per doc:    │                                                  │
+│  │ • trilogy_id         │                                                  │
+│  │ • character_id OR    │                                                  │
+│  │   rule_id            │                                                  │
+│  │ • book_ids           │                                                  │
+│  │ • category           │                                                  │
+│  │ • accuracy           │                                                  │
+│  │                      │                                                  │
+│  │ Storage Location:    │                                                  │
+│  │ /Volumes/ExternalSSD/│                                                  │
+│  │   consciousness_     │                                                  │
+│  │   trilogy/chromadb   │                                                  │
+│  └──────────────────────┘                                                  │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        CONTENT GENERATION LAYER                              │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                      AWS Bedrock (Cloud)                             │   │
+│  │                                                                      │   │
+│  │  ┌────────────────────────────────────────────────────────────────┐ │   │
+│  │  │  API Gateway                                                    │ │   │
+│  │  │  https://{api-id}.execute-api.ca-central-1.amazonaws.com/      │ │   │
+│  │  │          prod/generate                                          │ │   │
+│  │  └──────────────────────────┬───────────────────────────────────── │ │   │
+│  │                             │                                       │ │   │
+│  │  ┌──────────────────────────▼───────────────────────────────────┐ │ │   │
+│  │  │  Lambda Function: ConsciousnessTrilogyBedrockAPI             │ │ │   │
+│  │  │                                                               │ │ │   │
+│  │  │  • Runtime: Python 3.11                                      │ │ │   │
+│  │  │  • Memory: 1024 MB                                           │ │ │   │
+│  │  │  • Timeout: 60 seconds                                       │ │ │   │
+│  │  │                                                               │ │ │   │
+│  │  │  IAM Role: ConsciousnessTrilogyLambdaRole                    │ │ │   │
+│  │  │  • AWSLambdaBasicExecutionRole                               │ │ │   │
+│  │  │  • BedrockAccessPolicy (custom)                              │ │ │   │
+│  │  └──────────────────────────┬───────────────────────────────────┘ │ │   │
+│  │                             │                                       │ │   │
+│  │  ┌──────────────────────────▼───────────────────────────────────┐ │ │   │
+│  │  │  AWS Bedrock Foundation Models                               │ │ │   │
+│  │  │                                                               │ │ │   │
+│  │  │  Primary: mistral.mistral-7b-instruct-v0:2                   │ │ │   │
+│  │  │  Fallback: mistral.mistral-large-2402-v1:0                   │ │ │   │
+│  │  │                                                               │ │ │   │
+│  │  │  Parameters:                                                 │ │ │   │
+│  │  │  • max_tokens: 2000-4000 (configurable)                      │ │ │   │
+│  │  │  • temperature: 0.7                                          │ │ │   │
+│  │  │  • top_p: 0.9                                                │ │ │   │
+│  │  │  • top_k: 50                                                 │ │ │   │
+│  │  └───────────────────────────────────────────────────────────────┘ │ │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                          CONTENT GENERATION FLOW
+═══════════════════════════════════════════════════════════════════════════════
+
+1. USER INITIATES GENERATION
+   └─ Streamlit UI: User fills out sub-chapter form
+      • Trilogy ID, Book ID, Character ID
+      • Writing prompt
+      • Plot points
+      • Target word count
+   
+2. PARALLEL CONTEXT RETRIEVAL (Happens Simultaneously)
+   ├─ CHARACTER CONTEXT (Epic 5A)
+   │  └─ Query: "{trilogy_id}_character_{character_id}"
+   │     • Retrieve 5 most relevant character documents
+   │     • Documents: profile, traits, arc, themes, past content
+   │     • Similarity threshold: automatic
+   │
+   ├─ WORLD RULE CONTEXT (Epic 5B)
+   │  └─ Query: "{trilogy_id}_world_rules"
+   │     • Check Redis cache first
+   │     • If cache miss: Query ChromaDB
+   │     • Filter by book_id (via world_rule_books)
+   │     • Apply accuracy weighting
+   │     • Return top 10 rules with adjusted similarity > 0.65
+   │     • Cache results (TTL: 15 minutes)
+   │
+   └─ PREVIOUS CONTENT CONTEXT (Future)
+      └─ Query Supabase for previous sub-chapters
+         • Same book, nearby chapters
+         • Maintain continuity
+
+3. PROMPT ENHANCEMENT
+   └─ FastAPI: CombinedRAGGenerator builds comprehensive prompt
+      ┌─────────────────────────────────────────────────────────┐
+      │ CHARACTER VOICE CONTEXT:                                │
+      │ [Character profile, traits, arc from ChromaDB]          │
+      │                                                         │
+      │ WORLD RULES TO FOLLOW:                                  │
+      │ 1. [Rule title]: [Rule description] (Category: X)       │
+      │ 2. [Rule title]: [Rule description] (Category: Y)       │
+      │ ...                                                     │
+      │                                                         │
+      │ WRITING TASK:                                           │
+      │ [User's prompt]                                         │
+      │                                                         │
+      │ PLOT POINTS TO COVER:                                   │
+      │ [User's plot points]                                    │
+      │                                                         │
+      │ TARGET LENGTH: ~2000 words                              │
+      │                                                         │
+      │ Write maintaining character voice and respecting rules. │
+      └─────────────────────────────────────────────────────────┘
+
+4. LLM GENERATION
+   └─ FastAPI → API Gateway → Lambda → Bedrock
+      • Model: Mistral 7B Instruct
+      • Max tokens: target_word_count * 2
+      • Temperature: 0.7
+      • Streaming: Optional (for real-time updates)
+
+5. POST-GENERATION
+   ├─ Store generated content in Supabase (sub_chapters table)
+   ├─ Add content to character's ChromaDB collection
+   │  └─ Enriches future character context retrievals
+   ├─ Track which rules were used (generation_metadata)
+   └─ Notify user via WebSocket (real-time progress)
+
+6. OPTIONAL: CONSISTENCY CHECK (Epic 7)
+   └─ Validate generated content against world rules
+      • Detect violations
+      • Store in world_rule_violations table
+      • Update rule accuracy metrics
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                              MEMORY FOOTPRINT
+═══════════════════════════════════════════════════════════════════════════════
+
+LOCAL (MacBook 8GB):
+┌─────────────────────────────────────────────────────────────┐
+│ Component                    Memory Usage                    │
+├─────────────────────────────────────────────────────────────┤
+│ Streamlit Frontend           ~300 MB                         │
+│ FastAPI Backend              ~300 MB                         │
+│ ChromaDB (in-memory index)   ~200 MB                         │
+│ Embedding Model (MiniLM)     ~500 MB                         │
+│ Python Runtime & Dependencies ~400 MB                        │
+├─────────────────────────────────────────────────────────────┤
+│ TOTAL LOCAL                  ~1.7 GB                         │
+├─────────────────────────────────────────────────────────────┤
+│ REMAINING FOR OS & OTHER     ~6.3 GB                         │
+└─────────────────────────────────────────────────────────────┘
+
+EXTERNAL (No local memory):
+• Supabase: Hosted (cloud)
+• AWS Bedrock: Cloud inference
+• Redis: Can be hosted or local (minimal if local)
+• ChromaDB storage: External SSD
+
+✓ System runs comfortably on 8GB MacBook!
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                           KEY DESIGN DECISIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. EMBEDDING MODEL: all-MiniLM-L6-v2
+   WHY: Small (80MB), fast (CPU-friendly), effective for semantic similarity
+   
+2. VECTOR DATABASE: ChromaDB
+   WHY: Simple, persistent storage on SSD, no server needed, Python-native
+   
+3. LLM: AWS Bedrock with Mistral
+   WHY: Cost-effective, no local GPU needed, scalable, production-ready
+   
+4. ARCHITECTURE: FastAPI as orchestrator
+   WHY: Clean separation, async support, easy to test, can scale horizontally
+   
+5. SEPARATE COLLECTIONS: One per character + one for world rules
+   WHY: Character voice isolation, efficient filtering, easy maintenance
+   
+6. PARALLEL RETRIEVAL: Character + World Rules simultaneously
+   WHY: Minimize latency, maximize context richness
+   
+7. GRACEFUL DEGRADATION: Generation never fails on context retrieval errors
+   WHY: Author productivity > perfect context, system reliability
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                              SCALING CONSIDERATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+CURRENT SETUP (Development):
+• Local development on MacBook
+• External SSD for ChromaDB storage
+• AWS Bedrock for LLM inference
+• Supabase for structured data
+
+PRODUCTION DEPLOYMENT (Future):
+┌──────────────────────────────────────────────────────────────┐
+│ • Move ChromaDB to hosted solution (e.g., Chroma Cloud)      │
+│ • Deploy FastAPI to cloud (AWS ECS, GCP Cloud Run)           │
+│ • Add Redis cluster for caching                              │
+│ • Add pg-boss for async job queue                            │
+│ • Add WebSocket server for real-time updates                 │
+│ • Add monitoring (CloudWatch, Datadog)                       │
+│ • Add rate limiting on Bedrock API calls                     │
+│ • Add backup/restore for vector stores                       │
+└──────────────────────────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                                COSTS ESTIMATE
+═══════════════════════════════════════════════════════════════════════════════
+
+DEVELOPMENT (per month):
+• AWS Lambda: Free tier (1M requests/month)
+• API Gateway: Free tier (1M requests/month)
+• AWS Bedrock Mistral 7B: ~$0.15 per 1M input tokens, ~$0.20 per 1M output tokens
+  └─ Example: 100 generations × 2000 words = ~$5-10/month
+• Supabase: Free tier (500MB database, 1GB storage)
+• External SSD: One-time cost ~$50-100
+• TOTAL: ~$10-20/month for development
+
+PRODUCTION (per month, assuming 1000 generations):
+• AWS Lambda: ~$1-2
+• API Gateway: ~$3-5
+• AWS Bedrock: ~$50-100 (depends on volume)
+• Supabase: $25 (Pro tier)
+• ChromaDB hosted: $50-100 (if using hosted solution)
+• Redis: $10-30 (if using hosted)
+• TOTAL: ~$150-300/month at moderate usage
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                             CRITICAL SUCCESS FACTORS
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Use sentence-transformers (not OpenAI embeddings) → Cost savings
+✓ Parallel context retrieval → Low latency
+✓ Separate vector stores per character → Voice consistency
+✓ Book-specific rule filtering → Relevance
+✓ Accuracy weighting on rules → Quality
+✓ Redis caching → Performance
+✓ Graceful degradation → Reliability
+✓ External SSD storage → Works on 8GB MacBook
+✓ AWS Bedrock → No GPU needed locally
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                    Created: November 2, 2025
+             For: Consciousness Trilogy Novel Writing App

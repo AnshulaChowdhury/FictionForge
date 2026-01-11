@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-11-03T16:00:00.000Z" agent="Claude" version="21.0.0">
+  <diagram name="Epic 7: Version Control" id="epic7-version-control">
+    <mxGraphModel dx="3200" dy="2000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- ============================================= -->
+        <!-- HEADER -->
+        <!-- ============================================= -->
+        
+        <mxCell id="header" value="EPIC 7 - VERSION CONTROL &amp; CONTENT MANAGEMENT&#xa;Comprehensive Version Tracking, Comparison, and Restoration System" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="4920" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- SWIM LANES -->
+        <!-- ============================================= -->
+        
+        <!-- User Lane -->
+        <mxCell id="lane-user" value="USER" style="swimlane;html=1;startSize=50;horizontal=0;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#E1F5FE;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="4920" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- Streamlit Frontend Lane -->
+        <mxCell id="lane-streamlit" value="STREAMLIT FRONTEND" style="swimlane;html=1;startSize=50;horizontal=0;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#F1F8E9;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="4920" height="280" as="geometry"/>
+        </mxCell>
+        
+        <!-- FastAPI Backend Lane -->
+        <mxCell id="lane-fastapi" value="FASTAPI BACKEND" style="swimlane;html=1;startSize=50;horizontal=0;fillColor=#fff2cc;strokeColor=#d6b656;swimlaneFillColor=#FFFDE7;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="4920" height="360" as="geometry"/>
+        </mxCell>
+        
+        <!-- Supabase Database Lane -->
+        <mxCell id="lane-database" value="SUPABASE DATABASE" style="swimlane;html=1;startSize=50;horizontal=0;fillColor=#e1d5e7;strokeColor=#9673a6;swimlaneFillColor=#F3E5F5;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="960" width="4920" height="240" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- USER STORY 1: VIEW VERSION HISTORY -->
+        <!-- ============================================= -->
+        
+        <mxCell id="us1-title" value="USER STORY 1: VIEW VERSION HISTORY" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="120" y="140" width="320" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="user-1" value="Navigate to&#xa;Sub-Chapter&#xa;Detail Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-2" value="Click&#xa;'Version History'&#xa;Button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-3" value="Review&#xa;Version List&#xa;(chronological)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="840" y="200" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Actions -->
+        <mxCell id="fe-1" value="Display&#xa;Sub-Chapter&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=center;verticalAlign=middle;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="120" y="360" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-2" value="Send Request:&#xa;GET /api/sub-chapters/&#xa;{id}/versions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=center;verticalAlign=middle;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="280" y="360" width="160" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-3" value="Render Version List:&#xa;• Version number&#xa;• Created timestamp&#xa;• Word count&#xa;• Description (if any)&#xa;• Actions (View, Restore)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="680" y="340" width="180" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Actions -->
+        <mxCell id="be-1" value="VersionControlService:&#xa;get_version_history()&#xa;&#xa;• Validate sub_chapter_id&#xa;• Check user permissions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="280" y="640" width="180" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="be-2" value="Query:&#xa;SELECT * FROM&#xa;sub_chapter_versions&#xa;WHERE sub_chapter_id = $1&#xa;ORDER BY version_number DESC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="500" y="640" width="200" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database Actions -->
+        <mxCell id="db-1" value="Execute Query:&#xa;&#xa;Return all versions for&#xa;sub_chapter ordered by&#xa;version_number (newest first)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1000" width="200" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges for US1 -->
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="user-1" target="user-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-2" target="fe-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-2" target="be-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-1" target="be-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-2" target="db-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge6" value="Return&#xa;version list" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;dashed=1;" edge="1" parent="1" source="db-1" target="fe-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="960" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-3" target="user-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- USER STORY 2: RESTORE PREVIOUS VERSION -->
+        <!-- ============================================= -->
+        
+        <mxCell id="us2-title" value="USER STORY 2: RESTORE PREVIOUS VERSION" style="text;html=1;strokeColor=#F57C00;fillColor=#FFE0B2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="140" width="380" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="user-4" value="In Version List,&#xa;Click 'Restore'&#xa;on Desired Version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="200" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-5" value="Review&#xa;Confirmation Modal:&#xa;'Restore Version X?'&#xa;Warning shown" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="200" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-6" value="Confirm&#xa;Restoration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="200" width="100" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-7" value="View Success&#xa;Message:&#xa;'Version restored'&#xa;Content updated" style="rounded=1;whiteSpace=wrap;html=1;fillColor#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1980" y="200" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Actions -->
+        <mxCell id="fe-4" value="Show Confirmation:&#xa;&#xa;'Restore version X?'&#xa;'Current content will&#xa;be saved as new version'&#xa;&#xa;[Cancel] [Confirm]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="350" width="180" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-5" value="Send Request:&#xa;POST /api/sub-chapters/&#xa;{id}/restore&#xa;&#xa;Body: {&#xa;  version_id: uuid,&#xa;  description: string (optional)&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="340" width="200" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-6" value="Update UI:&#xa;• Show success message&#xa;• Refresh content display&#xa;• Update version list&#xa;• Highlight new current version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="340" width="180" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Actions -->
+        <mxCell id="be-3" value="VersionControlService:&#xa;restore_version()&#xa;&#xa;1. Validate version exists&#xa;2. Check user permissions&#xa;3. Begin transaction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="650" width="200" height="110" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="be-4" value="Step 1: Get Current Content&#xa;&#xa;SELECT content, word_count,&#xa;current_version_id&#xa;FROM sub_chapters&#xa;WHERE id = $1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="780" width="200" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="be-5" value="Step 2: Save Current as New Version&#xa;&#xa;INSERT INTO sub_chapter_versions&#xa;(sub_chapter_id, version_number,&#xa;content, word_count, description)&#xa;VALUES ($1, max + 1, ...)&#xa;&#xa;Description: 'Auto-saved before restore'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="880" width="230" height="70" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="be-6" value="Step 3: Get Restore Version Content&#xa;&#xa;SELECT content, word_count&#xa;FROM sub_chapter_versions&#xa;WHERE id = $1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="780" width="200" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="be-7" value="Step 4: Update Current Sub-Chapter&#xa;&#xa;UPDATE sub_chapters&#xa;SET content = $1,&#xa;    word_count = $2,&#xa;    current_version_id = $3,&#xa;    updated_at = NOW()&#xa;WHERE id = $4&#xa;&#xa;Commit transaction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="880" width="210" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database Actions -->
+        <mxCell id="db-2" value="Transaction Execution:&#xa;&#xa;1. Read current content&#xa;2. Create new version record&#xa;3. Read restore version content&#xa;4. Update sub_chapters table&#xa;5. Trigger: Update chapter word_count&#xa;6. Commit or rollback on error" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="1020" width="280" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges for US2 -->
+        <mxCell id="edge8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="user-4" target="fe-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-4" target="user-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="user-5" target="user-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-6" target="fe-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-5" target="be-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-3" target="be-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-4" target="be-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-4" target="be-6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-6" target="be-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-5" target="db-2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge18" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;dashed=1;" edge="1" parent="1" source="db-2" target="fe-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1890" y="960" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-6" target="user-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- USER STORY 3: ADD VERSION DESCRIPTION -->
+        <!-- ============================================= -->
+        
+        <mxCell id="us3-title" value="USER STORY 3: ADD VERSION DESCRIPTION" style="text;html=1;strokeColor=#7B1FA2;fillColor=#E1BEE7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2180" y="140" width="380" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="user-8" value="In Version List,&#xa;Click 'Add Description'&#xa;on Version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2180" y="200" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-9" value="Enter Description&#xa;in Modal:&#xa;'Why was this&#xa;version created?'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="200" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-10" value="Click 'Save'&#xa;Description" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2530" y="200" width="100" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-11" value="See Description&#xa;Updated in&#xa;Version List" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2900" y="200" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Actions -->
+        <mxCell id="fe-7" value="Show Modal:&#xa;&#xa;Text area for description&#xa;(optional, max 500 chars)&#xa;&#xa;Placeholder: 'e.g., Fixed&#xa;character motivation'&#xa;&#xa;[Cancel] [Save]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2180" y="350" width="180" height="110" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-8" value="Send Request:&#xa;PATCH /api/versions/{id}&#xa;&#xa;Body: {&#xa;  description: string&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2500" y="350" width="180" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-9" value="Update Version&#xa;Display:&#xa;• Show new description&#xa;• Display 'edited' badge&#xa;• Update timestamp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2760" y="350" width="160" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Actions -->
+        <mxCell id="be-8" value="VersionControlService:&#xa;update_version_description()&#xa;&#xa;• Validate version_id&#xa;• Check user permissions&#xa;• Sanitize description" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2500" y="670" width="200" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="be-9" value="Execute Update:&#xa;&#xa;UPDATE sub_chapter_versions&#xa;SET description = $1,&#xa;    updated_at = NOW()&#xa;WHERE id = $2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2500" y="800" width="200" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database Actions -->
+        <mxCell id="db-3" value="Update Record:&#xa;&#xa;Set description field&#xa;Update timestamp&#xa;Return success" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2520" y="1040" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges for US3 -->
+        <mxCell id="edge20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="user-8" target="fe-7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-7" target="user-9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="user-9" target="user-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-10" target="fe-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-8" target="be-8">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-8" target="be-9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-9" target="db-3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge27" value="Success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;dashed=1;" edge="1" parent="1" source="db-3" target="fe-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2840" y="960" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-9" target="user-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- USER STORY 4: VIEW VERSION CONTENT & METADATA -->
+        <!-- ============================================= -->
+        
+        <mxCell id="us4-title" value="USER STORY 4: VIEW VERSION CONTENT &amp; COMPARE" style="text;html=1;strokeColor=#D32F2F;fillColor=#FFCDD2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3100" y="140" width="420" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- User Actions -->
+        <mxCell id="user-12" value="Click 'View'&#xa;on Version&#xa;in List" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3100" y="200" width="110" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-13" value="Review Version:&#xa;• Full content&#xa;• Metadata&#xa;• Word count&#xa;• Created date" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3480" y="200" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-14" value="Optional:&#xa;Select 2nd Version&#xa;for Comparison" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=center;verticalAlign=middle;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3650" y="200" width="130" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="user-15" value="View Side-by-Side&#xa;Comparison:&#xa;• Highlighted diffs&#xa;• Change summary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="4180" y="200" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Frontend Actions -->
+        <mxCell id="fe-10" value="Send Request:&#xa;GET /api/versions/{id}&#xa;&#xa;Fetch full version details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3100" y="360" width="180" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-11" value="Display Version Modal:&#xa;&#xa;• Content (read-only)&#xa;• Metadata panel:&#xa;  - Version number&#xa;  - Created timestamp&#xa;  - Word count&#xa;  - Description&#xa;• [Compare] [Restore] buttons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3320" y="340" width="180" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-12" value="Send Compare Request:&#xa;GET /api/versions/compare&#xa;?version1={id1}&amp;version2={id2}&#xa;&#xa;Fetch diff analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3820" y="350" width="200" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="fe-13" value="Render Comparison View:&#xa;&#xa;• Side-by-side layout&#xa;• Highlighted changes:&#xa;  - Additions (green)&#xa;  - Deletions (red)&#xa;  - Modifications (yellow)&#xa;• Change statistics&#xa;• Navigation controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;align=left;verticalAlign=top;fontSize=9;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="4060" y="330" width="180" height="130" as="geometry"/>
+        </mxCell>
+        
+        <!-- Backend Actions -->
+        <mxCell id="be-10" value="VersionControlService:&#xa;get_version_details()&#xa;&#xa;• Validate version_id&#xa;• Fetch complete record" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3100" y="680" width="180" height="90" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="be-11" value="VersionControlService:&#xa;compare_versions()&#xa;&#xa;1. Fetch both versions&#xa;2. Calculate text diff&#xa;3. Generate change stats&#xa;4. Format response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3820" y="670" width="200" height="110" as="geometry"/>
+        </mxCell>
+        
+        <!-- Database Actions -->
+        <mxCell id="db-4" value="Query Version:&#xa;&#xa;SELECT * FROM&#xa;sub_chapter_versions&#xa;WHERE id = $1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3110" y="1050" width="160" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="db-5" value="Query Both Versions:&#xa;&#xa;SELECT * FROM&#xa;sub_chapter_versions&#xa;WHERE id IN ($1, $2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;align=left;verticalAlign=top;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3840" y="1050" width="160" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edges for US4 -->
+        <mxCell id="edge29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976D2;" edge="1" parent="1" source="user-12" target="fe-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-10" target="be-10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-10" target="db-4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge32" value="Return data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;dashed=1;" edge="1" parent="1" source="db-4" target="fe-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3410" y="960" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-11" target="user-13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge34" value="OPTIONAL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7B1FA2;dashed=1;" edge="1" parent="1" source="user-13" target="user-14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="user-14" target="fe-12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-12" target="be-11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="be-11" target="db-5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="edge38" value="Return diff" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#388E3C;dashed=1;" edge="1" parent="1" source="db-5" target="fe-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4150" y="960" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="fe-13" target="user-15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- ============================================= -->
+        <!-- FOOTER / TECHNICAL DETAILS -->
+        <!-- ============================================= -->
+        
+        <mxCell id="footer-title" value="TECHNICAL ARCHITECTURE &amp; IMPLEMENTATION DETAILS" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1240" width="4920" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-schema" value="DATABASE SCHEMA:&#xa;&#xa;TABLE sub_chapter_versions:&#xa;• id (uuid, PK)&#xa;• sub_chapter_id (uuid, FK → sub_chapters.id)&#xa;• version_number (int, incremental)&#xa;• content (text, the actual content)&#xa;• word_count (int, calculated)&#xa;• description (varchar, optional, max 500 chars)&#xa;• snapshot_metadata (jsonb, stores character_id, world_rule_ids, etc.)&#xa;• created_at (timestamp, auto)&#xa;• updated_at (timestamp, auto on description updates)&#xa;&#xa;INDEXES:&#xa;• idx_sub_chapter_versions_sub_chapter_id ON sub_chapter_versions(sub_chapter_id)&#xa;• idx_sub_chapter_versions_version_number ON sub_chapter_versions(sub_chapter_id, version_number)&#xa;• UNIQUE (sub_chapter_id, version_number)&#xa;&#xa;TABLE sub_chapters:&#xa;• current_version_id (uuid, FK → sub_chapter_versions.id)&#xa;  Points to the active version displayed to user" style="text;html=1;strokeColor=#388E3C;fillColor=#C8E6C9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1320" width="900" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-api" value="API ENDPOINTS:&#xa;&#xa;GET /api/sub-chapters/{id}/versions&#xa;• Returns: List[VersionSummary]&#xa;• Sorted by version_number DESC (newest first)&#xa;• Includes: id, version_number, created_at, word_count, description&#xa;&#xa;GET /api/versions/{id}&#xa;• Returns: VersionDetails (includes full content)&#xa;&#xa;POST /api/sub-chapters/{id}/restore&#xa;• Body: { version_id: uuid, description?: string }&#xa;• Creates new version from current content (auto-save)&#xa;• Restores selected version as current&#xa;• Returns: Updated SubChapter with new current_version_id&#xa;&#xa;PATCH /api/versions/{id}&#xa;• Body: { description: string }&#xa;• Updates version description only&#xa;• Returns: Updated VersionDetails&#xa;&#xa;GET /api/versions/compare?version1={id1}&amp;version2={id2}&#xa;• Returns: VersionComparison&#xa;• Includes: diff object, change statistics, metadata comparison" style="text;html=1;strokeColor=#F9A825;fillColor=#FFF9C4;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="1320" width="720" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-service" value="SERVICE LAYER:&#xa;&#xa;class VersionControlService:&#xa;&#xa;async def get_version_history(sub_chapter_id: str) → List[VersionSummary]:&#xa;    \"\"\"Fetch all versions for sub-chapter ordered by version_number DESC\"\"\"&#xa;&#xa;async def get_version_details(version_id: str) → VersionDetails:&#xa;    \"\"\"Fetch full version record including content\"\"\"&#xa;&#xa;async def restore_version(sub_chapter_id: str, version_id: str, description?: str):&#xa;    \"\"\"&#xa;    Transaction:&#xa;    1. Get current content&#xa;    2. Create new version (auto-save current)&#xa;    3. Get restore version content&#xa;    4. Update sub_chapters.content and current_version_id&#xa;    5. Trigger updates chapter.current_word_count&#xa;    \"\"\"&#xa;&#xa;async def update_version_description(version_id: str, description: str):&#xa;    \"\"\"Update description field on existing version\"\"\"&#xa;&#xa;async def compare_versions(version1_id: str, version2_id: str) → VersionComparison:&#xa;    \"\"\"&#xa;    1. Fetch both versions&#xa;    2. Calculate text diff using difflib&#xa;    3. Generate statistics (additions, deletions, changes)&#xa;    4. Format for frontend display&#xa;    \"\"\"" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=9;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="1320" width="860" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-integration" value="INTEGRATION POINTS:&#xa;&#xa;WITH EPIC 6 (Sub-Chapter Management):&#xa;• Story 1 (Create): Creates Version 1 automatically&#xa;• Story 5 (Regenerate): Creates Version N+1 automatically&#xa;• current_version_id pointer always points to active version&#xa;• Deleting sub-chapter cascades to delete all versions&#xa;&#xa;WITH EPIC 5A (Content Generation):&#xa;• Each generation creates a new version entry&#xa;• snapshot_metadata stores generation context:&#xa;  - character_id used&#xa;  - world_rule_ids that were applicable&#xa;  - generation parameters&#xa;• Enables audit trail of AI-generated content&#xa;&#xa;WITH EPIC 11 (Editor Sharing):&#xa;• Editors can view version history (read-only)&#xa;• Version comparisons show what changed between shares&#xa;• Restore operations create audit trail&#xa;&#xa;REAL-TIME UPDATES:&#xa;• Supabase Realtime broadcasts version changes&#xa;• Frontend subscribes to sub_chapter_versions table&#xa;• UI updates immediately when:&#xa;  - New version created (regeneration)&#xa;  - Version description updated&#xa;  - Version restored (current_version_id changes)" style="text;html=1;strokeColor=#7B1FA2;fillColor=#E1BEE7;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="2680" y="1320" width="680" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-patterns" value="KEY DESIGN PATTERNS:&#xa;&#xa;1. NON-DESTRUCTIVE OPERATIONS:&#xa;   • All versions preserved permanently&#xa;   • Restore creates new version first (auto-save)&#xa;   • No delete operation for versions&#xa;   • Complete audit trail maintained&#xa;&#xa;2. POINTER-BASED CURRENT VERSION:&#xa;   • sub_chapters.current_version_id is the source of truth&#xa;   • Allows instant rollback without data loss&#xa;   • Version list always shows current version highlighted&#xa;&#xa;3. AUTOMATIC VERSION CREATION:&#xa;   • Epic 6 Story 1: Creates Version 1&#xa;   • Epic 6 Story 5: Creates Version N+1&#xa;   • Restore operation: Creates Version N+1 (auto-save)&#xa;   • User never manually creates versions&#xa;&#xa;4. VERSION METADATA TRACKING:&#xa;   • snapshot_metadata captures generation context&#xa;   • Enables understanding why version was created&#xa;   • Supports future analysis and debugging&#xa;&#xa;5. TRANSACTION SAFETY:&#xa;   • Restore operation is atomic&#xa;   • Rollback on any error&#xa;   • Consistent state guaranteed" style="text;html=1;strokeColor=#D32F2F;fillColor=#FFCDD2;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="3400" y="1320" width="580" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-performance" value="PERFORMANCE &amp; SCALABILITY:&#xa;&#xa;Query Performance:&#xa;• Version history: &lt; 100ms (indexed query)&#xa;• Version details: &lt; 50ms (direct PK lookup)&#xa;• Restore operation: &lt; 300ms (transaction)&#xa;• Comparison: &lt; 500ms (2 queries + diff calc)&#xa;&#xa;Storage Considerations:&#xa;• Average version: ~2000 words = ~12KB&#xa;• 50 versions per sub-chapter = ~600KB&#xa;• 1000 sub-chapters = ~600MB per trilogy&#xa;• Acceptable for typical use cases&#xa;&#xa;Caching Strategy:&#xa;• Version lists cached in Redis (TTL: 5 min)&#xa;• Invalidated on new version creation&#xa;• Full content not cached (too large)&#xa;&#xa;Future Optimizations:&#xa;• Delta storage (store diffs instead of full content)&#xa;• Compression for older versions&#xa;• Archival strategy for versions > 1 year old" style="text;html=1;strokeColor=#F57C00;fillColor=#FFE0B2;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="4020" y="1320" width="580" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-epic" value="EPIC 7 - VERSION CONTROL &amp; CONTENT MANAGEMENT | Complete User Flow Diagram | 4 User Stories Integrated" style="text;html=1;strokeColor=#1976D2;fillColor=#BBDEFB;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1680" width="4880" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-legend" value="LEGEND:&#xa;• Solid Lines = Synchronous flow&#xa;• Dashed Lines = Asynchronous responses&#xa;• Blue = User interactions&#xa;• Green = Success paths&#xa;• Purple = Optional flows&#xa;• Color-coded by User Story" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1760" width="580" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-notes" value="IMPLEMENTATION NOTES:&#xa;&#xa;• All version operations preserve complete audit trail&#xa;• Restore operation is non-destructive (creates new version first)&#xa;• Version comparison uses Python difflib for accurate text diffs&#xa;• Frontend uses syntax highlighting for diff display&#xa;• Real-time updates via Supabase Realtime for collaborative scenarios&#xa;• Transaction-based restore ensures data consistency&#xa;• No manual version deletion - prevents accidental data loss" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1760" width="980" height="120" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="footer-doc" value="DOCUMENT INFO:&#xa;&#xa;Epic: 7 - Version Control & Content Management&#xa;Achievement: Comprehensive version tracking and comparison&#xa;Estimated Effort: 16 hours&#xa;Dependencies: Epic 6 (Sub-Chapter Management)&#xa;Created: November 3, 2025&#xa;Version: 1.0" style="text;html=1;strokeColor=#666666;fillColor=#F5F5F5;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="1760" width="580" height="120" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
